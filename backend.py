@@ -9,6 +9,8 @@ from dotenv import load_dotenv
 
 
 def main():
+    assert len(sys.argv) >= 3, "Not enough arguments"
+
     ACTIONS = ["check", "get"]
     API_VERSION = "v24.0"
     INSTAGRAM_ID = "17841455210130919"
@@ -30,23 +32,32 @@ def main():
         pprint(data)
 
 
-def check_if_business_account(username: str, url: str, access_token: str) -> bool:
+def check_if_business_account(
+    username: str, url: str, access_token: str, timeout_s: int = 15
+) -> bool:
     fields = f"business_discovery.username({username}){{name}}"
     params = {"fields": fields, "access_token": access_token}
 
-    response = requests.get(url, params)
-    is_business_account = response.status_code == 200
-    return is_business_account
+    response = None
+    try:
+        response = requests.get(url, params, timeout=timeout_s)
+        response.raise_for_status()
+        return response.status_code == 200
+    except requests.exceptions.RequestException as error:
+        logging.error(f"Could not connect to Instragram API ({error})")
+        if response is not None:
+            logging.error(response.text)
+
+        return False
 
 
 def get_account_posts(
-    username: str, url: str, access_token: str, amount: int = 5
+    username: str, url: str, access_token: str, amount: int = 5, timeout_s: int = 15
 ) -> dict[str, Any]:  # pyright: ignore[reportExplicitAny]
     assert amount > 0, "Amount of posts to retrieve must be positive"
 
     fields = f"""
         business_discovery.username({username}){{
-            username,
             media.limit({amount}){{
                 timestamp,caption,media_type,permalink,media_url,
                 children{{media_url,media_type}}
@@ -55,13 +66,18 @@ def get_account_posts(
     """
     params = {"fields": fields, "access_token": access_token}
 
-    response = requests.get(url, params)
-    if response.status_code == 200:
+    response = None
+    try:
+        response = requests.get(url, params, timeout=timeout_s)
+        response.raise_for_status()
         data = response.json()  # pyright: ignore[reportAny]
-        return data["business_discovery"]  # pyright: ignore[reportAny]
+        return data.get("business_discovery", {})  # pyright: ignore[reportAny]
+    except requests.exceptions.RequestException as error:
+        logging.error(f"Could not connect to Instagram API ({error})")
+        if response is not None:
+            logging.error(response.text)
 
-    logging.error(f"Failed getting a response from Instagram ({response.status_code})")
-    return {}
+        return {}
 
 
 if __name__ == "__main__":

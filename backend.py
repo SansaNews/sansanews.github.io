@@ -28,8 +28,8 @@ def main():
         print(is_business_account)
     elif action == "get":
         username = sys.argv[2]
-        data = get_account_posts(username, API_URL, access_token)
-        pprint(data)
+        posts = get_account_posts(username, API_URL, access_token)
+        pprint(posts)
 
 
 def check_if_business_account(
@@ -43,6 +43,7 @@ def check_if_business_account(
         response = requests.get(url, params, timeout=timeout_s)
         response.raise_for_status()
         return response.status_code == 200
+
     except requests.exceptions.RequestException as error:
         logging.error(f"Could not connect to Instragram API ({error})")
         if response is not None:
@@ -53,7 +54,7 @@ def check_if_business_account(
 
 def get_account_posts(
     username: str, url: str, access_token: str, amount: int = 5, timeout_s: int = 15
-) -> dict[str, Any]:  # pyright: ignore[reportExplicitAny]
+) -> list[dict[str, Any]]:  # pyright: ignore[reportExplicitAny]
     assert amount > 0, "Amount of posts to retrieve must be positive"
 
     fields = f"""
@@ -71,13 +72,14 @@ def get_account_posts(
         response = requests.get(url, params, timeout=timeout_s)
         response.raise_for_status()
         data = response.json()  # pyright: ignore[reportAny]
-        return data.get("business_discovery", {})  # pyright: ignore[reportAny]
+        return data["business_discovery"]["media"]["data"]  # pyright: ignore[reportAny]
+
     except requests.exceptions.RequestException as error:
         logging.error(f"Could not connect to Instagram API ({error})")
         if response is not None:
             logging.error(response.text)
 
-        return {}
+        return []
 
 
 if __name__ == "__main__":

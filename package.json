@@ -28,10 +28,8 @@
 	},
 	"dependencies": {
 		"@lucide/svelte": "^0.561.0",
-		"@types/dompurify": "^3.2.0",
 		"bits-ui": "^2.15.4",
 		"clsx": "^2.1.1",
-		"dompurify": "^3.3.1",
 		"formsnap": "^2.0.1",
 		"paneforge": "^1.0.0-next.6",
 		"svelte-sonner": "^1.0.7",

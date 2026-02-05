@@ -2,7 +2,7 @@
     import favicon from '$lib/assets/favicon.svg';
     import * as NavigationMenu from "$lib/components/ui/navigation-menu/index.js";
     import { navigationMenuTriggerStyle } from "$lib/components/ui/navigation-menu/navigation-menu-trigger.svelte";
-    import logo from '$lib/assets/logo-sn-w-v1.1.png';
+    import logo from '$lib/assets/logo-sn.png';
     import '../app.css';
 
 
@@ -27,9 +27,9 @@
         
         <div class="w-full flex h-22 items-center justify-end max-w-7xl mx-auto p-4"> 
 
-            <div class="flex items-center border-b-2">
+            <div class="flex items-center border-b-4 border-double">
 
-                <div class= "invert flex items-center after:content-['/'] after:mx-1 after:text-muted-foreground">             
+                <div class= "flex items-center after:content-['/'] after:mx-1 after:text-muted-foreground">             
                     <a href="/" class="flex items-center gap-2 shrink-0">
                         <img src={logo} class="h-auto w-70" alt="SansaNews Logo"/>
                     </a>
@@ -60,7 +60,7 @@
     {@render children()}
 
 
-    <footer class="border-t-2 py-6 text-center text-sm font-medium text-muted-foreground">
+    <footer class="border-t-2 border-double p-6 text-center text-sm font-medium text-muted-foreground">
         <p>SansaNews es un medio de comunicación automatizado que visibiliza las iniciativas estudiantiles de la USM</p>
     </footer>
 

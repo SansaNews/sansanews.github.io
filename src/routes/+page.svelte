@@ -44,11 +44,11 @@
             Últimas Noticias
         </h1>
         <div class="flex items-center justify-center gap-4 mt-4">
-            <div class="h-0.5 w-16 bg-foreground/40"></div>
+            <div class="h-0.5 w-16 bg-primary/40"></div>
                 <p class="text-sm uppercase tracking-widest text-muted-foreground font-semibold">
                     05/02/2026
                 </p>
-            <div class="h-0.5 w-16 bg-foreground/40"></div>
+            <div class="h-0.5 w-16 bg-primary/40"></div>
         </div>
     </header>
 

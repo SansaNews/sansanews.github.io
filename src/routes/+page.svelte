@@ -36,7 +36,7 @@
 </script>
 
 
-<main class="w-full max-w-6xl mx-auto p-4 flex flex-col gap-8 min-h-screen">
+<main class="w-full max-w-7xl mx-auto p-4 flex flex-col gap-8 min-h-screen">
     
     <!-- Title -->
     <header class="w-full text-center py-8 border-b-3 border-double">

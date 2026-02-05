@@ -27,7 +27,7 @@
         
         <div class="w-full flex h-22 items-center justify-end max-w-7xl mx-auto p-4"> 
 
-            <div class="flex items-center border-b-4 border-double">
+            <div class="flex items-center border-b-3 border-double">
 
                 <div class= "flex items-center after:content-['/'] after:mx-1 after:text-muted-foreground">             
                     <a href="/" class="flex items-center gap-2 shrink-0">
@@ -60,7 +60,7 @@
     {@render children()}
 
 
-    <footer class="border-t-2 border-double p-6 text-center text-sm font-medium text-muted-foreground">
+    <footer class="border-t-3 border-double p-6 text-center text-sm font-medium text-muted-foreground">
         <p>SansaNews es un medio de comunicación automatizado que visibiliza las iniciativas estudiantiles de la USM</p>
     </footer>
 

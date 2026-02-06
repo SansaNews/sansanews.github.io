@@ -26,23 +26,25 @@
 </script>
 
 <svelte:head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SansaNews</title>
     <link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="grid min-h-screen grid-rows-[auto_1fr_auto] relative bg-background text-foreground">
+<div class="grid min-h-screen grid-rows-[auto_1fr_auto] relative bg-background text-foreground overflow-x-hidden">
     
     <header class="w-full bg-background z-50 relative">
-        <div class="w-full max-w-7xl mx-auto p-4 py-8">
+        <div class="w-full max-w-7xl mx-auto px-4 py-8">
             
             <!-- Logo -->
             <div class="text-center mb-6">
-                <a href={resolve("/")} class="inline-block">
-                    <img src={logo} class="h-auto w-120 mx-auto" alt="SansaNews Logo"/>
+                <a href={resolve("/")} class="inline-block w-full">
+                    <img src={logo} class="h-auto w-full max-w-120 mx-auto" alt="SansaNews Logo"/>
                 </a>
             </div>
 
-            <!-- Desktop avigation -->
+            <!-- Desktop navigation -->
             <div class="hidden md:flex items-center justify-center gap-4">
                 <div class="h-0.5 w-16 bg-primary/40"></div>
                 
@@ -111,7 +113,7 @@
     {@render children()}
 
     <footer class="border-t-3 border-double p-6 text-center text-sm font-medium text-muted-foreground">
-        <p>SansaNews es un medio de comunicación automatizado que visibiliza las iniciativas estudiantiles de la USM</p>
+        <p class="px-4">SansaNews es un medio de comunicación automatizado que visibiliza las iniciativas estudiantiles de la USM</p>
     </footer>
 
 </div>

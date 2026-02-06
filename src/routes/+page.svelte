@@ -41,7 +41,7 @@
     }));
 </script>
 
-<main class="w-full max-w-7xl mx-auto p-4 flex flex-col gap-8 min-h-screen">
+<main class="w-full max-w-7xl mx-auto px-4 py-4 flex flex-col gap-8 min-h-screen overflow-x-hidden">
     
     <!-- Banner -->
     <div class="w-full border-2 border-border bg-card card-shadow">
@@ -50,25 +50,25 @@
                 alpha-1.0.0 
             </p>
         </div>
-        <div class="px-6 py-4 text-center">
-            <h2 class="text-2xl md:text-3xl font-bold font-[--font-heading] text-foreground mb-2">
+        <div class="px-4 sm:px-6 py-4 text-center">
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold font-[--font-heading] text-foreground mb-2">
                 WORK IN PROGRESS
             </h2>
-            <p class="text-sm text-muted-foreground uppercase tracking-wide">
+            <p class="text-xs sm:text-sm text-muted-foreground uppercase tracking-wide">
                 SansaNews se encuentra en fases tempranas del desarrollo, pronto se presentarán mejoras en estetica y contenido, gracias por su comprension.
             </p>
         </div>
     </div>
 
-    <section class="w-full">
+    <section class="w-full overflow-x-hidden">
 
         <!-- Card -->
         {#each Posts as post}
             <Card.Root class="border-0 shadow-none bg-transparent mb-8">
-                <Card.Content class="px-6">
-                    <div class="bg-card border-2 border-border card-shadow">
+                <Card.Content class="px-0 sm:px-6">
+                    <div class="bg-card border-2 border-border card-shadow overflow-hidden">
                         <div class="flex flex-col md:flex-row md:h-82"> 
-                            <div class="w-full md:w-auto h-full aspect-square shrink-0 border-b-2 md:border-b-0 md:border-r-2 border-border">
+                            <div class="w-full md:w-auto h-full aspect-square shrink-0 border-b-2 md:border-b-0 md:border-r-2 border-border overflow-hidden">
                                 
                                 <!-- IG post image -->
                                 <a 
@@ -87,10 +87,10 @@
                             </div>
                             
                             <!-- Post info -->
-                            <div class="w-full flex-1 min-w-0 p-6 md:p-4 flex flex-col justify-between">
+                            <div class="w-full flex-1 min-w-0 p-4 md:p-4 flex flex-col justify-between">
 
                                 <!-- Description -->
-                                <p class="overflow-y-auto text-base text-foreground leading-relaxed whitespace-pre-line">
+                                <p class="overflow-y-auto text-sm sm:text-base text-foreground leading-relaxed whitespace-pre-line break-words">
                                     {post.description}
                                 </p>
                                 
@@ -102,21 +102,21 @@
                                         href={post.authorProfile} 
                                         target="_blank" 
                                         rel="noopener noreferrer"
-                                        class="flex items-center gap-3 hover:opacity-80 transition-opacity"
+                                        class="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity"
                                     >
 
                                         <!-- Name and publish time -->
-                                        <div class="flex flex-col text-right">
-                                            <span class="text-lg font-bold text-foreground font-[--font-heading]">
+                                        <div class="flex flex-col text-right min-w-0">
+                                            <span class="text-base sm:text-lg font-bold text-foreground font-[--font-heading] truncate">
                                                 {post.author}
                                             </span>
-                                            <span class="text-[10px] uppercase text-muted-foreground tracking-wider font-semibold">
+                                            <span class="text-[10px] uppercase text-muted-foreground tracking-wider font-semibold whitespace-nowrap">
                                                 {post.time}
                                             </span>
                                         </div>
 
                                          <!-- Avatar -->
-                                        <Avatar class="h-15 w-15 border-2 border-border">
+                                        <Avatar class="h-12 w-12 sm:h-15 sm:w-15 border-2 border-border shrink-0">
                                             <img 
                                                 src={post.authorAvatar} 
                                                 alt="Post de {post.author}" 

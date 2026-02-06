@@ -1,6 +1,10 @@
 set dotenv-load
 
-python := ".venv/bin/python3"
+# Windows PowerShell, Linux/Mac sh
+set windows-shell := ["powershell.exe", "-c"]
+
+# OS route detection
+python := if os() == "windows" { ".venv/Scripts/python" } else { ".venv/bin/python3" }
 
 # Run dev server
 dev:

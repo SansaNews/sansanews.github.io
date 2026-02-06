@@ -4,12 +4,13 @@
     import { navigationMenuTriggerStyle } from "$lib/components/ui/navigation-menu/navigation-menu-trigger.svelte";
     import logo from '$lib/assets/logo-sn.png';
     import '../app.css';
+    import { resolve } from "$app/paths";
 
     const navItems = [
-        { label: 'Iniciativas', href: '/iniciativas' },
-        { label: 'Avisos', href: '/avisos' },
-        { label: '¿Qué es una iniciativa?', href: '/que-es' },
-        { label: 'Sobre Nosotros', href: '/nosotros' }
+        { label: 'Iniciativas', href: resolve('/iniciativas') },
+        { label: 'Avisos', href: resolve('/avisos') },
+        { label: '¿Qué es una iniciativa?', href: resolve('/que-es') },
+        { label: 'Sobre Nosotros', href: resolve('/nosotros') }
     ];
 
     let { children } = $props();
@@ -36,8 +37,8 @@
             
             <!-- Logo -->
             <div class="text-center mb-6">
-                <a href="/" class="inline-block">
-                    <img src={logo} class="h-auto w-120 mx-auto max-w-full" alt="SansaNews Logo"/>
+                <a href={resolve("/")} class="inline-block">
+                    <img src={logo} class="h-auto w-120 mx-auto" alt="SansaNews Logo"/>
                 </a>
             </div>
 

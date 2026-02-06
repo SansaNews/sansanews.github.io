@@ -12,6 +12,10 @@ pip := venv + "pip"
 dev:
 	bun run dev
 
+# Builds the page
+build:
+	bun run build
+
 # Check if user is available
 check username:
 	{{backend}} check {{username}}

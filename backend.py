@@ -77,8 +77,8 @@ def init_parser() -> argparse.ArgumentParser:
 
 
 def handle_get_all(config: APIConfig):
-    USERS_PATH = "static/users.json"
-    MEDIA_PATH = "static/media.json"
+    USERS_PATH = "src/lib/assets/users.json"
+    MEDIA_PATH = "src/lib/assets/media.json"
 
     with open(USERS_PATH, "r") as file:
         users: list[str] = json.load(file)["users"]

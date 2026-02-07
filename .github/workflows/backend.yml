@@ -2,7 +2,7 @@ name: Update Media JSON
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '42 * * * *'
   workflow_dispatch:
 
 permissions:

@@ -28,7 +28,7 @@
 		"vite": "^7.2.6"
 	},
 	"dependencies": {
-		"@lucide/svelte": "^0.561.0",
+		"@lucide/svelte": "^0.563.1",
 		"@sveltejs/adapter-static": "^3.0.10",
 		"bits-ui": "^2.15.4",
 		"clsx": "^2.1.1",

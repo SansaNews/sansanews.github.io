@@ -2,6 +2,7 @@
     import favicon from '$lib/assets/favicon.svg';
     import * as NavigationMenu from "$lib/components/ui/navigation-menu/index.js";
     import { navigationMenuTriggerStyle } from "$lib/components/ui/navigation-menu/navigation-menu-trigger.svelte";
+    import * as Card from "$lib/components/ui/card/index.js";
     import logo from '$lib/assets/logo-sn.png';
     import '../app.css';
     import { resolve } from "$app/paths";
@@ -109,6 +110,25 @@
             {/if}
         </div>
     </header>
+
+    <!-- Banner -->
+    <div class="w-full px-4 sm:px-0">
+        <Card.Root class="max-w-7xl max-h-42 mx-auto gap-0 border-0 py-0">
+            <Card.Header class="border-0 bg-foreground text-background px-4 py-2 rounded-t-lg">
+                <Card.Title class="text-center text-sm font-bold uppercase tracking-widest">
+                    <p> alpha-1.0.1 </p>
+                </Card.Title>
+            </Card.Header>
+            <Card.Content class="p-4 text-center">
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold font-[--font-heading] text-foreground mb-2">
+                    WORK IN PROGRESS
+                </h2>
+                <p class="text-xs sm:text-sm text-muted-foreground tracking-wide">
+                    SansaNews se encuentra en la fase inicial de desarrollo, pronto se implementaran secciones nuevas y mejoras en la interfaz. ¡Gracias por ser parte de este proceso!
+                </p>
+            </Card.Content>
+        </Card.Root>
+    </div>
 
     {@render children()}
 

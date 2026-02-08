@@ -36,37 +36,18 @@
         authorProfile: "https://www.instagram.com/" + item.username,
         authorAvatar: item.profile_picture_url,
         permaLink: item.permalink,
-
         time: timeAgo(item.timestamp),
     }));
 </script>
 
 <main class="w-full max-w-7xl mx-auto px-4 py-4 flex flex-col gap-8 min-h-screen overflow-x-hidden">
-    
-    <!-- Banner -->
-    <div class="w-full border-2 border-border bg-card card-shadow">
-        <div class="border-b-2 border-border bg-foreground text-background px-4 py-2">
-            <p class="text-center text-sm font-bold uppercase tracking-widest">
-                alpha-1.0.0 
-            </p>
-        </div>
-        <div class="px-4 sm:px-6 py-4 text-center">
-            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold font-[--font-heading] text-foreground mb-2">
-                WORK IN PROGRESS
-            </h2>
-            <p class="text-xs sm:text-sm text-muted-foreground uppercase tracking-wide">
-                SansaNews se encuentra en fases tempranas del desarrollo, pronto se presentarán mejoras en estetica y contenido, gracias por su comprension.
-            </p>
-        </div>
-    </div>
 
     <section class="w-full overflow-x-hidden">
-
         <!-- Card -->
         {#each Posts as post}
             <Card.Root class="border-0 shadow-none bg-transparent mb-8">
                 <Card.Content class="px-0 sm:px-6">
-                    <div class="bg-card border-2 border-border card-shadow overflow-hidden flex flex-col md:flex-row md:h-82">
+                    <div class="bg-card border-2 border-border border-t card-shadow overflow-hidden flex flex-col md:flex-row md:h-82 rounded-lg">
                         <div class="w-full md:w-auto h-full aspect-square shrink-0 border-b-2 md:border-b-0 md:border-r-2 border-border overflow-hidden">
                             
                             <!-- IG post image -->
@@ -78,7 +59,7 @@
                             >
                                 <img 
                                     src={post.image} 
-                                    alt="Post de {post.author}" 
+                                    alt="Post de {post.author}"
                                     referrerpolicy="no-referrer"
                                     class="absolute inset-0 w-full h-full object-cover" 
                                 />

@@ -1,10 +1,10 @@
 <script lang="ts">
   import "../app.css";
   import * as Card from "$lib/components/ui/card/index.js";
-  import * as NavigationMenu from "$lib/components/ui/navigation-menu/index.js";
+  import MobileMenu from "$lib/components/MobileMenu.svelte";
+  import Navbar from "$lib/components/Navbar.svelte";
   import favicon from "$lib/assets/favicon.svg";
   import logo from "$lib/assets/logo-sn.png";
-  import { navigationMenuTriggerStyle } from "$lib/components/ui/navigation-menu/navigation-menu-trigger.svelte";
   import { resolve } from "$app/paths";
 
   const navItems = [
@@ -15,15 +15,6 @@
   ];
 
   let { children } = $props();
-  let mobileMenuOpen = $state(false);
-
-  function toggleMobileMenu() {
-    mobileMenuOpen = !mobileMenuOpen;
-  }
-
-  function closeMobileMenu() {
-    mobileMenuOpen = false;
-  }
 </script>
 
 <svelte:head>
@@ -49,85 +40,8 @@
         </a>
       </div>
 
-      <!-- Desktop navigation -->
-      <div class="hidden md:flex items-center justify-center gap-4">
-        <div class="h-0.5 w-16 bg-primary/40"></div>
-
-        <NavigationMenu.Root>
-          <NavigationMenu.List
-            class="flex items-center [&>li:not(:last-child)]:after:content-['/'] [&>li:not(:last-child)]:after:mx-1 [&>li:not(:last-child)]:after:text-muted-foreground"
-          >
-            {#each navItems as item}
-              <NavigationMenu.Item>
-                <NavigationMenu.Link href={item.href}>
-                  {#snippet child({ props })}
-                    <a
-                      href={item.href}
-                      {...props}
-                      class="bg-transparent focus:bg-transparent hover:bg-transparent active:bg-transparent data-active:bg-transparent data-[state=open]:bg-transparent transition-colors hover:text-primary focus:text-primary {navigationMenuTriggerStyle()}"
-                    >
-                      {item.label}
-                    </a>
-                  {/snippet}
-                </NavigationMenu.Link>
-              </NavigationMenu.Item>
-            {/each}
-          </NavigationMenu.List>
-        </NavigationMenu.Root>
-
-        <div class="h-0.5 w-16 bg-primary/40"></div>
-      </div>
-
-      <!-- Mobile menu button -->
-      <div class="md:hidden flex justify-center">
-        <button
-          onclick={toggleMobileMenu}
-          class="p-2 rounded-md hover:bg-primary/10 transition-colors"
-          aria-label="Toggle menu"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            {#if mobileMenuOpen}
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            {:else}
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            {/if}
-          </svg>
-        </button>
-      </div>
-
-      <!-- Mobile navigation -->
-      {#if mobileMenuOpen}
-        <nav class="md:hidden mt-4 border-t pt-4">
-          <ul class="flex flex-col gap-2">
-            {#each navItems as item}
-              <li>
-                <a
-                  href={item.href}
-                  onclick={closeMobileMenu}
-                  class="block px-4 py-3 rounded-md hover:bg-primary/10 transition-colors hover:text-primary text-center"
-                >
-                  {item.label}
-                </a>
-              </li>
-            {/each}
-          </ul>
-        </nav>
-      {/if}
+      <Navbar {navItems} />
+      <MobileMenu {navItems} />
     </div>
   </header>
 
@@ -169,4 +83,3 @@
     </p>
   </footer>
 </div>
-

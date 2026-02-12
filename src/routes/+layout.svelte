@@ -19,8 +19,12 @@
 
 <svelte:head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SansaNews</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="SansaNews es una iniciativa estudiantil que busca centralizar las diversas fuentes de información de la USM"
+  />
   <link rel="icon" href={favicon} />
 </svelte:head>
 

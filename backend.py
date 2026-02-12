@@ -3,9 +3,12 @@
 # pyright: reportUnusedCallResult = false
 
 import argparse
+import functools
+import itertools
 import json
 import logging
 import os
+from concurrent.futures import ThreadPoolExecutor
 from pprint import pprint
 from typing import Any, final
 
@@ -101,13 +104,19 @@ def get_all_users_media(
     assert len(usernames) > 0, "List of usernames must not be empty"
     assert amount > 0, "Amount must be a positive integer"
 
-    media: list[Media] = []
-    for username in usernames:
-        user_data = get_user_data(username, config, amount)
-        user_media = sanitize_data(username, user_data)
-        media += user_media
+    with ThreadPoolExecutor() as executor:
+        task = functools.partial(process_single_user, config=config, amount=amount)
+        results = executor.map(task, usernames)
 
+    media: list[Media] = list(itertools.chain.from_iterable(results))
     return media
+
+
+def process_single_user(
+    username: str, config: APIConfig, amount: int = 5
+) -> list[Media]:
+    user_data = get_user_data(username, config, amount)
+    return sanitize_data(username, user_data)
 
 
 def get_user_data(username: str, config: APIConfig, amount: int = 5) -> dict[str, Any]:

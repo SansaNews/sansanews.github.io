@@ -3,7 +3,6 @@
   import { type Media } from "$lib/types";
   import User from "$lib/components/User.svelte";
 
-  const MEDIA_WIDTH = 96;
   let media: Media = $props();
 </script>
 
@@ -12,9 +11,7 @@
     <div
       class="bg-card card-shadow relative flex flex-col overflow-hidden rounded-lg border-2 border-t md:flex-row"
     >
-      <div
-        class="border-b-2 md:w-{MEDIA_WIDTH} md:shrink-0 md:border-r-2 md:border-b-0"
-      >
+      <div class="border-b-2 md:w-96 md:shrink-0 md:border-r-2 md:border-b-0">
         <!-- Post image -->
         <a href={media.permalink} target="_blank" rel="noopener noreferrer">
           {#if media.type === "VIDEO"}
@@ -37,7 +34,7 @@
       </div>
 
       <div
-        class="flex w-full flex-col justify-between p-4 md:absolute md:inset-y-0 md:right-0 md:left-{MEDIA_WIDTH} md:w-auto"
+        class="flex w-full flex-col justify-between p-4 md:absolute md:inset-y-0 md:right-0 md:left-96 md:w-auto"
       >
         <!-- Description -->
         <p class="overflow-y-auto wrap-break-word whitespace-pre-line">

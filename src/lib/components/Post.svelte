@@ -40,7 +40,7 @@
 
       <div class="flex grow flex-col p-4">
         <!-- Description -->
-        <p class="grow overflow-y-auto leading-relaxed whitespace-pre-line">
+        <p class="grow overflow-y-auto wrap-break-word whitespace-pre-line">
           {media.caption}
         </p>
 

@@ -19,12 +19,22 @@
           rel="noopener noreferrer"
           class="relative block h-full"
         >
-          <img
-            src={media.url}
-            alt="Post de {media.username}"
-            referrerpolicy="no-referrer"
-            class="h-full w-full object-cover"
-          />
+          {#if media.type === "VIDEO"}
+            <video
+              src={media.url}
+              muted
+              loop
+              autoplay
+              class="h-full w-full object-cover object-center"
+            ></video>
+          {:else}
+            <img
+              src={media.url}
+              alt="Post de {media.username}"
+              referrerpolicy="no-referrer"
+              class="h-full w-full object-cover"
+            />
+          {/if}
         </a>
       </div>
 

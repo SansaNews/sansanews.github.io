@@ -4,6 +4,7 @@ export interface Media {
   permalink: string;
   profileLink: string;
   profilePicture: string;
+  type: string;
   url: string;
   username: string;
 }

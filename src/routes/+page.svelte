@@ -5,12 +5,13 @@
 
   const mediaList: Media[] = mediaFile.map((media) => ({
     caption: media.caption || "Sin descripción",
-    url: media.media_url,
-    username: media.username,
+    datePublished: new Date(media.timestamp),
+    permalink: media.permalink,
     profileLink: "https://www.instagram.com/" + media.username,
     profilePicture: media.profile_picture_url,
-    permalink: media.permalink,
-    datePublished: new Date(media.timestamp),
+    type: media.media_type,
+    url: media.media_url,
+    username: media.username,
   }));
 </script>
 

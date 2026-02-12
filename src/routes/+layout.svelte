@@ -28,8 +28,8 @@
   <link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="md:px-16">
-  <header>
+<div class="grid grid-cols-12">
+  <header class="col-span-12 md:col-span-8 md:col-start-3">
     <div class="px-4 py-8">
       <!-- Logo -->
       <div class="mb-6">
@@ -48,13 +48,13 @@
   </header>
 
   <!-- Banner -->
-  <div class="px-4">
+  <div class="col-span-12 px-4 md:col-span-8 md:col-start-3">
     <Card.Root class="gap-0 border-0 py-0">
       <Card.Header class="bg-foreground text-background rounded-t-lg py-2">
         <Card.Title
           class="text-center text-sm font-bold tracking-widest uppercase"
         >
-          <p>alpha-1.0.2</p>
+          <p>alpha-1.0.3</p>
         </Card.Title>
       </Card.Header>
       <Card.Content class="p-4 text-center">
@@ -72,10 +72,12 @@
     </Card.Root>
   </div>
 
-  {@render children()}
+  <div class="col-span-12 md:col-span-8 md:col-start-3">
+    {@render children()}
+  </div>
 
   <footer
-    class="text-muted-foreground border-t-3 border-double p-6 text-center text-sm font-medium"
+    class="text-muted-foreground col-span-12 border-t-3 border-double p-6 text-center text-sm font-medium"
   >
     <p class="px-4">
       SansaNews es un medio de comunicación automatizado que visibiliza las

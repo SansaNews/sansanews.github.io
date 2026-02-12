@@ -14,10 +14,8 @@
   }));
 </script>
 
-<main
-  class="mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-8 overflow-x-hidden px-4 py-4"
->
-  <section class="w-full overflow-x-hidden">
+<main class="p-4">
+  <section>
     {#each mediaList as media}
       <Post {...media} />
     {/each}

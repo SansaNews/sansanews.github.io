@@ -7,43 +7,35 @@
 </script>
 
 <Card.Root class="mb-8 border-0 bg-transparent shadow-none">
-  <Card.Content class="px-0 sm:px-6">
+  <Card.Content class="px-0">
     <div
-      class="bg-card border-border card-shadow flex flex-col overflow-hidden rounded-lg border-2 border-t md:h-82 md:flex-row"
+      class="bg-card card-shadow flex flex-col overflow-hidden rounded-lg border-2 border-t md:h-82 md:flex-row"
     >
-      <div
-        class="border-border aspect-square h-full w-full shrink-0 overflow-hidden border-b-2 md:w-auto md:border-r-2 md:border-b-0"
-      >
+      <div class="aspect-square border-b-2 md:border-r-2 md:border-b-0">
         <!-- Post image -->
         <a
           href={media.permalink}
           target="_blank"
           rel="noopener noreferrer"
-          class="group relative block h-full w-full"
+          class="relative block h-full"
         >
           <img
             src={media.url}
             alt="Post de {media.username}"
             referrerpolicy="no-referrer"
-            class="absolute inset-0 h-full w-full object-cover"
+            class="h-full w-full object-cover"
           />
         </a>
       </div>
 
-      <div
-        class="flex w-full min-w-0 flex-1 flex-col justify-between p-4 md:p-4"
-      >
+      <div class="flex grow flex-col p-4">
         <!-- Description -->
-        <p
-          class="text-foreground overflow-y-auto text-sm leading-relaxed wrap-break-word whitespace-pre-line sm:text-base"
-        >
+        <p class="grow overflow-y-auto leading-relaxed whitespace-pre-line">
           {media.caption}
         </p>
 
         <!-- Footer -->
-        <div
-          class="border-border flex shrink-0 items-center justify-end border-t-2 pt-4"
-        >
+        <div class="flex justify-end border-t-2 pt-4">
           <User
             username={media.username}
             profileLink={media.profileLink}

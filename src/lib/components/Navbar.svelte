@@ -5,12 +5,12 @@
   let { navItems } = $props();
 </script>
 
-<div class="hidden items-center justify-center gap-4 md:flex">
+<div class="hidden items-center justify-center md:flex">
   <div class="bg-primary/40 h-0.5 w-16"></div>
 
   <NavigationMenu.Root>
     <NavigationMenu.List
-      class="[&>li:not(:last-child)]:after:text-muted-foreground flex items-center [&>li:not(:last-child)]:after:mx-1 [&>li:not(:last-child)]:after:content-['/']"
+      class="[&>li:not(:last-child)]:after:mx-1 [&>li:not(:last-child)]:after:content-['/']"
     >
       {#each navItems as item}
         <NavigationMenu.Item>
@@ -19,7 +19,7 @@
               <a
                 href={item.href}
                 {...props}
-                class="hover:text-primary focus:text-primary bg-transparent transition-colors hover:bg-transparent focus:bg-transparent active:bg-transparent data-active:bg-transparent data-[state=open]:bg-transparent {navigationMenuTriggerStyle()}"
+                class="hover:text-primary focus:text-primary transition-colors hover:bg-transparent {navigationMenuTriggerStyle()}"
               >
                 {item.label}
               </a>

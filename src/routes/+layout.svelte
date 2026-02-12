@@ -23,22 +23,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="SansaNews es una iniciativa estudiantil que busca centralizar las diversas fuentes de información de la USM"
+    content="SansaNews es un medio de comunicación automatizado que visibiliza las iniciativas estudiantiles de la USM"
   />
   <link rel="icon" href={favicon} />
 </svelte:head>
 
-<div
-  class="bg-background text-foreground relative grid min-h-screen grid-rows-[auto_1fr_auto] overflow-x-hidden"
->
-  <header class="bg-background relative z-50 w-full">
-    <div class="mx-auto w-full max-w-7xl px-4 py-8">
+<div class="md:px-16">
+  <header>
+    <div class="px-4 py-8">
       <!-- Logo -->
-      <div class="mb-6 text-center">
-        <a href={resolve("/")} class="inline-block w-full">
+      <div class="mb-6">
+        <a href={resolve("/")}>
           <img
             src={logo}
-            class="mx-auto h-auto w-full max-w-120"
+            class="mx-auto w-full max-w-lg"
             alt="SansaNews Logo"
           />
         </a>
@@ -50,11 +48,9 @@
   </header>
 
   <!-- Banner -->
-  <div class="w-full px-4 sm:px-0">
-    <Card.Root class="mx-auto max-h-42 max-w-7xl gap-0 border-0 py-0">
-      <Card.Header
-        class="bg-foreground text-background rounded-t-lg border-0 px-4 py-2"
-      >
+  <div class="px-4">
+    <Card.Root class="gap-0 border-0 py-0">
+      <Card.Header class="bg-foreground text-background rounded-t-lg py-2">
         <Card.Title
           class="text-center text-sm font-bold tracking-widest uppercase"
         >
@@ -62,15 +58,15 @@
         </Card.Title>
       </Card.Header>
       <Card.Content class="p-4 text-center">
-        <h2
-          class="text-foreground mb-2 font-[--font-heading] text-xl font-bold sm:text-2xl md:text-3xl"
-        >
+        <h2 class="mb-2 font-[--font-heading] text-xl font-bold md:text-2xl">
           WORK IN PROGRESS
         </h2>
         <p class="text-muted-foreground text-xs tracking-wide sm:text-sm">
           SansaNews se encuentra en la fase inicial de desarrollo, pronto se
-          implementaran secciones nuevas y mejoras en la interfaz. ¡Gracias por
-          ser parte de este proceso!
+          implementaran secciones nuevas y mejoras en la interfaz.
+        </p>
+        <p class="text-muted-foreground text-xs tracking-wide sm:text-sm">
+          ¡Gracias por ser parte de este proceso!
         </p>
       </Card.Content>
     </Card.Root>

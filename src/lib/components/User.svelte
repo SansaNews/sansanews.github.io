@@ -45,23 +45,22 @@
   class="flex items-center gap-2 transition-opacity hover:opacity-80 sm:gap-3"
 >
   <!-- Name and publish time -->
-  <div class="flex min-w-0 flex-col text-right">
-    <span class="text-foreground truncate text-base font-semibold sm:text-base">
+  <div class="flex flex-col text-right">
+    <span class="truncate font-semibold">
       {username}
     </span>
     <span
-      class="text-muted-foreground text-[10px] font-semibold tracking-wider whitespace-nowrap uppercase"
+      class="text-muted-foreground text-[10px] font-semibold tracking-wider"
     >
       {formatDatetime(datePublished)}
     </span>
   </div>
   <!-- Avatar -->
-  <Avatar class="h-12 w-12 shrink-0 sm:h-15 sm:w-15">
+  <Avatar class="h-12 w-12 sm:h-15 sm:w-15">
     <img
       src={profilePicture}
       alt="Post de {username}"
       referrerpolicy="no-referrer"
-      class="absolute inset-0 h-full w-full object-cover"
     />
   </Avatar>
 </a>

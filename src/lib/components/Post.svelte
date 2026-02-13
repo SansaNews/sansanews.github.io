@@ -33,11 +33,11 @@
         </a>
       </div>
 
-      <div
-        class="flex w-full flex-col justify-between p-4 md:absolute md:inset-y-0 md:right-0 md:left-1/3 md:w-auto"
-      >
+      <div class="flex w-full flex-col justify-between p-4">
         <!-- Description -->
-        <p class="overflow-y-auto wrap-break-word whitespace-pre-line">
+        <p
+          class="overflow-y-auto wrap-break-word whitespace-pre-line md:grow md:basis-0"
+        >
           {media.caption}
         </p>
 

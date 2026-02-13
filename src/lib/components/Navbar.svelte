@@ -19,7 +19,7 @@
               <a
                 href={item.href}
                 {...props}
-                class="hover:text-primary focus:text-primary transition-colors hover:bg-transparent {navigationMenuTriggerStyle()}"
+                class="hover:text-primary focus:text-primary transition-colors hover:bg-transparent active:bg-transparent focus:bg-transparent {navigationMenuTriggerStyle()}"
               >
                 {item.label}
               </a>

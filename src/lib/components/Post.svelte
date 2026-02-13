@@ -58,7 +58,7 @@
 <style>
   .card-shadow {
     box-shadow: 4px 4px 0px 0px var(--border);
-    transition: box-shadow 300ms;
+    transition: box-shadow 200ms;
   }
 
   .card-shadow:hover {

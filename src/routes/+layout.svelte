@@ -8,9 +8,12 @@
   import { resolve } from "$app/paths";
 
   const navItems = [
+    { label: "Inicio", href: resolve("/") },
+    { label: "USM", href: resolve("/usm") },
     { label: "Iniciativas", href: resolve("/iniciativas") },
-    { label: "Avisos", href: resolve("/avisos") },
-    { label: "¿Qué es una iniciativa?", href: resolve("/que-es") },
+    { label: "Deportes", href: resolve("/deportes") },
+    { label: "Centros Estudiantiles", href: resolve("/centros") },
+    { label: "Guías", href: resolve("/guias") },
     { label: "Sobre Nosotros", href: resolve("/nosotros") },
   ];
 
@@ -21,24 +24,18 @@
   <meta charset="UTF-8" />
   <title>SansaNews</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="SansaNews es un medio de comunicación automatizado que visibiliza las iniciativas estudiantiles de la USM"
-  />
+  <meta name="description" content="SansaNews es un medio de comunicación automatizado que visibiliza las iniciativas estudiantiles de la USM" />
   <link rel="icon" href={favicon} />
 </svelte:head>
 
 <div class="grid grid-cols-12">
   <header class="col-span-12 md:col-span-8 md:col-start-3">
     <div class="px-4 py-8">
+
       <!-- Logo -->
       <div class="mb-6">
         <a href={resolve("/")}>
-          <img
-            src={logo}
-            class="mx-auto w-full max-w-lg"
-            alt="SansaNews Logo"
-          />
+          <img src={logo} class="mx-auto w-full max-w-lg" alt="SansaNews Logo"/>
         </a>
       </div>
 

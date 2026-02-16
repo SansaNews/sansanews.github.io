@@ -19,13 +19,6 @@
   let { children } = $props();
 </script>
 
-<svelte:head>
-  <meta charset="UTF-8" />
-  <title>SansaNews</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="SansaNews es un medio de comunicación automatizado que visibiliza las iniciativas estudiantiles de la USM" />
-  <link rel="icon" href={favicon} />
-</svelte:head>
 
 <div class="grid grid-cols-12">
   <header class="col-span-12 md:col-span-8 md:col-start-3">

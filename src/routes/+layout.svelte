@@ -18,21 +18,6 @@
   let { children } = $props();
 </script>
 
-<svelte:head>
-  <meta charset="UTF-8" />
-  <title>SansaNews</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="SansaNews es un medio de comunicación automatizado que visibiliza las iniciativas estudiantiles de la USM" />
-
-  <!-- Iconos -->
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="SansaNews" />
-  <meta name="theme-color" content="#03989E" />
-  <link rel="manifest" href="/sansanews.webmanifest" />
-</svelte:head>
 
 <div class="grid grid-cols-12">
   <header class="col-span-12 md:col-span-8 md:col-start-3">

@@ -3,8 +3,7 @@
   import * as Card from "$lib/components/ui/card/index.js";
   import MobileMenu from "$lib/components/MobileMenu.svelte";
   import Navbar from "$lib/components/Navbar.svelte";
-  import favicon from "$lib/assets/favicon.svg";
-  import logo from "$lib/assets/logo-sn.png";
+  import logo from "$lib/assets/extended-logo-sn-black.png";
   import { resolve } from "$app/paths";
 
   const navItems = [

@@ -19,7 +19,7 @@
     },
     {
       label: "Centros",
-      href: resolve("/[[category]]", { category: "centros_de_alumnos" }),
+      href: resolve("/[[category]]", { category: "centros" }),
     },
     { label: "Sobre Nosotros", href: resolve("/nosotros") },
   ];

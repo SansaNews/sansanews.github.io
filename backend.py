@@ -84,7 +84,10 @@ def handle_get_all(config: APIConfig):
     MEDIA_PATH = "src/lib/assets/media.json"
 
     with open(USERS_PATH, "r") as file:
-        users: list[str] = json.load(file)["users"]
+        users: list[dict[str, str]] = []
+        for category, usernames in json.load(file).items():
+            for username in usernames:
+                users.append({"username": username, "category": category})
 
     media = get_all_users_media(users, config)
     media = sorted(media, key=lambda post: post["timestamp"], reverse=True)
@@ -97,26 +100,28 @@ def handle_get_all(config: APIConfig):
 
 
 def get_all_users_media(
-    usernames: list[str],
+    users: list[dict[str, str]],
     config: APIConfig,
     amount: int = 5,
 ) -> list[Media]:
-    assert len(usernames) > 0, "List of usernames must not be empty"
+    assert len(users) > 0, "List of users must not be empty"
     assert amount > 0, "Amount must be a positive integer"
 
     with ThreadPoolExecutor() as executor:
         task = functools.partial(process_single_user, config=config, amount=amount)
-        results = executor.map(task, usernames)
+        results = executor.map(task, users)
 
     media: list[Media] = list(itertools.chain.from_iterable(results))
     return media
 
 
 def process_single_user(
-    username: str, config: APIConfig, amount: int = 5
+    user: dict[str, str], config: APIConfig, amount: int = 5
 ) -> list[Media]:
+    username = user["username"]
+    category = user["category"]
     user_data = get_user_data(username, config, amount)
-    return sanitize_data(username, user_data)
+    return sanitize_data(username, user_data, category)
 
 
 def get_user_data(username: str, config: APIConfig, amount: int = 5) -> dict[str, Any]:
@@ -147,7 +152,9 @@ def get_user_data(username: str, config: APIConfig, amount: int = 5) -> dict[str
         return {}
 
 
-def sanitize_data(username: str, data: dict[str, Any]) -> list[Media]:
+def sanitize_data(
+    username: str, data: dict[str, Any], category: str = ""
+) -> list[Media]:
     media_list: list[Media] = []
 
     m: Media
@@ -157,6 +164,7 @@ def sanitize_data(username: str, data: dict[str, Any]) -> list[Media]:
         # Shared data between media
         media.pop("id", None)
         media["username"] = username
+        media["category"] = category
         media["profile_picture_url"] = data["business_discovery"]["profile_picture_url"]
 
         if "children" not in m:

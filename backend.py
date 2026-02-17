@@ -10,11 +10,12 @@ import logging
 import os
 from concurrent.futures import ThreadPoolExecutor
 from pprint import pprint
-from typing import Any, final
+from typing import Any, TypedDict, final
 
 import requests
 
 type Media = dict[str, Any]
+User = TypedDict("User", {"username": str, "category": str})
 
 
 @final
@@ -84,7 +85,7 @@ def handle_get_all(config: APIConfig):
     MEDIA_PATH = "src/lib/assets/media.json"
 
     with open(USERS_PATH, "r") as file:
-        users: list[dict[str, str]] = []
+        users: list[User] = []
         for category, usernames in json.load(file).items():
             for username in usernames:
                 users.append({"username": username, "category": category})
@@ -100,7 +101,7 @@ def handle_get_all(config: APIConfig):
 
 
 def get_all_users_media(
-    users: list[dict[str, str]],
+    users: list[User],
     config: APIConfig,
     amount: int = 5,
 ) -> list[Media]:
@@ -115,9 +116,7 @@ def get_all_users_media(
     return media
 
 
-def process_single_user(
-    user: dict[str, str], config: APIConfig, amount: int = 5
-) -> list[Media]:
+def process_single_user(user: User, config: APIConfig, amount: int = 5) -> list[Media]:
     username = user["username"]
     category = user["category"]
     user_data = get_user_data(username, config, amount)

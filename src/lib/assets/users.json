@@ -1,24 +1,53 @@
 {
-  "users": [
-    "gbu_usm",
-    "cee.idp.usm",
-    "progcompusm",
-    "corousmsantiago",
-    "santamariasharks",
-    "gsdc_usm",
+  "usm": [
+    "admisionusm",
+    "alumni_usm",
+    "biblioteca.usm",
+    "ciac.csantiago",
+    "dee.usm",
+    "gestal.usm",
+    "inesgenero.usm",
+    "paceusm",
     "piea.usm",
+    "postgrados_usm",
+    "rreeusm_sanjoaquin",
+    "semillero3ie",
+    "usantamaria",
+    "usmsanjoaquin"
+  ],
+  "iniciativas": [
+    "corousmsantiago",
     "donfede.sj",
-    "ceeinf_sj",
-    "balonmano_usm_stgo",
-    "caamec_usm",
-    "xumbra_utfsm",
-    "ceetel.sj",
-    "movimiento.0",
+    "emma.usm.sj",
     "fablab_utfsm",
-    "feusam.usm",
+    "gbu_usm",
     "geekusm",
-    "ceic_usm",
+    "movimiento.0",
+    "progcompusm",
+    "xumbra_utfsm"
+  ],
+  "centros": [
+    "caamec_usm",
+    "cee.idp.usm",
+    "ceeinf_sj",
     "ceeiqasj",
-    "prestigeleagueusm"
+    "ceemat.usm.sj",
+    "ceemin.utfsm",
+    "ceetel.sj",
+    "ceic_usm",
+    "feusam.usm"
+  ],
+  "deportes": [
+    "bailarinesusm.cs",
+    "balonmano_usm_stgo",
+    "balonmano_usm_stgo",
+    "basketusm",
+    "boxeo.usm",
+    "cheer.usm",
+    "defider_usm",
+    "lobos_marinos_usm",
+    "prestigeleagueusm",
+    "santamariasharks",
+    "usm.esports_"
   ]
 }

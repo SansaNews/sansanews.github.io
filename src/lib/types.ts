@@ -1,5 +1,6 @@
 export interface Media {
   caption: string;
+  category: string;
   datePublished: Date;
   permalink: string;
   profileLink: string;

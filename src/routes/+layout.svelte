@@ -8,17 +8,34 @@
   import { resolve } from "$app/paths";
 
   const navItems = [
-    { label: "Inicio", shortLabel: "Inicio", icon: House, href: resolve("/")},
-    { label: "USM", shortLabel: "USM", icon: Building2, href: resolve("/usm") },
-    { label: "Iniciativas", shortLabel: "Iniciativas", icon: Users, href: resolve("/iniciativas") },
-    { label: "Deportes", shortLabel: "Deportes", icon: Trophy, href: resolve("/deportes") },
-    { label: "Centros Estudiantiles", shortLabel: "Centros", icon: Megaphone, href: resolve("/centros") },
-    { label: "Sobre Nosotros", shortLabel: "Nosotros", icon: Info, href: resolve("/nosotros") },
+    { label: "Inicio", icon: House, shortLabel: "Inicio", href: resolve("/") },
+
+    { label: "USM", icon: Building2, shortLabel: "USM", href: resolve("/[[category]]", { category: "usm" }) },
+    
+    
+    {
+      label: "Iniciativas",
+      icon: Users,
+      shortLabel: "Iniciativas",
+      href: resolve("/[[category]]", { category: "iniciativas" }),
+    },
+    {
+      label: "Deportes",
+      icon: Trophy,
+      shortLabel: "Deportes",
+      href: resolve("/[[category]]", { category: "deportes" }),
+    },
+    {
+      label: "Centros",
+      icon: Megaphone,
+      shortLabel: "Centros",
+      href: resolve("/[[category]]", { category: "centros" }),
+    },
+    { label: "Sobre Nosotros", icon: Info, shortLabel: "Nosotros", href: resolve("/nosotros") },
   ];
 
   let { children } = $props();
 </script>
-
 
 <div class="grid grid-cols-12">
   <header class="col-span-12 md:col-span-8 md:col-start-3">
@@ -27,7 +44,11 @@
       <!-- Logo -->
       <div class="mb-6">
         <a href={resolve("/")}>
-          <img src={logo} class="mx-auto w-full max-w-lg" alt="SansaNews Logo"/>
+          <img
+            src={logo}
+            class="mx-auto w-full max-w-lg"
+            alt="SansaNews Logo"
+          />
         </a>
       </div>
 
@@ -43,7 +64,7 @@
         <Card.Title
           class="text-center text-sm font-bold tracking-widest uppercase"
         >
-          <p>alpha-1.1.0</p>
+          <p>alpha-1.2.0</p>
         </Card.Title>
       </Card.Header>
       <Card.Content class="p-4 text-center">

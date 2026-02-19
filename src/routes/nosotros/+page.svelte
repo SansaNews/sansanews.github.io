@@ -6,7 +6,7 @@
 <main>
   <section>
     <h1>Sobre Nosotros</h1>
-    <div class="flex items-center gap-12">
+    <div class="flex flex-col items-center gap-4 md:flex-row md:gap-12">
       <section>
         <p>
           SansaNews es una iniciativa estudiantil que busca centralizar las
@@ -109,7 +109,7 @@
   </section>
   <section>
     <h2 id="historia">Historia</h2>
-    <div class="flex items-center gap-12">
+    <div class="flex flex-col items-center gap-4 md:flex-row md:gap-12">
       <section>
         <p>
           SansaNews surgió originalmente como un proyecto del ramo de <code

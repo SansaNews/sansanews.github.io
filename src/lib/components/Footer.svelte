@@ -6,7 +6,7 @@
 <footer
   class="text-muted-foreground col-span-12 grid grid-cols-3 justify-evenly gap-8 border-t-3 border-double p-6 px-28"
 >
-  <div>
+  <div class="col-span-3 md:col-span-1">
     <h4 class="font-heading pb-2">Mapa del Sitio</h4>
     <ul class="text-xs font-medium">
       <li>
@@ -19,15 +19,15 @@
       </li>
     </ul>
   </div>
-  <div>
+  <div class="col-span-3 md:col-span-1">
     <h4 class="font-heading pb-2">SansaNews</h4>
-    <p class="max-w-sm text-xs font-medium">
+    <p class="max-w-sm text-justify text-xs font-medium">
       SansaNews es una iniciativa estudiantil que busca centralizar las noticias
       y eventos de la UTFSM en un solo lugar, con el objetivo de facilitar su
       divulgación en la comunidad sansana.
     </p>
   </div>
-  <div>
+  <div class="col-span-3 md:col-span-1">
     <h4 class="font-heading pb-2">Contacto</h4>
     <ul class="text-xs font-medium">
       <li>

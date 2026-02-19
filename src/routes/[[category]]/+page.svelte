@@ -16,11 +16,21 @@
 
     return allMedia;
   });
+
+  let now = $state(new Date());
+
+  $effect(() => {
+    const interval = setInterval(() => {
+      now = new Date();
+    }, 60 * 1000); // Updates every minute
+
+    return () => clearInterval(interval);
+  });
 </script>
 
 <main class="p-4">
   <p class="text-muted-foreground text-center text-xs">
-    Última Actualización: {formatDatetime(new Date(data.lastUpdate))}
+    Última Actualización: {formatDatetime(new Date(data.lastUpdate), now)}
   </p>
 
   <section>

@@ -24,10 +24,8 @@ export function jsonToMedia(json: any[]): Media[] {
   }));
 }
 
-export function formatDatetime(datetime: Date): string {
-  let now = new Date();
-
-  let diffSeconds = Math.floor((now.getTime() - datetime.getTime()) / 1000);
+export function formatDatetime(then: Date, now: Date = new Date()): string {
+  let diffSeconds = Math.floor((now.getTime() - then.getTime()) / 1000);
   if (diffSeconds < 60) {
     return "Hace menos de un minuto";
   }
@@ -47,13 +45,13 @@ export function formatDatetime(datetime: Date): string {
   yesterday.setDate(now.getDate() - 1);
 
   if (
-    datetime.getDate() === yesterday.getDate() &&
-    datetime.getMonth() === yesterday.getMonth() &&
-    datetime.getFullYear() === yesterday.getFullYear()
+    then.getDate() === yesterday.getDate() &&
+    then.getMonth() === yesterday.getMonth() &&
+    then.getFullYear() === yesterday.getFullYear()
   ) {
     return "Ayer";
   }
 
   // DD/MM/YYYY
-  return datetime.toLocaleDateString("en-GB");
+  return then.toLocaleDateString("en-GB");
 }

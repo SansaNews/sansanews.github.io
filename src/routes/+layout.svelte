@@ -53,7 +53,7 @@
 </script>
 
 <div class="grid grid-cols-12">
-  <header class="pb-4 col-span-12 lg:col-span-8 lg:col-start-3">
+  <header class="col-span-12 pb-4 lg:col-span-8 lg:col-start-3">
     <div class="lg:px-4 lg:py-8">
       <Navbar {navItems} {logo} />
       <MobileNav {navItems} {logo} />
@@ -76,7 +76,7 @@
         </h2>
         <p class="text-muted-foreground text-xs tracking-wide sm:text-sm">
           SansaNews se encuentra en la fase inicial de desarrollo, pronto se
-          implementaran secciones nuevas y mejoras en la interfaz.
+          implementarán secciones nuevas y mejoras en la interfaz.
         </p>
         <p class="text-muted-foreground text-xs tracking-wide sm:text-sm">
           ¡Gracias por ser parte de este proceso!

@@ -77,9 +77,10 @@
         >
       </p>
       <p>
-        Al recargarse la página cada hora, el post a lo más durará una hora
-        extra en SansaNews. Si se trata de un caso especial un caso especial o
-        urgente, contáctenos directamente mediante nuestra cuenta de Instagram <a
+        El post será eliminado de SansaNews con la siguiente recarga de la
+        página automáticamente, que normalmente es cada hora. Si se trata de un
+        caso especial un caso especial o urgente, contáctenos directamente
+        mediante nuestra cuenta de Instagram <a
           href="https://www.instagram.com/sansanews/">@sansanews</a
         > para solucionarlo lo antes posible.
       </p>
@@ -97,13 +98,21 @@
     </question>
     <question>
       <p>
-        <strong>¿Por qué actualizan cada 1 hora y no en tiempo real?</strong>
+        <strong>¿Por qué actualizan cada hora y no en tiempo real?</strong>
       </p>
       <p>
         La <a href="https://developers.facebook.com/products/instagram/apis/"
           >API oficial</a
-        > de Instagram posee un límite de 200 peticiones por hora, por lo que, para
+        >
+        de Instagram posee un límite de 200 peticiones por hora, por lo que, para
         no colapsar la API, decidimos actualizar cada hora.
+      </p>
+      <p>
+        La actualización también depende de la disponibilidad de
+        <a href="https://docs.github.com/en/actions">Github Actions</a>, que es
+        el servicio que usamos para automatizar el proceso de actualización, por
+        lo que, los tiempos de actualización pueden variar, pero casi siempre
+        serán aproximadamente cada hora.
       </p>
     </question>
   </section>

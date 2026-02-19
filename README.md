@@ -74,15 +74,16 @@ No, para imágenes y videos ocupamos los enlaces temporales que provee la [API o
 
 **¿Qué pasa si quiero eliminar un post de mi cuenta de Instagram?**
 
-Al recargarse la página cada hora, el post a lo más durará una hora extra en SansaNews. Si se trata de un caso especial un caso especial o urgente, contáctenos directamente mediante nuestra cuenta de Instagram  [@sansanews](https://www.instagram.com/sansanews/) para solucionarlo lo antes posible.
+El post será eliminado de SansaNews con la siguiente recarga de la página automáticamente, que normalmente es cada hora. Si se trata de un caso especial un caso especial o urgente, contáctenos directamente mediante nuestra cuenta de Instagram  [@sansanews](https://www.instagram.com/sansanews/) para solucionarlo lo antes posible.
 
 **¿Cómo puedo añadir/eliminar mi página de SansaNews?**
 
 En cualquiera de los dos casos, contáctenos directamente mediante nuestra cuenta de Instagram [@sansanews](https://www.instagram.com/sansanews/) para resolverlo lo antes posible.
 
-**¿Por qué actualizan cada 1 hora y no en tiempo real?**
+**¿Por qué actualizan cada hora y no en tiempo real?**
 
 La [API oficial](https://developers.facebook.com/products/instagram/apis/) de Instagram posee un límite de 200 peticiones por hora, por lo que, para no colapsar la API, decidimos actualizar cada hora.
+ La actualización también depende de la disponibilidad de [Github Actions](https://docs.github.com/en/actions), que es el servicio que usamos para automatizar el proceso de actualización, por lo que, los tiempos de actualización pueden variar, pero casi siempre serán aproximadamente cada hora.
 
 ## Historia
 

@@ -20,6 +20,8 @@
   let now = $state(new Date());
 
   $effect(() => {
+    now = new Date();
+
     const interval = setInterval(() => {
       now = new Date();
     }, 60 * 1000); // Updates every minute

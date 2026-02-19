@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { resolve } from '$app/paths';
   import { page } from '$app/state';
     
   let { navItems, bottomHidden } = $props();
@@ -11,7 +12,7 @@
       return page.url.pathname === item.href;
     }
     
-    return page.url.pathname !== "/nosotros";
+    return page.url.pathname !== resolve("/nosotros");
   }
 </script>
 

@@ -5,6 +5,7 @@ SansaNews es una iniciativa estudiantil que busca centralizar las noticias y eve
 ## Instalar
 
 **Requisitos:**
+
 - [Git](https://git-scm.com/)
 - [just](https://github.com/casey/just)
 - [Python](https://www.python.org/)
@@ -74,7 +75,7 @@ No, para imágenes y videos ocupamos los enlaces temporales que provee la [API o
 
 **¿Qué pasa si quiero eliminar un post de mi cuenta de Instagram?**
 
-El post será eliminado de SansaNews con la siguiente recarga de la página automáticamente, que normalmente es cada hora. Si se trata de un caso especial un caso especial o urgente, contáctenos directamente mediante nuestra cuenta de Instagram  [@sansanews](https://www.instagram.com/sansanews/) para solucionarlo lo antes posible.
+El post será eliminado de SansaNews con la siguiente recarga de la página automáticamente, que normalmente es cada hora. Si se trata de un caso especial un caso especial o urgente, contáctenos directamente mediante nuestra cuenta de Instagram [@sansanews](https://www.instagram.com/sansanews/) para solucionarlo lo antes posible.
 
 **¿Cómo puedo añadir/eliminar mi página de SansaNews?**
 
@@ -83,13 +84,14 @@ En cualquiera de los dos casos, contáctenos directamente mediante nuestra cuent
 **¿Por qué actualizan cada hora y no en tiempo real?**
 
 La [API oficial](https://developers.facebook.com/products/instagram/apis/) de Instagram posee un límite de 200 peticiones por hora, por lo que, para no colapsar la API, decidimos actualizar cada hora.
- La actualización también depende de la disponibilidad de [Github Actions](https://docs.github.com/en/actions), que es el servicio que usamos para automatizar el proceso de actualización, por lo que, los tiempos de actualización pueden variar, pero casi siempre serán aproximadamente cada hora.
+
+La actualización también depende de la disponibilidad de [Github Actions](https://docs.github.com/en/actions), que es el servicio que usamos para automatizar el proceso de actualización, por lo que, los tiempos de actualización pueden variar, pero casi siempre serán aproximadamente cada hora.
 
 ## Historia
 
 SansaNews surgió originalmente como un proyecto del ramo de `Introducción a la Ingeniería` de primer año en el 2022, desarrollado en un principio por [GlemTheGemini](https://github.com/GlemTheGemini), [RodrigoaldelPlanetaGol](https://github.com/RodrigoalDelPlanetaGol), [juanjo000](https://github.com/juanjo000), y [MoonTurtlee](https://github.com/MoonTurtlee).
 
-La presentación del proyecto fue tan exitosa que muchos querían que se volviera una realidad. Para esto [@MoonTurtlee](https://github.com/MoonTurtlee) buscó a más gente para llevar el proyecto a cabo, entre ellos [LuckJMG](https://www.github.com/LuckJMG).
+La presentación del proyecto fue tan exitosa que muchos querían que se volviera una realidad. Para esto [MoonTurtlee](https://github.com/MoonTurtlee) buscó a más gente para llevar el proyecto a cabo, entre ellos [LuckJMG](https://www.github.com/LuckJMG).
 
 Inicialmente desarrollado puramente con [Django](https://www.djangoproject.com/), la segunda versión de SansaNews se intentó desarrollar en el verano de 2023.
 
@@ -102,4 +104,3 @@ En verano de 2026, 4 años después de la idea original, en parte por ya tener e
 ## Agradecimientos
 
 Agradecemos a los contribuidores originales de SansaNews: [GlemTheGemini](https://github.com/GlemTheGemini), [RodrigoaldelPlanetaGol](https://github.com/RodrigoalDelPlanetaGol) y [juanjo000](https://github.com/juanjo000).
-

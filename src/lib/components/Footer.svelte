@@ -4,7 +4,7 @@
 </script>
 
 <footer
-  class="text-muted-foreground col-span-12 grid grid-cols-3 justify-evenly gap-8 border-t-3 border-double p-6 px-28"
+  class="text-muted-foreground col-span-12 grid grid-cols-3 justify-evenly gap-6 border-t-3 border-double p-6 px-20 md:gap-8 md:px-28"
 >
   <div class="col-span-3 md:col-span-1">
     <h4 class="font-heading pb-2">Mapa del Sitio</h4>

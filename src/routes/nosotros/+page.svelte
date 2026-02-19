@@ -3,7 +3,7 @@
   import presentation from "$lib/assets/sansanews_presentation.jpg";
 </script>
 
-<main>
+<main class="px-10 md:px-16">
   <section>
     <h1>Sobre Nosotros</h1>
     <div class="flex flex-col items-center gap-4 md:flex-row md:gap-12">
@@ -182,7 +182,6 @@
 <style>
   main {
     padding-block: 2rem;
-    padding-inline: 4rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;

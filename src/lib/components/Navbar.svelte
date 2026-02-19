@@ -1,34 +1,31 @@
 <script lang="ts">
-  import * as NavigationMenu from "$lib/components/ui/navigation-menu/index.js";
-  import { navigationMenuTriggerStyle } from "$lib/components/ui/navigation-menu/navigation-menu-trigger.svelte";
+    import { page } from '$app/state';
 
-  let { navItems } = $props();
+    let { navItems } = $props();
 </script>
 
 <div class="hidden items-center justify-center lg:flex">
+  
   <div class="bg-primary/40 h-0.5 w-16"></div>
+  <nav class="flex items-center">
+    {#each navItems as item, i}
 
-  <NavigationMenu.Root>
-    <NavigationMenu.List
-      class="[&>li:not(:last-child)]:after:mx-1 [&>li:not(:last-child)]:after:content-['/']"
-    >
-      {#each navItems as item}
-        <NavigationMenu.Item>
-          <NavigationMenu.Link href={item.href}>
-            {#snippet child({ props })}
-              <a
-                href={item.href}
-                {...props}
-                class="hover:text-primary focus:text-primary transition-colors hover:bg-transparent active:bg-transparent focus:bg-transparent {navigationMenuTriggerStyle()}"
-              >
-                {item.label}
-              </a>
-            {/snippet}
-          </NavigationMenu.Link>
-        </NavigationMenu.Item>
-      {/each}
-    </NavigationMenu.List>
-  </NavigationMenu.Root>
+      <!-- Items -->
+      {@const isActive = page.url.pathname === item.href}
+      <a
+          href={item.href}
+          class= "px-4 py-2 text-sm font-semibold transition-colors hover:text-primary focus:text-primary whitespace-nowrap"
+          class:text-primary={isActive}
+      > 
+          {item.label}        
+      </a>
 
+      <!-- Separator -->
+      {#if i < navItems.length - 1}
+          <span class="mx-1 select-none">/</span>
+      {/if}
+
+    {/each}
+  </nav>
   <div class="bg-primary/40 h-0.5 w-16"></div>
 </div>

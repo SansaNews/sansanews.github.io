@@ -7,7 +7,7 @@
 
   let navItemsFiltered = $derived(navItems.filter((item: any) => item.label !== "Sobre Nosotros" && item.label !== "Inicio"));
 
-  let isNosotros = $derived(page.url.pathname === "/nosotros");
+  let isNosotros = $derived(page.url.pathname === resolve("/nosotros"));
 
   // Go to home when clicking an active item
   function handleClick(m: MouseEvent, isActive: boolean) {

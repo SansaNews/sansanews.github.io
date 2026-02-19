@@ -1,20 +1,30 @@
+<script lang="ts">
+  import logo from "$lib/assets/square-logo.svg";
+  import presentation from "$lib/assets/sansanews_presentation.jpg";
+</script>
+
 <main>
   <section>
     <h1>Sobre Nosotros</h1>
-    <p>
-      SansaNews es una iniciativa estudiantil que busca centralizar las noticias
-      y eventos de la UTFSM en un solo lugar, con el objetivo de facilitar su
-      divulgación en la comunidad sansana.
-    </p>
-    <p>
-      La iniciativa es mantenida solo por 2 estudiantes de la USM, <a
-        href="https://github.com/MoonTurtlee">MoonTurtlee</a
-      >
-      y <a href="https://github.com/LuckJMG">LuckJMG</a>. El proyecto es Open
-      Source, lo que significa que puedes ver directamente el código de la
-      página para ver cómo funciona, se encuentra alojado públicamente en
-      <a href="https://github.com/MoonTurtlee/SansaNews">GitHub</a>.
-    </p>
+    <div class="flex items-center gap-12">
+      <section>
+        <p>
+          SansaNews es una iniciativa estudiantil que busca centralizar las
+          noticias y eventos de la UTFSM en un solo lugar, con el objetivo de
+          facilitar su divulgación en la comunidad sansana.
+        </p>
+        <p>
+          La iniciativa es mantenida solo por 2 estudiantes de la USM, <a
+            href="https://github.com/MoonTurtlee">MoonTurtlee</a
+          >
+          y <a href="https://github.com/LuckJMG">LuckJMG</a>. El proyecto es
+          Open Source, lo que significa que puedes ver directamente el código de
+          la página para ver cómo funciona, se encuentra alojado públicamente en
+          <a href="https://github.com/MoonTurtlee/SansaNews">GitHub</a>.
+        </p>
+      </section>
+      <img src={logo} alt="SansaNews Logo" class="mx-auto w-48 rounded-lg" />
+    </div>
     <p>
       La idea no es apropiarnos de las publicaciones, sino ayudar a promocionar
       las diversas iniciativas y eventos que ocurren en nuestra universidad.
@@ -36,7 +46,7 @@
   </section>
   <section>
     <h2 id="preguntas-frecuentes">Preguntas Frecuentes</h2>
-    <div>
+    <question>
       <p><strong>¿Cómo obtienen los posts de Instagram?</strong></p>
       <p>
         Ocupamos la <a
@@ -47,8 +57,8 @@
         como profesionales, no podemos acceder a cuentas personales ni privadas ni
         públicas.
       </p>
-    </div>
-    <div>
+    </question>
+    <question>
       <p>
         <strong>¿Las imágenes de los posts son descargadas y guardadas?</strong>
       </p>
@@ -59,8 +69,8 @@
         > de Instagram, que duran aproximadamente 4 días. Nada es descargado en el
         proceso más que la información textual.
       </p>
-    </div>
-    <div>
+    </question>
+    <question>
       <p>
         <strong
           >¿Qué pasa si quiero eliminar un post de mi cuenta de Instagram?</strong
@@ -73,8 +83,8 @@
           href="https://www.instagram.com/sansanews/">@sansanews</a
         > para solucionarlo lo antes posible.
       </p>
-    </div>
-    <div>
+    </question>
+    <question>
       <p>
         <strong>¿Cómo puedo añadir/eliminar mi página de SansaNews?</strong>
       </p>
@@ -84,8 +94,8 @@
           href="https://www.instagram.com/sansanews/">@sansanews</a
         > para resolverlo lo antes posible.
       </p>
-    </div>
-    <div>
+    </question>
+    <question>
       <p>
         <strong>¿Por qué actualizan cada 1 hora y no en tiempo real?</strong>
       </p>
@@ -95,29 +105,38 @@
         > de Instagram posee un límite de 200 peticiones por hora, por lo que, para
         no colapsar la API, decidimos actualizar cada hora.
       </p>
-    </div>
+    </question>
   </section>
   <section>
     <h2 id="historia">Historia</h2>
-    <p>
-      SansaNews surgió originalmente como un proyecto del ramo de <code
-        >Introducción a la Ingeniería</code
-      >
-      de primer año en el 2022, desarrollado en un principio por
-      <a href="https://github.com/GlemTheGemini">GlemTheGemini</a>,
-      <a href="https://github.com/RodrigoalDelPlanetaGol"
-        >RodrigoaldelPlanetaGol</a
-      >, <a href="https://github.com/juanjo000">juanjo000</a>, y
-      <a href="https://github.com/MoonTurtlee">MoonTurtlee</a>.
-    </p>
-    <p>
-      La presentación del proyecto fue tan exitosa que muchos querían que se
-      volviera una realidad. Para esto <a href="https://github.com/MoonTurtlee"
-        >@MoonTurtlee</a
-      >
-      buscó a más gente para llevar el proyecto a cabo, entre ellos
-      <a href="https://www.github.com/LuckJMG">LuckJMG</a>.
-    </p>
+    <div class="flex items-center gap-12">
+      <section>
+        <p>
+          SansaNews surgió originalmente como un proyecto del ramo de <code
+            >Introducción a la Ingeniería</code
+          >
+          de primer año en el 2022, desarrollado en un principio por
+          <a href="https://github.com/GlemTheGemini">GlemTheGemini</a>,
+          <a href="https://github.com/RodrigoalDelPlanetaGol"
+            >RodrigoaldelPlanetaGol</a
+          >, <a href="https://github.com/juanjo000">juanjo000</a>, y
+          <a href="https://github.com/MoonTurtlee">MoonTurtlee</a>.
+        </p>
+        <p>
+          La presentación del proyecto fue tan exitosa que muchos querían que se
+          volviera una realidad. Para esto <a
+            href="https://github.com/MoonTurtlee">MoonTurtlee</a
+          >
+          buscó a más gente para llevar el proyecto a cabo, entre ellos
+          <a href="https://www.github.com/LuckJMG">LuckJMG</a>.
+        </p>
+      </section>
+      <img
+        src={presentation}
+        alt="Presentación original de SansaNews en Introducción a la Ingeniería"
+        class="mx-auto w-full max-w-xs rounded-lg"
+      />
+    </div>
     <p>
       Inicialmente desarrollado puramente con <a
         href="https://www.djangoproject.com/">Django</a
@@ -175,7 +194,7 @@
     gap: 1rem;
   }
 
-  div {
+  question {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;

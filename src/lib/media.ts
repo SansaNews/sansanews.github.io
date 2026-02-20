@@ -34,6 +34,7 @@ export function formatDatetime(then: Date, now: Date = new Date()): string {
 
   const diffMinutes = Math.floor(diffSeconds / 60);
   if (diffMinutes < 60) {
+    if (diffMinutes === 1) return "Hace 1 minuto";
     return `Hace ${diffMinutes} minutos`;
   }
 

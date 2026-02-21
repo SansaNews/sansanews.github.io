@@ -86,7 +86,8 @@
     },
   ];
 
-  // All registered groups. Add new groups here. (Now only one exists, but it's prepared for more.)
+  // All registered groups. Add new groups here. 
+  // (Now only one exists, but it's prepared for more.)
   const navGroups: NavGroup[] = [inicioGroup];
 
   // Active group: whichever group's rootHrefs includes the current route
@@ -98,8 +99,9 @@
 
   // All items for the desktop Navbar (bottom nav + all group items)
   const allNavItems: NavItem[] = [
-    ...bottomNavItems,
+    bottomNavItems[0],
     ...navGroups.flatMap((g) => g.items),
+    bottomNavItems[bottomNavItems.length - 1],
   ];
 
   let lastScrollY = $state(0);

@@ -2,6 +2,7 @@
   import { page } from "$app/state";
   import { goto } from "$app/navigation";
   import type { NavGroup } from "./SuperNav.svelte";
+  import { resolve } from "$app/paths";
 
   let {
     activeGroup,
@@ -31,7 +32,7 @@
     class="flex justify-center pt-2 pb-2"
     class:border-b-2={!activeGroup}
   >
-    <a href="/">
+    <a href={resolve("/")}>
       <img
         src={logo}
         class="w-auto transition-all duration-300"

@@ -1,13 +1,14 @@
 <script lang="ts">
   import { page } from "$app/state";
   import type { NavItem } from "./SuperNav.svelte";
+  import { resolve } from "$app/paths";
 
   let { navItems, logo }: { navItems: NavItem[]; logo: string } = $props();
 </script>
 
 <!-- Logo -->
 <div class="hidden lg:block lg:mb-6">
-  <a href="/">
+  <a href={resolve("/")}>
     <img
       src={logo}
       class="mx-auto w-full max-w-lg"

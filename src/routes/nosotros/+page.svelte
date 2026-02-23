@@ -1,6 +1,7 @@
 <script lang="ts">
   import logo from "$lib/assets/square-logo.svg";
   import presentation from "$lib/assets/sansanews_presentation.jpg";
+  import Reference from "$lib/components/Reference.svelte";
 </script>
 
 <main class="px-10 md:px-16">
@@ -21,16 +22,27 @@
           alojado en
           <a href="https://github.com/MoonTurtlee/SansaNews">GitHub</a>.
         </p>
+        <p>
+          El objetivo de la página es ayudar a difundir las diversas iniciativas
+          y eventos que ocurren en nuestra universidad. <strong
+            >Si quieres apoyar a las iniciativas, siguelas directamente, y
+            participa en sus actividades.</strong
+          >
+        </p>
       </section>
-      <img src={logo} alt="SansaNews Logo" class="mx-auto w-48 rounded-lg" />
+      <div class="flex w-md max-w-xs flex-col items-center pt-4 pb-1">
+        <img
+          src={logo}
+          alt="SansaNews Logo"
+          class="mx-auto mb-2 w-48 rounded-lg"
+        />
+        <Reference
+          name="Joaquín Domínguez"
+          github="https://github.com/MoonTurtlee"
+        />
+        <Reference name="Lucas Mosquera" github="https://github.com/LuckJMG" />
+      </div>
     </div>
-    <p>
-      El objetivo de la página es ayudar a difundir las diversas iniciativas y
-      eventos que ocurren en nuestra universidad. <strong
-        >Si quieres apoyar a las iniciativas, siguelas directamente, y participa
-        en sus actividades.</strong
-      >
-    </p>
     <p>
       Cualquier comentario, queja, duda o sugerencia, nos puedes contactar por
       nuestra cuenta de Instagram <a href="https://www.instagram.com/sansanews/"

@@ -65,6 +65,22 @@ Para automatizar la construcción y publicación de la página ocupamos [GitHub 
 
 ## Preguntas Frecuentes
 
+**¿Por qué no muestran toda la información de la publicación?**
+
+No somos un reemplazo de las cuentas oficiales de las iniciativas, solo queremos que sea más fácil informarse sobre las noticias de la comunidad sansana. Por esta razón solo mostramos la primera imagen/video y la descripción de las publicaciones.
+
+**¿Por qué solo muestran las publicaciones del último mes?**
+
+La idea es difundir las noticias más recientes de la universidad, no ser un archivo de publicaciones. Si quieres ver posts más antiguos, buscalos en a las cuentas oficiales de las iniciativas.
+
+**¿Cómo puedo añadir/eliminar mi página de SansaNews?**
+
+Contactanos mediante nuestro Instagram [@sansanews](https://www.instagram.com/sansanews/).
+
+**¿Qué pasa si elimino un post de mi cuenta de Instagram?**
+
+El post será eliminado automáticamente de SansaNews con la siguiente recarga de la página. Si es muy urgente, contactanos mediante nuestro Instagram [@sansanews](https://www.instagram.com/sansanews/) para solucionarlo.
+
 **¿Cómo obtienen los posts de Instagram?**
 
 Mediante la [API oficial](https://developers.facebook.com/products/instagram/apis/) de Instagram, que solo permite acceder a cuentas marcadas como profesionales.
@@ -73,21 +89,13 @@ Mediante la [API oficial](https://developers.facebook.com/products/instagram/api
 
 No, para imágenes y videos ocupamos los enlaces temporales de la [API](https://developers.facebook.com/products/instagram/apis/), que duran alrededor de 4 días.
 
-**¿Qué pasa si elimino un post de mi cuenta de Instagram?**
-
-El post será eliminado automáticamente de SansaNews con la siguiente recarga de la página. Si es muy urgente, contactanos mediante nuestro Instagram [@sansanews](https://www.instagram.com/sansanews/) para solucionarlo.
-
-**¿Cómo puedo añadir/eliminar mi página de SansaNews?**
-
-Contactanos mediante nuestro Instagram [@sansanews](https://www.instagram.com/sansanews/).
-
 **¿Por qué actualizan cada hora y no en tiempo real?**
 
 La [API](https://developers.facebook.com/products/instagram/apis/) de Instagram posee un límite de 200 peticiones por hora. Esperamos una hora para no superar este límite.
 
 **¿Por qué no se actualiza exactamente cada hora?**
 
-La actualización depende de la disponibilidad de [Github Actions](https://docs.github.com/en/actions), que es lo que usamos para automatizar la actualización. Este no asegura que se actualice con exactitud, solo que en algún momento se hará. Las variaciones pueden llegar a ser de una hora.
+La actualización depende de la disponibilidad de [Github Actions](https://docs.github.com/en/actions), que es lo que usamos para automatizar la actualización. Este no asegura puntualidad, solo que en algún momento se hará. Las variaciones pueden llegar a ser de una hora.
 
 ## Agradecimientos
 

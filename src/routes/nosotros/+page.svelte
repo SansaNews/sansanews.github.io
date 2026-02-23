@@ -32,11 +32,6 @@
       >
     </p>
     <p>
-      Con esto en mente, todos los posts y cuentas redireccionan a su fuente
-      original en Instagram. También por eso no mostramos historias, likes, ni
-      comentarios.
-    </p>
-    <p>
       Cualquier comentario, queja, duda o sugerencia, nos puedes contactar por
       nuestra cuenta de Instagram <a href="https://www.instagram.com/sansanews/"
         >@sansanews</a
@@ -45,6 +40,51 @@
   </section>
   <section>
     <h2 id="preguntas-frecuentes">Preguntas Frecuentes</h2>
+    <question>
+      <p>
+        <strong
+          >¿Por qué no muestran toda la información de la publicación?</strong
+        >
+      </p>
+      <p>
+        No somos un reemplazo de las cuentas oficiales de las iniciativas, solo
+        queremos que sea más fácil informarse sobre las noticias de la comunidad
+        sansana. Por esta razón solo mostramos la primera imagen/video y la
+        descripción de las publicaciones.
+      </p>
+    </question>
+    <question>
+      <p>
+        <strong>¿Por qué solo muestran las publicaciones del último mes?</strong
+        >
+      </p>
+      <p>
+        La idea es difundir las noticias más recientes de la universidad, no ser
+        un archivo de publicaciones. Si quieres ver posts más antiguos, buscalos
+        en a las cuentas oficiales de las iniciativas.
+      </p>
+    </question>
+    <question>
+      <p>
+        <strong>¿Cómo puedo añadir/eliminar mi página de SansaNews?</strong>
+      </p>
+      <p>
+        Contactanos mediante nuestro Instagram <a
+          href="https://www.instagram.com/sansanews/">@sansanews</a
+        >.
+      </p>
+    </question>
+    <question>
+      <p>
+        <strong>¿Qué pasa si elimino un post de mi cuenta de Instagram?</strong>
+      </p>
+      <p>
+        El post será eliminado automáticamente de SansaNews con la siguiente
+        recarga de la página. Si es muy urgente, contactanos mediante nuestro
+        Instagram <a href="https://www.instagram.com/sansanews/">@sansanews</a> para
+        solucionarlo.
+      </p>
+    </question>
     <question>
       <p><strong>¿Cómo obtienen los posts de Instagram?</strong></p>
       <p>
@@ -66,27 +106,6 @@
     </question>
     <question>
       <p>
-        <strong>¿Qué pasa si elimino un post de mi cuenta de Instagram?</strong>
-      </p>
-      <p>
-        El post será eliminado automáticamente de SansaNews con la siguiente
-        recarga de la página. Si es muy urgente, contactanos mediante nuestro
-        Instagram <a href="https://www.instagram.com/sansanews/">@sansanews</a> para
-        solucionarlo.
-      </p>
-    </question>
-    <question>
-      <p>
-        <strong>¿Cómo puedo añadir/eliminar mi página de SansaNews?</strong>
-      </p>
-      <p>
-        Contactanos mediante nuestro Instagram <a
-          href="https://www.instagram.com/sansanews/">@sansanews</a
-        >.
-      </p>
-    </question>
-    <question>
-      <p>
         <strong>¿Por qué actualizan cada hora y no en tiempo real?</strong>
       </p>
       <p>
@@ -104,9 +123,9 @@
       <p>
         La actualización depende de la disponibilidad de
         <a href="https://docs.github.com/en/actions">Github Actions</a>, que es
-        lo que usamos para automatizar la actualización. Este no asegura que se
-        actualice con exactitud, solo que en algún momento se hará. Las
-        variaciones pueden llegar a ser de una hora.
+        lo que usamos para automatizar la actualización. Este no asegura
+        puntualidad, solo que en algún momento se hará. Las variaciones pueden
+        llegar a ser de una hora.
       </p>
     </question>
   </section>

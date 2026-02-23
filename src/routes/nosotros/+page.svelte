@@ -9,39 +9,38 @@
     <div class="flex flex-col items-center gap-4 md:flex-row md:gap-12">
       <section>
         <p>
-          SansaNews es una iniciativa estudiantil que busca centralizar las
-          noticias y eventos de la UTFSM en un solo lugar, con el objetivo de
-          facilitar su divulgación en la comunidad sansana.
+          <i>SansaNews</i> es una iniciativa estudiantil que busca centralizar las
+          noticias de la USM en un mismo lugar para facilitar su divulgación en la
+          comunidad sansana.
         </p>
         <p>
-          La iniciativa es mantenida solo por 2 estudiantes de la USM, <i
+          La iniciativa es desarrollada por dos sansanos, <i
             >Joaquín Dominguez</i
           >
-          y <i>Lucas Mosquera</i>. El proyecto es Open Source, lo que significa
-          que puedes ver directamente el código de la página para ver cómo
-          funciona, se encuentra alojado públicamente en
+          y <i>Lucas Mosquera</i>. El proyecto es público, y se encuentra
+          alojado en
           <a href="https://github.com/MoonTurtlee/SansaNews">GitHub</a>.
         </p>
       </section>
       <img src={logo} alt="SansaNews Logo" class="mx-auto w-48 rounded-lg" />
     </div>
     <p>
-      La idea no es apropiarnos de las publicaciones, sino ayudar a promocionar
-      las diversas iniciativas y eventos que ocurren en nuestra universidad.
-      Recordamos encarecidamente que si quieres apoyar a las iniciativas las
-      sigas directamente.
+      El objetivo de la página es ayudar a difundir las diversas iniciativas y
+      eventos que ocurren en nuestra universidad. <strong
+        >Si quieres apoyar a las iniciativas, siguelas directamente, y participa
+        en sus actividades.</strong
+      >
     </p>
     <p>
-      Por esta razón, todos los posts y perfiles redireccionan directamente a
-      los posts y cuentas originales en Instagram. Y no mostramos historias,
-      likes, ni comentarios en la página, si quieres verlos tienes que ir a la
-      fuente original.
+      Con esto en mente, todos los posts y cuentas redireccionan a su fuente
+      original en Instagram. También por eso no mostramos historias, likes, ni
+      comentarios.
     </p>
     <p>
-      Por cualquier comentario, queja, duda o sugerencia, nos puedes contactar
-      mediante nuestra cuenta de Instagram <a
-        href="https://www.instagram.com/sansanews/">@sansanews</a
-      >, y responderemos lo antes posible.
+      Cualquier comentario, queja, duda o sugerencia, nos puedes contactar por
+      nuestra cuenta de Instagram <a href="https://www.instagram.com/sansanews/"
+        >@sansanews</a
+      >.
     </p>
   </section>
   <section>
@@ -49,13 +48,10 @@
     <question>
       <p><strong>¿Cómo obtienen los posts de Instagram?</strong></p>
       <p>
-        Ocupamos la <a
+        Mediante la <a
           href="https://developers.facebook.com/products/instagram/apis/"
           >API oficial</a
-        > de Instagram para obtener los posts legalmente. Esto significa que solo
-        podemos acceder a los posts de cuentas que sean configuradas voluntariamente
-        como profesionales, no podemos acceder a cuentas personales ni privadas ni
-        públicas.
+        > de Instagram, que solo permite acceder a cuentas marcadas como profesionales.
       </p>
     </question>
     <question>
@@ -63,26 +59,20 @@
         <strong>¿Las imágenes de los posts son descargadas y guardadas?</strong>
       </p>
       <p>
-        No, para imágenes y videos ocupamos los enlaces temporales que provee la <a
-          href="https://developers.facebook.com/products/instagram/apis/"
-          >API oficial</a
-        > de Instagram, que duran aproximadamente 4 días. Nada es descargado en el
-        proceso más que la información textual.
+        No, para imágenes y videos ocupamos los enlaces temporales de la <a
+          href="https://developers.facebook.com/products/instagram/apis/">API</a
+        >, que duran alrededor de 4 días.
       </p>
     </question>
     <question>
       <p>
-        <strong
-          >¿Qué pasa si quiero eliminar un post de mi cuenta de Instagram?</strong
-        >
+        <strong>¿Qué pasa si elimino un post de mi cuenta de Instagram?</strong>
       </p>
       <p>
-        El post será eliminado de SansaNews con la siguiente recarga de la
-        página automáticamente, que normalmente es cada hora. Si se trata de un
-        caso especial un caso especial o urgente, contáctenos directamente
-        mediante nuestra cuenta de Instagram <a
-          href="https://www.instagram.com/sansanews/">@sansanews</a
-        > para solucionarlo lo antes posible.
+        El post será eliminado automáticamente de SansaNews con la siguiente
+        recarga de la página. Si es muy urgente, contactanos mediante nuestro
+        Instagram <a href="https://www.instagram.com/sansanews/">@sansanews</a> para
+        solucionarlo.
       </p>
     </question>
     <question>
@@ -90,10 +80,9 @@
         <strong>¿Cómo puedo añadir/eliminar mi página de SansaNews?</strong>
       </p>
       <p>
-        En cualquiera de los dos casos, contáctenos directamente mediante
-        nuestra cuenta de Instagram <a
+        Contactanos mediante nuestro Instagram <a
           href="https://www.instagram.com/sansanews/">@sansanews</a
-        > para resolverlo lo antes posible.
+        >.
       </p>
     </question>
     <question>
@@ -102,17 +91,22 @@
       </p>
       <p>
         La <a href="https://developers.facebook.com/products/instagram/apis/"
-          >API oficial</a
+          >API</a
         >
-        de Instagram posee un límite de 200 peticiones por hora, por lo que, para
-        no colapsar la API, decidimos actualizar cada hora.
+        de Instagram posee un límite de 200 peticiones por hora. Esperamos una hora
+        superar este límite.
+      </p>
+    </question>
+    <question>
+      <p>
+        <strong>¿Por qué no se actualiza exactamente cada hora?</strong>
       </p>
       <p>
-        La actualización también depende de la disponibilidad de
+        La actualización depende de la disponibilidad de
         <a href="https://docs.github.com/en/actions">Github Actions</a>, que es
-        el servicio que usamos para automatizar el proceso de actualización, por
-        lo que, los tiempos de actualización pueden variar, pero casi siempre
-        serán aproximadamente cada hora.
+        lo que usamos para automatizar la actualización. Este no asegura que se
+        actualice con exactitud, solo que en algún momento se hará. Las
+        variaciones pueden llegar a ser de una hora.
       </p>
     </question>
   </section>
@@ -121,20 +115,20 @@
     <div class="flex flex-col items-center gap-4 md:flex-row md:gap-12">
       <section>
         <p>
-          SansaNews surgió originalmente como un proyecto del ramo de <code
-            >Introducción a la Ingeniería</code
-          >
+          <i>SansaNews</i> surgió como un proyecto del ramo de
+          <i>Introducción a la Ingeniería</i>
           de primer año en el 2022, desarrollado en un principio por
           <a href="https://github.com/GlemTheGemini">GlemTheGemini</a>,
           <a href="https://github.com/RodrigoalDelPlanetaGol"
             >RodrigoaldelPlanetaGol</a
           >, <a href="https://github.com/juanjo000">juanjo000</a>, y
-          <i>Joaquín Dominguez</i>.
+          <i>Joaquín Dominguez</i> usando
+          <a href="https://www.djangoproject.com/">Django</a>.
         </p>
         <p>
           La presentación del proyecto fue tan exitosa que muchos querían que se
           volviera una realidad. Para esto <i>Joaquín Dominguez</i> buscó a más
-          gente para llevar el proyecto a cabo, entre ellos
+          personas para hacer el proyecto, entre ellos
           <i>Lucas Mosquera</i>.
         </p>
       </section>
@@ -145,35 +139,28 @@
       />
     </div>
     <p>
-      Inicialmente desarrollado puramente con <a
-        href="https://www.djangoproject.com/">Django</a
-      >, la segunda versión de SansaNews se intentó desarrollar en el verano de
-      2023.
-    </p>
-    <p>
-      Pero por falta de conocimiento, y poco tiempo debido a la universidad, no
-      se pudo llevar a cabo, por lo que el proyecto quedó en stand-by
-      indefinido.
+      La segunda versión de <i>SansaNews</i> se intentó hacer en el verano de 2023.
+      Pero por falta de tiempo y conocimiento no se pudo finalizar, quedando el proyecto
+      en stand-by.
     </p>
     <p>
       La idea nunca murió, cada semestre escuchamos comentarios sobre cómo
-      faltaba un espacio que centralizara toda la información y eventos de la U
-      en un solo lugar, y solo podíamos pensar en SansaNews.
+      faltaba un espacio centralizado para divulgar las noticias de la
+      universidad, y solo podíamos pensar en SansaNews.
     </p>
     <p>
-      En verano de 2026, 4 años después de la idea original, en parte por ya
-      tener el conocimiento al estar en último año de carrera y por la necesidad
-      de hacer algo que mostrar, <i>Lucas Mosquera</i> y
-      <i>Joaquín Dominguez</i> decidieron revivir el proyecto y hacerlo realidad de
-      una vez por todas. (Necesitaban salir primero Silksong y Hytale)
+      En verano de 2026, 4 años después de la versión original, en parte por ya
+      tener el conocimiento y en parte por la necesidad terminar lo que se
+      empezó, y
+      <i>Joaquín Dominguez</i> y <i>Lucas Mosquera</i> decidieron revivir el proyecto
+      y finalmente publicarlo. (Necesitaban salir primero Silksong y Hytale)
     </p>
   </section>
   <section>
     <h2 id="agradecimientos">Agradecimientos</h2>
     <p>
-      Agradecemos a los contribuidores originales de SansaNews: <a
-        href="https://github.com/GlemTheGemini">GlemTheGemini</a
-      >,
+      Agradecemos a los contribuidores originales de <i>SansaNews</i>:
+      <a href="https://github.com/GlemTheGemini">GlemTheGemini</a>,
       <a href="https://github.com/RodrigoalDelPlanetaGol"
         >RodrigoaldelPlanetaGol</a
       >

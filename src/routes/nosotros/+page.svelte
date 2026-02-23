@@ -72,8 +72,8 @@
       </p>
       <p>
         La idea es difundir las noticias más recientes de la universidad, no ser
-        un archivo de publicaciones. Si quieres ver posts más antiguos, buscalos
-        en a las cuentas oficiales de las iniciativas.
+        un archivo de publicaciones. Si quieres ver posts más antiguos, puedes acceder a ellos
+        en las cuentas oficiales de las iniciativas.
       </p>
     </question>
     <question>
@@ -81,7 +81,7 @@
         <strong>¿Cómo puedo añadir/eliminar mi página de SansaNews?</strong>
       </p>
       <p>
-        Contactanos mediante nuestro Instagram <a
+        Contáctanos mediante nuestro Instagram <a
           href="https://www.instagram.com/sansanews/">@sansanews</a
         >.
       </p>
@@ -92,7 +92,7 @@
       </p>
       <p>
         El post será eliminado automáticamente de SansaNews con la siguiente
-        recarga de la página. Si es muy urgente, contactanos mediante nuestro
+        recarga de la página. Si es muy urgente, contáctanos mediante nuestro
         Instagram <a href="https://www.instagram.com/sansanews/">@sansanews</a> para
         solucionarlo.
       </p>
@@ -151,11 +151,11 @@
           <i>Joaquín Domínguez</i>,
           <i>Benjamín Leyton</i>, 
           <i>Juan García</i>, y
-          <i>Rodrígo Cáceres</i> usando
+          <i>Rodrigo Cáceres</i> usando
           <a href="https://www.djangoproject.com/">Django</a> como framework.
         </p>
         <p>
-          La presentación del proyecto tuvo una gran recepcion por parte de los presentes,
+          La presentación del proyecto tuvo una gran recepción por parte de los presentes,
           lo cual asentó la idea de continuar el proyecto una vez finalizado el ramo.
           Con esto en mente, <i>Joaquín Domínguez</i> buscó a más
           personas para el desarrollo del proyecto, entre ellos
@@ -180,7 +180,7 @@
     </p>
     <p>
       En verano de 2026, 4 años después de la versión original, en parte por ya
-      tener el conocimiento y en parte por la necesidad terminar lo que se
+      tener el conocimiento y en parte por la necesidad de terminar lo que se
       empezó,
       <i>Joaquín Domínguez</i> y <i>Lucas Mosquera</i> decidieron revivir el proyecto
       y finalmente publicarlo.
@@ -192,7 +192,7 @@
       Agradecemos a los contribuidores originales de <i>SansaNews</i>:
       <a href="https://github.com/GlemTheGemini">Benjamín Leyton</a>,
       <a href="https://github.com/RodrigoalDelPlanetaGol"
-        >Rodrígo Cáceres</a
+        >Rodrigo Cáceres</a
       >
       y <a href="https://github.com/juanjo000">Juan García</a>.
     </p>

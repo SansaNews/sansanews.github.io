@@ -2,7 +2,6 @@
   import "../app.css";
   import * as Card from "$lib/components/ui/card/index.js";
   import SuperNav from "$lib/components/SuperNav.svelte";
-  import logo from "$lib/assets/extended-logo-black.png";
   import Footer from "$lib/components/Footer.svelte";
 
   let { children } = $props();
@@ -11,7 +10,7 @@
 <div class="grid grid-cols-12">
   <header class="col-span-12 pb-4 lg:col-span-8 lg:col-start-3">
     <div class="lg:px-4 lg:py-8">
-      <SuperNav {logo} />
+      <SuperNav />
     </div>
   </header>
 
@@ -46,3 +45,4 @@
 
   <Footer />
 </div>
+

@@ -21,10 +21,9 @@
   </div>
   <div class="col-span-3 md:col-span-1">
     <h4 class="font-heading pb-2">SansaNews</h4>
-    <p class="max-w-sm text-justify text-xs font-medium">
-      SansaNews es una iniciativa estudiantil que busca centralizar las noticias
-      y eventos de la UTFSM en un solo lugar, con el objetivo de facilitar su
-      divulgación en la comunidad sansana.
+    <p class="text-ustify max-w-sm text-xs font-medium">
+      <i>SansaNews</i> es una iniciativa estudiantil que busca centralizar las noticias
+      de la USM en un mismo lugar para facilitar su divulgación en la comunidad sansana.
     </p>
   </div>
   <div class="col-span-3 md:col-span-1">

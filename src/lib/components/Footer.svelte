@@ -37,7 +37,7 @@
       </li>
       <li>
         <a href="https://www.github.com/MoonTurtlee/SansaNews">
-          <Github class="inline h-4 w-4" /> GitHub
+          <Github class="inline h-4 w-4" /> SansaNews
         </a>
       </li>
     </ul>

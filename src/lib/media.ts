@@ -26,6 +26,34 @@ export function jsonToMedia(json: any[]): Media[] {
   }));
 }
 
+export function getTimeCategory(date: Date): string {
+  let now = new Date();
+  let diffTime = now.getTime() - date.getTime();
+  let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+  if (
+    date.getDate() === now.getDate() &&
+    date.getMonth() === now.getMonth() &&
+    date.getFullYear() === now.getFullYear()
+  ) {
+    return "Hoy";
+  }
+
+  let yesterday = new Date(now);
+  yesterday.setDate(now.getDate() - 1);
+  if (
+    date.getDate() === yesterday.getDate() &&
+    date.getMonth() === yesterday.getMonth() &&
+    date.getFullYear() === yesterday.getFullYear()
+  ) {
+    return "Ayer";
+  }
+
+  if (diffDays <= 7) return "Última Semana";
+
+  return "Último Mes";
+}
+
 export function formatDatetime(then: Date, now: Date = new Date()): string {
   let diffSeconds = Math.floor((now.getTime() - then.getTime()) / 1000);
   diffSeconds = Math.max(diffSeconds, 0); // Avoid negative values

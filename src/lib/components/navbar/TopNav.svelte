@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { page } from "$app/state";
-  import { goto } from "$app/navigation";
-  import { resolve } from "$app/paths";
-  import { type NavItem } from "$lib/nav";
   import logo from "$lib/assets/extended-logo-black.png";
+  import { goto } from "$app/navigation";
+  import { page } from "$app/state";
+  import { resolve } from "$app/paths";
+  import { type NavItem } from "./nav";
 
   let {
     categories,
@@ -69,4 +69,3 @@
     </div>
   {/if}
 </div>
-

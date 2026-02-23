@@ -2,7 +2,7 @@
   import logo from "$lib/assets/extended-logo-black.png";
   import { page } from "$app/state";
   import { resolve } from "$app/paths";
-  import { type NavItem } from "$lib/nav";
+  import { type NavItem } from "./nav";
 
   let { navItems }: { navItems: NavItem[] } = $props();
 </script>
@@ -35,4 +35,3 @@
   </nav>
   <div class="bg-primary/40 h-0.5 w-16"></div>
 </div>
-

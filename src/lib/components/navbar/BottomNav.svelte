@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { resolve } from "$app/paths";
   import { page } from "$app/state";
-  import { type NavItem } from "$lib/nav";
+  import { resolve } from "$app/paths";
+  import { type NavItem } from "./nav";
 
   let {
     sections,
@@ -43,4 +43,3 @@
     {/each}
   </ul>
 </nav>
-

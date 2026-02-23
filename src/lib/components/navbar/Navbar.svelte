@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { resolve } from "$app/paths";
-  import { House, Info } from "@lucide/svelte";
-  import Topnav from "./Topnav.svelte";
+  import DesktopNav from "./DesktopNav.svelte";
   import BottomNav from "./BottomNav.svelte";
-  import Navbar from "./Navbar.svelte";
-  import { type NavItem } from "$lib/nav";
+  import TopNav from "./TopNav.svelte";
+  import { House, Info } from "@lucide/svelte";
+  import { resolve } from "$app/paths";
+  import { type NavItem } from "./nav";
 
   const categories: NavItem[] = [
     {
@@ -53,7 +53,6 @@
 <svelte:window onscroll={handleScroll} />
 
 <div class="h-30 lg:hidden"></div>
-<Navbar navItems={allItems} />
-<Topnav {categories} hidden={hideMobileNav} />
+<DesktopNav navItems={allItems} />
+<TopNav {categories} hidden={hideMobileNav} />
 <BottomNav {sections} hidden={hideMobileNav} />
-

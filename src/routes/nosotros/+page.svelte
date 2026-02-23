@@ -15,18 +15,18 @@
           comunidad sansana.
         </p>
         <p>
-          La iniciativa es desarrollada por dos sansanos, <i
-            >Joaquín Domínguez</i
+          La iniciativa es desarrollada por dos sansanos, <a href="https://github.com/MoonTurtlee"
+            >Joaquín Domínguez</a
           >
-          y <i>Lucas Mosquera</i>. El proyecto es público, y se encuentra
+          y <a href="https://github.com/LuckJMG">Lucas Mosquera</a>. El proyecto es público, y se encuentra
           alojado en
           <a href="https://github.com/MoonTurtlee/SansaNews">GitHub</a>.
         </p>
         <p>
           El objetivo de la página es ayudar a difundir las diversas iniciativas
           y eventos que ocurren en nuestra universidad. <strong
-            >Si quieres apoyar a las iniciativas, siguelas directamente, y
-            participa en sus actividades.</strong
+            >Si quieres apoyar a las iniciativas, considera seguirlas en instagram y
+            participar en sus actividades.</strong
           >
         </p>
         <p>
@@ -146,25 +146,24 @@
     <div class="flex flex-col items-center gap-4 md:flex-row md:gap-12">
       <section>
         <p>
-          <i>SansaNews</i> surgió como un proyecto del ramo de
-          <i>Introducción a la Ingeniería</i>
-          de primer año en el 2022, desarrollado en un principio por
-          <a href="https://github.com/GlemTheGemini">GlemTheGemini</a>,
-          <a href="https://github.com/RodrigoalDelPlanetaGol"
-            >RodrigoaldelPlanetaGol</a
-          >, <a href="https://github.com/juanjo000">juanjo000</a>, y
-          <i>Joaquín Domínguez</i> usando
-          <a href="https://www.djangoproject.com/">Django</a>.
+          <i>SansaNews</i> surgió en 2022 como un proyecto del ramo de primer año
+          <i>Introducción a la Ingeniería</i>, siendo desarrollado en ese entonces por
+          <i>Joaquín Domínguez</i>,
+          <i>Benjamín Leyton</i>, 
+          <i>Juan García</i>, y
+          <i>Rodrígo Cáceres</i> usando
+          <a href="https://www.djangoproject.com/">Django</a> como framework.
         </p>
         <p>
-          La presentación del proyecto fue tan exitosa que muchos querían que se
-          volviera una realidad. Para esto <i>Joaquín Domínguez</i> buscó a más
-          personas para hacer el proyecto, entre ellos
+          La presentación del proyecto tuvo una gran recepcion por parte de los presentes,
+          lo cual asentó la idea de continuar el proyecto una vez finalizado el ramo.
+          Con esto en mente, <i>Joaquín Domínguez</i> buscó a más
+          personas para el desarrollo del proyecto, entre ellos
           <i>Lucas Mosquera</i>.
         </p>
         <p>
-          La segunda versión de <i>SansaNews</i> se intentó hacer en el verano de
-          2023. Pero por falta de tiempo y conocimiento no se pudo finalizar, quedando
+          La segunda versión de <i>SansaNews</i> se intentó desarrollar en el verano de
+          2023. Aunque por falta de conocimiento y experiencia no se pudo finalizar, quedando
           el proyecto en stand-by.
         </p>
       </section>
@@ -176,26 +175,26 @@
     </div>
     <p>
       La idea nunca murió, cada semestre escuchamos comentarios sobre cómo
-      faltaba un espacio centralizado para divulgar las noticias de la
+      faltaba un espacio para divulgar las noticias de la
       universidad, y solo podíamos pensar en SansaNews.
     </p>
     <p>
       En verano de 2026, 4 años después de la versión original, en parte por ya
       tener el conocimiento y en parte por la necesidad terminar lo que se
-      empezó, y
+      empezó,
       <i>Joaquín Domínguez</i> y <i>Lucas Mosquera</i> decidieron revivir el proyecto
-      y finalmente publicarlo. (Necesitaban salir primero Silksong y Hytale)
+      y finalmente publicarlo.
     </p>
   </section>
   <section>
     <h2 id="agradecimientos">Agradecimientos</h2>
     <p>
       Agradecemos a los contribuidores originales de <i>SansaNews</i>:
-      <a href="https://github.com/GlemTheGemini">GlemTheGemini</a>,
+      <a href="https://github.com/GlemTheGemini">Benjamín Leyton</a>,
       <a href="https://github.com/RodrigoalDelPlanetaGol"
-        >RodrigoaldelPlanetaGol</a
+        >Rodrígo Cáceres</a
       >
-      y <a href="https://github.com/juanjo000">juanjo000</a>.
+      y <a href="https://github.com/juanjo000">Juan García</a>.
     </p>
   </section>
 </main>

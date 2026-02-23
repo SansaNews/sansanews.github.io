@@ -71,15 +71,15 @@ No somos un reemplazo de las cuentas oficiales de las iniciativas, solo queremos
 
 **¿Por qué solo muestran las publicaciones del último mes?**
 
-La idea es difundir las noticias más recientes de la universidad, no ser un archivo de publicaciones. Si quieres ver posts más antiguos, buscalos en a las cuentas oficiales de las iniciativas.
+La idea es difundir las noticias más recientes de la universidad, no ser un archivo de publicaciones. Si quieres ver posts más antiguos, puedes acceder a ellos en las cuentas oficiales de las iniciativas.
 
 **¿Cómo puedo añadir/eliminar mi página de SansaNews?**
 
-Contactanos mediante nuestro Instagram [@sansanews](https://www.instagram.com/sansanews/).
+Contáctanos mediante nuestro Instagram [@sansanews](https://www.instagram.com/sansanews/).
 
 **¿Qué pasa si elimino un post de mi cuenta de Instagram?**
 
-El post será eliminado automáticamente de SansaNews con la siguiente recarga de la página. Si es muy urgente, contactanos mediante nuestro Instagram [@sansanews](https://www.instagram.com/sansanews/) para solucionarlo.
+El post será eliminado automáticamente de SansaNews con la siguiente recarga de la página. Si es muy urgente, contáctanos mediante nuestro Instagram [@sansanews](https://www.instagram.com/sansanews/) para solucionarlo.
 
 **¿Cómo obtienen los posts de Instagram?**
 
@@ -91,11 +91,11 @@ No, para imágenes y videos ocupamos los enlaces temporales de la [API](https://
 
 **¿Por qué actualizan cada hora y no en tiempo real?**
 
-La [API](https://developers.facebook.com/products/instagram/apis/) de Instagram posee un límite de 200 peticiones por hora. Esperamos una hora para no superar este límite.
+La API de Instagram posee un límite de 200 peticiones por hora. Esperamos una hora para no superar este límite.
 
 **¿Por qué no se actualiza exactamente cada hora?**
 
-La actualización depende de la disponibilidad de [Github Actions](https://docs.github.com/en/actions), que es lo que usamos para automatizar la actualización. Este no asegura puntualidad, solo que en algún momento se hará. Las variaciones pueden llegar a ser de una hora.
+La actualización depende de la disponibilidad de [GitHub Actions](https://docs.github.com/en/actions), que es lo que usamos para automatizar la actualización. Este no asegura puntualidad, solo que en algún momento se hará. Las variaciones pueden llegar a ser de una hora.
 
 ## Agradecimientos
 

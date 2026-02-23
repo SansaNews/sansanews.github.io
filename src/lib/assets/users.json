@@ -1,5 +1,5 @@
 {
-  "usm": [
+  "USM": [
     "admisionusm",
     "biblioteca.usm",
     "dee.usm",
@@ -12,7 +12,7 @@
     "usantamaria",
     "usmsanjoaquin"
   ],
-  "iniciativas": [
+  "Iniciativas": [
     "corousmsantiago",
     "donfede.sj",
     "emma.usm.sj",
@@ -23,18 +23,7 @@
     "progcompusm",
     "xumbra_utfsm"
   ],
-  "centros": [
-    "caamec_usm",
-    "cee.idp.usm",
-    "ceeinf_sj",
-    "ceeiqasj",
-    "ceemat.usm.sj",
-    "ceemin.utfsm",
-    "ceetel.sj",
-    "ceic_usm",
-    "feusam.usm"
-  ],
-  "deportes": [
+  "Deportes": [
     "bailarinesusm.cs",
     "balonmano_usm_stgo",
     "basketusm",
@@ -45,5 +34,16 @@
     "prestigeleagueusm",
     "santamariasharks",
     "usm.esports_"
+  ],
+  "Centros": [
+    "caamec_usm",
+    "cee.idp.usm",
+    "ceeinf_sj",
+    "ceeiqasj",
+    "ceemat.usm.sj",
+    "ceemin.utfsm",
+    "ceetel.sj",
+    "ceic_usm",
+    "feusam.usm"
   ]
 }

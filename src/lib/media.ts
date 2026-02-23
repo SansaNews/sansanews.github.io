@@ -13,7 +13,7 @@ export interface Media {
 export function jsonToMedia(json: any[]): Media[] {
   return json.map((media: any) => ({
     caption: media.caption || "Sin descripción",
-    category: media.category,
+    category: media.category.toLowerCase(),
     datePublished: new Date(media.timestamp),
     permalink: media.permalink,
     profileLink: "https://www.instagram.com/" + media.username,

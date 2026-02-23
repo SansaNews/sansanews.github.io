@@ -5,25 +5,15 @@
   import { House, Info } from "@lucide/svelte";
   import { resolve } from "$app/paths";
   import { type NavItem } from "./nav";
+  import categoriesJSON from "$lib/assets/users.json";
 
-  const categories: NavItem[] = [
-    {
-      label: "USM",
-      href: resolve("/[[category]]", { category: "usm" }),
-    },
-    {
-      label: "Iniciativas",
-      href: resolve("/[[category]]", { category: "iniciativas" }),
-    },
-    {
-      label: "Deportes",
-      href: resolve("/[[category]]", { category: "deportes" }),
-    },
-    {
-      label: "Centros",
-      href: resolve("/[[category]]", { category: "centros" }),
-    },
-  ];
+  let categories: NavItem[] = [];
+  for (let category in categoriesJSON) {
+    categories.push({
+      label: category,
+      href: resolve("/[[category]]", { category: category.toLowerCase() }),
+    });
+  }
 
   const sections: NavItem[] = [
     {

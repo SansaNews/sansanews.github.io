@@ -1,7 +1,8 @@
 <script lang="ts">
   import * as Card from "$lib/components/ui/card/index.js";
-  import { type Media } from "$lib/media";
   import User from "$lib/components/User.svelte";
+  import { GalleryHorizontalEnd } from "@lucide/svelte";
+  import { type Media } from "$lib/media";
 
   let media: Media = $props();
 </script>
@@ -11,9 +12,18 @@
     <div
       class="bg-card card-shadow relative flex flex-col overflow-hidden rounded-lg border-2 border-t lg:flex-row"
     >
-      <div class="border-b-2 lg:w-1/3 lg:shrink-0 lg:border-r-2 lg:border-b-0">
+      <div
+        class="relative border-b-2 lg:w-1/3 lg:shrink-0 lg:border-r-2 lg:border-b-0"
+      >
         <!-- Post image -->
         <a href={media.permalink} target="_blank" rel="noopener noreferrer">
+          {#if media.children}
+            <div
+              class="absolute top-2 right-2 z-10 flex h-6 w-6 items-center justify-center rounded-full bg-black/50"
+            >
+              <GalleryHorizontalEnd class="h-4 w-4 text-white opacity-75" />
+            </div>
+          {/if}
           {#if media.type === "VIDEO"}
             <video
               src={media.url}

@@ -135,7 +135,7 @@ def get_user_data(
         business_discovery.username({username}){{
             profile_picture_url,
             media.since({timestamp}).limit({max_amount}){{
-                timestamp,caption,media_type,permalink,media_url
+                timestamp,caption,media_type,permalink,media_url,children
             }}
         }}
     """
@@ -166,21 +166,11 @@ def sanitize_data(
     for m in data["business_discovery"]["media"]["data"]:
         media = m.copy()
 
-        # Shared data between media
         media.pop("id", None)
         media["username"] = username
         media["category"] = category
         media["profile_picture_url"] = data["business_discovery"]["profile_picture_url"]
-
-        if "children" not in m:
-            media_list.append(media)
-            continue
-
-        # Clean children
-        children: list[Media] = m["children"]["data"]
-        for child in children:
-            child.pop("id", None)
-        m["children"] = children
+        media["children"] = "children" in media
 
         media_list.append(media)
 

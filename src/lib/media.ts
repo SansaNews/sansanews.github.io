@@ -1,6 +1,7 @@
 export interface Media {
   caption: string;
   category: string;
+  children: boolean;
   datePublished: Date;
   permalink: string;
   profileLink: string;
@@ -14,6 +15,7 @@ export function jsonToMedia(json: any[]): Media[] {
   return json.map((media: any) => ({
     caption: media.caption || "Sin descripción",
     category: media.category.toLowerCase(),
+    children: media.children,
     datePublished: new Date(media.timestamp),
     permalink: media.permalink,
     profileLink: "https://www.instagram.com/" + media.username,

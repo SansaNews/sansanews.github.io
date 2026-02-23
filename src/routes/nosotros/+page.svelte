@@ -125,7 +125,7 @@
           >API</a
         >
         de Instagram posee un límite de 200 peticiones por hora. Esperamos una hora
-        superar este límite.
+        para no superar este límite.
       </p>
     </question>
     <question>

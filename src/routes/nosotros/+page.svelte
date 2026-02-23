@@ -29,6 +29,12 @@
             participa en sus actividades.</strong
           >
         </p>
+        <p>
+          Cualquier comentario, queja, duda o sugerencia, nos puedes contactar
+          por nuestra cuenta de Instagram <a
+            href="https://www.instagram.com/sansanews/">@sansanews</a
+          >.
+        </p>
       </section>
       <div class="flex w-md max-w-xs flex-col items-center pt-4 pb-1">
         <img
@@ -43,12 +49,6 @@
         <Reference name="Lucas Mosquera" github="https://github.com/LuckJMG" />
       </div>
     </div>
-    <p>
-      Cualquier comentario, queja, duda o sugerencia, nos puedes contactar por
-      nuestra cuenta de Instagram <a href="https://www.instagram.com/sansanews/"
-        >@sansanews</a
-      >.
-    </p>
   </section>
   <section>
     <h2 id="preguntas-frecuentes">Preguntas Frecuentes</h2>
@@ -162,18 +162,18 @@
           personas para hacer el proyecto, entre ellos
           <i>Lucas Mosquera</i>.
         </p>
+        <p>
+          La segunda versión de <i>SansaNews</i> se intentó hacer en el verano de
+          2023. Pero por falta de tiempo y conocimiento no se pudo finalizar, quedando
+          el proyecto en stand-by.
+        </p>
       </section>
       <img
         src={presentation}
         alt="Presentación original de SansaNews en Introducción a la Ingeniería"
-        class="mx-auto w-full max-w-xs rounded-lg"
+        class="mx-auto my-4 w-full max-w-xs rounded-lg"
       />
     </div>
-    <p>
-      La segunda versión de <i>SansaNews</i> se intentó hacer en el verano de 2023.
-      Pero por falta de tiempo y conocimiento no se pudo finalizar, quedando el proyecto
-      en stand-by.
-    </p>
     <p>
       La idea nunca murió, cada semestre escuchamos comentarios sobre cómo
       faltaba un espacio centralizado para divulgar las noticias de la

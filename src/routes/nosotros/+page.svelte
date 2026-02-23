@@ -14,12 +14,12 @@
           facilitar su divulgación en la comunidad sansana.
         </p>
         <p>
-          La iniciativa es mantenida solo por 2 estudiantes de la USM, <a
-            href="https://github.com/MoonTurtlee">MoonTurtlee</a
+          La iniciativa es mantenida solo por 2 estudiantes de la USM, <i
+            >Joaquín Dominguez</i
           >
-          y <a href="https://github.com/LuckJMG">LuckJMG</a>. El proyecto es
-          Open Source, lo que significa que puedes ver directamente el código de
-          la página para ver cómo funciona, se encuentra alojado públicamente en
+          y <i>Lucas Mosquera</i>. El proyecto es Open Source, lo que significa
+          que puedes ver directamente el código de la página para ver cómo
+          funciona, se encuentra alojado públicamente en
           <a href="https://github.com/MoonTurtlee/SansaNews">GitHub</a>.
         </p>
       </section>
@@ -129,15 +129,13 @@
           <a href="https://github.com/RodrigoalDelPlanetaGol"
             >RodrigoaldelPlanetaGol</a
           >, <a href="https://github.com/juanjo000">juanjo000</a>, y
-          <a href="https://github.com/MoonTurtlee">MoonTurtlee</a>.
+          <i>Joaquín Dominguez</i>.
         </p>
         <p>
           La presentación del proyecto fue tan exitosa que muchos querían que se
-          volviera una realidad. Para esto <a
-            href="https://github.com/MoonTurtlee">MoonTurtlee</a
-          >
-          buscó a más gente para llevar el proyecto a cabo, entre ellos
-          <a href="https://www.github.com/LuckJMG">LuckJMG</a>.
+          volviera una realidad. Para esto <i>Joaquín Dominguez</i> buscó a más
+          gente para llevar el proyecto a cabo, entre ellos
+          <i>Lucas Mosquera</i>.
         </p>
       </section>
       <img
@@ -165,13 +163,9 @@
     <p>
       En verano de 2026, 4 años después de la idea original, en parte por ya
       tener el conocimiento al estar en último año de carrera y por la necesidad
-      de hacer algo que mostrar, <a href="https://www.github.com/LuckJMG"
-        >LuckJMG</a
-      >
-      y
-      <a href="https://github.com/MoonTurtlee">MoonTurtlee</a> decidieron revivir
-      el proyecto y hacerlo realidad de una vez por todas. (Necesitaban salir primero
-      Silksong y Hytale)
+      de hacer algo que mostrar, <i>Lucas Mosquera</i> y
+      <i>Joaquín Dominguez</i> decidieron revivir el proyecto y hacerlo realidad de
+      una vez por todas. (Necesitaban salir primero Silksong y Hytale)
     </p>
   </section>
   <section>

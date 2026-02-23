@@ -155,8 +155,7 @@
           <a href="https://www.djangoproject.com/">Django</a> como framework.
         </p>
         <p>
-          La presentación del proyecto tuvo una gran recepción por parte de los presentes,
-          lo cual asentó la idea de continuar el proyecto una vez finalizado el ramo.
+          La presentación del proyecto fue un gran éxito, lo cual impulsó la idea de continuar el proyecto una vez finalizado el ramo.
           Con esto en mente, <i>Joaquín Domínguez</i> buscó a más
           personas para el desarrollo del proyecto, entre ellos
           <i>Lucas Mosquera</i>.
@@ -174,7 +173,7 @@
       />
     </div>
     <p>
-      La idea nunca murió, cada semestre escuchamos comentarios sobre cómo
+      La idea nunca murió, cada semestre escuchamos comentarios sobre como
       faltaba un espacio para divulgar las noticias de la
       universidad, y solo podíamos pensar en SansaNews.
     </p>

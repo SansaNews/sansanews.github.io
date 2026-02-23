@@ -16,7 +16,7 @@
         </p>
         <p>
           La iniciativa es desarrollada por dos sansanos, <i
-            >Joaquín Dominguez</i
+            >Joaquín Domínguez</i
           >
           y <i>Lucas Mosquera</i>. El proyecto es público, y se encuentra
           alojado en
@@ -153,12 +153,12 @@
           <a href="https://github.com/RodrigoalDelPlanetaGol"
             >RodrigoaldelPlanetaGol</a
           >, <a href="https://github.com/juanjo000">juanjo000</a>, y
-          <i>Joaquín Dominguez</i> usando
+          <i>Joaquín Domínguez</i> usando
           <a href="https://www.djangoproject.com/">Django</a>.
         </p>
         <p>
           La presentación del proyecto fue tan exitosa que muchos querían que se
-          volviera una realidad. Para esto <i>Joaquín Dominguez</i> buscó a más
+          volviera una realidad. Para esto <i>Joaquín Domínguez</i> buscó a más
           personas para hacer el proyecto, entre ellos
           <i>Lucas Mosquera</i>.
         </p>
@@ -183,7 +183,7 @@
       En verano de 2026, 4 años después de la versión original, en parte por ya
       tener el conocimiento y en parte por la necesidad terminar lo que se
       empezó, y
-      <i>Joaquín Dominguez</i> y <i>Lucas Mosquera</i> decidieron revivir el proyecto
+      <i>Joaquín Domínguez</i> y <i>Lucas Mosquera</i> decidieron revivir el proyecto
       y finalmente publicarlo. (Necesitaban salir primero Silksong y Hytale)
     </p>
   </section>

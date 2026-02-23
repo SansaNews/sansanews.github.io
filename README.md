@@ -1,6 +1,6 @@
 # SansaNews
 
-SansaNews es una iniciativa estudiantil que busca centralizar las noticias y eventos de la UTFSM en un solo lugar, con el objetivo de facilitar su divulgación en la comunidad sansana.
+_SansaNews_ es una iniciativa estudiantil que busca centralizar las noticias de la USM en un mismo lugar para facilitar su divulgación en la comunidad sansana.
 
 ## Instalar
 
@@ -67,40 +67,28 @@ Para automatizar la construcción y publicación de la página ocupamos [GitHub 
 
 **¿Cómo obtienen los posts de Instagram?**
 
-Ocupamos la [API oficial](https://developers.facebook.com/products/instagram/apis/) de Instagram para obtener los posts legalmente. Esto significa que solo podemos acceder a los posts de cuentas que sean configuradas voluntariamente como profesionales, no podemos acceder a cuentas personales ni privadas ni públicas.
+Mediante la [API oficial](https://developers.facebook.com/products/instagram/apis/) de Instagram, que solo permite acceder a cuentas marcadas como profesionales.
 
 **¿Las imágenes de los posts son descargadas y guardadas?**
 
-No, para imágenes y videos ocupamos los enlaces temporales que provee la [API oficial](https://developers.facebook.com/products/instagram/apis/) de Instagram, que duran aproximadamente 4 días. Nada es descargado en el proceso más que la información textual.
+No, para imágenes y videos ocupamos los enlaces temporales de la [API](https://developers.facebook.com/products/instagram/apis/), que duran alrededor de 4 días.
 
-**¿Qué pasa si quiero eliminar un post de mi cuenta de Instagram?**
+**¿Qué pasa si elimino un post de mi cuenta de Instagram?**
 
-El post será eliminado de SansaNews con la siguiente recarga de la página automáticamente, que normalmente es cada hora. Si se trata de un caso especial un caso especial o urgente, contáctenos directamente mediante nuestra cuenta de Instagram [@sansanews](https://www.instagram.com/sansanews/) para solucionarlo lo antes posible.
+El post será eliminado automáticamente de SansaNews con la siguiente recarga de la página. Si es muy urgente, contactanos mediante nuestro Instagram [@sansanews](https://www.instagram.com/sansanews/) para solucionarlo.
 
 **¿Cómo puedo añadir/eliminar mi página de SansaNews?**
 
-En cualquiera de los dos casos, contáctenos directamente mediante nuestra cuenta de Instagram [@sansanews](https://www.instagram.com/sansanews/) para resolverlo lo antes posible.
+Contactanos mediante nuestro Instagram [@sansanews](https://www.instagram.com/sansanews/).
 
 **¿Por qué actualizan cada hora y no en tiempo real?**
 
-La [API oficial](https://developers.facebook.com/products/instagram/apis/) de Instagram posee un límite de 200 peticiones por hora, por lo que, para no colapsar la API, decidimos actualizar cada hora.
+La [API](https://developers.facebook.com/products/instagram/apis/) de Instagram posee un límite de 200 peticiones por hora. Esperamos una hora para no superar este límite.
 
-La actualización también depende de la disponibilidad de [Github Actions](https://docs.github.com/en/actions), que es el servicio que usamos para automatizar el proceso de actualización, por lo que, los tiempos de actualización pueden variar, pero casi siempre serán aproximadamente cada hora.
+**¿Por qué no se actualiza exactamente cada hora?**
 
-## Historia
-
-SansaNews surgió originalmente como un proyecto del ramo de `Introducción a la Ingeniería` de primer año en el 2022, desarrollado en un principio por [GlemTheGemini](https://github.com/GlemTheGemini), [RodrigoaldelPlanetaGol](https://github.com/RodrigoalDelPlanetaGol), [juanjo000](https://github.com/juanjo000), y [MoonTurtlee](https://github.com/MoonTurtlee).
-
-La presentación del proyecto fue tan exitosa que muchos querían que se volviera una realidad. Para esto [MoonTurtlee](https://github.com/MoonTurtlee) buscó a más gente para llevar el proyecto a cabo, entre ellos [LuckJMG](https://www.github.com/LuckJMG).
-
-Inicialmente desarrollado puramente con [Django](https://www.djangoproject.com/), la segunda versión de SansaNews se intentó desarrollar en el verano de 2023.
-
-Pero por falta de conocimiento, y poco tiempo debido a la universidad, no se pudo llevar a cabo, por lo que el proyecto quedó en stand-by indefinido.
-
-La idea nunca murió, cada semestre escuchamos comentarios sobre cómo faltaba un espacio que centralizara toda la información y eventos de la U en un solo lugar, y solo podíamos pensar en SansaNews.
-
-En verano de 2026, 4 años después de la idea original, en parte por ya tener el conocimiento al estar en último año de carrera y por la necesidad de hacer algo que mostrar, [LuckJMG](https://www.github.com/LuckJMG) y [MoonTurtlee](https://github.com/MoonTurtlee) decidieron revivir el proyecto y hacerlo realidad de una vez por todas. (Necesitaban salir primero Silksong y Hytale)
+La actualización depende de la disponibilidad de [Github Actions](https://docs.github.com/en/actions), que es lo que usamos para automatizar la actualización. Este no asegura que se actualice con exactitud, solo que en algún momento se hará. Las variaciones pueden llegar a ser de una hora.
 
 ## Agradecimientos
 
-Agradecemos a los contribuidores originales de SansaNews: [GlemTheGemini](https://github.com/GlemTheGemini), [RodrigoaldelPlanetaGol](https://github.com/RodrigoalDelPlanetaGol) y [juanjo000](https://github.com/juanjo000).
+Agradecemos a los contribuidores originales de _SansaNews_: [GlemTheGemini](https://github.com/GlemTheGemini), [RodrigoaldelPlanetaGol](https://github.com/RodrigoalDelPlanetaGol) y [juanjo000](https://github.com/juanjo000).

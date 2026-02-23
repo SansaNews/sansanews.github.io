@@ -8,7 +8,7 @@
 
 <div class="grid grid-cols-12">
   <header class="col-span-12 pb-4 lg:col-span-8 lg:col-start-3">
-    <div class="lg:px-4 lg:pt-8 lg:pb-6">
+    <div class="md:px-4 md:pt-8 md:pb-6">
       <Navbar />
     </div>
   </header>

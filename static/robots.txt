@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://moonturtlee.github.io/SansaNews/sitemap.xml
+Sitemap: https://sansanews.github.io/sitemap.xml

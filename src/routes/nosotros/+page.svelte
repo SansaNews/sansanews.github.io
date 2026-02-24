@@ -20,7 +20,7 @@
           >
           y <a href="https://github.com/LuckJMG">Lucas Mosquera</a>. El proyecto es público, y se encuentra
           alojado en
-          <a href="https://github.com/MoonTurtlee/SansaNews">GitHub</a>.
+          <a href="https://github.com/SansaNews/sansanews.github.io">GitHub</a>.
         </p>
         <p>
           El objetivo de la página es ayudar a difundir las diversas iniciativas

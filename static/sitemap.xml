@@ -6,32 +6,32 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
-  <loc>https://moonturtlee.github.io/SansaNews/</loc>
+  <loc>sansanews.github.io/</loc>
   <lastmod>2026-02-23T23:58:42+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://moonturtlee.github.io/SansaNews/usm</loc>
+  <loc>sansanews.github.io/usm</loc>
   <lastmod>2026-02-23T23:58:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://moonturtlee.github.io/SansaNews/iniciativas</loc>
+  <loc>sansanews.github.io/iniciativas</loc>
   <lastmod>2026-02-23T23:58:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://moonturtlee.github.io/SansaNews/deportes</loc>
+  <loc>sansanews.github.io/deportes</loc>
   <lastmod>2026-02-23T23:58:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://moonturtlee.github.io/SansaNews/centros</loc>
+  <loc>sansanews.github.io/centros</loc>
   <lastmod>2026-02-23T23:58:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://moonturtlee.github.io/SansaNews/nosotros</loc>
+  <loc>sansanews.github.io/nosotros</loc>
   <lastmod>2026-02-23T23:58:42+00:00</lastmod>
   <priority>0.80</priority>
 </url>

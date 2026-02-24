@@ -1,8 +1,8 @@
 {
   "name": "SansaNews",
   "short_name": "SansaNews",
-  "start_url": "/SansaNews/",
-  "scope": "/SansaNews/",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "web-app-manifest-192x192.png",

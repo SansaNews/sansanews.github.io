@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.sansanews.twa",
+        "sha256_cert_fingerprints": ["1D:7F:6E:80:B3:F9:BC:D2:92:BF:10:DF:E0:85:BC:93:B9:8F:85:27:A7:64:35:1F:03:1B:4F:95:14:E7:C7:87"]
+      }
+    }]

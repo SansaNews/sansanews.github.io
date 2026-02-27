@@ -2,7 +2,7 @@
   import DesktopNav from "./DesktopNav.svelte";
   import BottomNav from "./BottomNav.svelte";
   import TopNav from "./TopNav.svelte";
-  import { House, Info } from "@lucide/svelte";
+  import { Newspaper, Info } from "@lucide/svelte";
   import { resolve } from "$app/paths";
   import { type NavItem } from "./nav";
   import categoriesJSON from "$lib/assets/users.json";
@@ -17,9 +17,9 @@
 
   const sections: NavItem[] = [
     {
-      label: "Inicio",
+      label: "Noticias",
       href: resolve("/"),
-      icon: House,
+      icon: Newspaper,
     },
     {
       label: "Sobre Nosotros",

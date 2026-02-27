@@ -29,10 +29,10 @@
 >
   <ul class="flex justify-around">
     {#each sections as section}
-      <li>
+      <li class="flex-1">
         <a
           href={section.href}
-          class="flex flex-col items-center py-2 text-sm transition-colors"
+          class="flex w-full flex-col items-center py-2 text-sm transition-colors"
           class:text-primary={isActive(section)}
           class:text-muted-foreground={!isActive(section)}
         >

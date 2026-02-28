@@ -19,7 +19,7 @@
         <img 
           src={tool.image} 
           alt={tool.alt} 
-          class="aspect-video w-full border-b-2 object-cover" 
+          class="aspect-video w-full border-b-2 object-contain bg-muted"
         />
       </a>
 

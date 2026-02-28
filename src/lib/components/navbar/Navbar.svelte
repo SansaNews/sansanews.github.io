@@ -2,7 +2,7 @@
   import DesktopNav from "./DesktopNav.svelte";
   import BottomNav from "./BottomNav.svelte";
   import TopNav from "./TopNav.svelte";
-  import { Newspaper, Info } from "@lucide/svelte";
+  import { Newspaper, Info , PencilRuler} from "@lucide/svelte";
   import { resolve } from "$app/paths";
   import { type NavItem } from "./nav";
   import categoriesJSON from "$lib/assets/users.json";
@@ -22,13 +22,16 @@
       icon: Newspaper,
     },
     {
+      label: "Herramientas",
+      href: resolve("/herramientas"),
+      icon: PencilRuler,
+    },
+    {
       label: "Sobre Nosotros",
       href: resolve("/nosotros"),
       icon: Info,
     },
   ];
-
-  let allItems = [sections[0], ...categories, sections[1]];
 
   let lastScrollY = $state(0);
   let hideMobileNav = $state(false);
@@ -43,6 +46,6 @@
 <svelte:window onscroll={handleScroll} />
 
 <div class="h-30 lg:hidden"></div>
-<DesktopNav navItems={allItems} />
+<DesktopNav navItems={sections} />
 <TopNav {categories} hidden={hideMobileNav} />
 <BottomNav {sections} hidden={hideMobileNav} />

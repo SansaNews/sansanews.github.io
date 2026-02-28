@@ -13,6 +13,11 @@
         <a class="text-accent underline" href={resolve("/")}>Inicio</a>
       </li>
       <li>
+        <a class="text-accent underline" href={resolve("/herramientas")}
+          >Herramientas</a
+        >
+      </li>
+      <li>
         <a class="text-accent underline" href={resolve("/nosotros")}
           >Sobre Nosotros</a
         >

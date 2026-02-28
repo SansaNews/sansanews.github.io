@@ -4,9 +4,9 @@
 </script>
 
 <footer
-  class="text-muted-foreground col-span-12 grid grid-cols-3 justify-evenly gap-6 border-t-3 border-double p-6 px-20 md:gap-8 md:px-28"
+  class="text-muted-foreground col-span-12 lg:col-span-8 lg:col-start-3 grid grid-cols-3 gap-6 border-t-3 border-double p-6 md:gap-8"
 >
-  <div class="col-span-3 md:col-span-1">
+  <div class="flex flex-col items-start">
     <h4 class="font-heading pb-2">Mapa del Sitio</h4>
     <ul class="text-xs font-medium">
       <li>
@@ -19,23 +19,23 @@
       </li>
     </ul>
   </div>
-  <div class="col-span-3 md:col-span-1">
+  <div class="flex flex-col items-center">
     <h4 class="font-heading pb-2">SansaNews</h4>
-    <p class="text-ustify max-w-sm text-xs font-medium">
+    <p class="text-center max-w-sm text-xs font-medium">
       <i>SansaNews</i> es una iniciativa estudiantil que busca centralizar las noticias
       de la USM en un mismo lugar para facilitar su divulgación en la comunidad sansana.
     </p>
   </div>
-  <div class="col-span-3 md:col-span-1">
+  <div class="flex flex-col items-end">
     <h4 class="font-heading pb-2">Contacto</h4>
     <ul class="text-xs font-medium">
       <li>
-        <a href="https://www.instagram.com/sansanews/">
+        <a href="https://www.instagram.com/sansanews/" class="flex items-center gap-1">
           <Instagram class="inline h-4 w-4" /> @sansanews
         </a>
       </li>
       <li>
-        <a href="https://github.com/SansaNews/sansanews.github.io">
+        <a href="https://github.com/SansaNews/sansanews.github.io" class="flex items-center gap-1">
           <Github class="inline h-4 w-4" /> SansaNews
         </a>
       </li>

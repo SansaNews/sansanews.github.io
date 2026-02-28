@@ -10,7 +10,7 @@
     <h4 class="font-heading pb-2">Mapa del Sitio</h4>
     <ul class="text-xs font-medium">
       <li>
-        <a class="text-accent underline" href={resolve("/")}>Inicio</a>
+        <a class="text-accent underline" href={resolve("/")}>Noticias</a>
       </li>
       <li>
         <a class="text-accent underline" href={resolve("/herramientas")}

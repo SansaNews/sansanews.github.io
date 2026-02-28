@@ -24,7 +24,7 @@
   <section>
     <h2>¿Tienes un proyecto que quieras compartir?</h2>
     <p>
-      ¡Contáctanos por Instagram <a href="https://www.instagram.com/sansanews/">@sansanews</a>!
+      ¡Contáctanos por Instagram en <a href="https://www.instagram.com/sansanews/">@sansanews</a>!
       Si es relevante para la comunidad sansana,
       lo agregaremos en esta sección.
     </p>

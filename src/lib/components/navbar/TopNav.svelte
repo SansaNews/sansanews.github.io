@@ -1,9 +1,8 @@
 <script lang="ts">
   import logo from "$lib/assets/extended-logo-black.png";
-  import { goto } from "$app/navigation";
   import { page } from "$app/state";
   import { resolve } from "$app/paths";
-  import { type NavItem } from "./nav";
+  import { type NavItem, handleNavClick } from "./nav";
 
   let {
     categories,
@@ -18,12 +17,6 @@
       categories.some((category) => category.href === page.url.pathname),
   );
 
-  function handleClick(e: MouseEvent, isActive: boolean) {
-    if (isActive) {
-      e.preventDefault();
-      goto(resolve("/"));
-    }
-  }
 </script>
 
 <div
@@ -45,9 +38,8 @@
 
   {#if showCategories}
     <div class="relative border-b-2">
-      <div
-        class="from-background pointer-events-none absolute top-0 right-0 z-50 h-full w-8 bg-linear-to-l to-transparent"
-      ></div>
+      <div class="from-background pointer-events-none absolute top-0 right-0 z-50 h-full w-8 bg-linear-to-l to-transparent"></div>
+      
       <nav
         class="flex items-center justify-center gap-1 overflow-x-auto scroll-smooth px-3 pb-2"
         style="scrollbar-width: none;"
@@ -56,7 +48,7 @@
           {@const isActive = page.url.pathname === category.href}
           <a
             href={category.href}
-            onclick={(e) => handleClick(e, isActive)}
+            onclick={(e) => handleNavClick(e, isActive)}
             class="shrink-0 rounded-md px-4 py-1.5 text-sm font-medium whitespace-nowrap"
             class:bg-primary={isActive}
             class:text-background={isActive}

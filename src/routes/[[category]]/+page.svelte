@@ -1,5 +1,6 @@
 <script lang="ts">
   import Post from "$lib/components/Post.svelte";
+  import CategoryNav from "$lib/components/navbar/CategoryNav.svelte";
   import data from "$lib/assets/media.json";
   import {
     type Media,
@@ -14,7 +15,6 @@
   let { params }: PageProps = $props();
 
   const allMedia: Media[] = jsonToMedia(data.media);
-
   let filteredMedia = $derived.by(() => {
     if (params.category) {
       return allMedia.filter((media) => media.category === params.category);
@@ -40,7 +40,6 @@
   });
 
   let now = $state(new Date());
-
   $effect(() => {
     now = new Date();
     const interval = setInterval(() => {
@@ -50,25 +49,27 @@
   });
 </script>
 
+{#snippet headerInfo()}
+  <div class="mt-4 mb-6 flex flex-col items-center justify-center gap-4 lg:flex-row lg:justify-between lg:gap-0">
+    <CategoryNav />
+    <p class="text-muted-foreground text-center text-xs lg:text-right">
+      Última Actualización: {formatDatetime(new Date(data.lastUpdate), now)}
+    </p>
+  </div>
+{/snippet}
+
 <main class="p-4 pt-2 md:pt-4">
   <section>
     {#if groupedMedia.length > 0}
       {#each groupedMedia as group, i}
-        <div
-          class="mt-8 flex w-full items-center justify-center gap-4 first:mt-0"
-        >
+        <div class="mt-8 flex w-full items-center justify-center gap-4 first:mt-0">
           <div class="bg-primary/40 h-0.5 w-full"></div>
           <h2 class="font-heading text-xl whitespace-nowrap">{group.title}</h2>
           <div class="bg-primary/40 h-0.5 w-full"></div>
         </div>
 
         {#if i === 0}
-          <p class="text-muted-foreground mt-4 mb-2 text-center text-xs">
-            Última Actualización: {formatDatetime(
-              new Date(data.lastUpdate),
-              now,
-            )}
-          </p>
+          {@render headerInfo()}
         {/if}
 
         {#each group.items as media}
@@ -76,9 +77,9 @@
         {/each}
       {/each}
     {:else}
-      <p class="text-muted-foreground mb-6 text-center text-xs">
-        Última Actualización: {formatDatetime(new Date(data.lastUpdate), now)}
-      </p>
+      
+      {@render headerInfo()}
+      
       <Empty.Root class="my-8 border border-dashed">
         <Empty.Media variant="icon" class="shadow">
           <ImageOff class="h-12 w-12" />

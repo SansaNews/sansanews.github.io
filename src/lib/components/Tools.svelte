@@ -41,7 +41,7 @@
             class="flex items-center rounded-md bg-primary px-4 py-2 text-xs font-bold text-primary-foreground"
             aria-label={tool.title}
           >
-            <p class="whitespace-nowrap">Ver proyecto</p>
+            <p class="whitespace-nowrap">Visitar</p>
             <ExternalLink class="ml-1 h-3.5 w-3.5" />
           </a>
         </div>

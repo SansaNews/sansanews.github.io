@@ -12,18 +12,7 @@
     "usantamaria",
     "usmsanjoaquin"
   ],
-  "Iniciativas": [
-    "sansanews",
-    "corousmsantiago",
-    "donfede.sj",
-    "emma.usm.sj",
-    "fablab_utfsm",
-    "gbu_usm",
-    "geekusm",
-    "movimiento.0",
-    "progcompusm",
-    "xumbra_utfsm"
-  ],
+  "Iniciativas": ["sansanews", "donfede.sj", "gbu_usm", "progcompusm"],
   "Deportes": [
     "bailarinesusm.cs",
     "balonmano_usm_stgo",
@@ -36,13 +25,5 @@
     "santamariasharks",
     "usm.esports_"
   ],
-  "Centros": [
-    "ceeinf_sj",
-    "ceeiqasj",
-    "ceemat.usm.sj",
-    "ceemin.utfsm",
-    "ceetel.sj",
-    "ceic_usm",
-    "feusam.usm.sj"
-  ]
+  "Centros": ["ceemat.usm.sj", "ceemin.utfsm"]
 }

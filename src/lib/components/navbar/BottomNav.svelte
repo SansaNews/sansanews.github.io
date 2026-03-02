@@ -1,26 +1,14 @@
 <script lang="ts">
   import { page } from "$app/state";
-  import { resolve } from "$app/paths";
-  import { type NavItem } from "./nav";
+  import { type NavItem, isSectionActive } from "./nav";
 
   let {
-    sections,
+    sections: navSections,
     hidden,
   }: {
     sections: NavItem[];
     hidden: boolean;
   } = $props();
-
-  function isActive(section: NavItem): boolean {
-    if (page.url.pathname === section.href) return true;
-    // Check if we are in a category
-    if (
-      section.href === resolve("/") &&
-      !sections.some((s) => s.href === page.url.pathname)
-    )
-      return true;
-    return false;
-  }
 </script>
 
 <nav
@@ -28,15 +16,19 @@
   class:translate-y-full={hidden}
 >
   <ul class="flex justify-around">
-    {#each sections as section}
-      <li>
+    {#each navSections as section}
+      {@const active = isSectionActive(section.href, page.url.pathname)}
+      <li class="flex-1">
         <a
           href={section.href}
-          class="flex flex-col items-center py-2 text-sm transition-colors"
-          class:text-primary={isActive(section)}
-          class:text-muted-foreground={!isActive(section)}
+          class="flex w-full flex-col items-center py-2 text-sm transition-colors"
+          class:text-primary={active}
+          class:text-muted-foreground={!active}
+          class:hover:text-primary={!active}
         >
-          <section.icon class="mb-1 h-4 w-4" />
+          {#if section.icon}
+            <section.icon class="mb-1 h-4 w-4" />
+          {/if}
           {section.label}
         </a>
       </li>

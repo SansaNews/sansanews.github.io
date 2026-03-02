@@ -49,37 +49,31 @@
   });
 </script>
 
-{#snippet headerInfo()}
-  <div class="mt-4 mb-6 flex flex-col items-center justify-center gap-4 lg:flex-row lg:justify-between lg:gap-0">
+<main class="p-4 pt-2 md:pt-4">
+  <div
+    class="mb-8 flex flex-col items-center justify-center gap-4 border-t-2 border-dashed pt-4 lg:flex-row lg:justify-between lg:gap-0"
+  >
     <CategoryNav />
     <p class="text-muted-foreground text-center text-xs lg:text-right">
       Última Actualización: {formatDatetime(new Date(data.lastUpdate), now)}
     </p>
   </div>
-{/snippet}
-
-<main class="p-4 pt-2 md:pt-4">
   <section>
     {#if groupedMedia.length > 0}
-      {#each groupedMedia as group, i}
-        <div class="mt-8 flex w-full items-center justify-center gap-4 first:mt-0">
+      {#each groupedMedia as group}
+        <div
+          class="mt-8 flex w-full items-center justify-center gap-4 first:mt-0"
+        >
           <div class="bg-primary/40 h-0.5 w-full"></div>
           <h2 class="font-heading text-xl whitespace-nowrap">{group.title}</h2>
           <div class="bg-primary/40 h-0.5 w-full"></div>
         </div>
-
-        {#if i === 0}
-          {@render headerInfo()}
-        {/if}
 
         {#each group.items as media}
           <Post {...media} />
         {/each}
       {/each}
     {:else}
-      
-      {@render headerInfo()}
-      
       <Empty.Root class="my-8 border border-dashed">
         <Empty.Media variant="icon" class="shadow">
           <ImageOff class="h-12 w-12" />
@@ -92,3 +86,4 @@
     {/if}
   </section>
 </main>
+

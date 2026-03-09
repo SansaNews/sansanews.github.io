@@ -51,7 +51,7 @@
 
 <main class="p-4 pt-2 md:pt-4">
   <div
-    class="mb-8 flex flex-col items-center justify-center gap-4 border-t-2 border-dashed pt-4 lg:flex-row lg:justify-between lg:gap-0"
+    class="mb-8 flex flex-col items-center justify-center gap-4 lg:border-t-2 border-dashed pt-4 lg:flex-row lg:justify-between lg:gap-0"
   >
     <CategoryNav />
     <p class="text-muted-foreground text-center text-xs lg:text-right">

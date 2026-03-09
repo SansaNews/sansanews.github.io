@@ -149,7 +149,7 @@
           <i>SansaNews</i> surgió en 2022 como un proyecto del ramo de primer año
           <i>Introducción a la Ingeniería</i>, siendo desarrollado en ese entonces por
           <i>Joaquín Domínguez</i>,
-          <i>Benjamín Leyton</i>, 
+          <i>Benjamín Leiton</i>, 
           <i>Juan García</i>, y
           <i>Rodrigo Cáceres</i> usando
           <a href="https://www.djangoproject.com/">Django</a> como framework.
@@ -189,7 +189,7 @@
     <h2 id="agradecimientos">Agradecimientos</h2>
     <p>
       Agradecemos a los contribuidores originales de <i>SansaNews</i>:
-      <a href="https://github.com/GlemTheGemini">Benjamín Leyton</a>,
+      <a href="https://github.com/GlemTheGemini">Benjamín Leiton</a>,
       <a href="https://github.com/RodrigoalDelPlanetaGol"
         >Rodrigo Cáceres</a
       >

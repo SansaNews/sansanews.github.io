@@ -1,28 +1,22 @@
 <script lang="ts">
-  import { page } from "$app/state";
-  import { categories, handleNavClick } from "./nav";
+  import { categories } from "./nav";
+  import * as ToggleGroup from "$lib/components/ui/toggle-group";
 
-  function getCategoryStyles(isActive: boolean): string {
-    const baseStyles = "rounded-md px-4 py-1.5 text-sm font-medium";
-    const activeStyles = "bg-primary text-background";
-    const inactiveStyles = "text-muted-foreground hover:text-primary hover:bg-primary/10";
-
-    return isActive
-      ? `${baseStyles} ${activeStyles}`
-      : `${baseStyles} ${inactiveStyles}`;
-  }
+  let { setCategory } = $props();
 </script>
 
-<nav class="hidden lg:flex items-center gap-2 flex-wrap">
+<ToggleGroup.Root
+  type="single"
+  variant="outline"
+  spacing={2}
+  onValueChange={(value) => setCategory(value)}
+>
   {#each categories as category}
-    {@const isActive = page.url.pathname === category.href}
-    
-    <a
-      href={category.href}
-      onclick={(e) => handleNavClick(e, isActive)}
-      class={getCategoryStyles(isActive)}
+    <ToggleGroup.Item
+      value={category.label.toLowerCase()}
+      class="data-[state=on]:bg-primary data-[state=on]:text-background text-muted-foreground hover:text-primary hover:bg-primary/10 cursor-pointer rounded-md px-4 py-1.5 text-sm font-medium"
     >
       {category.label}
-    </a>
+    </ToggleGroup.Item>
   {/each}
-</nav>
+</ToggleGroup.Root>

@@ -6,7 +6,7 @@
 </script>
 
 <main class="px-10 lg:px-16">
-  <div class="flex justify-center pt-2 pb-2 lg:hidden">
+  <div class="mx-auto flex max-w-lg justify-center lg:hidden">
     <a href={resolve("/")}>
       <img
         src={logo}
@@ -15,6 +15,7 @@
       />
     </a>
   </div>
+
   <section>
     <h1>Herramientas de la Comunidad</h1>
     <section>

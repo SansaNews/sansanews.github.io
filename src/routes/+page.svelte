@@ -1,6 +1,6 @@
 <script lang="ts">
   import Post from "$lib/components/Post.svelte";
-  import CategoryNav from "$lib/components/navbar/CategoryNav.svelte";
+  import CategoryToggle from "$lib/components/CategoryToggle.svelte";
   import data from "$lib/assets/media.json";
   import {
     type Media,
@@ -8,16 +8,17 @@
     formatDatetime,
     getTimeCategory,
   } from "$lib/media";
-  import type { PageProps } from "./$types";
   import * as Empty from "$lib/components/ui/empty";
   import { ImageOff } from "@lucide/svelte";
+  import { resolve } from "$app/paths";
+  import logo from "$lib/assets/extended-logo-black.png";
 
-  let { params }: PageProps = $props();
+  let category = $state("");
 
   const allMedia: Media[] = jsonToMedia(data.media);
   let filteredMedia = $derived.by(() => {
-    if (params.category) {
-      return allMedia.filter((media) => media.category === params.category);
+    if (category) {
+      return allMedia.filter((media) => media.category === category);
     }
     return allMedia;
   });
@@ -47,17 +48,53 @@
     }, 60 * 1000); // Updates every minute
     return () => clearInterval(interval);
   });
+
+  let lastScrollY = $state(0);
+  let hideMobileNav = $state(false);
+
+  function handleScroll() {
+    const currentScrollY = window.scrollY;
+    hideMobileNav = currentScrollY > lastScrollY && currentScrollY > 10;
+    lastScrollY = currentScrollY;
+  }
 </script>
 
-<main class="p-4 pt-2 md:pt-4">
+<svelte:window onscroll={handleScroll} />
+<main class="p-4 pt-2 lg:pt-4">
+  <!-- Mobile Header -->
   <div
-    class="mb-8 flex flex-col items-center justify-center gap-4 lg:border-t-2 border-dashed pt-4 lg:flex-row lg:justify-between lg:gap-0"
+    class="bg-background fixed top-0 right-0 left-0 z-40 border-b-2 transition-transform duration-300 lg:hidden"
+    class:-translate-y-full={hideMobileNav}
   >
-    <CategoryNav />
+    <!-- Logo -->
+    <div class="flex justify-center pt-2 pb-2">
+      <a href={resolve("/")}>
+        <img
+          src={logo}
+          class="h-15 transition-all duration-300"
+          alt="SansaNews Logo"
+        />
+      </a>
+    </div>
+
+    <div class="flex items-center justify-center pb-2">
+      <CategoryToggle setCategory={(c: string) => (category = c)} />
+    </div>
+  </div>
+
+  <!-- Desktop Header -->
+  <div
+    class="mb-8 flex flex-col items-center justify-center gap-4 border-dashed pt-4 lg:flex-row lg:justify-between lg:gap-0 lg:border-t-2"
+  >
+    <div class="hidden lg:flex">
+      <CategoryToggle setCategory={(c: string) => (category = c)} />
+    </div>
     <p class="text-muted-foreground text-center text-xs lg:text-right">
       Última Actualización: {formatDatetime(new Date(data.lastUpdate), now)}
     </p>
   </div>
+
+  <!-- Media Feed -->
   <section>
     {#if groupedMedia.length > 0}
       {#each groupedMedia as group}
@@ -86,4 +123,3 @@
     {/if}
   </section>
 </main>
-

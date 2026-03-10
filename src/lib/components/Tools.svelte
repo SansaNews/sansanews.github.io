@@ -6,39 +6,41 @@
   const toolList: Tool[] = toolsJSON.tools;
 </script>
 
-<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
   {#each toolList as tool}
-    <article class="card-shadow flex flex-col overflow-hidden rounded-lg border-2 bg-card">
-      
+    <article
+      class="card-shadow bg-card flex flex-col overflow-hidden rounded-lg border-2"
+    >
       <!-- Tool Image -->
       <a
         href={tool.url}
-        target="_blank" 
-        rel="noopener noreferrer" 
-        aria-label={tool.title}>
-        <img 
-          src={tool.image} 
-          alt={tool.alt} 
-          class="aspect-video w-full border-b-2 object-contain bg-muted"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={tool.title}
+      >
+        <img
+          src={tool.image}
+          alt={tool.alt}
+          class="bg-muted aspect-video w-full border-b-2 object-contain"
         />
       </a>
 
       <div class="flex flex-1 flex-col gap-3 p-4">
-        
         <!-- Title and Description -->
         <div class="flex flex-1 flex-col gap-1">
           <h2>{tool.title}</h2>
-          <p class="text-sm text-muted-foreground">{tool.description}</p>
+          <p class="text-muted-foreground text-sm">{tool.description}</p>
         </div>
 
         <!-- Author and Link -->
         <div class="flex items-center justify-between border-t-2 pt-3">
-          <span class="text-xs italic text-muted-foreground">{tool.author}</span>
+          <span class="text-muted-foreground text-xs italic">{tool.author}</span
+          >
           <a
             href={tool.url}
             target="_blank"
             rel="noopener noreferrer"
-            class="flex items-center rounded-md bg-primary px-4 py-2 text-xs font-bold text-primary-foreground"
+            class="bg-primary text-primary-foreground flex items-center rounded-md px-4 py-2 text-xs font-bold"
             aria-label={tool.title}
           >
             <p class="whitespace-nowrap">Visitar</p>
@@ -64,3 +66,4 @@
     box-shadow: 6px 6px 0px 0px var(--border);
   }
 </style>
+

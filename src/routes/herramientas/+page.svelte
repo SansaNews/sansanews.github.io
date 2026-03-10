@@ -1,16 +1,28 @@
 <script lang="ts">
+  import { resolve } from "$app/paths";
+  import logo from "$lib/assets/extended-logo-black.png";
+
   import Tools from "$lib/components/Tools.svelte";
 </script>
 
-<main class="px-10 md:px-16">
+<main class="px-10 lg:px-16">
+  <div class="flex justify-center pt-2 pb-2 lg:hidden">
+    <a href={resolve("/")}>
+      <img
+        src={logo}
+        class="w-auto transition-all duration-300"
+        alt="SansaNews Logo"
+      />
+    </a>
+  </div>
   <section>
     <h1>Herramientas de la Comunidad</h1>
     <section>
       <p>
-        La creatividad sansana no siempre viene en forma de
-        iniciativa estudiantil. A veces, un trabajo pensado para un
-        ramo, un desarrollo personal o simplemente algo hecho por
-        diversión con amigos puede resultar en algo de increíble valor para la comunidad.
+        La creatividad sansana no siempre viene en forma de iniciativa
+        estudiantil. A veces, un trabajo pensado para un ramo, un desarrollo
+        personal o simplemente algo hecho por diversión con amigos puede
+        resultar en algo de increíble valor para la comunidad.
       </p>
       <p>
         En esta sección queremos destacar estas herramientas, para que más
@@ -18,15 +30,16 @@
       </p>
     </section>
   </section>
-  
+
   <Tools />
 
   <section>
     <h2>¿Conoces alguna otra herramienta?</h2>
     <p>
-      ¡Contáctanos por Instagram en <a href="https://www.instagram.com/sansanews/">@sansanews</a>!
-      Si es relevante para la comunidad sansana,
-      la agregaremos en esta sección.
+      ¡Contáctanos por Instagram en <a
+        href="https://www.instagram.com/sansanews/">@sansanews</a
+      >! Si es relevante para la comunidad sansana, la agregaremos en esta
+      sección.
     </p>
   </section>
 </main>
@@ -50,7 +63,7 @@
     font-size: 2rem;
     font-weight: bold;
   }
-    
+
   h2 {
     font-family: var(--font-heading);
     font-size: 1.5rem;

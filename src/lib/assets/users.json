@@ -17,13 +17,11 @@
     "bailarinesusm.cs",
     "balonmano_usm_stgo",
     "basketusm",
-    "boxeo.usm",
-    "cheer.usm",
     "defider_usm",
     "lobos_marinos_usm",
     "prestigeleagueusm",
     "santamariasharks",
     "usm.esports_"
   ],
-  "Centros": ["ceemat.usm.sj", "ceemin.utfsm","ceeinf_sj"]
+  "Centros": ["ceemat.usm.sj", "ceemin.utfsm", "ceeinf_sj"]
 }

@@ -1,6 +1,5 @@
 <script lang="ts">
   import Post from "$lib/components/Post.svelte";
-  import CategoryToggle from "$lib/components/CategoryToggle.svelte";
   import data from "$lib/assets/media.json";
   import {
     type Media,
@@ -10,8 +9,7 @@
   } from "$lib/media";
   import * as Empty from "$lib/components/ui/empty";
   import { ImageOff } from "@lucide/svelte";
-  import { resolve } from "$app/paths";
-  import logo from "$lib/assets/extended-logo-black.png";
+  import CategoryHeader from "$lib/components/CategoryHeader.svelte";
 
   let category = $state("");
 
@@ -48,53 +46,14 @@
     }, 60 * 1000); // Updates every minute
     return () => clearInterval(interval);
   });
-
-  let lastScrollY = $state(0);
-  let hideMobileNav = $state(false);
-
-  function handleScroll() {
-    const currentScrollY = window.scrollY;
-    hideMobileNav = currentScrollY > lastScrollY && currentScrollY > 10;
-    lastScrollY = currentScrollY;
-  }
 </script>
 
-<svelte:window onscroll={handleScroll} />
 <main class="p-4 pt-2 lg:pt-4">
-  <!-- Mobile Header -->
-  <div
-    class="bg-background fixed top-0 right-0 left-0 z-40 border-b-2 transition-transform duration-300 lg:hidden"
-    class:-translate-y-full={hideMobileNav}
-  >
-    <!-- Logo -->
-    <div class="flex justify-center pt-2 pb-2">
-      <a href={resolve("/")}>
-        <img
-          src={logo}
-          class="h-15 transition-all duration-300"
-          alt="SansaNews Logo"
-        />
-      </a>
-    </div>
+  <CategoryHeader
+    setCategory={(value: string) => (category = value)}
+    lastUpdate={formatDatetime(new Date(data.lastUpdate), now)}
+  />
 
-    <div class="flex items-center justify-center pb-2">
-      <CategoryToggle setCategory={(c: string) => (category = c)} />
-    </div>
-  </div>
-
-  <!-- Desktop Header -->
-  <div
-    class="mb-8 flex flex-col items-center justify-center gap-4 border-dashed pt-4 lg:flex-row lg:justify-between lg:gap-0 lg:border-t-2"
-  >
-    <div class="hidden lg:flex">
-      <CategoryToggle setCategory={(c: string) => (category = c)} />
-    </div>
-    <p class="text-muted-foreground text-center text-xs lg:text-right">
-      Última Actualización: {formatDatetime(new Date(data.lastUpdate), now)}
-    </p>
-  </div>
-
-  <!-- Media Feed -->
   <section>
     {#if groupedMedia.length > 0}
       {#each groupedMedia as group}

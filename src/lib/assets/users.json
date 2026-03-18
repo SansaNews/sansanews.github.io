@@ -12,7 +12,15 @@
     "usantamaria",
     "usmsanjoaquin"
   ],
-  "Iniciativas": ["sansanews", "uavusm", "clubdemusica.usmsj", "donfede.sj", "gbu_usm", "progcompusm"],
+  "Iniciativas": [
+    "clubdemusica.usmsj",
+    "donfede.sj",
+    "gbu_usm",
+    "movimiento.0",
+    "progcompusm",
+    "sansanews",
+    "uavusm"
+  ],
   "Deportes": [
     "bailarinesusm.cs",
     "balonmano_usm_stgo",

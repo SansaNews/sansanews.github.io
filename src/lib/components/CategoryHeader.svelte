@@ -10,11 +10,18 @@
 
   let lastScrollY = $state(0);
   let hideMobileNav = $state(false);
+  let fade = $state({ left: false, right: true });
 
   function handleScroll() {
     const currentScrollY = window.scrollY;
     hideMobileNav = currentScrollY > lastScrollY && currentScrollY > 10;
     lastScrollY = currentScrollY;
+  }
+  
+  function updateFade(e: Event) {
+  const { scrollLeft, scrollWidth, clientWidth } = e.target as HTMLElement;
+  fade.left = scrollLeft > 10;
+  fade.right = scrollLeft < scrollWidth - clientWidth - 10;
   }
 </script>
 
@@ -62,8 +69,18 @@
       />
     </a>
   </div>
-  <div class="overflow-x-auto px-2 pb-2" style="scrollbar-width: none;">
-    {@render CategorySelector()}
+
+  <div class="relative">
+  
+    <!-- Fade -->
+    <div class="pointer-events-none absolute top-0 bottom-2 left-0 w-10 bg-gradient-to-r 
+    from-gray-100 transition-opacity duration-300 {fade.left ? '' : 'opacity-0'}"></div>
+    <div class="pointer-events-none absolute top-0 bottom-2 right-0 w-10 bg-gradient-to-l
+    from-gray-100 transition-opacity duration-300 {fade.right ? '' : 'opacity-0'}"></div>
+    
+    <div onscroll={updateFade} class="overflow-x-auto px-2 pb-2" style="scrollbar-width: none;">
+      {@render CategorySelector()}
+    </div>
   </div>
 </div>
 

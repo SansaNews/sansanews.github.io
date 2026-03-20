@@ -21,16 +21,24 @@
 {#snippet CategorySelector()}
   <ToggleGroup.Root
     type="single"
-    variant="outline"
     spacing={2}
     onValueChange={(value) => setCategory(value)}
   >
+  <ToggleGroup.Item
+    value=""
+    class="data-[state=on]:bg-primary/80 data-[state=on]:text-background text-muted-foreground hover:text-primary 
+  hover:bg-primary/10 shadow-xs cursor-pointer rounded-md bg-white px-4
+  text-sm font-medium"
+  >
+    Todos
+  </ToggleGroup.Item>    
+
     {#each categories as category}
       <ToggleGroup.Item
         value={category.toLowerCase()}
         class="data-[state=on]:bg-primary/80 data-[state=on]:text-background text-muted-foreground hover:text-primary 
-      hover:bg-primary/10 shadow-border cursor-pointer rounded-md bg-white px-4 py-1.5 
-      text-sm font-medium shadow-[2px_2px_0px_0px]"
+      hover:bg-primary/10 shadow-xs cursor-pointer rounded-md bg-white px-4
+      text-sm font-medium"
       >
         {category}
       </ToggleGroup.Item>
@@ -54,8 +62,7 @@
       />
     </a>
   </div>
-
-  <div class="flex items-center justify-center pb-2">
+  <div class="overflow-x-auto px-2 pb-2" style="scrollbar-width: none;">
     {@render CategorySelector()}
   </div>
 </div>

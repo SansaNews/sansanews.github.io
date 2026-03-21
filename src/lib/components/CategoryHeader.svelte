@@ -34,7 +34,7 @@
   <ToggleGroup.Item
     value=""
     class="data-[state=on]:bg-primary/80 data-[state=on]:text-background text-muted-foreground hover:text-primary 
-  hover:bg-primary/10 shadow-xs cursor-pointer rounded-md bg-white px-4
+  hover:bg-primary/10 transition-none shadow-xs cursor-pointer rounded-md bg-white px-4
   text-sm font-medium"
   >
     Todos
@@ -44,7 +44,7 @@
       <ToggleGroup.Item
         value={category.toLowerCase()}
         class="data-[state=on]:bg-primary/80 data-[state=on]:text-background text-muted-foreground hover:text-primary 
-      hover:bg-primary/10 shadow-xs cursor-pointer rounded-md bg-white px-4
+      hover:bg-primary/10 transition-none shadow-xs cursor-pointer rounded-md bg-white px-4
       text-sm font-medium"
       >
         {category}

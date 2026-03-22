@@ -20,8 +20,8 @@
   
   function updateFade(e: Event) {
   const { scrollLeft, scrollWidth, clientWidth } = e.target as HTMLElement;
-  fade.left = scrollLeft > 10;
-  fade.right = scrollLeft < scrollWidth - clientWidth - 10;
+  fade.left = scrollLeft > 8;
+  fade.right = scrollLeft < scrollWidth - clientWidth - 8;
   }
 </script>
 

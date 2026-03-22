@@ -1,13 +1,25 @@
 <script lang="ts">
   import logo from "$lib/assets/square-logo.svg";
+  import banner from "$lib/assets/extended-logo-black.png";
   import presentation from "$lib/assets/sansanews_presentation.jpg";
   import Reference from "$lib/components/Reference.svelte";
+  import { resolve } from "$app/paths";
 </script>
 
-<main class="px-10 md:px-16">
+<main class="px-10 lg:px-16">
+  <div class="mx-auto flex max-w-lg justify-center lg:hidden">
+    <a href={resolve("/")}>
+      <img
+        src={banner}
+        class="w-auto transition-all duration-300"
+        alt="SansaNews Logo"
+      />
+    </a>
+  </div>
+
   <section>
     <h1>Sobre Nosotros</h1>
-    <div class="flex flex-col items-center gap-4 md:flex-row md:gap-12">
+    <div class="flex flex-col items-center gap-4 lg:flex-row lg:gap-12">
       <section>
         <p>
           <i>SansaNews</i> es una iniciativa estudiantil que busca centralizar las
@@ -15,18 +27,18 @@
           comunidad sansana.
         </p>
         <p>
-          La iniciativa es desarrollada por dos sansanos, <a href="https://github.com/MoonTurtlee"
-            >Joaquín Domínguez</a
+          La iniciativa es desarrollada por dos sansanos, <a
+            href="https://github.com/MoonTurtlee">Joaquín Domínguez</a
           >
-          y <a href="https://github.com/LuckJMG">Lucas Mosquera</a>. El proyecto es público, y se encuentra
-          alojado en
+          y <a href="https://github.com/LuckJMG">Lucas Mosquera</a>. El proyecto
+          es público, y se encuentra alojado en
           <a href="https://github.com/SansaNews/sansanews.github.io">GitHub</a>.
         </p>
         <p>
           El objetivo de la página es ayudar a difundir las diversas iniciativas
           y eventos que ocurren en nuestra universidad. <strong
-            >Si quieres apoyar a las iniciativas, considera seguirlas en instagram y
-            participar en sus actividades.</strong
+            >Si quieres apoyar a las iniciativas, considera seguirlas en
+            instagram y participar en sus actividades.</strong
           >
         </p>
         <p>
@@ -72,8 +84,8 @@
       </p>
       <p>
         La idea es difundir las noticias más recientes de la universidad, no ser
-        un archivo de publicaciones. Si quieres ver posts más antiguos, puedes acceder a ellos
-        en las cuentas oficiales de las iniciativas.
+        un archivo de publicaciones. Si quieres ver posts más antiguos, puedes
+        acceder a ellos en las cuentas oficiales de las iniciativas.
       </p>
     </question>
     <question>
@@ -143,27 +155,30 @@
   </section>
   <section>
     <h2 id="historia">Historia</h2>
-    <div class="flex flex-col items-center gap-4 md:flex-row md:gap-12">
+    <div class="flex flex-col items-center gap-4 lg:flex-row lg:gap-12">
       <section>
         <p>
-          <i>SansaNews</i> surgió en 2022 como un proyecto del ramo de primer año
-          <i>Introducción a la Ingeniería</i>, siendo desarrollado en ese entonces por
+          <i>SansaNews</i> surgió en 2022 como un proyecto del ramo de primer
+          año
+          <i>Introducción a la Ingeniería</i>, siendo desarrollado en ese
+          entonces por
           <i>Joaquín Domínguez</i>,
-          <i>Benjamín Leyton</i>, 
+          <i>Benjamín Leiton</i>,
           <i>Juan García</i>, y
           <i>Rodrigo Cáceres</i> usando
           <a href="https://www.djangoproject.com/">Django</a> como framework.
         </p>
         <p>
-          La presentación del proyecto fue un gran éxito, lo cual impulsó la idea de continuar el proyecto una vez finalizado el ramo.
-          Con esto en mente, <i>Joaquín Domínguez</i> buscó a más
-          personas para el desarrollo del proyecto, entre ellos
+          La presentación del proyecto fue un gran éxito, lo cual impulsó la
+          idea de continuar el proyecto una vez finalizado el ramo. Con esto en
+          mente, <i>Joaquín Domínguez</i> buscó a más personas para el
+          desarrollo del proyecto, entre ellos
           <i>Lucas Mosquera</i>.
         </p>
         <p>
-          La segunda versión de <i>SansaNews</i> se intentó desarrollar en el verano de
-          2023. Aunque por falta de conocimiento y experiencia no se pudo finalizar, quedando
-          el proyecto en stand-by.
+          La segunda versión de <i>SansaNews</i> se intentó desarrollar en el verano
+          de 2023. Aunque por falta de conocimiento y experiencia no se pudo finalizar,
+          quedando el proyecto en stand-by.
         </p>
       </section>
       <img
@@ -174,8 +189,8 @@
     </div>
     <p>
       La idea nunca murió, cada semestre escuchamos comentarios sobre como
-      faltaba un espacio para divulgar las noticias de la
-      universidad, y solo podíamos pensar en SansaNews.
+      faltaba un espacio para divulgar las noticias de la universidad, y solo
+      podíamos pensar en SansaNews.
     </p>
     <p>
       En verano de 2026, 4 años después de la versión original, en parte por ya
@@ -189,10 +204,8 @@
     <h2 id="agradecimientos">Agradecimientos</h2>
     <p>
       Agradecemos a los contribuidores originales de <i>SansaNews</i>:
-      <a href="https://github.com/GlemTheGemini">Benjamín Leyton</a>,
-      <a href="https://github.com/RodrigoalDelPlanetaGol"
-        >Rodrigo Cáceres</a
-      >
+      <a href="https://github.com/GlemTheGemini">Benjamín Leiton</a>,
+      <a href="https://github.com/RodrigoalDelPlanetaGol">Rodrigo Cáceres</a>
       y <a href="https://github.com/juanjo000">Juan García</a>.
     </p>
   </section>

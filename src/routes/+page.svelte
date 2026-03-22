@@ -7,17 +7,16 @@
     formatDatetime,
     getTimeCategory,
   } from "$lib/media";
-  import type { PageProps } from "./$types";
   import * as Empty from "$lib/components/ui/empty";
   import { ImageOff } from "@lucide/svelte";
+  import CategoryHeader from "$lib/components/CategoryHeader.svelte";
 
-  let { params }: PageProps = $props();
+  let category = $state("");
 
   const allMedia: Media[] = jsonToMedia(data.media);
-
   let filteredMedia = $derived.by(() => {
-    if (params.category) {
-      return allMedia.filter((media) => media.category === params.category);
+    if (category) {
+      return allMedia.filter((media) => media.category === category);
     }
     return allMedia;
   });
@@ -40,7 +39,6 @@
   });
 
   let now = $state(new Date());
-
   $effect(() => {
     now = new Date();
     const interval = setInterval(() => {
@@ -50,10 +48,15 @@
   });
 </script>
 
-<main class="p-4 pt-2 md:pt-4">
+<main class="p-4 pt-2 lg:pt-4">
+  <CategoryHeader
+    setCategory={(value: string) => (category = value)}
+    lastUpdate={formatDatetime(new Date(data.lastUpdate), now)}
+  />
+
   <section>
     {#if groupedMedia.length > 0}
-      {#each groupedMedia as group, i}
+      {#each groupedMedia as group}
         <div
           class="mt-8 flex w-full items-center justify-center gap-4 first:mt-0"
         >
@@ -62,23 +65,11 @@
           <div class="bg-primary/40 h-0.5 w-full"></div>
         </div>
 
-        {#if i === 0}
-          <p class="text-muted-foreground mt-4 mb-2 text-center text-xs">
-            Última Actualización: {formatDatetime(
-              new Date(data.lastUpdate),
-              now,
-            )}
-          </p>
-        {/if}
-
         {#each group.items as media}
           <Post {...media} />
         {/each}
       {/each}
     {:else}
-      <p class="text-muted-foreground mb-6 text-center text-xs">
-        Última Actualización: {formatDatetime(new Date(data.lastUpdate), now)}
-      </p>
       <Empty.Root class="my-8 border border-dashed">
         <Empty.Media variant="icon" class="shadow">
           <ImageOff class="h-12 w-12" />

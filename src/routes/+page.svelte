@@ -1,5 +1,6 @@
 <script lang="ts">
   import Post from "$lib/components/Post.svelte";
+  import AvatarScroll from "$lib/components/AvatarScroll.svelte";
   import data from "$lib/assets/media.json";
   import {
     type Media,
@@ -43,7 +44,7 @@
     now = new Date();
     const interval = setInterval(() => {
       now = new Date();
-    }, 60 * 1000); // Updates every minute
+    }, 60 * 1000);
     return () => clearInterval(interval);
   });
 </script>
@@ -53,6 +54,7 @@
     setCategory={(value: string) => (category = value)}
     lastUpdate={formatDatetime(new Date(data.lastUpdate), now)}
   />
+  <AvatarScroll />
 
   <section>
     {#if groupedMedia.length > 0}

@@ -2,12 +2,6 @@ set dotenv-load
 set dotenv-required
 set windows-shell := ["powershell.exe", "-c"]
 
-python := if os() == "linux" { "python3" } else { "python" }
-venv := if os() == "linux" { ".venv/bin/" } else { ".venv/Scripts/" }
-
-backend := venv + "python backend.py"
-pip := venv + "pip"
-
 # Run dev server
 dev:
 	bun run dev
@@ -16,21 +10,18 @@ dev:
 build:
 	bun run build
 
+# Update media.json
+update:
+	bun run backend/main.ts
+
 # Check if user is available
 check username:
-	{{backend}} check {{username}}
+	bun run backend/test.ts check {{username}}
 
-# Get user media
-get username:
-	{{backend}} get {{username}}
-
-# Get media from all users in USERS_PATH
-get-all:
-	{{backend}} get --all
+# Get user media (--sanitize, --since <days>, --max <amount>)
+get username *flags:
+	bun run backend/test.ts get {{username}} {{flags}}
 
 # Initialize project enviroment
 init:
 	bun install
-	{{python}} -m venv .venv
-	{{pip}} install --upgrade pip
-	{{pip}} install requests

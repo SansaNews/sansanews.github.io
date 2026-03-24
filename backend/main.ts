@@ -107,7 +107,7 @@ export async function getUserData(username: string, config: APIConfig): Promise<
   }
 }
 
-function sanitizeData(username: string, data: any, category: string = "") {
+export function sanitizeData(username: string, data: any, category: string = "") {
   if (!data?.business_discovery?.media) {
     return [];
   }

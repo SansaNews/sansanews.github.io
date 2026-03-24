@@ -7,8 +7,10 @@ class APIConfig {
   url: string;
   accessToken: string;
   timeoutSeconds: number;
+  timestampLimit: number;
+  maxPostsPerUser: number;
 
-  constructor(timeoutSeconds: number = 15) {
+  constructor(timeoutSeconds: number = 15, sinceDays: number = 30, maxPostsPerUser: number = 5) {
     if (timeoutSeconds <= 0) throw new Error("Timeout must be greater than 0");
 
     const API_VERSION = "v24.0";
@@ -20,6 +22,11 @@ class APIConfig {
 
     this.accessToken = token;
     this.timeoutSeconds = timeoutSeconds;
+    this.maxPostsPerUser = maxPostsPerUser;
+
+    const dateLimit = new Date();
+    dateLimit.setDate(dateLimit.getDate() - sinceDays);
+    this.timestampLimit = Math.floor(dateLimit.getTime() / 1000);
   }
 }
 
@@ -74,22 +81,11 @@ async function processSingleUser(user: User, config: APIConfig): Promise<Media[]
   return sanitizeData(user.username, userData, user.category);
 }
 
-async function getUserData(
-  username: string,
-  config: APIConfig,
-  sinceDays: number = 30,
-  maxAmount: number = 100,
-): Promise<any> {
-  if (maxAmount <= 0) throw new Error("maxAmount must be greater than 0");
-
-  const dateLimit = new Date();
-  dateLimit.setDate(dateLimit.getDate() - sinceDays);
-  const timestamp = Math.floor(dateLimit.getTime() / 1000);
-
+async function getUserData(username: string, config: APIConfig): Promise<any> {
   const fields = `
   business_discovery.username(${username}){
     profile_picture_url,
-    media.limit(${maxAmount}).since(${timestamp}){
+    media.limit(${config.maxPostsPerUser}).since(${config.timestampLimit}) {
       timestamp,caption,media_type,permalink,media_url,children
     }
   }`;
@@ -111,7 +107,7 @@ async function getUserData(
 
     return await response.json();
   } catch (error) {
-    console.error(`Could not connecto to Instagram API: ${error}`);
+    console.error(`Could not connect to Instagram API: ${error}`);
     return {};
   }
 }

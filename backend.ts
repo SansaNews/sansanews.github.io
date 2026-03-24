@@ -1,7 +1,6 @@
 import { file, write } from "bun";
 
 type User = { username: string; category: string };
-type Media = Record<string, any>;
 
 class APIConfig {
   url: string;
@@ -11,14 +10,16 @@ class APIConfig {
   maxPostsPerUser: number;
 
   constructor(timeoutSeconds: number = 15, sinceDays: number = 30, maxPostsPerUser: number = 5) {
-    if (timeoutSeconds <= 0) throw new Error("Timeout must be greater than 0");
+    assert(timeoutSeconds > 0, "Timeout must be greater than 0");
+    assert(sinceDays > 0, "Since days must be greater than 0");
+    assert(maxPostsPerUser > 0, "Max posts per user must be greater than 0");
 
     const API_VERSION = "v24.0";
     const INSTAGRAM_ID = "17841455210130919";
     this.url = `https://graph.facebook.com/${API_VERSION}/${INSTAGRAM_ID}`;
 
     const token = process.env.ACCESS_TOKEN;
-    if (!token) throw new Error("ACCESS_TOKEN environment variable is required");
+    assert(token, "ACCESS_TOKEN environment variable is required");
 
     this.accessToken = token;
     this.timeoutSeconds = timeoutSeconds;
@@ -51,7 +52,12 @@ async function main() {
     }
   }
 
-  let media = await getAllUsersMedia(users, config);
+  const promises = users.map(async (user) => {
+    const userData = await getUserData(user.username, config);
+    return sanitizeData(user.username, userData, user.category);
+  });
+  const results = await Promise.all(promises);
+  let media = results.flat();
 
   media.sort((a, b) => {
     const timeA = new Date(a.timestamp).getTime();
@@ -66,19 +72,6 @@ async function main() {
 
   await write(MEDIA_PATH, JSON.stringify(outputData, null, 2));
   console.log(`Posts saved on ${MEDIA_PATH}`);
-}
-
-async function getAllUsersMedia(users: User[], config: APIConfig): Promise<Media[]> {
-  if (users.length === 0) throw new Error("Users array cannot be empty");
-
-  const promises = users.map((user) => processSingleUser(user, config));
-  const results = await Promise.all(promises);
-  return results.flat();
-}
-
-async function processSingleUser(user: User, config: APIConfig): Promise<Media[]> {
-  const userData = await getUserData(user.username, config);
-  return sanitizeData(user.username, userData, user.category);
 }
 
 async function getUserData(username: string, config: APIConfig): Promise<any> {
@@ -127,4 +120,10 @@ function sanitizeData(username: string, data: any, category: string = "") {
     media.children = "children" in media;
     return media;
   });
+}
+
+function assert(condition: any, message: string): asserts condition {
+  if (!condition) {
+    throw new Error(message);
+  }
 }

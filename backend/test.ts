@@ -11,8 +11,6 @@ async function main() {
   assert(command, "Command is required");
 
   try {
-    const config = new APIConfig();
-
     if (command === "check") {
       const username = args[1];
       assert(username, "Username is required for 'check' command");

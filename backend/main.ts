@@ -1,8 +1,8 @@
 import { file, write } from "bun";
 
-type User = { username: string; category: string };
+export type User = { username: string; category: string };
 
-class APIConfig {
+export class APIConfig {
   url: string;
   accessToken: string;
   timeoutSeconds: number;
@@ -31,10 +31,12 @@ class APIConfig {
   }
 }
 
-main().catch((error) => {
-  console.error("Execution failed:", error);
-  process.exit(1);
-});
+if (import.meta.main) {
+  main().catch((error) => {
+    console.error("Execution failed:", error);
+    process.exit(1);
+  });
+}
 
 async function main() {
   const USERS_PATH = "src/lib/assets/users.json";
@@ -74,7 +76,7 @@ async function main() {
   console.log(`Posts saved on ${MEDIA_PATH}`);
 }
 
-async function getUserData(username: string, config: APIConfig): Promise<any> {
+export async function getUserData(username: string, config: APIConfig): Promise<any> {
   const fields = `
   business_discovery.username(${username}){
     profile_picture_url,
@@ -122,7 +124,7 @@ function sanitizeData(username: string, data: any, category: string = "") {
   });
 }
 
-function assert(condition: any, message: string): asserts condition {
+export function assert(condition: any, message: string): asserts condition {
   if (!condition) {
     throw new Error(message);
   }

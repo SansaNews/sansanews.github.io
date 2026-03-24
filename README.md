@@ -8,7 +8,6 @@ _SansaNews_ es una iniciativa estudiantil que busca centralizar las noticias de 
 
 - [Git](https://git-scm.com/)
 - [just](https://github.com/casey/just)
-- [Python](https://www.python.org/)
 - [Bun](https://bun.sh/)
 
 Para inicializar el proyecto ejecuta los siguientes comandos:
@@ -29,13 +28,13 @@ Puedes obtener un token de acceso siguiendo la [guía de la API de Instagram](ht
 
 ## Comandos
 
-Puedes ver todos los comandos del proyecto con `just -l`.
+Puedes ver todos los comandos del proyecto con `just --list`.
 
 ```sh
 just dev            # Inicia el entorno de desarrollo
 just check username # Chequea si el usuario es accesible mediante la API
-just get username   # Obtiene los últimos posts del usuario
-just get-all        # Obtiene los últimos posts de los usuarios que se encuentran en `src/lib/assets/users.json`
+just get username   # Obtiene los últimos posts del usuario (flags: --sanitize, --since <dias>, --max <cantidad>)
+just update         # Obtiene los últimos posts de los usuarios que se encuentran en `src/lib/assets/users.json`
 just build          # Construye el proyecto para ser publicado
 ```
 
@@ -47,9 +46,10 @@ Usamos [just](https://github.com/casey/just) para crear comandos personalizados 
 
 Para el script del backend ocupamos python junto con la [API Oficial de Instagram](https://developers.facebook.com/docs/instagram-platform) para obtener legalmente los posts.
 
-El script `backend.py` obtiene los usuarios a consultar de `users.json` y guarda los posts en `media.json`.
+El script `backend/main.ts` obtiene los usuarios a consultar de `users.json` y guarda los posts en `media.json`.
 
-- `backend.py`, script encargado de actualizar las publicaciones.
+- `backend/main.ts`, script encargado de actualizar las publicaciones.
+- `backend/test.ts`, script para hacer testing de publicaciones.
 - `src/lib/assets/users.json`, lista de usuarios que subir.
 - `src/lib/assets/media.json`, lista de posts obtenidos mediante `backend.py`.
 

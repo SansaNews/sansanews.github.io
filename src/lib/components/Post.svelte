@@ -46,6 +46,7 @@
               src={media.url}
               alt="Post de {media.username}"
               referrerpolicy="no-referrer"
+              loading="lazy"
               class="h-auto w-full object-contain"
             />
           {:else if videoLoaded}
@@ -68,6 +69,7 @@
               <img
                 src={media.thumbnail}
                 alt="Previsualización video de {media.username}"
+                loading="lazy"
                 class="h-auto w-full object-contain"
               />
               <div

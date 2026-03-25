@@ -59,7 +59,7 @@
             ></video>
           {:else}
             <button
-              class="relative w-full cursor-pointer border-none bg-transparent p-0"
+              class="relative flex w-full cursor-pointer border-none bg-transparent p-0 leading-none"
               onclick={(e) => {
                 e.preventDefault();
                 videoLoaded = true;

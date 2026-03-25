@@ -21,7 +21,7 @@ export function jsonToMedia(json: any[]): Media[] {
     permalink: media.permalink,
     profileLink: "https://www.instagram.com/" + media.username,
     profilePicture: media.profile_picture_url,
-    thumbnail: media.thumbnail_url,
+    thumbnail: media.thumbnail_url ?? "",
     type: media.media_type,
     url: media.media_url,
     username: media.username,

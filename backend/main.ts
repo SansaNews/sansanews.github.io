@@ -81,7 +81,7 @@ export async function getUserData(username: string, config: APIConfig): Promise<
   business_discovery.username(${username}){
     profile_picture_url,
     media.limit(${config.maxPostsPerUser}).since(${config.timestampLimit}) {
-      timestamp,caption,media_type,permalink,media_url,children
+      timestamp,caption,media_type,permalink,media_url,children,thumbnail_url
     }
   }`;
 

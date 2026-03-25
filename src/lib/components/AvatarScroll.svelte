@@ -14,8 +14,8 @@
   const categories = Object.entries(usersJSON).map(([name, usernames]) => ({
     name,
     users: usernames
-      .filter((u) => profilePics[u])
-      .map((u) => ({ username: u, pic: profilePics[u], href: `https://www.instagram.com/${u}` })),
+      .filter((u) => profilePics[u] && u)
+      .map((u) => ({ username: u, pic: profilePics[u]!, href: `https://www.instagram.com/${u}` })),
   }));
 
   const allUsers = categories.flatMap((c) => c.users);

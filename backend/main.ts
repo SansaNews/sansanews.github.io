@@ -97,11 +97,20 @@ export async function getUserData(username: string, config: APIConfig): Promise<
     if (!response.ok) {
       const errorText = await response.text();
       console.error(`Error HTTP ${response.status}: ${errorText}`);
+
+      if (response.status === 403) {
+        throw new Error("HTTP 403 Forbidden: Reached API rate limit or insufficient permissions.");
+      }
+
       return {};
     }
 
     return await response.json();
   } catch (error) {
+    if (error instanceof Error && error.message.includes("HTTP 403")) {
+      throw error;
+    }
+
     console.error(`Could not connect to Instagram API: ${error}`);
     return {};
   }

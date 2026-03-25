@@ -68,7 +68,9 @@
         </div>
 
         {#each group.items as media}
-          <Post {...media} />
+          {#key media.permalink}
+            <Post {...media} />
+          {/key}
         {/each}
       {/each}
     {:else}

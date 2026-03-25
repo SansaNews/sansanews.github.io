@@ -1,3 +1,6 @@
+src/lib/assets/media.json
+
+# Svelte
 node_modules
 
 # Output
@@ -19,7 +22,6 @@ Thumbs.db
 .env.*
 !.env.example
 !.env.test
-
 
 # Vite
 vite.config.js.timestamp-*

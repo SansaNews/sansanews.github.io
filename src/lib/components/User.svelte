@@ -26,8 +26,9 @@
   <Avatar class="h-12 w-12 sm:h-15 sm:w-15">
     <img
       src={profilePicture}
-      alt="Post de {username}"
+      alt="Foto de perfil de {username}"
       referrerpolicy="no-referrer"
+      loading="lazy"
     />
   </Avatar>
 </a>

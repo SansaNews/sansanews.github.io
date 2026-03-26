@@ -50,11 +50,13 @@
 </script>
 
 <main class="p-4 pt-2 lg:pt-4">
+  
+  <div class="h-28 lg:hidden"></div>
+  <AvatarScroll />
   <CategoryHeader
     setCategory={(value: string) => (category = value)}
     lastUpdate={formatDatetime(new Date(data.lastUpdate), now)}
   />
-  <AvatarScroll />
 
   <section>
     {#if groupedMedia.length > 0}

@@ -55,7 +55,6 @@
 
 <!-- Mobile Header -->
 <svelte:window onscroll={handleScroll} />
-<div class="h-28 lg:hidden"></div>
 <div
   class="bg-background fixed top-0 right-0 left-0 z-40 border-b-2 transition-transform duration-300 lg:hidden"
   class:-translate-y-full={hideMobileNav}
@@ -86,7 +85,7 @@
 
 <!-- Desktop Header -->
 <div
-  class="mb-6 flex flex-col items-center justify-center gap-4 border-dashed pt-4 lg:mt-6 lg:mb-8 lg:flex-row lg:justify-between lg:gap-0 lg:border-t-2"
+  class="hidden lg:flex mb-6 flex-col items-center justify-center gap-4 border-dashed pt-4 lg:mt-6 lg:mb-8 lg:flex-row lg:justify-between lg:gap-0 lg:border-t-2"
 >
   <div class="hidden lg:flex">
     {@render CategorySelector()}

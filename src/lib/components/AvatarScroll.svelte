@@ -24,7 +24,7 @@
 <!-- Avatar Card -->
 {#snippet avatarCard(pic: string, username: string, href: string)}
   <a {href} target="_blank" class="flex w-16 flex-col items-center gap-1 shrink-0">
-    <img src={pic} alt={username} class="size-14 rounded-full" />
+    <img src={pic} alt={username} class="size-14 rounded-full" loading="lazy"/>
     <span class="w-full truncate text-center text-[10px] text-muted-foreground">{username}</span>
   </a>
 {/snippet}

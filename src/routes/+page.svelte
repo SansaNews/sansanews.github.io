@@ -75,6 +75,9 @@
           {/key}
         {/each}
       {/each}
+      <p class="text-muted-foreground text-center text-xs lg:hidden">
+        Última Actualización: {formatDatetime(new Date(data.lastUpdate), now)}
+      </p>
     {:else}
       <Empty.Root class="my-8 border border-dashed">
         <Empty.Media variant="icon" class="shadow">

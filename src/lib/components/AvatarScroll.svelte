@@ -23,7 +23,7 @@
 
 <!-- Avatar Card -->
 {#snippet avatarCard(pic: string, username: string, href: string)}
-  <a {href} target="_blank" class="flex flex-col items-center gap-1 shrink-0">
+  <a {href} target="_blank" class="flex w-16 flex-col items-center gap-1 shrink-0">
     <img src={pic} alt={username} class="size-14 rounded-full" />
     <span class="w-full truncate text-center text-[10px] text-muted-foreground">{username}</span>
   </a>
@@ -67,7 +67,7 @@
                 <div class="h-px flex-1 bg-border"></div>
               </div>
               <!-- Users Grid -->
-              <div class="grid grid-cols-3 gap-3">
+              <div class="grid grid-cols-3 gap-3 [&>a]:w-full">
                 {#each cat.users as { pic, username, href }}
                   {@render avatarCard(pic, username, href)}
                 {/each}

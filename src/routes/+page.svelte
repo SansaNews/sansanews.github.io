@@ -50,7 +50,6 @@
 </script>
 
 <main class="p-4 pt-2 lg:pt-4">
-  
   <div class="h-28 lg:hidden"></div>
   <AvatarScroll />
   <CategoryHeader
@@ -60,7 +59,7 @@
 
   <section>
     {#if groupedMedia.length > 0}
-      {#each groupedMedia as group}
+      {#each groupedMedia as group (group.title)}
         <div
           class="mt-8 flex w-full items-center justify-center gap-4 first:mt-0"
         >
@@ -69,10 +68,8 @@
           <div class="bg-primary/40 h-0.5 w-full"></div>
         </div>
 
-        {#each group.items as media}
-          {#key media.permalink}
-            <Post {...media} />
-          {/key}
+        {#each group.items as media (media.permalink + media.username)}
+          <Post {media} />
         {/each}
       {/each}
       <p class="text-muted-foreground text-center text-xs lg:hidden">
@@ -91,3 +88,4 @@
     {/if}
   </section>
 </main>
+

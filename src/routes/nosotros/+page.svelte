@@ -27,11 +27,11 @@
           comunidad sansana.
         </p>
         <p>
-          La iniciativa es desarrollada por dos sansanos, <a
-            href="https://github.com/MoonTurtlee">Joaquín Domínguez</a
-          >
-          y <a href="https://github.com/LuckJMG">Lucas Mosquera</a>. El proyecto
-          es público, y se encuentra alojado en
+          La iniciativa es desarrollada por tres sansan@s: 
+          <a href="https://github.com/MoonTurtlee">Joaquín Domínguez</a>, 
+          <a href="https://github.com/LuckJMG">Lucas Mosquera</a> y 
+          <a href="https://www.instagram.com/s.svyrts">Fernanda Pérez</a>.
+          El proyecto es público, y se encuentra alojado en
           <a href="https://github.com/SansaNews/sansanews.github.io">GitHub</a>.
         </p>
         <p>
@@ -54,11 +54,9 @@
           alt="SansaNews Logo"
           class="mx-auto mb-2 w-48 rounded-lg"
         />
-        <Reference
-          name="Joaquín Domínguez"
-          github="https://github.com/MoonTurtlee"
-        />
+        <Reference name="Joaquín Domínguez" github="https://github.com/MoonTurtlee"/>
         <Reference name="Lucas Mosquera" github="https://github.com/LuckJMG" />
+        <Reference name="Fernanda Pérez" instagram="https://www.instagram.com/s.svyrts" />
       </div>
     </div>
   </section>

@@ -28,8 +28,7 @@ export function jsonToMedia(json: any[]): Media[] {
   }));
 }
 
-export function getTimeCategory(date: Date): string {
-  let now = new Date();
+export function getTimeCategory(date: Date, now: Date): string {
   let diffTime = now.getTime() - date.getTime();
   let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 

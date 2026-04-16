@@ -13,6 +13,7 @@
   import CategoryHeader from "$lib/components/CategoryHeader.svelte";
 
   let category = $state("");
+  let now = $state(new Date(data.lastUpdate));
 
   const allMedia: Media[] = jsonToMedia(data.media);
   let filteredMedia = $derived.by(() => {
@@ -27,7 +28,7 @@
     const order = ["Hoy", "Ayer", "Última Semana", "Último Mes"];
 
     filteredMedia.forEach((media) => {
-      let category = getTimeCategory(media.datePublished);
+      let category = getTimeCategory(media.datePublished, now);
       if (!groups[category]) {
         groups[category] = [];
       }
@@ -39,7 +40,6 @@
       .map((key) => ({ title: key, items: groups[key] }));
   });
 
-  let now = $state(new Date());
   $effect(() => {
     now = new Date();
     const interval = setInterval(() => {
@@ -88,4 +88,3 @@
     {/if}
   </section>
 </main>
-

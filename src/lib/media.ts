@@ -70,12 +70,6 @@ export function formatDatetime(then: Date, now: Date = new Date()): string {
     return `Hace ${diffMinutes} minutos`;
   }
 
-  const diffHours = Math.floor(diffMinutes / 60);
-  if (diffHours < 24) {
-    if (diffHours === 1) return "Hace 1 hora";
-    return `Hace ${diffHours} horas`;
-  }
-
   const yesterday = new Date(now);
   yesterday.setDate(now.getDate() - 1);
 
@@ -85,6 +79,12 @@ export function formatDatetime(then: Date, now: Date = new Date()): string {
     then.getFullYear() === yesterday.getFullYear()
   ) {
     return "Ayer";
+  }
+
+  const diffHours = Math.floor(diffMinutes / 60);
+  if (diffHours < 24) {
+    if (diffHours === 1) return "Hace 1 hora";
+    return `Hace ${diffHours} horas`;
   }
 
   // DD/MM/YYYY

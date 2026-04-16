@@ -11,8 +11,10 @@
   import * as Empty from "$lib/components/ui/empty";
   import { ImageOff } from "@lucide/svelte";
   import CategoryHeader from "$lib/components/CategoryHeader.svelte";
+  import { useClientTime } from "$lib/time.svelte";
 
   let category = $state("");
+  const time = useClientTime();
 
   const allMedia: Media[] = jsonToMedia(data.media);
   let filteredMedia = $derived.by(() => {
@@ -23,6 +25,10 @@
   });
 
   let groupedMedia = $derived.by(() => {
+    if (!time.isMounted) {
+      return [{ title: "Publicaciones", items: filteredMedia }];
+    }
+
     let groups: Record<string, Media[]> = {};
     const order = ["Hoy", "Ayer", "Última Semana", "Último Mes"];
 
@@ -38,29 +44,21 @@
       .filter((key) => groups[key] && groups[key].length > 0)
       .map((key) => ({ title: key, items: groups[key] }));
   });
-
-  let now = $state(new Date());
-  $effect(() => {
-    now = new Date();
-    const interval = setInterval(() => {
-      now = new Date();
-    }, 60 * 1000);
-    return () => clearInterval(interval);
-  });
 </script>
 
 <main class="p-4 pt-2 lg:pt-4">
-  
   <div class="h-28 lg:hidden"></div>
   <AvatarScroll />
   <CategoryHeader
     setCategory={(value: string) => (category = value)}
-    lastUpdate={formatDatetime(new Date(data.lastUpdate), now)}
+    lastUpdate={time.isMounted
+      ? formatDatetime(new Date(data.lastUpdate), time.now)
+      : "Calculando..."}
   />
 
   <section>
     {#if groupedMedia.length > 0}
-      {#each groupedMedia as group}
+      {#each groupedMedia as group (group.title)}
         <div
           class="mt-8 flex w-full items-center justify-center gap-4 first:mt-0"
         >
@@ -69,14 +67,14 @@
           <div class="bg-primary/40 h-0.5 w-full"></div>
         </div>
 
-        {#each group.items as media}
-          {#key media.permalink}
-            <Post {...media} />
-          {/key}
+        {#each group.items as media (media.permalink + media.username)}
+          <Post {media} />
         {/each}
       {/each}
       <p class="text-muted-foreground text-center text-xs lg:hidden">
-        Última Actualización: {formatDatetime(new Date(data.lastUpdate), now)}
+        Última Actualización: {time.isMounted
+          ? formatDatetime(new Date(data.lastUpdate), time.now)
+          : "Calculando..."}
       </p>
     {:else}
       <Empty.Root class="my-8 border border-dashed">

@@ -1,8 +1,11 @@
 <script lang="ts">
   import { Avatar } from "$lib/components/ui/avatar";
   import { formatDatetime } from "$lib/media";
+  import { useClientTime } from "$lib/time.svelte";
 
   let { username, profileLink, profilePicture, datePublished } = $props();
+
+  const time = useClientTime();
 </script>
 
 <a
@@ -19,7 +22,7 @@
     <span
       class="text-muted-foreground text-[10px] font-semibold tracking-wider"
     >
-      {formatDatetime(datePublished)}
+      {time.isMounted ? formatDatetime(datePublished) : "..."}
     </span>
   </div>
   <!-- Avatar -->

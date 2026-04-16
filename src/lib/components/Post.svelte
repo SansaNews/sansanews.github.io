@@ -5,7 +5,7 @@
   import { GalleryHorizontalEnd } from "@lucide/svelte";
   import { type Media } from "$lib/media";
 
-  let media: Media = $props();
+  let { media }: { media: Media } = $props();
   let videoLoaded = $state(false);
 
   let open = $state(false);

@@ -28,7 +28,8 @@ export function jsonToMedia(json: any[]): Media[] {
   }));
 }
 
-export function getTimeCategory(date: Date, now: Date): string {
+export function getTimeCategory(date: Date): string {
+  let now = new Date();
   let diffTime = now.getTime() - date.getTime();
   let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
@@ -69,12 +70,6 @@ export function formatDatetime(then: Date, now: Date = new Date()): string {
     return `Hace ${diffMinutes} minutos`;
   }
 
-  const diffHours = Math.floor(diffMinutes / 60);
-  if (diffHours < 24) {
-    if (diffHours === 1) return "Hace 1 hora";
-    return `Hace ${diffHours} horas`;
-  }
-
   const yesterday = new Date(now);
   yesterday.setDate(now.getDate() - 1);
 
@@ -84,6 +79,12 @@ export function formatDatetime(then: Date, now: Date = new Date()): string {
     then.getFullYear() === yesterday.getFullYear()
   ) {
     return "Ayer";
+  }
+
+  const diffHours = Math.floor(diffMinutes / 60);
+  if (diffHours < 24) {
+    if (diffHours === 1) return "Hace 1 hora";
+    return `Hace ${diffHours} horas`;
   }
 
   // DD/MM/YYYY

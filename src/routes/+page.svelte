@@ -11,9 +11,10 @@
   import * as Empty from "$lib/components/ui/empty";
   import { ImageOff } from "@lucide/svelte";
   import CategoryHeader from "$lib/components/CategoryHeader.svelte";
+  import { useClientTime } from "$lib/time.svelte";
 
   let category = $state("");
-  let now = $state(new Date(data.lastUpdate));
+  const time = useClientTime();
 
   const allMedia: Media[] = jsonToMedia(data.media);
   let filteredMedia = $derived.by(() => {
@@ -24,11 +25,15 @@
   });
 
   let groupedMedia = $derived.by(() => {
+    if (!time.isMounted) {
+      return [{ title: "Publicaciones", items: filteredMedia }];
+    }
+
     let groups: Record<string, Media[]> = {};
     const order = ["Hoy", "Ayer", "Última Semana", "Último Mes"];
 
     filteredMedia.forEach((media) => {
-      let category = getTimeCategory(media.datePublished, now);
+      let category = getTimeCategory(media.datePublished);
       if (!groups[category]) {
         groups[category] = [];
       }
@@ -39,14 +44,6 @@
       .filter((key) => groups[key] && groups[key].length > 0)
       .map((key) => ({ title: key, items: groups[key] }));
   });
-
-  $effect(() => {
-    now = new Date();
-    const interval = setInterval(() => {
-      now = new Date();
-    }, 60 * 1000);
-    return () => clearInterval(interval);
-  });
 </script>
 
 <main class="p-4 pt-2 lg:pt-4">
@@ -54,7 +51,9 @@
   <AvatarScroll />
   <CategoryHeader
     setCategory={(value: string) => (category = value)}
-    lastUpdate={formatDatetime(new Date(data.lastUpdate), now)}
+    lastUpdate={time.isMounted
+      ? formatDatetime(new Date(data.lastUpdate), time.now)
+      : "Calculando..."}
   />
 
   <section>
@@ -73,7 +72,9 @@
         {/each}
       {/each}
       <p class="text-muted-foreground text-center text-xs lg:hidden">
-        Última Actualización: {formatDatetime(new Date(data.lastUpdate), now)}
+        Última Actualización: {time.isMounted
+          ? formatDatetime(new Date(data.lastUpdate), time.now)
+          : "Calculando..."}
       </p>
     {:else}
       <Empty.Root class="my-8 border border-dashed">

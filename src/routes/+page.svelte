@@ -26,7 +26,7 @@
 
   let groupedMedia = $derived.by(() => {
     if (!time.isMounted) {
-      return [{ title: "Publicaciones", items: filteredMedia }];
+      return [{ title: "Hoy", items: filteredMedia }];
     }
 
     let groups: Record<string, Media[]> = {};
@@ -53,7 +53,7 @@
     setCategory={(value: string) => (category = value)}
     lastUpdate={time.isMounted
       ? formatDatetime(new Date(data.lastUpdate), time.now)
-      : "Calculando..."}
+      : "Hace XX minutos"}
   />
 
   <section>
@@ -74,7 +74,7 @@
       <p class="text-muted-foreground text-center text-xs lg:hidden">
         Última Actualización: {time.isMounted
           ? formatDatetime(new Date(data.lastUpdate), time.now)
-          : "Calculando..."}
+          : "Hace XX minutos"}
       </p>
     {:else}
       <Empty.Root class="my-8 border border-dashed">

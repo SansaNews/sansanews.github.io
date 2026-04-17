@@ -22,7 +22,7 @@
     <span
       class="text-muted-foreground text-[10px] font-semibold tracking-wider"
     >
-      {time.isMounted ? formatDatetime(datePublished) : "..."}
+      {time.isMounted ? formatDatetime(datePublished) : "Hace X horas"}
     </span>
   </div>
   <!-- Avatar -->

@@ -10,6 +10,10 @@ export interface Media {
   thumbnail: string;
   url: string;
   username: string;
+  dimensions: {
+    width: number;
+    height: number;
+  };
 }
 
 export function jsonToMedia(json: any[]): Media[] {
@@ -25,6 +29,7 @@ export function jsonToMedia(json: any[]): Media[] {
     type: media.media_type,
     url: media.media_url,
     username: media.username,
+    dimensions: media.dimensions,
   }));
 }
 

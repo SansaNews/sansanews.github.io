@@ -47,7 +47,8 @@
               alt="Post de {media.username}"
               referrerpolicy="no-referrer"
               loading="lazy"
-              class="h-auto w-full object-contain"
+              width={media.dimensions.width}
+              height={media.dimensions.height}
             />
           {:else if videoLoaded}
             <video
@@ -55,7 +56,8 @@
               muted
               autoplay
               controls
-              class="h-auto w-full object-contain"
+              width={media.dimensions.width}
+              height={media.dimensions.height}
             ></video>
           {:else}
             <button
@@ -70,7 +72,8 @@
                 src={media.thumbnail}
                 alt="Previsualización video de {media.username}"
                 loading="lazy"
-                class="h-auto w-full object-contain"
+                width={media.dimensions.width}
+                height={media.dimensions.height}
               />
               <div
                 class="absolute inset-0 flex items-center justify-center bg-black/20"

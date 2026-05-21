@@ -61,6 +61,9 @@ async function main() {
   const results = await Promise.all(promises);
   let media = results.flat();
 
+  const preprocessPromises = media.map(async (m) => await preprocessMedia(m));
+  media = await Promise.all(preprocessPromises);
+
   media.sort((a, b) => {
     const timeA = new Date(a.timestamp).getTime();
     const timeB = new Date(b.timestamp).getTime();
@@ -131,6 +134,26 @@ export function sanitizeData(username: string, data: any, category: string = "")
     media.children = "children" in media;
     return media;
   });
+}
+
+export async function preprocessMedia(media: any): Promise<any> {
+  media.dimensions = { width: 0, height: 0 };
+  const targetUrl = media.media_type === "VIDEO" ? media.thumbnail_url : media.media_url;
+
+  try {
+    const response = await fetch(targetUrl);
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const blob = await response.blob();
+    const { width, height } = await blob.image().metadata();
+    media.dimensions = { width: width, height: height };
+  } catch (error) {
+    console.error(`[ERROR] Couldn't fetch dimensions for ${media.permalink}:`, error);
+  }
+
+  return media;
 }
 
 export function assert(condition: any, message: string): asserts condition {

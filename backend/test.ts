@@ -1,4 +1,4 @@
-import { APIConfig, getUserData, sanitizeData, assert } from "./main.ts";
+import { APIConfig, getUserData, sanitizeData, preprocessMedia, assert } from "./main.ts";
 
 if (import.meta.main) {
   main();
@@ -47,7 +47,13 @@ async function main() {
 
       if (sanitize) {
         const sanitizedData = sanitizeData(username, data);
-        console.dir(sanitizedData, { depth: null });
+
+        const preprocessPromises = await sanitizedData.map(
+          async (m: any) => await preprocessMedia(m),
+        );
+        const preprocessedData = await Promise.all(preprocessPromises);
+
+        console.dir(preprocessedData, { depth: null });
       } else {
         console.dir(data, { depth: null });
       }

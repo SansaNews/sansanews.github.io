@@ -68,7 +68,7 @@
               {group.title}
             </h2>
           {:else}
-            <div class="flex h-8 w-23 items-center justify-center">
+            <div class="flex h-8 w-30 items-center justify-center">
               <Skeleton class="h-5 w-full bg-gray-200" />
             </div>
           {/if}

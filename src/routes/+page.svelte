@@ -51,9 +51,8 @@
   <AvatarScroll />
   <CategoryHeader
     setCategory={(value: string) => (category = value)}
-    lastUpdate={time.isMounted
-      ? formatDatetime(new Date(data.lastUpdate), time.now)
-      : "Hace XX minutos"}
+    isTimeMounted={time.isMounted}
+    lastUpdate={formatDatetime(new Date(data.lastUpdate), time.now)}
   />
 
   <section>

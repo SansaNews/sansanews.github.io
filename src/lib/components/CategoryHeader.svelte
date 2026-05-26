@@ -3,10 +3,11 @@
   import categoriesJSON from "$lib/assets/users.json";
   import * as ToggleGroup from "$lib/components/ui/toggle-group";
   import logo from "$lib/assets/extended-logo-black.png";
+  import { Skeleton } from "$lib/components/ui/skeleton/index.js";
 
   const categories = Object.keys(categoriesJSON);
 
-  let { setCategory, lastUpdate } = $props();
+  let { setCategory, lastUpdate, isTimeMounted } = $props();
 
   let lastScrollY = $state(0);
   let hideMobileNav = $state(false);
@@ -100,7 +101,11 @@
   <div class="hidden lg:flex">
     {@render CategorySelector()}
   </div>
-  <p class="text-muted-foreground text-center text-xs lg:text-right">
-    Última Actualización: {lastUpdate}
-  </p>
+  {#if isTimeMounted}
+    <p class="text-muted-foreground text-center text-xs lg:text-right">
+      Última Actualización: {lastUpdate}
+    </p>
+  {:else}
+    <Skeleton class="h-3 w-52 bg-gray-200" />
+  {/if}
 </div>

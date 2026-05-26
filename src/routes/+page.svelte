@@ -63,7 +63,15 @@
           class="mt-8 flex w-full items-center justify-center gap-4 first:mt-0"
         >
           <div class="bg-primary/40 h-0.5 w-full"></div>
-          <h2 class="font-heading text-xl whitespace-nowrap">{group.title}</h2>
+          {#if time.isMounted}
+            <h2 class="font-heading text-xl whitespace-nowrap">
+              {group.title}
+            </h2>
+          {:else}
+            <div class="flex h-8 w-24 items-center justify-center">
+              <Skeleton class="h-5 w-full bg-gray-200" />
+            </div>
+          {/if}
           <div class="bg-primary/40 h-0.5 w-full"></div>
         </div>
 

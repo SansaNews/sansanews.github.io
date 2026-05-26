@@ -27,7 +27,7 @@
       </span>
     {:else}
       <div class="flex justify-end pt-1">
-        <Skeleton class="h-2.5 w-16 rounded-full" />
+        <Skeleton class="h-2.5 w-16" />
       </div>
     {/if}
   </div>

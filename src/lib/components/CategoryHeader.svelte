@@ -17,11 +17,11 @@
     hideMobileNav = currentScrollY > lastScrollY && currentScrollY > 10;
     lastScrollY = currentScrollY;
   }
-  
+
   function updateFade(e: Event) {
-  const { scrollLeft, scrollWidth, clientWidth } = e.target as HTMLElement;
-  fade.left = scrollLeft > 8;
-  fade.right = scrollLeft < scrollWidth - clientWidth - 8;
+    const { scrollLeft, scrollWidth, clientWidth } = e.target as HTMLElement;
+    fade.left = scrollLeft > 8;
+    fade.right = scrollLeft < scrollWidth - clientWidth - 8;
   }
 </script>
 
@@ -31,21 +31,21 @@
     spacing={2}
     onValueChange={(value) => setCategory(value)}
   >
-  <ToggleGroup.Item
-    value=""
-    class="data-[state=on]:bg-primary/80 data-[state=on]:text-background text-muted-foreground hover:text-primary 
-  hover:bg-primary/10 transition-none shadow-xs cursor-pointer rounded-md bg-white px-4
-  text-sm font-medium"
-  >
-    Todos
-  </ToggleGroup.Item>    
+    <ToggleGroup.Item
+      value=""
+      class="data-[state=on]:bg-primary/80 data-[state=on]:text-background text-muted-foreground hover:text-primary 
+  hover:bg-primary/10 cursor-pointer rounded-md bg-white px-4 text-sm font-medium
+  shadow-xs transition-none"
+    >
+      Todos
+    </ToggleGroup.Item>
 
     {#each categories as category}
       <ToggleGroup.Item
         value={category.toLowerCase()}
         class="data-[state=on]:bg-primary/80 data-[state=on]:text-background text-muted-foreground hover:text-primary 
-      hover:bg-primary/10 transition-none shadow-xs cursor-pointer rounded-md bg-white px-4
-      text-sm font-medium"
+      hover:bg-primary/10 cursor-pointer rounded-md bg-white px-4 text-sm font-medium
+      shadow-xs transition-none"
       >
         {category}
       </ToggleGroup.Item>
@@ -70,14 +70,24 @@
   </div>
 
   <div class="relative">
-  
-    <!-- Fade -->
-    <div class="pointer-events-none absolute top-0 bottom-2 left-0 w-10 bg-gradient-to-r 
-    from-gray-100 transition-opacity duration-300 {fade.left ? '' : 'opacity-0'}"></div>
-    <div class="pointer-events-none absolute top-0 bottom-2 right-0 w-10 bg-gradient-to-l
-    from-gray-100 transition-opacity duration-300 {fade.right ? '' : 'opacity-0'}"></div>
-    
-    <div onscroll={updateFade} class="overflow-x-auto px-2 pb-2" style="scrollbar-width: none;">
+    <div
+      class="pointer-events-none absolute top-0 bottom-2 left-0 w-10 bg-linear-to-r
+    from-gray-100 transition-opacity duration-300 {fade.left
+        ? ''
+        : 'opacity-0'}"
+    ></div>
+    <div
+      class="pointer-events-none absolute top-0 right-0 bottom-2 w-10 bg-linear-to-l
+    from-gray-100 transition-opacity duration-300 {fade.right
+        ? ''
+        : 'opacity-0'}"
+    ></div>
+
+    <div
+      onscroll={updateFade}
+      class="overflow-x-auto px-2 pb-2"
+      style="scrollbar-width: none;"
+    >
       {@render CategorySelector()}
     </div>
   </div>
@@ -85,7 +95,7 @@
 
 <!-- Desktop Header -->
 <div
-  class="hidden lg:flex mb-6 flex-col items-center justify-center gap-4 border-dashed pt-4 lg:mt-6 lg:mb-8 lg:flex-row lg:justify-between lg:gap-0 lg:border-t-2"
+  class="mb-6 hidden flex-col items-center justify-center gap-4 border-dashed pt-4 lg:mt-6 lg:mb-8 lg:flex lg:flex-row lg:justify-between lg:gap-0 lg:border-t-2"
 >
   <div class="hidden lg:flex">
     {@render CategorySelector()}

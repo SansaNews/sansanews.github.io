@@ -1,6 +1,7 @@
 <script lang="ts">
   import Post from "$lib/components/Post.svelte";
   import AvatarScroll from "$lib/components/AvatarScroll.svelte";
+  import { Skeleton } from "$lib/components/ui/skeleton/index.js";
   import data from "$lib/assets/media.json";
   import {
     type Media,
@@ -70,11 +71,20 @@
           <Post {media} />
         {/each}
       {/each}
-      <p class="text-muted-foreground text-center text-xs lg:hidden">
-        Última Actualización: {time.isMounted
-          ? formatDatetime(new Date(data.lastUpdate), time.now)
-          : "Hace XX minutos"}
-      </p>
+
+      <!-- Last Update Mobile -->
+      {#if time.isMounted}
+        <p class="text-muted-foreground text-center text-xs lg:hidden">
+          Última Actualización: {formatDatetime(
+            new Date(data.lastUpdate),
+            time.now,
+          )}
+        </p>
+      {:else}
+        <div class="flex justify-center">
+          <Skeleton class="h-3 w-52 bg-gray-200" />
+        </div>
+      {/if}
     {:else}
       <Empty.Root class="my-8 border border-dashed">
         <Empty.Media variant="icon" class="shadow">

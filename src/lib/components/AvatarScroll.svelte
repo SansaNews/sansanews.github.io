@@ -18,7 +18,6 @@
       .filter((u) => profilePics[u] && u)
       .map((u) => ({
         username: u,
-        pic: profilePics[u]!,
         href: `https://www.instagram.com/${u}`,
       })),
   }));
@@ -27,7 +26,7 @@
 </script>
 
 <!-- Avatar Card -->
-{#snippet avatarCard(pic: string, username: string, href: string)}
+{#snippet avatarCard(username: string, href: string)}
   <a
     {href}
     target="_blank"
@@ -56,8 +55,8 @@
   <div class="relative flex-1 overflow-hidden">
     <!-- Avatars -->
     <div class="flex gap-3 overflow-x-auto p-2" style="scrollbar-width: none;">
-      {#each allUsers as { pic, username, href }}
-        {@render avatarCard(pic, username, href)}
+      {#each allUsers as { username, href }}
+        {@render avatarCard(username, href)}
       {/each}
     </div>
   </div>
@@ -98,8 +97,8 @@
               </div>
               <!-- Users Grid -->
               <div class="grid grid-cols-3 gap-3 [&>a]:w-full">
-                {#each cat.users as { pic, username, href }}
-                  {@render avatarCard(pic, username, href)}
+                {#each cat.users as { username, href }}
+                  {@render avatarCard(username, href)}
                 {/each}
               </div>
             </div>

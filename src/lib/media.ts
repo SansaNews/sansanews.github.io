@@ -5,7 +5,6 @@ export interface Media {
   datePublished: Date;
   permalink: string;
   profileLink: string;
-  profilePicture: string;
   type: string;
   thumbnail: string;
   url: string;
@@ -24,7 +23,6 @@ export function jsonToMedia(json: any[]): Media[] {
     datePublished: new Date(media.timestamp),
     permalink: media.permalink,
     profileLink: "https://www.instagram.com/" + media.username,
-    profilePicture: media.profile_picture_url,
     thumbnail: media.thumbnail_url ?? "",
     type: media.media_type,
     url: media.media_url,

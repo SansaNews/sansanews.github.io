@@ -5,7 +5,7 @@
   import { Skeleton } from "$lib/components/ui/skeleton/index.js";
   import { asset } from "$app/paths";
 
-  let { username, profileLink, profilePicture, datePublished } = $props();
+  let { username, profileLink, datePublished } = $props();
 
   const time = useClientTime();
 </script>

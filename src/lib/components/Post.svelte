@@ -132,7 +132,6 @@
           <User
             username={media.username}
             profileLink={media.profileLink}
-            profilePicture={media.profilePicture}
             datePublished={media.datePublished}
           />
         </div>

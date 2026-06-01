@@ -124,14 +124,12 @@ export function sanitizeData(username: string, data: any, category: string = "")
     return [];
   }
 
-  const profilePictureUrl = data.business_discovery.profile_picture_url;
-  optimizePfP(profilePictureUrl, username);
+  optimizePfP(data.business_discovery.profile_picture_url, username);
   return data.business_discovery.media.data.map((m: any) => {
     const media = { ...m };
     delete media.id;
     media.username = username;
     media.category = category;
-    media.profile_picture_url = profilePictureUrl;
     media.children = "children" in media;
     return media;
   });
@@ -157,7 +155,7 @@ export async function preprocessMedia(media: any): Promise<any> {
   return media;
 }
 
-export async function optimizePfP(url: string, user: string, size: number = 48) {
+export async function optimizePfP(url: string, username: string, size: number = 48) {
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -167,10 +165,10 @@ export async function optimizePfP(url: string, user: string, size: number = 48) 
     const blob = await response.blob();
     const pfp = blob.image().webp({ quality: 80 });
     for (let i = 1; i <= 3; i++) {
-      pfp.resize(size * i, size * i).write(`./static/pfp/${user}-${size * i}.webp`);
+      pfp.resize(size * i, size * i).write(`./static/pfp/${username}-${size * i}.webp`);
     }
   } catch (error) {
-    console.error(`[ERROR] Couldn't fetch profile picture from ${user}`);
+    console.error(`[ERROR] Couldn't fetch profile picture from ${username}`);
   }
 }
 

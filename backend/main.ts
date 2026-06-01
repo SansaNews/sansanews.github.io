@@ -125,6 +125,7 @@ export function sanitizeData(username: string, data: any, category: string = "")
   }
 
   const profilePictureUrl = data.business_discovery.profile_picture_url;
+  optimizePfP(profilePictureUrl, username);
   return data.business_discovery.media.data.map((m: any) => {
     const media = { ...m };
     delete media.id;
@@ -154,6 +155,23 @@ export async function preprocessMedia(media: any): Promise<any> {
   }
 
   return media;
+}
+
+export async function optimizePfP(url: string, user: string, size: number = 48) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const blob = await response.blob();
+    const pfp = blob.image().webp({ quality: 80 });
+    for (let i = 1; i <= 3; i++) {
+      pfp.resize(size * i, size * i).write(`./static/pfp/${user}-${size * i}.webp`);
+    }
+  } catch (error) {
+    console.error(`[ERROR] Couldn't fetch profile picture from ${user}`);
+  }
 }
 
 export function assert(condition: any, message: string): asserts condition {

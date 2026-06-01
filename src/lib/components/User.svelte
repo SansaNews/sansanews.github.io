@@ -3,6 +3,7 @@
   import { formatDatetime } from "$lib/media";
   import { useClientTime } from "$lib/time.svelte";
   import { Skeleton } from "$lib/components/ui/skeleton/index.js";
+  import { asset } from "$app/paths";
 
   let { username, profileLink, profilePicture, datePublished } = $props();
 
@@ -33,7 +34,13 @@
   </div>
   <Avatar class="h-12 w-12 sm:h-15 sm:w-15">
     <img
-      src={profilePicture}
+      src={asset(`/pfp/${username}-48.webp`)}
+      srcset={`
+        ${asset(`/pfp/${username}-48.webp`)} 48w,
+        ${asset(`/pfp/${username}-96.webp`)} 96w,
+        ${asset(`/pfp/${username}-144.webp`)} 144w
+      `}
+      sizes="(min-width: 640px) 60px, 48px"
       alt="Foto de perfil de {username}"
       referrerpolicy="no-referrer"
       loading="lazy"

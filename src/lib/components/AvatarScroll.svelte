@@ -3,6 +3,7 @@
   import { LayoutGrid } from "@lucide/svelte";
   import usersJSON from "$lib/assets/users.json";
   import mediaJSON from "$lib/assets/media.json";
+  import { asset } from "$app/paths";
 
   const profilePics: Record<string, string> = {};
   for (const { username, profile_picture_url } of mediaJSON.media) {
@@ -15,7 +16,11 @@
     name,
     users: usernames
       .filter((u) => profilePics[u] && u)
-      .map((u) => ({ username: u, pic: profilePics[u]!, href: `https://www.instagram.com/${u}` })),
+      .map((u) => ({
+        username: u,
+        pic: profilePics[u]!,
+        href: `https://www.instagram.com/${u}`,
+      })),
   }));
 
   const allUsers = categories.flatMap((c) => c.users);
@@ -23,12 +28,28 @@
 
 <!-- Avatar Card -->
 {#snippet avatarCard(pic: string, username: string, href: string)}
-  <a {href} target="_blank" class="flex w-16 flex-col items-center gap-1 shrink-0">
-    <img src={pic} alt={username} class="size-14 rounded-full" loading="lazy"/>
-    <span class="w-full truncate text-center text-[10px] text-muted-foreground">{username}</span>
+  <a
+    {href}
+    target="_blank"
+    class="flex w-16 shrink-0 flex-col items-center gap-1"
+  >
+    <img
+      src={asset(`/pfp/${username}-48.webp`)}
+      srcset={`
+        ${asset(`/pfp/${username}-48.webp`)} 48w,
+        ${asset(`/pfp/${username}-96.webp`)} 96w,
+        ${asset(`/pfp/${username}-144.webp`)} 144w
+      `}
+      sizes="(min-width: 640px) 60px, 48px"
+      alt={username}
+      class="size-14 rounded-full"
+      loading="lazy"
+    />
+    <span class="text-muted-foreground w-full truncate text-center text-[10px]"
+      >{username}</span
+    >
   </a>
 {/snippet}
-
 
 <div class="flex lg:hidden">
   <!-- Scroll Area -->
@@ -43,28 +64,37 @@
 
   <!-- Drawer -->
   <Drawer.Root>
-    <Drawer.Trigger class="flex flex-col items-center gap-1 shrink-0 p-2 cursor-pointer">
-      <div class="size-14 rounded-full bg-white flex items-center justify-center">
-        <LayoutGrid class="h-6 w-6 text-muted-foreground" />
+    <Drawer.Trigger
+      class="flex shrink-0 cursor-pointer flex-col items-center gap-1 p-2"
+    >
+      <div
+        class="flex size-14 items-center justify-center rounded-full bg-white"
+      >
+        <LayoutGrid class="text-muted-foreground h-6 w-6" />
       </div>
-      <span class="text-[10px] text-muted-foreground">Todas</span>
+      <span class="text-muted-foreground text-[10px]">Todas</span>
     </Drawer.Trigger>
     <Drawer.Portal>
       <!-- Background Darkens -->
       <Drawer.Overlay class="fixed inset-0 z-50 bg-black/40" />
       <!-- Drawer Style -->
-      <Drawer.Content class="flex flex-col fixed inset-x-0 bottom-0 z-50 rounded-t-2xl border-t-4 bg-background" style="max-height: 80svh;">
-        <!-- Drawer Top Line --> 
-        <div class="mx-auto my-3 h-2 w-12 rounded-full bg-border"></div>
+      <Drawer.Content
+        class="bg-background fixed inset-x-0 bottom-0 z-50 flex flex-col rounded-t-2xl border-t-4"
+        style="max-height: 80svh;"
+      >
+        <!-- Drawer Top Line -->
+        <div class="bg-border mx-auto my-3 h-2 w-12 rounded-full"></div>
         <!-- Drawer Content -->
-        <div class="flex flex-col gap-6 overflow-y-auto p-5 ">
+        <div class="flex flex-col gap-6 overflow-y-auto p-5">
           {#each categories as cat}
             <div class="flex flex-col gap-3">
               <!-- Category Title -->
               <div class="flex items-center gap-3">
-                <div class="h-px flex-1 bg-border"></div>
-                <span class="text-xs font-bold uppercase text-primary">{cat.name}</span>
-                <div class="h-px flex-1 bg-border"></div>
+                <div class="bg-border h-px flex-1"></div>
+                <span class="text-primary text-xs font-bold uppercase"
+                  >{cat.name}</span
+                >
+                <div class="bg-border h-px flex-1"></div>
               </div>
               <!-- Users Grid -->
               <div class="grid grid-cols-3 gap-3 [&>a]:w-full">
@@ -79,3 +109,4 @@
     </Drawer.Portal>
   </Drawer.Root>
 </div>
+

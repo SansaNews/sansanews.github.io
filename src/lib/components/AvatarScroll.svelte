@@ -28,11 +28,11 @@
     class="flex w-16 shrink-0 flex-col items-center gap-1"
   >
     <img
-      src={asset(`/pfp/${username}-48.webp`)}
+      src={asset(`/pfp/${username}-1x.webp`)}
       srcset={`
-        ${asset(`/pfp/${username}-48.webp`)} 48w,
-        ${asset(`/pfp/${username}-96.webp`)} 96w,
-        ${asset(`/pfp/${username}-144.webp`)} 144w
+        ${asset(`/pfp/${username}-1x.webp`)} 48w,
+        ${asset(`/pfp/${username}-2x.webp`)} 96w,
+        ${asset(`/pfp/${username}-3x.webp`)} 144w
       `}
       sizes="(min-width: 640px) 60px, 48px"
       alt={username}

@@ -5,24 +5,19 @@
   import mediaJSON from "$lib/assets/media.json";
   import { asset } from "$app/paths";
 
-  const profilePics: Record<string, string> = {};
-  for (const { username, profile_picture_url } of mediaJSON.media) {
-    if (username && profile_picture_url && !profilePics[username]) {
-      profilePics[username] = profile_picture_url;
-    }
-  }
+  const validUsers = new Set(mediaJSON.media.map((m) => m.username));
 
   const categories = Object.entries(usersJSON).map(([name, usernames]) => ({
     name,
     users: usernames
-      .filter((u) => profilePics[u] && u)
-      .map((u) => ({
-        username: u,
-        href: `https://www.instagram.com/${u}`,
+      .filter((user) => validUsers.has(user))
+      .map((user) => ({
+        username: user,
+        href: `https://www.instagram.com/${user}`,
       })),
   }));
 
-  const allUsers = categories.flatMap((c) => c.users);
+  const allUsers = categories.flatMap((category) => category.users);
 </script>
 
 <!-- Avatar Card -->
@@ -108,4 +103,3 @@
     </Drawer.Portal>
   </Drawer.Root>
 </div>
-

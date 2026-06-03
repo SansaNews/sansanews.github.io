@@ -87,7 +87,9 @@ Mediante la [API oficial](https://developers.facebook.com/products/instagram/api
 
 **¿Las imágenes de los posts son descargadas y guardadas?**
 
-No, para imágenes y videos ocupamos los enlaces temporales de la [API](https://developers.facebook.com/products/instagram/apis/), que duran alrededor de 4 días.
+Si, son descargados y optimizados para que SansaNews pueda cargar más rápido, especialmente en conexiones lentas como las de la universidad.
+
+Estos archivos son borrados y redescargados con cada actualización de la página, solo viven en el servidor de la página y no en el repositorio, haciendo que no quede historial de ellos.
 
 **¿Por qué actualizan cada hora y no en tiempo real?**
 

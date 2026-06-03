@@ -1,6 +1,4 @@
 <script lang="ts">
-  import logo from "$lib/assets/square-logo.svg";
-  import presentation from "$lib/assets/sansanews_presentation.jpg";
   import Reference from "$lib/components/Reference.svelte";
   import { asset, resolve } from "$app/paths";
 </script>
@@ -9,7 +7,7 @@
   <div class="mx-auto flex max-w-lg justify-center lg:hidden">
     <a href={resolve("/")}>
       <img
-        src={asset("/sansanews_banner_black.svg")}
+        src={asset("/brand/sansanews_banner_black.svg")}
         class="w-auto transition-all duration-300"
         alt="SansaNews Logo"
       />
@@ -49,7 +47,7 @@
       </section>
       <div class="flex w-md max-w-xs flex-col items-center pt-4 pb-1">
         <img
-          src={logo}
+          src={asset("/brand/sansanews_logo.svg")}
           alt="SansaNews Logo"
           class="mx-auto mb-2 w-48 rounded-lg"
         />
@@ -189,7 +187,7 @@
         </p>
       </section>
       <img
-        src={presentation}
+        src={asset("/brand/sansanews_presentation.webp")}
         alt="Presentación original de SansaNews en Introducción a la Ingeniería"
         class="mx-auto my-4 w-full max-w-xs rounded-lg"
       />

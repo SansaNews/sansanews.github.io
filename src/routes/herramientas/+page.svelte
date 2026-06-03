@@ -8,7 +8,7 @@
   <div class="mx-auto flex max-w-lg justify-center lg:hidden">
     <a href={resolve("/")}>
       <img
-        src={asset("/sansanews_banner_black.svg")}
+        src={asset("/brand/sansanews_banner_black.svg")}
         class="w-auto transition-all duration-300"
         alt="SansaNews Logo"
       />

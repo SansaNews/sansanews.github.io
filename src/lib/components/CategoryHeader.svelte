@@ -62,7 +62,7 @@
   <div class="flex justify-center pt-4 pb-5">
     <a href={resolve("/")}>
       <img
-        src={asset("/sansanews_banner_black.svg")}
+        src={asset("/brand/sansanews_banner_black.svg")}
         class="h-10 transition-all duration-300"
         alt="SansaNews Logo"
       />

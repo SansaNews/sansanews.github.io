@@ -54,7 +54,7 @@
   <div class="mt-4 mb-14 hidden lg:block">
     <a href={resolve("/")}>
       <img
-        src={asset("/sansanews_banner_black.svg")}
+        src={asset("/brand/sansanews_banner_black.svg")}
         class="mx-auto h-24 max-w-lg"
         alt="SansaNews Logo"
       />

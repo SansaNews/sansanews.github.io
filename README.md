@@ -51,7 +51,7 @@ El script `backend/main.ts` obtiene los usuarios a consultar de `users.json` y g
 - `backend/main.ts`, script encargado de actualizar las publicaciones.
 - `backend/test.ts`, script para hacer testing de publicaciones.
 - `src/lib/assets/users.json`, lista de usuarios que subir.
-- `src/lib/assets/media.json`, lista de posts obtenidos mediante `backend.py`.
+- `src/lib/assets/media.json`, lista de posts obtenidos mediante `main.ts`.
 
 El frontend está hecho con [Svelte 5 y SvelteKit 2](https://svelte.dev/).
 

@@ -5,13 +5,13 @@
   import { Skeleton } from "$lib/components/ui/skeleton/index.js";
   import { asset } from "$app/paths";
 
-  let { username, profileLink, datePublished } = $props();
+  let { username, datePublished } = $props();
 
   const time = useClientTime();
 </script>
 
 <a
-  href={profileLink}
+  href="https://www.instagram.com/{username}"
   target="_blank"
   rel="noopener noreferrer"
   class="flex items-center gap-2 transition-opacity hover:opacity-80 sm:gap-3"

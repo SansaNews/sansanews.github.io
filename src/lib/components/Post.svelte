@@ -115,7 +115,7 @@
           {/if}
         </a>
 
-        {#if media.children}
+        {#if media.type === "CAROUSEL_ALBUM"}
           <Popover.Root bind:open>
             <Popover.Trigger
               onmouseenter={handleOpen}
@@ -150,11 +150,7 @@
         </p>
 
         <div class="flex justify-end border-t-2 pt-4">
-          <User
-            username={media.username}
-            profileLink={media.profileLink}
-            datePublished={media.datePublished}
-          />
+          <User username={media.username} datePublished={media.datePublished} />
         </div>
       </div>
     </div>

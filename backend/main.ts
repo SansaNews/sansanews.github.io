@@ -128,7 +128,6 @@ export async function sanitizeData(username: string, data: any, category: string
     media.id = `${username}-${media.permalink.split("/")[4]}`;
     media.username = username;
     media.category = category;
-    media.children = "children" in media;
     media.dimensions = await optimizeImage(
       media.media_type === "VIDEO" ? media.thumbnail_url : media.media_url,
       media.id,
@@ -142,6 +141,7 @@ export async function sanitizeData(username: string, data: any, category: string
 
     delete media.media_url;
     delete media.thumbnail_url;
+    delete media.children;
     return media;
   });
 

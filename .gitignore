@@ -1,5 +1,6 @@
 src/lib/assets/media.json
 static/pfp/
+static/posts/
 
 # Svelte
 node_modules

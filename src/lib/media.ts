@@ -1,4 +1,5 @@
 export interface Media {
+  id: string;
   caption: string;
   category: string;
   children: boolean;
@@ -6,9 +7,8 @@ export interface Media {
   permalink: string;
   profileLink: string;
   type: string;
-  thumbnail: string;
-  url: string;
   username: string;
+  videoURL?: string;
   dimensions: {
     width: number;
     height: number;
@@ -17,17 +17,17 @@ export interface Media {
 
 export function jsonToMedia(json: any[]): Media[] {
   return json.map((media: any) => ({
+    id: media.id,
     caption: media.caption || "Sin descripción",
     category: media.category.toLowerCase(),
     children: media.children,
     datePublished: new Date(media.timestamp),
     permalink: media.permalink,
     profileLink: "https://www.instagram.com/" + media.username,
-    thumbnail: media.thumbnail_url ?? "",
     type: media.media_type,
-    url: media.media_url,
     username: media.username,
     dimensions: media.dimensions,
+    videoURL: media.video_url || undefined,
   }));
 }
 

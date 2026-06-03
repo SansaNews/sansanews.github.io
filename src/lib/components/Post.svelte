@@ -4,6 +4,7 @@
   import User from "$lib/components/User.svelte";
   import { GalleryHorizontalEnd } from "@lucide/svelte";
   import { type Media } from "$lib/media";
+  import { asset } from "$app/paths";
 
   let { media }: { media: Media } = $props();
   let videoLoaded = $state(false);
@@ -40,10 +41,22 @@
       <div
         class="relative border-b-2 lg:w-1/3 lg:shrink-0 lg:border-r-2 lg:border-b-0"
       >
-        <a href={media.permalink} target="_blank" rel="noopener noreferrer">
+        <a
+          href={media.permalink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex h-full w-full"
+        >
           {#if media.type !== "VIDEO"}
             <img
-              src={media.url}
+              class="block h-full w-full object-contain"
+              src={asset(`/posts/${media.id}-1x.webp`)}
+              srcset={`
+                ${asset(`/posts/${media.id}-1x.webp`)} 376w,
+                ${asset(`/posts/${media.id}-2x.webp`)} 752w,
+                ${asset(`/posts/${media.id}-3x.webp`)} 1128w,
+              `}
+              sizes="(min-width: 1024px) 33vw, 100vw"
               alt="Post de {media.username}"
               referrerpolicy="no-referrer"
               loading="lazy"
@@ -52,7 +65,8 @@
             />
           {:else if videoLoaded}
             <video
-              src={media.url}
+              class="block h-full w-full object-contain"
+              src={media.videoURL}
               muted
               autoplay
               controls
@@ -61,7 +75,7 @@
             ></video>
           {:else}
             <button
-              class="relative flex w-full cursor-pointer border-none bg-transparent p-0 leading-none"
+              class="relative flex h-full w-full cursor-pointer border-none bg-transparent p-0 leading-none"
               onclick={(e) => {
                 e.preventDefault();
                 videoLoaded = true;
@@ -69,7 +83,14 @@
               aria-label="Reproducir video de {media.username}"
             >
               <img
-                src={media.thumbnail}
+                class="block h-full w-full object-contain"
+                src={asset(`/posts/${media.id}-1x.webp`)}
+                srcset={`
+                  ${asset(`/posts/${media.id}-1x.webp`)} 376w,
+                  ${asset(`/posts/${media.id}-2x.webp`)} 752w,
+                  ${asset(`/posts/${media.id}-3x.webp`)} 1128w,
+                `}
+                sizes="(min-width: 1024px) 100vw, 33vw"
                 alt="Previsualización video de {media.username}"
                 loading="lazy"
                 width={media.dimensions.width}

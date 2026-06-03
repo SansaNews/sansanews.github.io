@@ -61,9 +61,6 @@ async function main() {
   const results = await Promise.all(promises);
   let media = results.flat();
 
-  const preprocessPromises = media.map(async (m) => await preprocessMedia(m));
-  media = await Promise.all(preprocessPromises);
-
   media.sort((a, b) => {
     const timeA = new Date(a.timestamp).getTime();
     const timeB = new Date(b.timestamp).getTime();
@@ -119,40 +116,36 @@ export async function getUserData(username: string, config: APIConfig): Promise<
   }
 }
 
-export function sanitizeData(username: string, data: any, category: string = "") {
+export async function sanitizeData(username: string, data: any, category: string = "") {
   if (!data?.business_discovery?.media) {
     return [];
   }
 
   optimizeImage(data.business_discovery.profile_picture_url, username, "./static/pfp", 48);
-  return data.business_discovery.media.data.map((m: any) => {
+
+  const promises = data.business_discovery.media.data.map(async (m: any) => {
     const media = { ...m };
-    delete media.id;
+    media.id = `${username}-${media.permalink.split("/")[4]}`;
     media.username = username;
     media.category = category;
     media.children = "children" in media;
-    return media;
-  });
-}
+    media.dimensions = await optimizeImage(
+      media.media_type === "VIDEO" ? media.thumbnail_url : media.media_url,
+      media.id,
+      "./static/posts",
+      376,
+    );
 
-export async function preprocessMedia(media: any): Promise<any> {
-  media.dimensions = { width: 0, height: 0 };
-  const targetUrl = media.media_type === "VIDEO" ? media.thumbnail_url : media.media_url;
-
-  try {
-    const response = await fetch(targetUrl);
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
+    if (media.media_type === "VIDEO") {
+      media.video_url = media.media_url;
     }
 
-    const blob = await response.blob();
-    const { width, height } = await blob.image().metadata();
-    media.dimensions = { width: width, height: height };
-  } catch (error) {
-    console.error(`[ERROR] Couldn't fetch dimensions for ${media.permalink}:`, error);
-  }
+    delete media.media_url;
+    delete media.thumbnail_url;
+    return media;
+  });
 
-  return media;
+  return await Promise.all(promises);
 }
 
 export async function optimizeImage(
@@ -160,7 +153,9 @@ export async function optimizeImage(
   file_name: string,
   folder_path: string,
   base_width: number,
-) {
+): Promise<{ width: number; height: number }> {
+  let dimensions = { width: 0, height: 0 };
+
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -172,9 +167,13 @@ export async function optimizeImage(
     for (let i = 1; i <= 3; i++) {
       img.resize(base_width * i).write(`${folder_path}/${file_name}-${i}x.webp`);
     }
+
+    dimensions = await img.metadata().then((meta) => ({ width: meta.width, height: meta.height }));
   } catch (error) {
     console.error(`[ERROR] Couldn't fetch image from ${url}`);
   }
+
+  return dimensions;
 }
 
 export function assert(condition: any, message: string): asserts condition {

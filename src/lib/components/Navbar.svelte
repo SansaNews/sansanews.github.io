@@ -1,7 +1,6 @@
 <script lang="ts">
   import { page } from "$app/state";
-  import { resolve } from "$app/paths";
-  import logo from "$lib/assets/extended-logo-black.png";
+  import { asset, resolve } from "$app/paths";
   import { Newspaper, PencilRuler, Info } from "@lucide/svelte";
 
   const sections = [
@@ -52,9 +51,13 @@
 
 <!-- Desktop Navigation -->
 <div>
-  <div class="mb-6 hidden lg:block">
+  <div class="mt-4 mb-14 hidden lg:block">
     <a href={resolve("/")}>
-      <img src={logo} class="mx-auto w-full max-w-lg" alt="SansaNews Logo" />
+      <img
+        src={asset("/sansanews_banner_black.svg")}
+        class="mx-auto h-24 max-w-lg"
+        alt="SansaNews Logo"
+      />
     </a>
   </div>
 

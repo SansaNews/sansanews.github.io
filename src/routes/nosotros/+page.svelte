@@ -1,16 +1,15 @@
 <script lang="ts">
   import logo from "$lib/assets/square-logo.svg";
-  import banner from "$lib/assets/extended-logo-black.png";
   import presentation from "$lib/assets/sansanews_presentation.jpg";
   import Reference from "$lib/components/Reference.svelte";
-  import { resolve } from "$app/paths";
+  import { asset, resolve } from "$app/paths";
 </script>
 
 <main class="px-10 lg:px-16">
   <div class="mx-auto flex max-w-lg justify-center lg:hidden">
     <a href={resolve("/")}>
       <img
-        src={banner}
+        src={asset("/sansanews_banner_black.svg")}
         class="w-auto transition-all duration-300"
         alt="SansaNews Logo"
       />

@@ -1,8 +1,7 @@
 <script lang="ts">
-  import { resolve } from "$app/paths";
+  import { asset, resolve } from "$app/paths";
   import categoriesJSON from "$lib/assets/users.json";
   import * as ToggleGroup from "$lib/components/ui/toggle-group";
-  import logo from "$lib/assets/extended-logo-black.png";
   import { Skeleton } from "$lib/components/ui/skeleton/index.js";
 
   const categories = Object.keys(categoriesJSON);
@@ -60,11 +59,11 @@
   class="bg-background fixed top-0 right-0 left-0 z-40 border-b-2 transition-transform duration-300 lg:hidden"
   class:-translate-y-full={hideMobileNav}
 >
-  <div class="flex justify-center pt-2 pb-2">
+  <div class="flex justify-center pt-4 pb-5">
     <a href={resolve("/")}>
       <img
-        src={logo}
-        class="h-15 transition-all duration-300"
+        src={asset("/sansanews_banner_black.svg")}
+        class="h-10 transition-all duration-300"
         alt="SansaNews Logo"
       />
     </a>

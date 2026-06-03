@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { resolve } from "$app/paths";
-  import logo from "$lib/assets/extended-logo-black.png";
+  import { asset, resolve } from "$app/paths";
 
   import Tools from "$lib/components/Tools.svelte";
 </script>
@@ -9,7 +8,7 @@
   <div class="mx-auto flex max-w-lg justify-center lg:hidden">
     <a href={resolve("/")}>
       <img
-        src={logo}
+        src={asset("/sansanews_banner_black.svg")}
         class="w-auto transition-all duration-300"
         alt="SansaNews Logo"
       />

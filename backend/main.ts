@@ -1,4 +1,5 @@
 import { file, write } from "bun";
+import { log, LogLevel } from "./logging.ts";
 
 export type User = { username: string; category: string };
 
@@ -33,12 +34,13 @@ export class APIConfig {
 
 if (import.meta.main) {
   main().catch((error) => {
-    console.error("Execution failed:", error);
+    log(LogLevel.FATAL, `Execution failed: ${error}`);
     process.exit(1);
   });
 }
 
 async function main() {
+  log(LogLevel.INFO, "Starting data extraction");
   const USERS_PATH = "src/lib/assets/users.json";
   const MEDIA_PATH = "src/lib/assets/media.json";
 
@@ -48,11 +50,12 @@ async function main() {
   const usersData = await usersFile.json();
 
   const users: User[] = [];
-  for (const [catergory, usernames] of Object.entries(usersData)) {
+  for (const [category, usernames] of Object.entries(usersData)) {
     for (const username of usernames as string[]) {
-      users.push({ username, category: catergory });
+      users.push({ username, category });
     }
   }
+  log(LogLevel.DEBUG, `Loaded ${users.length} users from ${USERS_PATH}`);
 
   const promises = users.map(async (user) => {
     const userData = await getUserData(user.username, config);
@@ -73,10 +76,11 @@ async function main() {
   };
 
   await write(MEDIA_PATH, JSON.stringify(outputData, null, 2));
-  console.log(`Posts saved on ${MEDIA_PATH}`);
+  log(LogLevel.INFO, `Posts saved on ${MEDIA_PATH}`);
 }
 
 export async function getUserData(username: string, config: APIConfig): Promise<any> {
+  log(LogLevel.DEBUG, `Fetching data for user: ${username}`);
   const fields = `
   business_discovery.username(${username}){
     profile_picture_url,
@@ -96,7 +100,7 @@ export async function getUserData(username: string, config: APIConfig): Promise<
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error(`Error HTTP ${response.status}: ${errorText}`);
+      log(LogLevel.ERROR, `HTTP ${response.status} for ${username}: ${errorText}`);
 
       if (response.status === 403) {
         throw new Error("HTTP 403 Forbidden: Reached API rate limit or insufficient permissions.");
@@ -111,13 +115,14 @@ export async function getUserData(username: string, config: APIConfig): Promise<
       throw error;
     }
 
-    console.error(`Could not connect to Instagram API: ${error}`);
+    log(LogLevel.ERROR, `Could not connect to Instagram API for ${username}: ${error}`);
     return {};
   }
 }
 
 export async function sanitizeData(username: string, data: any, category: string = "") {
   if (!data?.business_discovery?.media) {
+    log(LogLevel.DEBUG, `No media found for user: ${username}`);
     return [];
   }
 
@@ -169,8 +174,9 @@ export async function optimizeImage(
     }
 
     dimensions = await img.metadata().then((meta) => ({ width: meta.width, height: meta.height }));
+    log(LogLevel.DEBUG, `Image optimized: ${file_name}`);
   } catch (error) {
-    console.error(`[ERROR] Couldn't fetch image from ${url}`);
+    log(LogLevel.ERROR, `Couldn't fetch image from ${url}: ${error}`);
   }
 
   return dimensions;

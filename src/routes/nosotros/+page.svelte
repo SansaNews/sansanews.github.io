@@ -9,6 +9,8 @@
       <img
         src={asset("/brand/sansanews_banner_black.svg")}
         class="w-auto transition-all duration-300"
+        width="1823"
+        height="377"
         alt="SansaNews Logo"
       />
     </a>

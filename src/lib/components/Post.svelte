@@ -6,7 +6,7 @@
   import { type Media } from "$lib/media";
   import { asset } from "$app/paths";
 
-  let { media }: { media: Media } = $props();
+  let { media, first }: { media: Media; first: boolean } = $props();
   let videoLoaded = $state(false);
 
   let open = $state(false);
@@ -59,7 +59,9 @@
               sizes="(min-width: 1024px) 33vw, 100vw"
               alt="Post de {media.username}"
               referrerpolicy="no-referrer"
-              loading="lazy"
+              loading={first ? "eager" : "lazy"}
+              fetchpriority={first ? "high" : "auto"}
+              decoding={first ? "sync" : "async"}
               width={media.dimensions.width}
               height={media.dimensions.height}
             />
@@ -92,7 +94,9 @@
                 `}
                 sizes="(min-width: 1024px) 100vw, 33vw"
                 alt="Previsualización video de {media.username}"
-                loading="lazy"
+                loading={first ? "eager" : "lazy"}
+                fetchpriority={first ? "high" : "auto"}
+                decoding={first ? "sync" : "async"}
                 width={media.dimensions.width}
                 height={media.dimensions.height}
               />

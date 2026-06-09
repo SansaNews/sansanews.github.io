@@ -75,8 +75,8 @@
           <div class="bg-primary/40 h-0.5 w-full"></div>
         </div>
 
-        {#each group.items as media (media.permalink + media.username)}
-          <Post {media} />
+        {#each group.items as media, index (media.permalink + media.username)}
+          <Post {media} first={index === 0} />
         {/each}
       {/each}
 

@@ -9,6 +9,7 @@ dev:
 # Builds the page
 build:
 	bun run build
+	bun run preview
 
 # Update media.json
 update:

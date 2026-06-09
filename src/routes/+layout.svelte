@@ -2,9 +2,27 @@
   import "../app.css";
   import Navbar from "$lib/components/Navbar.svelte";
   import Footer from "$lib/components/Footer.svelte";
+  import { asset } from "$app/paths";
 
   let { children } = $props();
 </script>
+
+<svelte:head>
+  <link
+    rel="preload"
+    href={asset("/fonts/CharisSIL-Regular.woff2")}
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="preload"
+    href={"/fonts/SourceSerif4-VariableFont_opsz,wght.woff2"}
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  />
+</svelte:head>
 
 <div class="grid grid-cols-12">
   <header class="col-span-12 pb-4 lg:col-span-8 lg:col-start-3">

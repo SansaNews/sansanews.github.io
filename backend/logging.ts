@@ -9,8 +9,7 @@ export enum LogLevel {
 const debugMode = process.env.DEBUG === "true";
 
 export function log(level: LogLevel, message: string) {
-  const timestamp = new Date().toISOString();
-  const entry = `[${timestamp}] [${level}] ${message}`;
+  const entry = { level, message, timestamp: new Date().toISOString() };
 
   if (level === LogLevel.FATAL || level === LogLevel.ERROR) {
     console.error(entry);

@@ -153,6 +153,28 @@ export async function sanitizeData(username: string, data: any, category: string
   return await Promise.all(promises);
 }
 
+const ALLOWED_IMAGE_HOSTS = [
+  "*.cdninstagram.com",
+  "*.fbcdn.net",
+];
+
+function isAllowedImageHost(urlString: string): boolean {
+  try {
+    const parsed = new URL(urlString);
+    if (!["http:", "https:"].includes(parsed.protocol)) return false;
+
+    const hostname = parsed.hostname.toLowerCase();
+    return ALLOWED_IMAGE_HOSTS.some((allowed) => {
+      if (allowed.startsWith("*.")) {
+        return hostname.endsWith(allowed.slice(1));
+      }
+      return hostname === allowed;
+    });
+  } catch {
+    return false;
+  }
+}
+
 export async function optimizeImage(
   url: string,
   file_name: string,
@@ -160,6 +182,11 @@ export async function optimizeImage(
   base_width: number,
 ): Promise<{ width: number; height: number }> {
   let dimensions = { width: 0, height: 0 };
+
+  if (!isAllowedImageHost(url)) {
+    log(LogLevel.ERROR, `Blocked fetch from disallowed host: ${url}`);
+    return dimensions;
+  }
 
   try {
     const response = await fetch(url);

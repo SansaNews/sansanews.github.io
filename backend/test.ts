@@ -1,4 +1,5 @@
 import { APIConfig, getUserData, sanitizeData, assert } from "./main.ts";
+import { log, LogLevel } from "./logging.ts";
 
 if (import.meta.main) {
   main();
@@ -52,10 +53,10 @@ async function main() {
         console.dir(data, { depth: null });
       }
     } else {
-      console.error(`Unknown command: ${command}`);
+      log(LogLevel.ERROR, `Unknown command: ${command}`);
     }
   } catch (error) {
-    console.error("Execution failed:", error instanceof Error ? error.message : error);
+    log(LogLevel.FATAL, `Execution failed: ${error instanceof Error ? error.message : error}`);
     process.exit(1);
   }
 }
@@ -73,13 +74,14 @@ async function checkIfCreatorAccount(username: string, config: APIConfig): Promi
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error(`Error HTTP ${response.status}: ${errorText}`);
+      log(LogLevel.ERROR, `HTTP ${response.status} for ${username}`);
+      log(LogLevel.DEBUG, `Response body length: ${errorText.length}`);
       return false;
     }
 
     return true;
   } catch (error) {
-    console.error(`Could not connect to Instagram API: ${error}`);
+    log(LogLevel.ERROR, `Could not connect to Instagram API for ${username}: ${error}`);
     return false;
   }
 }

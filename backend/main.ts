@@ -36,7 +36,7 @@ if (import.meta.main) {
   main().catch((error) => {
     log(LogLevel.FATAL, `Execution failed: ${error}`);
     process.exit(1);
-  });
+  }
 }
 
 async function main() {

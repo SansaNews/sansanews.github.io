@@ -2,7 +2,12 @@ import { APIConfig, getUserData, sanitizeData, assert } from "./main.ts";
 import { log, LogLevel } from "./logging.ts";
 
 if (import.meta.main) {
-  main();
+  try {
+    await main();
+  } catch (error) {
+    log(LogLevel.FATAL, `Execution failed: ${error}`);
+    process.exit(1);
+  }
 }
 
 async function main() {

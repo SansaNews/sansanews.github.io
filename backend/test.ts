@@ -36,13 +36,13 @@ async function main() {
         } else if (arg === "--since") {
           i++;
           assert(args[i], "Value is required for --since");
-          sinceDays = parseInt(args[i], 10);
-          assert(!isNaN(sinceDays) && sinceDays > 0, "Invalid value for --since");
+          sinceDays = Number.parseInt(args[i], 10);
+          assert(!Number.isNaN(sinceDays) && sinceDays > 0, "Invalid value for --since");
         } else if (arg === "--max") {
           i++;
           assert(args[i], "Value is required for --max");
-          maxPosts = parseInt(args[i], 10);
-          assert(!isNaN(maxPosts) && maxPosts > 0, "Invalid value for --max");
+          maxPosts = Number.parseInt(args[i], 10);
+          assert(!Number.isNaN(maxPosts) && maxPosts > 0, "Invalid value for --max");
         } else if (!arg.startsWith("--")) {
           username = arg;
         }

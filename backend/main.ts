@@ -33,7 +33,9 @@ export class APIConfig {
 }
 
 if (import.meta.main) {
-  main().catch((error) => {
+  try {
+    await main();
+  } catch (error) {
     log(LogLevel.FATAL, `Execution failed: ${error}`);
     process.exit(1);
   }
@@ -153,10 +155,7 @@ export async function sanitizeData(username: string, data: any, category: string
   return await Promise.all(promises);
 }
 
-const ALLOWED_IMAGE_HOSTS = [
-  "*.cdninstagram.com",
-  "*.fbcdn.net",
-];
+const ALLOWED_IMAGE_HOSTS = ["*.cdninstagram.com", "*.fbcdn.net"];
 
 function isAllowedImageHost(urlString: string): boolean {
   try {

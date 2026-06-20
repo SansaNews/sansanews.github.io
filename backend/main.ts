@@ -32,6 +32,8 @@ export class APIConfig {
   }
 }
 
+const ALLOWED_IMAGE_HOSTS = ["*.cdninstagram.com", "*.fbcdn.net"];
+
 if (import.meta.main) {
   try {
     await main();
@@ -155,23 +157,27 @@ export async function sanitizeData(username: string, data: any, category: string
   return await Promise.all(promises);
 }
 
-const ALLOWED_IMAGE_HOSTS = ["*.cdninstagram.com", "*.fbcdn.net"];
 
 export function isAllowedImageHost(urlString: string): boolean {
-  try {
-    const parsed = new URL(urlString);
-    if (!["http:", "https:"].includes(parsed.protocol)) return false;
+  assert(ALLOWED_IMAGE_HOSTS.length > 0, "ALLOWED_IMAGE_HOSTS must not be empty");
 
-    const hostname = parsed.hostname.toLowerCase();
-    return ALLOWED_IMAGE_HOSTS.some((allowed) => {
-      if (allowed.startsWith("*.")) {
-        return hostname.endsWith(allowed.slice(1));
-      }
-      return hostname === allowed;
-    });
-  } catch {
-    return false;
+  let parsed: URL;
+  try {
+    parsed = new URL(urlString);
+  } catch (error) {
+    if (error instanceof TypeError) return false;
+    throw error;
   }
+
+  if (!["http:", "https:"].includes(parsed.protocol)) return false;
+
+  const hostname = parsed.hostname.toLowerCase();
+  return ALLOWED_IMAGE_HOSTS.some((allowed) => {
+    if (allowed.startsWith("*.")) {
+      return hostname.endsWith(allowed.slice(1));
+    }
+    return hostname === allowed;
+  });
 }
 
 export async function optimizeImage(
@@ -186,7 +192,7 @@ export async function optimizeImage(
     let parsedHost = "<unparseable>";
     try {
       parsedHost = new URL(url).hostname;
-    } catch {}
+    } catch { }
     log(LogLevel.ERROR, `Blocked fetch from disallowed host: ${url} (hostname=${parsedHost})`);
     return dimensions;
   }

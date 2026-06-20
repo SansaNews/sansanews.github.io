@@ -157,7 +157,7 @@ export async function sanitizeData(username: string, data: any, category: string
 
 const ALLOWED_IMAGE_HOSTS = ["*.cdninstagram.com", "*.fbcdn.net"];
 
-function isAllowedImageHost(urlString: string): boolean {
+export function isAllowedImageHost(urlString: string): boolean {
   try {
     const parsed = new URL(urlString);
     if (!["http:", "https:"].includes(parsed.protocol)) return false;
@@ -183,7 +183,11 @@ export async function optimizeImage(
   let dimensions = { width: 0, height: 0 };
 
   if (!isAllowedImageHost(url)) {
-    log(LogLevel.ERROR, `Blocked fetch from disallowed host: ${url}`);
+    let parsedHost = "<unparseable>";
+    try {
+      parsedHost = new URL(url).hostname;
+    } catch {}
+    log(LogLevel.ERROR, `Blocked fetch from disallowed host: ${url} (hostname=${parsedHost})`);
     return dimensions;
   }
 

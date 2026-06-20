@@ -3,7 +3,7 @@
 /// <reference lib="esnext" />
 /// <reference lib="webworker" />
 
-const sw = self as unknown as ServiceWorkerGlobalScope;
+const sw = globalThis as unknown as ServiceWorkerGlobalScope;
 
 sw.addEventListener('install', () => {
 	sw.skipWaiting();

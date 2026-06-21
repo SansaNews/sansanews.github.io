@@ -1,8 +1,8 @@
 export {
-	Root,
+	default as Root,
 	type ButtonProps as Props,
 	//
-	Root as Button,
+	default as Button,
 	buttonVariants,
 	type ButtonProps,
 	type ButtonSize,

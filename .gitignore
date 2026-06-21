@@ -1,6 +1,11 @@
+# App
 src/lib/assets/media.json
 static/pfp/
 static/posts/
+
+# Agents
+AGENTS.md
+opencode.json
 
 # Svelte
 node_modules

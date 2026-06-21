@@ -199,3 +199,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .card-shadow {
+    box-shadow: 4px 4px 0px 0px var(--border);
+    transition: box-shadow 200ms;
+  }
+  .card-shadow:hover {
+    box-shadow: 6px 6px 0px 0px var(--border);
+  }
+}

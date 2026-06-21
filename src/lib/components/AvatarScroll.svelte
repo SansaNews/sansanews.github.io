@@ -50,7 +50,7 @@
   <div class="relative flex-1 overflow-hidden">
     <!-- Avatars -->
     <div class="flex gap-3 overflow-x-auto p-2" style="scrollbar-width: none;">
-      {#each allUsers as { username, href }}
+      {#each allUsers as { username, href } (username)}
         {@render avatarCard(username, href)}
       {/each}
     </div>
@@ -80,7 +80,7 @@
         <div class="bg-border mx-auto my-3 h-2 w-12 rounded-full"></div>
         <!-- Drawer Content -->
         <div class="flex flex-col gap-6 overflow-y-auto p-5">
-          {#each categories as cat}
+          {#each categories as cat (cat.name)}
             <div class="flex flex-col gap-3">
               <!-- Category Title -->
               <div class="flex items-center gap-3">
@@ -92,7 +92,7 @@
               </div>
               <!-- Users Grid -->
               <div class="grid grid-cols-3 gap-3 [&>a]:w-full">
-                {#each cat.users as { username, href }}
+                {#each cat.users as { username, href } (username)}
                   {@render avatarCard(username, href)}
                 {/each}
               </div>

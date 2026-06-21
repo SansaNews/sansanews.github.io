@@ -3,6 +3,7 @@
   import categoriesJSON from "$lib/assets/users.json";
   import * as ToggleGroup from "$lib/components/ui/toggle-group";
   import { Skeleton } from "$lib/components/ui/skeleton/index.js";
+  import { cn } from "$lib/utils";
 
   const categories = Object.keys(categoriesJSON);
 
@@ -40,7 +41,7 @@
       Todos
     </ToggleGroup.Item>
 
-    {#each categories as category}
+    {#each categories as category (category)}
       <ToggleGroup.Item
         value={category.toLowerCase()}
         class="data-[state=on]:bg-primary/80 data-[state=on]:text-background text-muted-foreground hover:text-primary 
@@ -56,8 +57,10 @@
 <!-- Mobile Header -->
 <svelte:window onscroll={handleScroll} />
 <div
-  class="bg-background fixed top-0 right-0 left-0 z-40 border-b-2 transition-transform duration-300 lg:hidden"
-  class:-translate-y-full={hideMobileNav}
+  class={cn(
+    "bg-background fixed top-0 right-0 left-0 z-40 border-b-2 transition-transform duration-300 lg:hidden",
+    hideMobileNav && "-translate-y-full",
+  )}
 >
   <div class="flex justify-center pt-4 pb-5">
     <a href={resolve("/")}>

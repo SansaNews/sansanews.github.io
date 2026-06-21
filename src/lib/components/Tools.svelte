@@ -7,7 +7,7 @@
 </script>
 
 <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-  {#each toolList as tool}
+  {#each toolList as tool (tool.title)}
     <article
       class="card-shadow bg-card flex flex-col overflow-hidden rounded-lg border-2"
     >
@@ -57,13 +57,6 @@
     font-family: var(--font-heading);
     font-size: 1.25rem;
     font-weight: 700;
-  }
-  .card-shadow {
-    box-shadow: 4px 4px 0px 0px var(--border);
-    transition: box-shadow 200ms;
-  }
-  .card-shadow:hover {
-    box-shadow: 6px 6px 0px 0px var(--border);
   }
 </style>
 

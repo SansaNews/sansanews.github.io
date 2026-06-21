@@ -9,25 +9,31 @@
   let { media, first }: { media: Media; first: boolean } = $props();
   let videoLoaded = $state(false);
 
+  let hovered = $state(false);
   let open = $state(false);
-  let closeTimer: ReturnType<typeof setTimeout>;
+
+  $effect(() => {
+    if (hovered) {
+      open = true;
+      return;
+    }
+    const timer = setTimeout(() => {
+      open = false;
+    }, 150);
+    return () => clearTimeout(timer);
+  });
 
   function handleOpen() {
-    clearTimeout(closeTimer);
-    open = true;
+    hovered = true;
   }
 
   function handleClose() {
-    closeTimer = setTimeout(() => {
-      open = false;
-    }, 150);
+    hovered = false;
   }
 
   function handleScroll() {
-    if (open) {
-      clearTimeout(closeTimer);
-      open = false;
-    }
+    hovered = false;
+    open = false;
   }
 </script>
 
@@ -160,14 +166,3 @@
     </div>
   </Card.Content>
 </Card.Root>
-
-<style>
-  .card-shadow {
-    box-shadow: 4px 4px 0px 0px var(--border);
-    transition: box-shadow 200ms;
-  }
-
-  .card-shadow:hover {
-    box-shadow: 6px 6px 0px 0px var(--border);
-  }
-</style>

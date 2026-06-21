@@ -1,29 +1,24 @@
-let isClientMounted = $state(false);
-let now = $state(new Date());
-let isInitialized = false;
+class ClientTime {
+	isMounted = $state(false);
+	now = $state(new Date());
+	#interval: ReturnType<typeof setInterval> | undefined;
+
+	start() {
+		if (this.#interval) return;
+		this.isMounted = true;
+		this.now = new Date();
+		this.#interval = setInterval(() => {
+			this.now = new Date();
+		}, 60 * 1000);
+	}
+}
+
+const clientTime = new ClientTime();
+
+$effect.root(() => {
+	clientTime.start();
+});
 
 export function useClientTime() {
-  $effect(() => {
-    isClientMounted = true;
-
-    if (!isInitialized) {
-      isInitialized = true;
-      now = new Date();
-
-      const interval = setInterval(() => {
-        now = new Date();
-      }, 60 * 1000);
-
-      return () => clearInterval(interval);
-    }
-  });
-
-  return {
-    get isMounted() {
-      return isClientMounted;
-    },
-    get now() {
-      return now;
-    },
-  };
+	return clientTime;
 }

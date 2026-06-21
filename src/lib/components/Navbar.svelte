@@ -2,6 +2,7 @@
   import { page } from "$app/state";
   import { asset, resolve } from "$app/paths";
   import { Newspaper, PencilRuler, Info } from "@lucide/svelte";
+  import { cn } from "$lib/utils";
 
   const sections = [
     { label: "Noticias", href: resolve("/"), icon: Newspaper },
@@ -26,18 +27,22 @@
 <!-- Mobile Navigation -->
 <svelte:window onscroll={handleScroll} />
 <nav
-  class="bg-background fixed right-0 bottom-0 left-0 z-50 border-t-2 transition-transform duration-300 lg:hidden"
-  class:translate-y-full={hideMobileNav}
+  class={cn(
+    "bg-background fixed right-0 bottom-0 left-0 z-50 border-t-2 transition-transform duration-300 lg:hidden",
+    hideMobileNav && "translate-y-full",
+  )}
 >
   <ul class="flex justify-around">
-    {#each sections as section}
+    {#each sections as section (section.href)}
       <li class="flex-1">
         <a
           href={section.href}
-          class="flex w-full flex-col items-center py-2 text-sm transition-colors"
-          class:text-primary={section.href === page.url.pathname}
-          class:text-muted-foreground={section.href !== page.url.pathname}
-          class:hover:text-primary={section.href !== page.url.pathname}
+          class={cn(
+            "flex w-full flex-col items-center py-2 text-sm transition-colors",
+            section.href === page.url.pathname
+              ? "text-primary"
+              : "text-muted-foreground hover:text-primary",
+          )}
         >
           {#if section.icon}
             <section.icon class="mb-1 h-4 w-4" />
@@ -66,11 +71,13 @@
   <div class="hidden items-center justify-center lg:flex">
     <div class="bg-primary/40 h-0.5 w-16"></div>
     <nav class="flex items-center">
-      {#each sections as item, i}
+      {#each sections as item, i (item.href)}
         <a
           href={item.href}
-          class="hover:text-primary focus:text-primary px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors"
-          class:text-primary={item.href === page.url.pathname}
+          class={cn(
+            "hover:text-primary focus:text-primary px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors",
+            item.href === page.url.pathname && "text-primary",
+          )}
         >
           {item.label}
         </a>

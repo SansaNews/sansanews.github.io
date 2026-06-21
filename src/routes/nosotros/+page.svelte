@@ -255,7 +255,7 @@
   }
 
   a {
-    color: var(--primary);
+    color: var(--color-primary);
     text-decoration: underline;
   }
 </style>

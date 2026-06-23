@@ -1,23 +1,23 @@
 {
-  "name": "SansaNews",
-  "short_name": "SansaNews",
-  "start_url": "/",
-  "scope": "/",
-  "icons": [
-    {
-      "src": "web-app-manifest-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    }
-  ],
-  "theme_color": "#03989e",
-  "background_color": "#03989e",
-  "display": "standalone"
+	"name": "SansaNews",
+	"short_name": "SansaNews",
+	"start_url": "/",
+	"scope": "/",
+	"icons": [
+		{
+			"src": "web-app-manifest-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "web-app-manifest-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any"
+		}
+	],
+	"theme_color": "#03989e",
+	"background_color": "#03989e",
+	"display": "standalone"
 }

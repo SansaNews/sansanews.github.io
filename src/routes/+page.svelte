@@ -1,50 +1,50 @@
 <script lang="ts">
-  import Post from "$lib/components/Post.svelte";
-  import AvatarScroll from "$lib/components/AvatarScroll.svelte";
-  import { Skeleton } from "$lib/components/ui/skeleton/index.js";
-  import data from "$lib/assets/media.json";
-  import {
-    type Media,
-    jsonToMedia,
-    formatDatetime,
-    getTimeCategory,
-  } from "$lib/media";
-  import * as Empty from "$lib/components/ui/empty";
-  import { ImageOff } from "@lucide/svelte";
-  import CategoryHeader from "$lib/components/CategoryHeader.svelte";
-  import { useClientTime } from "$lib/time.svelte";
+import Post from "$lib/components/Post.svelte";
+import AvatarScroll from "$lib/components/AvatarScroll.svelte";
+import { Skeleton } from "$lib/components/ui/skeleton/index.js";
+import data from "$lib/assets/media.json";
+import {
+	type Media,
+	jsonToMedia,
+	formatDatetime,
+	getTimeCategory,
+} from "$lib/media";
+import * as Empty from "$lib/components/ui/empty";
+import { ImageOff } from "@lucide/svelte";
+import CategoryHeader from "$lib/components/CategoryHeader.svelte";
+import { useClientTime } from "$lib/time.svelte";
 
-  let category = $state("");
-  const time = useClientTime();
+let category = $state("");
+const time = useClientTime();
 
-  const allMedia: Media[] = jsonToMedia(data.media);
-  let filteredMedia = $derived.by(() => {
-    if (category) {
-      return allMedia.filter((media) => media.category === category);
-    }
-    return allMedia;
-  });
+const allMedia: Media[] = jsonToMedia(data.media);
+let filteredMedia = $derived.by(() => {
+	if (category) {
+		return allMedia.filter((media) => media.category === category);
+	}
+	return allMedia;
+});
 
-  let groupedMedia = $derived.by(() => {
-    if (!time.isMounted) {
-      return [{ title: "Hoy", items: filteredMedia }];
-    }
+let groupedMedia = $derived.by(() => {
+	if (!time.isMounted) {
+		return [{ title: "Hoy", items: filteredMedia }];
+	}
 
-    let groups: Record<string, Media[]> = {};
-    const order = ["Hoy", "Ayer", "Última Semana", "Último Mes"];
+	let groups: Record<string, Media[]> = {};
+	const order = ["Hoy", "Ayer", "Última Semana", "Último Mes"];
 
-    filteredMedia.forEach((media) => {
-      let category = getTimeCategory(media.datePublished);
-      if (!groups[category]) {
-        groups[category] = [];
-      }
-      groups[category].push(media);
-    });
+	filteredMedia.forEach((media) => {
+		let category = getTimeCategory(media.datePublished);
+		if (!groups[category]) {
+			groups[category] = [];
+		}
+		groups[category].push(media);
+	});
 
-    return order
-      .filter((key) => groups[key] && groups[key].length > 0)
-      .map((key) => ({ title: key, items: groups[key] }));
-  });
+	return order
+		.filter((key) => groups[key] && groups[key].length > 0)
+		.map((key) => ({ title: key, items: groups[key] }));
+});
 </script>
 
 <main class="p-4 pt-2 lg:pt-4">

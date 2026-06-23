@@ -1,40 +1,40 @@
 <script lang="ts">
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Popover from "$lib/components/ui/popover/index.js";
-  import User from "$lib/components/User.svelte";
-  import { GalleryHorizontalEnd } from "@lucide/svelte";
-  import { type Media } from "$lib/media";
-  import { asset } from "$app/paths";
+import * as Card from "$lib/components/ui/card/index.js";
+import * as Popover from "$lib/components/ui/popover/index.js";
+import User from "$lib/components/User.svelte";
+import { GalleryHorizontalEnd } from "@lucide/svelte";
+import { type Media } from "$lib/media";
+import { asset } from "$app/paths";
 
-  let { media, first }: { media: Media; first: boolean } = $props();
-  let videoLoaded = $state(false);
+let { media, first }: { media: Media; first: boolean } = $props();
+let videoLoaded = $state(false);
 
-  let hovered = $state(false);
-  let open = $state(false);
+let hovered = $state(false);
+let open = $state(false);
 
-  $effect(() => {
-    if (hovered) {
-      open = true;
-      return;
-    }
-    const timer = setTimeout(() => {
-      open = false;
-    }, 150);
-    return () => clearTimeout(timer);
-  });
+$effect(() => {
+	if (hovered) {
+		open = true;
+		return;
+	}
+	const timer = setTimeout(() => {
+		open = false;
+	}, 150);
+	return () => clearTimeout(timer);
+});
 
-  function handleOpen() {
-    hovered = true;
-  }
+function handleOpen() {
+	hovered = true;
+}
 
-  function handleClose() {
-    hovered = false;
-  }
+function handleClose() {
+	hovered = false;
+}
 
-  function handleScroll() {
-    hovered = false;
-    open = false;
-  }
+function handleScroll() {
+	hovered = false;
+	open = false;
+}
 </script>
 
 <svelte:window onscroll={handleScroll} />

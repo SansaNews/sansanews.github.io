@@ -1,21 +1,21 @@
 <script lang="ts" module>
-  import { getContext, setContext } from "svelte";
-  import type { VariantProps } from "tailwind-variants";
-  import { toggleVariants } from "$lib/components/ui/toggle/index.js";
+import { getContext, setContext } from "svelte";
+import type { VariantProps } from "tailwind-variants";
+import { toggleVariants } from "$lib/components/ui/toggle/index.js";
 
-  type ToggleVariants = VariantProps<typeof toggleVariants>;
+type ToggleVariants = VariantProps<typeof toggleVariants>;
 
-  interface ToggleGroupContext extends ToggleVariants {
-    spacing?: number;
-  }
+interface ToggleGroupContext extends ToggleVariants {
+	spacing?: number;
+}
 
-  export function setToggleGroupCtx(props: ToggleGroupContext) {
-    setContext("toggleGroup", props);
-  }
+export function setToggleGroupCtx(props: ToggleGroupContext) {
+	setContext("toggleGroup", props);
+}
 
-  export function getToggleGroupCtx() {
-    return getContext<Required<ToggleGroupContext>>("toggleGroup");
-  }
+export function getToggleGroupCtx() {
+	return getContext<Required<ToggleGroupContext>>("toggleGroup");
+}
 </script>
 
 <script lang="ts">

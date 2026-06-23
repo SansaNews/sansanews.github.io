@@ -1,27 +1,27 @@
 <script lang="ts">
-  import { page } from "$app/state";
-  import { asset, resolve } from "$app/paths";
-  import { Newspaper, PencilRuler, Info } from "@lucide/svelte";
-  import { cn } from "$lib/utils";
+import { page } from "$app/state";
+import { asset, resolve } from "$app/paths";
+import { Newspaper, PencilRuler, Info } from "@lucide/svelte";
+import { cn } from "$lib/utils";
 
-  const sections = [
-    { label: "Noticias", href: resolve("/"), icon: Newspaper },
-    {
-      label: "Herramientas",
-      href: resolve("/herramientas"),
-      icon: PencilRuler,
-    },
-    { label: "Sobre Nosotros", href: resolve("/nosotros"), icon: Info },
-  ];
+const sections = [
+	{ label: "Noticias", href: resolve("/"), icon: Newspaper },
+	{
+		label: "Herramientas",
+		href: resolve("/herramientas"),
+		icon: PencilRuler,
+	},
+	{ label: "Sobre Nosotros", href: resolve("/nosotros"), icon: Info },
+];
 
-  let lastScrollY = $state(0);
-  let hideMobileNav = $state(false);
+let lastScrollY = $state(0);
+let hideMobileNav = $state(false);
 
-  function handleScroll() {
-    const currentScrollY = window.scrollY;
-    hideMobileNav = currentScrollY > lastScrollY && currentScrollY > 10;
-    lastScrollY = currentScrollY;
-  }
+function handleScroll() {
+	const currentScrollY = window.scrollY;
+	hideMobileNav = currentScrollY > lastScrollY && currentScrollY > 10;
+	lastScrollY = currentScrollY;
+}
 </script>
 
 <!-- Mobile Navigation -->

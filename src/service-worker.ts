@@ -5,21 +5,22 @@
 
 const sw = globalThis as unknown as ServiceWorkerGlobalScope;
 
-sw.addEventListener('install', () => {
+sw.addEventListener("install", () => {
 	sw.skipWaiting();
 });
 
-sw.addEventListener('activate', (event) => {
+sw.addEventListener("activate", (event) => {
 	event.waitUntil(sw.clients.claim());
 });
 
-sw.addEventListener('fetch', (event) => {
-	if (event.request.mode !== 'navigate') return;
+sw.addEventListener("fetch", (event) => {
+	if (event.request.mode !== "navigate") return;
 
 	event.respondWith(
-		fetch(event.request).catch(() =>
-			new Response(
-				`<!DOCTYPE html>
+		fetch(event.request).catch(
+			() =>
+				new Response(
+					`<!DOCTYPE html>
 				<html lang="es">
 				  <head>
 				    <meta charset="utf-8" />
@@ -39,8 +40,11 @@ sw.addEventListener('fetch', (event) => {
 					<p>Vuelve a intentarlo cuando estés en línea.</p>
 				  </body>
 				</html>`,
-				{ status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } }
-			)
-		)
+					{
+						status: 503,
+						headers: { "Content-Type": "text/html; charset=utf-8" },
+					},
+				),
+		),
 	);
 });

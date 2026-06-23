@@ -1,29 +1,29 @@
 <script lang="ts">
-  import { asset, resolve } from "$app/paths";
-  import categoriesJSON from "$lib/assets/users.json";
-  import * as ToggleGroup from "$lib/components/ui/toggle-group";
-  import { Skeleton } from "$lib/components/ui/skeleton/index.js";
-  import { cn } from "$lib/utils";
+import { asset, resolve } from "$app/paths";
+import categoriesJSON from "$lib/assets/users.json";
+import * as ToggleGroup from "$lib/components/ui/toggle-group";
+import { Skeleton } from "$lib/components/ui/skeleton/index.js";
+import { cn } from "$lib/utils";
 
-  const categories = Object.keys(categoriesJSON);
+const categories = Object.keys(categoriesJSON);
 
-  let { setCategory, lastUpdate, isTimeMounted } = $props();
+let { setCategory, lastUpdate, isTimeMounted } = $props();
 
-  let lastScrollY = $state(0);
-  let hideMobileNav = $state(false);
-  let fade = $state({ left: false, right: true });
+let lastScrollY = $state(0);
+let hideMobileNav = $state(false);
+let fade = $state({ left: false, right: true });
 
-  function handleScroll() {
-    const currentScrollY = window.scrollY;
-    hideMobileNav = currentScrollY > lastScrollY && currentScrollY > 10;
-    lastScrollY = currentScrollY;
-  }
+function handleScroll() {
+	const currentScrollY = window.scrollY;
+	hideMobileNav = currentScrollY > lastScrollY && currentScrollY > 10;
+	lastScrollY = currentScrollY;
+}
 
-  function updateFade(e: Event) {
-    const { scrollLeft, scrollWidth, clientWidth } = e.target as HTMLElement;
-    fade.left = scrollLeft > 8;
-    fade.right = scrollLeft < scrollWidth - clientWidth - 8;
-  }
+function updateFade(e: Event) {
+	const { scrollLeft, scrollWidth, clientWidth } = e.target as HTMLElement;
+	fade.left = scrollLeft > 8;
+	fade.right = scrollLeft < scrollWidth - clientWidth - 8;
+}
 </script>
 
 {#snippet CategorySelector()}

@@ -1,22 +1,22 @@
-import adapter from '@sveltejs/adapter-static';
+import adapter from "@sveltejs/adapter-static";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
 		adapter: adapter({
-			pages: 'build',
-			assets: 'build',
+			pages: "build",
+			assets: "build",
 			fallback: "404.html",
 			precompress: false,
-			strict: true
+			strict: true,
 		}),
 		paths: {
-			base: process.argv.includes("dev") ? "" : process.env.BASE_PATH
-		}
+			base: process.argv.includes("dev") ? "" : process.env.BASE_PATH,
+		},
 	},
 	serviceWorker: {
-      register: true
-    }
+		register: true,
+	},
 };
 
 export default config;

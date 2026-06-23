@@ -1,39 +1,39 @@
 {
-  "USM": [
-    "admisionusm",
-    "biblioteca.usm",
-    "dee.usm",
-    "gestal.usm",
-    "inesgenero.usm",
-    "piea.usm",
-    "postgrados_usm",
-    "rreeusm_sanjoaquin",
-    "semillero3ie",
-    "usantamaria",
-    "usmsanjoaquin"
-  ],
-  "Iniciativas": [
-    "geekusm",
-    "clubdemusica.usmsj",
-    "diftelusm",
-    "donfede.sj",
-    "emma.usm.sj",
-    "gbu_usm",
-    "movimiento.0",
-    "progcompusm",
-    "uavusm",
-    "sansanews"
-  ],
-  "Deportes": [
-    "cheer.usm",
-    "bailarinesusm.cs",
-    "balonmano_usm_stgo",
-    "basketusm",
-    "defider_usm",
-    "lobos_marinos_usm",
-    "prestigeleagueusm",
-    "santamariasharks",
-    "usm.esports_"
-  ],
-  "Centros": ["ceemat.usm.sj", "ceemin.utfsm", "ceeinf_sj", "feusam.usm.sj"]
+	"USM": [
+		"admisionusm",
+		"biblioteca.usm",
+		"dee.usm",
+		"gestal.usm",
+		"inesgenero.usm",
+		"piea.usm",
+		"postgrados_usm",
+		"rreeusm_sanjoaquin",
+		"semillero3ie",
+		"usantamaria",
+		"usmsanjoaquin"
+	],
+	"Iniciativas": [
+		"geekusm",
+		"clubdemusica.usmsj",
+		"diftelusm",
+		"donfede.sj",
+		"emma.usm.sj",
+		"gbu_usm",
+		"movimiento.0",
+		"progcompusm",
+		"uavusm",
+		"sansanews"
+	],
+	"Deportes": [
+		"cheer.usm",
+		"bailarinesusm.cs",
+		"balonmano_usm_stgo",
+		"basketusm",
+		"defider_usm",
+		"lobos_marinos_usm",
+		"prestigeleagueusm",
+		"santamariasharks",
+		"usm.esports_"
+	],
+	"Centros": ["ceemat.usm.sj", "ceemin.utfsm", "ceeinf_sj", "feusam.usm.sj"]
 }

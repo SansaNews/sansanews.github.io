@@ -1,23 +1,23 @@
 <script lang="ts">
-  import { Drawer } from "vaul-svelte";
-  import { LayoutGrid } from "@lucide/svelte";
-  import usersJSON from "$lib/assets/users.json";
-  import mediaJSON from "$lib/assets/media.json";
-  import { asset } from "$app/paths";
+import { Drawer } from "vaul-svelte";
+import { LayoutGrid } from "@lucide/svelte";
+import usersJSON from "$lib/assets/users.json";
+import mediaJSON from "$lib/assets/media.json";
+import { asset } from "$app/paths";
 
-  const validUsers = new Set(mediaJSON.media.map((m) => m.username));
+const validUsers = new Set(mediaJSON.media.map((m) => m.username));
 
-  const categories = Object.entries(usersJSON).map(([name, usernames]) => ({
-    name,
-    users: usernames
-      .filter((user) => validUsers.has(user))
-      .map((user) => ({
-        username: user,
-        href: `https://www.instagram.com/${user}`,
-      })),
-  }));
+const categories = Object.entries(usersJSON).map(([name, usernames]) => ({
+	name,
+	users: usernames
+		.filter((user) => validUsers.has(user))
+		.map((user) => ({
+			username: user,
+			href: `https://www.instagram.com/${user}`,
+		})),
+}));
 
-  const allUsers = categories.flatMap((category) => category.users);
+const allUsers = categories.flatMap((category) => category.users);
 </script>
 
 <!-- Avatar Card -->

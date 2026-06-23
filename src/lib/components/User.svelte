@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { Avatar } from "$lib/components/ui/avatar";
-  import { formatDatetime } from "$lib/media";
-  import { useClientTime } from "$lib/time.svelte";
-  import { Skeleton } from "$lib/components/ui/skeleton/index.js";
-  import { asset } from "$app/paths";
+import { Avatar } from "$lib/components/ui/avatar";
+import { formatDatetime } from "$lib/media";
+import { useClientTime } from "$lib/time.svelte";
+import { Skeleton } from "$lib/components/ui/skeleton/index.js";
+import { asset } from "$app/paths";
 
-  let { username, datePublished } = $props();
+let { username, datePublished } = $props();
 
-  const time = useClientTime();
+const time = useClientTime();
 </script>
 
 <a

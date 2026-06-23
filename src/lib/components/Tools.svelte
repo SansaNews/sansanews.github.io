@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { ExternalLink } from "@lucide/svelte";
-  import { type Tool } from "$lib/tools";
-  import toolsJSON from "$lib/assets/tools.json";
+import { ExternalLink } from "@lucide/svelte";
+import { type Tool } from "$lib/tools";
+import toolsJSON from "$lib/assets/tools.json";
 
-  const toolList: Tool[] = toolsJSON.tools;
+const toolList: Tool[] = toolsJSON.tools;
 </script>
 
 <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">

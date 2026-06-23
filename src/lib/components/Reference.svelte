@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { Github, Instagram } from "@lucide/svelte";
+import { Github, Instagram } from "@lucide/svelte";
 
-  interface Props {
-    name: string; 
-    github?: string; 
-    instagram?: string;
-  }
+interface Props {
+	name: string;
+	github?: string;
+	instagram?: string;
+}
 
-  let { name, github, instagram }: Props = $props();
+let { name, github, instagram }: Props = $props();
 </script>
 
 <div class="inline p-0">

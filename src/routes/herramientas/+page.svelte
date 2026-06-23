@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { asset, resolve } from "$app/paths";
+import { asset, resolve } from "$app/paths";
 
-  import Tools from "$lib/components/Tools.svelte";
+import Tools from "$lib/components/Tools.svelte";
 </script>
 
 <main class="px-10 lg:px-16">

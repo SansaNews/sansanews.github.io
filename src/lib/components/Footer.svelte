@@ -1,6 +1,6 @@
 <script lang="ts">
+import { Github, Instagram } from "@lucide/svelte";
 import { resolve } from "$app/paths";
-import { Instagram, Github } from "@lucide/svelte";
 </script>
 
 <footer

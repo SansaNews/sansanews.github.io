@@ -4,12 +4,11 @@ import InfoIcon from "@lucide/svelte/icons/info";
 import Loader2Icon from "@lucide/svelte/icons/loader-2";
 import OctagonXIcon from "@lucide/svelte/icons/octagon-x";
 import TriangleAlertIcon from "@lucide/svelte/icons/triangle-alert";
-
+import { mode } from "mode-watcher";
 import {
 	Toaster as Sonner,
 	type ToasterProps as SonnerProps,
 } from "svelte-sonner";
-import { mode } from "mode-watcher";
 
 let { ...restProps }: SonnerProps = $props();
 </script>

@@ -1,5 +1,5 @@
-import { APIConfig, getUserData, sanitizeData, assert } from "./main.ts";
-import { log, LogLevel } from "./logging.ts";
+import { LogLevel, log } from "./logging.ts";
+import { APIConfig, assert, getUserData, sanitizeData } from "./main.ts";
 
 if (import.meta.main) {
 	try {

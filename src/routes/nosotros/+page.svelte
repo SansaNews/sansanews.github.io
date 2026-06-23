@@ -1,6 +1,6 @@
 <script lang="ts">
-import Reference from "$lib/components/Reference.svelte";
 import { asset, resolve } from "$app/paths";
+import Reference from "$lib/components/Reference.svelte";
 </script>
 
 <main class="px-10 lg:px-16">

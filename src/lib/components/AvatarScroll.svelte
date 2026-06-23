@@ -1,9 +1,9 @@
 <script lang="ts">
-import { Drawer } from "vaul-svelte";
 import { LayoutGrid } from "@lucide/svelte";
-import usersJSON from "$lib/assets/users.json";
-import mediaJSON from "$lib/assets/media.json";
+import { Drawer } from "vaul-svelte";
 import { asset } from "$app/paths";
+import mediaJSON from "$lib/assets/media.json";
+import usersJSON from "$lib/assets/users.json";
 
 const validUsers = new Set(mediaJSON.media.map((m) => m.username));
 

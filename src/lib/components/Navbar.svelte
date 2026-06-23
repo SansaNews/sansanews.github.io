@@ -1,7 +1,7 @@
 <script lang="ts">
-import { page } from "$app/state";
+import { Info, Newspaper, PencilRuler } from "@lucide/svelte";
 import { asset, resolve } from "$app/paths";
-import { Newspaper, PencilRuler, Info } from "@lucide/svelte";
+import { page } from "$app/state";
 import { cn } from "$lib/utils";
 
 const sections = [

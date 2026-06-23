@@ -1,8 +1,8 @@
 <script lang="ts">
 import { asset, resolve } from "$app/paths";
 import categoriesJSON from "$lib/assets/users.json";
-import * as ToggleGroup from "$lib/components/ui/toggle-group";
 import { Skeleton } from "$lib/components/ui/skeleton/index.js";
+import * as ToggleGroup from "$lib/components/ui/toggle-group";
 import { cn } from "$lib/utils";
 
 const categories = Object.keys(categoriesJSON);

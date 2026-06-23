@@ -1,7 +1,27 @@
 import { file, write } from "bun";
-import { log, LogLevel } from "./logging.ts";
+import { LogLevel, log } from "./logging.ts";
 
 export type User = { username: string; category: string };
+
+interface IGMediaItem {
+	id: string;
+	timestamp: string;
+	caption?: string;
+	media_type: string;
+	permalink: string;
+	media_url: string;
+	thumbnail_url?: string;
+	children?: unknown;
+}
+
+interface IGBusinessDiscovery {
+	profile_picture_url?: string;
+	media?: { data: IGMediaItem[] };
+}
+
+export interface IGMediaResponse {
+	business_discovery?: IGBusinessDiscovery;
+}
 
 export class APIConfig {
 	url: string;
@@ -70,7 +90,7 @@ async function main() {
 		return sanitizeData(user.username, userData, user.category);
 	});
 	const results = await Promise.all(promises);
-	let media = results.flat();
+	const media = results.flat();
 
 	media.sort((a, b) => {
 		const timeA = new Date(a.timestamp).getTime();
@@ -90,7 +110,7 @@ async function main() {
 export async function getUserData(
 	username: string,
 	config: APIConfig,
-): Promise<any> {
+): Promise<IGMediaResponse> {
 	log(LogLevel.DEBUG, `Fetching data for user: ${username}`);
 	const fields = `
   business_discovery.username(${username}){
@@ -141,7 +161,7 @@ export async function getUserData(
 
 export async function sanitizeData(
 	username: string,
-	data: any,
+	data: IGMediaResponse,
 	category: string = "",
 ) {
 	if (!data?.business_discovery?.media) {
@@ -156,27 +176,29 @@ export async function sanitizeData(
 		48,
 	);
 
-	const promises = data.business_discovery.media.data.map(async (m: any) => {
-		const media = { ...m };
-		media.id = `${username}-${media.permalink.split("/")[4]}`;
-		media.username = username;
-		media.category = category;
-		media.dimensions = await optimizeImage(
-			media.media_type === "VIDEO" ? media.thumbnail_url : media.media_url,
-			media.id,
-			"./static/posts",
-			376,
-		);
+	const promises = data.business_discovery.media.data.map(
+		async (m: IGMediaItem) => {
+			const media = { ...m };
+			media.id = `${username}-${media.permalink.split("/")[4]}`;
+			media.username = username;
+			media.category = category;
+			media.dimensions = await optimizeImage(
+				media.media_type === "VIDEO" ? media.thumbnail_url : media.media_url,
+				media.id,
+				"./static/posts",
+				376,
+			);
 
-		if (media.media_type === "VIDEO") {
-			media.video_url = media.media_url;
-		}
+			if (media.media_type === "VIDEO") {
+				media.video_url = media.media_url;
+			}
 
-		delete media.media_url;
-		delete media.thumbnail_url;
-		delete media.children;
-		return media;
-	});
+			delete media.media_url;
+			delete media.thumbnail_url;
+			delete media.children;
+			return media;
+		},
+	);
 
 	return await Promise.all(promises);
 }
@@ -251,7 +273,7 @@ export async function optimizeImage(
 	return dimensions;
 }
 
-export function assert(condition: any, message: string): asserts condition {
+export function assert(condition: unknown, message: string): asserts condition {
 	if (!condition) {
 		throw new Error(message);
 	}

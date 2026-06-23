@@ -1,9 +1,9 @@
 <script lang="ts">
+import { asset } from "$app/paths";
 import { Avatar } from "$lib/components/ui/avatar";
+import { Skeleton } from "$lib/components/ui/skeleton/index.js";
 import { formatDatetime } from "$lib/media";
 import { useClientTime } from "$lib/time.svelte";
-import { Skeleton } from "$lib/components/ui/skeleton/index.js";
-import { asset } from "$app/paths";
 
 let { username, datePublished } = $props();
 

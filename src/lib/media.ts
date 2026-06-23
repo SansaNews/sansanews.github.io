@@ -13,8 +13,20 @@ export interface Media {
 	};
 }
 
-export function jsonToMedia(json: any[]): Media[] {
-	return json.map((media: any) => ({
+interface RawMedia {
+	id: string;
+	caption?: string;
+	category: string;
+	timestamp: string;
+	permalink: string;
+	media_type: string;
+	username: string;
+	dimensions: { width: number; height: number };
+	video_url?: string;
+}
+
+export function jsonToMedia(json: RawMedia[]): Media[] {
+	return json.map((media) => ({
 		id: media.id,
 		caption: media.caption || "Sin descripción",
 		category: media.category.toLowerCase(),
@@ -28,9 +40,9 @@ export function jsonToMedia(json: any[]): Media[] {
 }
 
 export function getTimeCategory(date: Date): string {
-	let now = new Date();
-	let diffTime = now.getTime() - date.getTime();
-	let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+	const now = new Date();
+	const diffTime = now.getTime() - date.getTime();
+	const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
 	if (
 		date.getDate() === now.getDate() &&
@@ -40,7 +52,7 @@ export function getTimeCategory(date: Date): string {
 		return "Hoy";
 	}
 
-	let yesterday = new Date(now);
+	const yesterday = new Date(now);
 	yesterday.setDate(now.getDate() - 1);
 	if (
 		date.getDate() === yesterday.getDate() &&

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { ExternalLink } from "@lucide/svelte";
-import { type Tool } from "$lib/tools";
 import toolsJSON from "$lib/assets/tools.json";
+import { type Tool } from "$lib/tools";
 
 const toolList: Tool[] = toolsJSON.tools;
 </script>

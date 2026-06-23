@@ -1,3 +1,7 @@
+@import "tailwindcss";
+
+@import "tw-animate-css";
+
 @font-face {
 	font-family: "Charis SIL";
 	font-style: normal;
@@ -43,10 +47,6 @@
 	src: url("/fonts/SourceSerif4-Italic-VariableFont_opsz,wght.woff2")
 		format("woff2-variations");
 }
-
-@import "tailwindcss";
-
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 

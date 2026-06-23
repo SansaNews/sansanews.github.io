@@ -1,10 +1,10 @@
 <script lang="ts">
+import { GalleryHorizontalEnd } from "@lucide/svelte";
+import { asset } from "$app/paths";
+import User from "$lib/components/User.svelte";
 import * as Card from "$lib/components/ui/card/index.js";
 import * as Popover from "$lib/components/ui/popover/index.js";
-import User from "$lib/components/User.svelte";
-import { GalleryHorizontalEnd } from "@lucide/svelte";
 import { type Media } from "$lib/media";
-import { asset } from "$app/paths";
 
 let { media, first }: { media: Media; first: boolean } = $props();
 let videoLoaded = $state(false);

@@ -1,0 +1,10 @@
+pre-commit:
+  parallel: true
+  commands:
+    biome-check:
+      glob: "*.{js,ts,svelte,json,md}"
+      run: bunx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      stage_fixed: true
+    type-check:
+      glob: "*.{ts,svelte}"
+      run: bun run check

@@ -1,10 +1,10 @@
 <script lang="ts">
 import { GalleryHorizontalEnd } from "@lucide/svelte";
-import { asset } from "$app/paths";
 import User from "$lib/components/User.svelte";
 import * as Card from "$lib/components/ui/card/index.js";
 import * as Popover from "$lib/components/ui/popover/index.js";
 import { type Media } from "$lib/media";
+import { makeSrcset } from "$lib/utils";
 
 let { media, first }: { media: Media; first: boolean } = $props();
 let videoLoaded = $state(false);
@@ -56,12 +56,7 @@ function handleScroll() {
           {#if media.type !== "VIDEO"}
             <img
               class="block h-full w-full object-contain"
-              src={asset(`/posts/${media.id}-1x.webp`)}
-              srcset={`
-                ${asset(`/posts/${media.id}-1x.webp`)} 376w,
-                ${asset(`/posts/${media.id}-2x.webp`)} 752w,
-                ${asset(`/posts/${media.id}-3x.webp`)} 1128w,
-              `}
+              {...makeSrcset('/posts', media.id, 376)}
               sizes="(min-width: 1024px) 33vw, 100vw"
               alt="Post de {media.username}"
               referrerpolicy="no-referrer"
@@ -92,13 +87,8 @@ function handleScroll() {
             >
               <img
                 class="block h-full w-full object-contain"
-                src={asset(`/posts/${media.id}-1x.webp`)}
-                srcset={`
-                  ${asset(`/posts/${media.id}-1x.webp`)} 376w,
-                  ${asset(`/posts/${media.id}-2x.webp`)} 752w,
-                  ${asset(`/posts/${media.id}-3x.webp`)} 1128w,
-                `}
-                sizes="(min-width: 1024px) 100vw, 33vw"
+                {...makeSrcset('/posts', media.id, 376)}
+                sizes="(min-width: 1024px) 33vw, 100vw"
                 alt="Previsualización video de {media.username}"
                 loading={first ? "eager" : "lazy"}
                 fetchpriority={first ? "high" : "auto"}

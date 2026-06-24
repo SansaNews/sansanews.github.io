@@ -1,9 +1,9 @@
 <script lang="ts">
 import { LayoutGrid } from "@lucide/svelte";
 import { Drawer } from "vaul-svelte";
-import { asset } from "$app/paths";
 import mediaJSON from "$lib/assets/media.json";
 import usersJSON from "$lib/assets/users.json";
+import { makeSrcset } from "$lib/utils";
 
 const validUsers = new Set(mediaJSON.media.map((m) => m.username));
 
@@ -28,12 +28,7 @@ const allUsers = categories.flatMap((category) => category.users);
     class="flex w-16 shrink-0 flex-col items-center gap-1"
   >
     <img
-      src={asset(`/pfp/${username}-1x.webp`)}
-      srcset={`
-        ${asset(`/pfp/${username}-1x.webp`)} 48w,
-        ${asset(`/pfp/${username}-2x.webp`)} 96w,
-        ${asset(`/pfp/${username}-3x.webp`)} 144w
-      `}
+      {...makeSrcset('/pfp', username, 48)}
       sizes="(min-width: 640px) 60px, 48px"
       alt={username}
       class="size-14 rounded-full"

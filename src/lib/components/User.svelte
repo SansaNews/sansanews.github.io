@@ -1,9 +1,9 @@
 <script lang="ts">
-import { asset } from "$app/paths";
 import { Avatar } from "$lib/components/ui/avatar";
 import { Skeleton } from "$lib/components/ui/skeleton/index.js";
 import { formatDatetime } from "$lib/media";
 import { useClientTime } from "$lib/time.svelte";
+import { makeSrcset } from "$lib/utils";
 
 let { username, datePublished } = $props();
 
@@ -34,12 +34,7 @@ const time = useClientTime();
   </div>
   <Avatar class="h-12 w-12 sm:h-15 sm:w-15">
     <img
-      src={asset(`/pfp/${username}-1x.webp`)}
-      srcset={`
-        ${asset(`/pfp/${username}-1x.webp`)} 48w,
-        ${asset(`/pfp/${username}-2x.webp`)} 96w,
-        ${asset(`/pfp/${username}-3x.webp`)} 144w
-      `}
+      {...makeSrcset('/pfp', username, 48)}
       sizes="(min-width: 640px) 60px, 48px"
       alt="Foto de perfil de {username}"
       referrerpolicy="no-referrer"

@@ -1,20 +1,12 @@
 <script lang="ts">
-import { asset, resolve } from "$app/paths";
+import LogoBanner from "$lib/components/LogoBanner.svelte";
 
 import Tools from "$lib/components/Tools.svelte";
 </script>
 
 <main class="px-10 lg:px-16">
   <div class="mx-auto flex max-w-lg justify-center lg:hidden">
-    <a href={resolve("/")}>
-      <img
-        src={asset("/brand/sansanews_banner_black.svg")}
-        class="w-auto transition-all duration-300"
-        width="1823"
-        height="377"
-        alt="SansaNews Logo"
-      />
-    </a>
+    <LogoBanner class="w-auto" width={1823} height={377} />
   </div>
 
   <section>

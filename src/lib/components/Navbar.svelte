@@ -1,7 +1,8 @@
 <script lang="ts">
 import { Info, Newspaper, PencilRuler } from "@lucide/svelte";
-import { asset, resolve } from "$app/paths";
+import { resolve } from "$app/paths";
 import { page } from "$app/state";
+import LogoBanner from "$lib/components/LogoBanner.svelte";
 import { cn } from "$lib/utils";
 
 const sections = [
@@ -57,15 +58,7 @@ function handleScroll() {
 <!-- Desktop Navigation -->
 <div>
   <div class="mt-4 mb-14 hidden lg:block">
-    <a href={resolve("/")}>
-      <img
-        src={asset("/brand/sansanews_banner_black.svg")}
-        class="mx-auto h-24 max-w-lg"
-        width="464"
-        height="96"
-        alt="SansaNews Logo"
-      />
-    </a>
+    <LogoBanner class="mx-auto h-24 max-w-lg" width={464} height={96} />
   </div>
 
   <div class="hidden items-center justify-center lg:flex">

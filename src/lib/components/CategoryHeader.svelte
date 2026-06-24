@@ -1,6 +1,6 @@
 <script lang="ts">
-import { asset, resolve } from "$app/paths";
 import categoriesJSON from "$lib/assets/users.json";
+import LogoBanner from "$lib/components/LogoBanner.svelte";
 import { Skeleton } from "$lib/components/ui/skeleton/index.js";
 import * as ToggleGroup from "$lib/components/ui/toggle-group";
 import { cn } from "$lib/utils";
@@ -63,15 +63,7 @@ function updateFade(e: Event) {
   )}
 >
   <div class="flex justify-center pt-4 pb-5">
-    <a href={resolve("/")}>
-      <img
-        src={asset("/brand/sansanews_banner_black.svg")}
-        class="h-10 transition-all duration-300"
-        width="193"
-        height="40"
-        alt="SansaNews Logo"
-      />
-    </a>
+    <LogoBanner class="h-10" width={193} height={40} />
   </div>
 
   <div class="relative">

@@ -26,3 +26,8 @@ get username *flags:
 # Initialize project enviroment
 init:
 	bun install
+
+# Run svelte-check and biome check
+lint:
+	bun run check
+	bun x biome check

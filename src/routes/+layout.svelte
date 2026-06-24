@@ -17,7 +17,7 @@ let { children } = $props();
   />
   <link
     rel="preload"
-    href={"/fonts/SourceSerif4-VariableFont_opsz,wght.woff2"}
+    href={asset("/fonts/SourceSerif4-VariableFont_opsz,wght.woff2")}
     as="font"
     type="font/woff2"
     crossorigin="anonymous"

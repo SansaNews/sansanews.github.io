@@ -3,21 +3,16 @@ import categoriesJSON from "$lib/assets/users.json";
 import LogoBanner from "$lib/components/LogoBanner.svelte";
 import { Skeleton } from "$lib/components/ui/skeleton/index.js";
 import * as ToggleGroup from "$lib/components/ui/toggle-group";
+import { hideOnScroll } from "$lib/scroll.svelte";
 import { cn } from "$lib/utils";
+
+const { hidden } = hideOnScroll();
 
 const categories = Object.keys(categoriesJSON);
 
 let { setCategory, lastUpdate, isTimeMounted } = $props();
 
-let lastScrollY = $state(0);
-let hideMobileNav = $state(false);
 let fade = $state({ left: false, right: true });
-
-function handleScroll() {
-	const currentScrollY = window.scrollY;
-	hideMobileNav = currentScrollY > lastScrollY && currentScrollY > 10;
-	lastScrollY = currentScrollY;
-}
 
 function updateFade(e: Event) {
 	const { scrollLeft, scrollWidth, clientWidth } = e.target as HTMLElement;
@@ -55,11 +50,10 @@ function updateFade(e: Event) {
 {/snippet}
 
 <!-- Mobile Header -->
-<svelte:window onscroll={handleScroll} />
 <div
   class={cn(
     "bg-background fixed top-0 right-0 left-0 z-40 border-b-2 transition-transform duration-300 lg:hidden",
-    hideMobileNav && "-translate-y-full",
+    hidden() && "-translate-y-full",
   )}
 >
   <div class="flex justify-center pt-4 pb-5">

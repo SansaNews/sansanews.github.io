@@ -3,7 +3,10 @@ import { Info, Newspaper, PencilRuler } from "@lucide/svelte";
 import { resolve } from "$app/paths";
 import { page } from "$app/state";
 import LogoBanner from "$lib/components/LogoBanner.svelte";
+import { hideOnScroll } from "$lib/scroll.svelte";
 import { cn } from "$lib/utils";
+
+const { hidden } = hideOnScroll();
 
 const sections = [
 	{ label: "Noticias", href: resolve("/"), icon: Newspaper },
@@ -14,23 +17,13 @@ const sections = [
 	},
 	{ label: "Sobre Nosotros", href: resolve("/nosotros"), icon: Info },
 ];
-
-let lastScrollY = $state(0);
-let hideMobileNav = $state(false);
-
-function handleScroll() {
-	const currentScrollY = window.scrollY;
-	hideMobileNav = currentScrollY > lastScrollY && currentScrollY > 10;
-	lastScrollY = currentScrollY;
-}
 </script>
 
 <!-- Mobile Navigation -->
-<svelte:window onscroll={handleScroll} />
 <nav
   class={cn(
     "bg-background fixed right-0 bottom-0 left-0 z-50 border-t-2 transition-transform duration-300 lg:hidden",
-    hideMobileNav && "translate-y-full",
+    hidden() && "translate-y-full",
   )}
 >
   <ul class="flex justify-around">

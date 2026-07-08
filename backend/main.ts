@@ -1,3 +1,4 @@
+import assert from "node:assert";
 import { file, write } from "bun";
 import { LogLevel, log } from "./logging.ts";
 
@@ -271,10 +272,4 @@ export async function optimizeImage(
 	}
 
 	return dimensions;
-}
-
-export function assert(condition: unknown, message: string): asserts condition {
-	if (!condition) {
-		throw new Error(message);
-	}
 }

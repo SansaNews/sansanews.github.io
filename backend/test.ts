@@ -1,5 +1,6 @@
+import assert from "node:assert";
 import { LogLevel, log } from "./logging.ts";
-import { APIConfig, assert, getUserData, sanitizeData } from "./main.ts";
+import { APIConfig, getUserData, sanitizeData } from "./main.ts";
 
 if (import.meta.main) {
 	try {

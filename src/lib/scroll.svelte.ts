@@ -6,7 +6,7 @@ class HideOnScroll {
 		window.addEventListener("scroll", this.#onScroll, { passive: true });
 	}
 
-	#onScroll = () => {
+	readonly #onScroll = () => {
 		const y = window.scrollY;
 		this.hidden = y > this.#lastY && y > 10;
 		this.#lastY = y;

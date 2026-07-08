@@ -1,6 +1,6 @@
 import assert from "node:assert";
 import { LogLevel, log } from "./logging.ts";
-import { APIConfig, getUserData, sanitizeData } from "./main.ts";
+import { APIConfig, igFetch, sanitizeData } from "./main.ts";
 
 if (import.meta.main) {
 	try {
@@ -96,46 +96,51 @@ async function handleGetCommand(args: string[]): Promise<void> {
 	const { username, sanitize, sinceDays, maxPosts } = parseGetFlags(args);
 	assert(username, "Username is required for 'get' command");
 
-	const data = await getUserData(
-		username,
-		new APIConfig(15, sinceDays, maxPosts),
-	);
+	const config = new APIConfig(15, sinceDays, maxPosts);
 
 	if (sanitize) {
-		const sanitizedData = await sanitizeData(username, data);
+		const sanitizedData = await sanitizeData(username, "", config);
 		console.dir(sanitizedData, { depth: null });
-	} else {
-		console.dir(data, { depth: null });
+		return;
 	}
+
+	const fields = `
+  business_discovery.username(${username}){
+    profile_picture_url,
+    media.limit(${config.maxPostsPerUser}).since(${config.timestampLimit}) {
+      timestamp,caption,media_type,permalink,media_url,children,thumbnail_url
+    }
+  }`;
+
+	const result = await igFetch(username, fields, config);
+	if (!result.ok) {
+		if (result.reason === "forbidden") {
+			throw new Error(
+				"HTTP 403 Forbidden: Reached API rate limit or insufficient permissions.",
+			);
+		}
+		console.dir({}, { depth: null });
+		return;
+	}
+
+	console.dir(await result.response.json(), { depth: null });
 }
 
 async function checkIfCreatorAccount(
 	username: string,
 	config: APIConfig,
 ): Promise<boolean> {
-	const fields = `business_discovery.username(${username}){name}`;
-	const url = new URL(config.url);
-	url.searchParams.append("fields", fields);
-	url.searchParams.append("access_token", config.accessToken);
+	const result = await igFetch(
+		username,
+		`business_discovery.username(${username}){name}`,
+		config,
+	);
 
-	try {
-		const response = await fetch(url.toString(), {
-			signal: AbortSignal.timeout(config.timeoutSeconds * 1000),
-		});
-
-		if (!response.ok) {
-			const errorText = await response.text();
-			log(LogLevel.ERROR, `HTTP ${response.status} for ${username}`);
-			log(LogLevel.DEBUG, `Response body length: ${errorText.length}`);
-			return false;
-		}
-
-		return true;
-	} catch (error) {
-		log(
-			LogLevel.ERROR,
-			`Could not connect to Instagram API for ${username}: ${error}`,
+	if (result.ok) return true;
+	if (result.reason === "forbidden") {
+		throw new Error(
+			"HTTP 403 Forbidden: Reached API rate limit or insufficient permissions.",
 		);
-		return false;
 	}
+	return false;
 }

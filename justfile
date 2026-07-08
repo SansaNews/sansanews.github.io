@@ -13,6 +13,7 @@ build:
 
 # Update media.json
 update:
+	rm -rf static/pfp/* static/posts/* 2>/dev/null || true
 	bun run backend/main.ts
 
 # Check if user is available

@@ -176,7 +176,7 @@ export async function sanitizeData(
 		return [];
 	}
 
-	optimizeImage(
+	await optimizeImage(
 		data.business_discovery.profile_picture_url,
 		username,
 		"./static/pfp",

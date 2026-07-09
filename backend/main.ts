@@ -1,5 +1,6 @@
 import assert from "node:assert";
 import { file, write } from "bun";
+import { fetchBusinessDiscovery } from "./instagram-fetch.ts";
 import { LogLevel, log } from "./logging.ts";
 
 export type User = { username: string; category: string };
@@ -119,14 +120,8 @@ export async function getUserData(
     }
   }`;
 
-	const url = new URL(config.url);
-	url.searchParams.append("fields", fields);
-	url.searchParams.append("access_token", config.accessToken);
-
 	try {
-		const response = await fetch(url.toString(), {
-			signal: AbortSignal.timeout(config.timeoutSeconds * 1000),
-		});
+		const response = await fetchBusinessDiscovery(username, fields, config);
 
 		if (!response.ok) {
 			const errorText = await response.text();

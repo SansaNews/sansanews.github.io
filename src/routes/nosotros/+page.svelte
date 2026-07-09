@@ -4,7 +4,7 @@ import LogoBanner from "$lib/components/LogoBanner.svelte";
 import Reference from "$lib/components/Reference.svelte";
 </script>
 
-<main class="px-10 lg:px-16">
+<main class="prose-page px-10 lg:px-16">
   <div class="mx-auto flex max-w-lg justify-center lg:hidden">
     <LogoBanner class="w-auto" width={1823} height={377} />
   </div>
@@ -210,45 +210,3 @@ import Reference from "$lib/components/Reference.svelte";
     </p>
   </section>
 </main>
-
-<style>
-  main {
-    padding-block: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  section {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  question {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  h1 {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: bold;
-  }
-
-  h2 {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-
-  p {
-    text-align: justify;
-  }
-
-  a {
-    color: var(--color-primary);
-    text-decoration: underline;
-  }
-</style>

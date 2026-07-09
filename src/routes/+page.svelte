@@ -34,17 +34,21 @@ let groupedMedia = $derived.by(() => {
 	const order = ["Hoy", "Ayer", "Última Semana", "Último Mes"];
 
 	filteredMedia.forEach((media) => {
-		let category = getTimeCategory(media.datePublished);
-		if (!groups[category]) {
-			groups[category] = [];
+		let timeBucket = getTimeCategory(media.datePublished);
+		if (!groups[timeBucket]) {
+			groups[timeBucket] = [];
 		}
-		groups[category].push(media);
+		groups[timeBucket].push(media);
 	});
 
 	return order
 		.filter((key) => groups[key] && groups[key].length > 0)
 		.map((key) => ({ title: key, items: groups[key] }));
 });
+
+const lastUpdateLabel = $derived(
+	formatDatetime(new Date(data.lastUpdate), time.now),
+);
 </script>
 
 <main class="p-4 pt-2 lg:pt-4">
@@ -53,7 +57,7 @@ let groupedMedia = $derived.by(() => {
   <CategoryHeader
     setCategory={(value: string) => (category = value)}
     isTimeMounted={time.isMounted}
-    lastUpdate={formatDatetime(new Date(data.lastUpdate), time.now)}
+    lastUpdate={lastUpdateLabel}
   />
 
   <section>
@@ -83,10 +87,7 @@ let groupedMedia = $derived.by(() => {
       <!-- Last Update Mobile -->
       {#if time.isMounted}
         <p class="text-muted-foreground text-center text-xs lg:hidden">
-          Última Actualización: {formatDatetime(
-            new Date(data.lastUpdate),
-            time.now,
-          )}
+          Última Actualización: {lastUpdateLabel}
         </p>
       {:else}
         <div class="flex justify-center">

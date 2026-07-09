@@ -210,4 +210,38 @@
 	.card-shadow:hover {
 		box-shadow: 6px 6px 0px 0px var(--border);
 	}
+
+	.prose-page {
+		padding-block: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+	.prose-page section {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+	.prose-page h1 {
+		font-family: var(--font-heading);
+		font-size: 2rem;
+		font-weight: bold;
+	}
+	.prose-page h2 {
+		font-family: var(--font-heading);
+		font-size: 1.5rem;
+		font-weight: bold;
+	}
+	.prose-page p {
+		text-align: justify;
+	}
+	.prose-page a {
+		color: var(--color-primary);
+		text-decoration: underline;
+	}
+	.prose-page question {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
 }

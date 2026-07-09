@@ -24,47 +24,6 @@ export interface IGMediaResponse {
 	business_discovery?: IGBusinessDiscovery;
 }
 
-type IgResult =
-	| { ok: true; response: Response }
-	| { ok: false; reason: "forbidden" | "http" | "network" };
-
-export async function igFetch(
-	username: string,
-	fields: string,
-	config: APIConfig,
-): Promise<IgResult> {
-	const url = new URL(config.url);
-	url.searchParams.append("fields", fields);
-	url.searchParams.append("access_token", config.accessToken);
-
-	let response: Response;
-	try {
-		response = await fetch(url.toString(), {
-			signal: AbortSignal.timeout(config.timeoutSeconds * 1000),
-		});
-	} catch (error) {
-		log(
-			LogLevel.ERROR,
-			`Could not connect to Instagram API for ${username}: ${error}`,
-		);
-		return { ok: false, reason: "network" };
-	}
-
-	if (!response.ok) {
-		const errorText = await response.text();
-		log(
-			LogLevel.ERROR,
-			`HTTP ${response.status} for ${username}: ${errorText}`,
-		);
-		return {
-			ok: false,
-			reason: response.status === 403 ? "forbidden" : "http",
-		};
-	}
-
-	return { ok: true, response };
-}
-
 export class APIConfig {
 	url: string;
 	accessToken: string;
@@ -126,7 +85,8 @@ async function main() {
 	log(LogLevel.DEBUG, `Loaded ${users.length} users from ${USERS_PATH}`);
 
 	const promises = users.map(async (user) => {
-		return sanitizeData(user.username, user.category, config);
+		const userData = await getUserData(user.username, config);
+		return sanitizeData(user.username, userData, user.category);
 	});
 	const results = await Promise.all(promises);
 	const media = results.flat();
@@ -146,11 +106,10 @@ async function main() {
 	log(LogLevel.INFO, `Posts saved on ${MEDIA_PATH}`);
 }
 
-export async function sanitizeData(
+export async function getUserData(
 	username: string,
-	category: string,
 	config: APIConfig,
-) {
+): Promise<IGMediaResponse> {
 	log(LogLevel.DEBUG, `Fetching data for user: ${username}`);
 	const fields = `
   business_discovery.username(${username}){
@@ -160,17 +119,50 @@ export async function sanitizeData(
     }
   }`;
 
-	const result = await igFetch(username, fields, config);
-	if (!result.ok) {
-		if (result.reason === "forbidden") {
-			throw new Error(
-				"HTTP 403 Forbidden: Reached API rate limit or insufficient permissions.",
-			);
-		}
-		return [];
-	}
+	const url = new URL(config.url);
+	url.searchParams.append("fields", fields);
+	url.searchParams.append("access_token", config.accessToken);
 
-	const data = (await result.response.json()) as IGMediaResponse;
+	try {
+		const response = await fetch(url.toString(), {
+			signal: AbortSignal.timeout(config.timeoutSeconds * 1000),
+		});
+
+		if (!response.ok) {
+			const errorText = await response.text();
+			log(
+				LogLevel.ERROR,
+				`HTTP ${response.status} for ${username}: ${errorText}`,
+			);
+
+			if (response.status === 403) {
+				throw new Error(
+					"HTTP 403 Forbidden: Reached API rate limit or insufficient permissions.",
+				);
+			}
+
+			return {};
+		}
+
+		return await response.json();
+	} catch (error) {
+		if (error instanceof Error && error.message.includes("HTTP 403")) {
+			throw error;
+		}
+
+		log(
+			LogLevel.ERROR,
+			`Could not connect to Instagram API for ${username}: ${error}`,
+		);
+		return {};
+	}
+}
+
+export async function sanitizeData(
+	username: string,
+	data: IGMediaResponse,
+	category: string = "",
+) {
 	if (!data?.business_discovery?.media) {
 		log(LogLevel.DEBUG, `No media found for user: ${username}`);
 		return [];

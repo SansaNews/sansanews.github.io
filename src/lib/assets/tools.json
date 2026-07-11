@@ -5,18 +5,18 @@
 			"description": "Sitio oficial de Biblioteca USM para reservar salas de estudio.",
 			"image": "https://d68g328n4ug0e.cloudfront.net/data/headers/4192/banner_SERVICIOS_BIBLIOTECA_USM.png",
 			"aspectRatio": "aspect-[16/8]",
-			"alt": "Captura representativa de la biblioteca del campus San Joaquín",
+			"alt": "Captura de la biblioteca del campus San Joaquín",
 			"url": "https://usm-chile.libcal.com/r/new",
 			"author": "Bliblioteca Campus San Joaquín"
 		},
 		{
-			"title": "Reserva Horarios de Musculacion",
-			"description": "Sitio oficial para reservar horarios en la sala de musculacion del Campus San Joaquín.",
+			"title": "Reserva de Horarios de Gimnasio",
+			"description": "Sitio oficial para reservar horarios en la sala de musculación del Campus San Joaquín.",
 			"image": "https://reservasgimnasiosantiago.cl/gym-bg.jpg",
 			"aspectRatio": "aspect-[16/8]",
-			"alt": "Captura representativa de la sala de musculacion en CSJ",
+			"alt": "Captura de la sala de musculación en CSJ",
 			"url": "https://reservasgimnasiosantiago.cl/",
-			"author": "Sala de Musculacion CSJ"
+			"author": "Sala de Musculación CSJ"
 		},
 		{
 			"title": "Malla Interactiva",

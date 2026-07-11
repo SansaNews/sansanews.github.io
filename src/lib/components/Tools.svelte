@@ -21,7 +21,7 @@ const toolList: Tool[] = toolsJSON.tools;
         <img
           src={tool.image}
           alt={tool.alt}
-          class="bg-muted aspect-video w-full border-b-2 object-contain"
+          class="bg-muted {tool.aspectRatio} w-full border-b-2 object-cover object-center"
         />
       </a>
 

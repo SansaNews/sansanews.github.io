@@ -1,17 +1,37 @@
 {
 	"tools": [
 		{
+			"title": "Reserva Salas de Estudio",
+			"description": "Sitio oficial de Biblioteca USM para reservar salas de estudio.",
+			"image": "https://d68g328n4ug0e.cloudfront.net/data/headers/4192/banner_SERVICIOS_BIBLIOTECA_USM.png",
+			"aspectRatio": "aspect-[16/8]",
+			"alt": "Captura representativa de la biblioteca del campus San Joaquín",
+			"url": "https://usm-chile.libcal.com/r/new",
+			"author": "Bliblioteca Campus San Joaquín"
+		},
+		{
+			"title": "Reserva Horarios de Musculacion",
+			"description": "Sitio oficial para reservar horarios en la sala de musculacion del Campus San Joaquín.",
+			"image": "https://reservasgimnasiosantiago.cl/gym-bg.jpg",
+			"aspectRatio": "aspect-[16/8]",
+			"alt": "Captura representativa de la sala de musculacion en CSJ",
+			"url": "https://reservasgimnasiosantiago.cl/",
+			"author": "Sala de Musculacion CSJ"
+		},
+		{
 			"title": "Malla Interactiva",
-			"description": "Proyecto Universitario open-source para facilitar información de las mallas en la USM",
+			"description": "Proyecto Universitario open-source para facilitar información de las mallas en la USM.",
 			"image": "https://booterman98.github.io/malla-interactiva/assets/social-image.png",
+			"aspectRatio": "aspect-[3/2]",
 			"alt": "Captura de la Malla Interactiva",
 			"url": "https://booterman98.github.io/malla-interactiva/",
 			"author": "Mantenido por César Paulangelo"
 		},
 		{
 			"title": "Manual de Supervivencia",
-			"description": "Enfocado para estudiantes de la carrera de Ingeniería Civil en Informática, con consejos y recursos para sobrevivir a la carrera",
+			"description": "Enfocado para estudiantes de la carrera de Ingeniería Civil en Informática, con consejos y recursos para sobrevivir a la carrera.",
 			"image": "https://zer0-creativity.github.io/utfsm-survival-guide/images/company_logo.png",
+			"aspectRatio": "aspect-[3/2]",
 			"alt": "Captura del Manual de Supervivencia",
 			"url": "https://zer0-creativity.github.io/utfsm-survival-guide/",
 			"author": "Mantenido por Zer0-Creativity"

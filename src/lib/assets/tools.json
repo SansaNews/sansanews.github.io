@@ -2,12 +2,12 @@
 	"tools": [
 		{
 			"title": "Reserva Salas de Estudio",
-			"description": "Sitio oficial de Biblioteca USM para reservar salas de estudio.",
+			"description": "Sitio oficial de la Biblioteca USM para reservar salas de estudio.",
 			"image": "https://d68g328n4ug0e.cloudfront.net/data/headers/4192/banner_SERVICIOS_BIBLIOTECA_USM.png",
 			"aspectRatio": "aspect-[16/8]",
 			"alt": "Captura de la biblioteca del campus San Joaquín",
 			"url": "https://usm-chile.libcal.com/r/new",
-			"author": "Bliblioteca Campus San Joaquín"
+			"author": "Biblioteca Campus San Joaquín"
 		},
 		{
 			"title": "Reserva de Horarios de Gimnasio",
@@ -20,7 +20,7 @@
 		},
 		{
 			"title": "Malla Interactiva",
-			"description": "Proyecto Universitario open-source para facilitar información de las mallas en la USM.",
+			"description": "Proyecto universitario de código abierto para facilitar información de las mallas en la USM.",
 			"image": "https://booterman98.github.io/malla-interactiva/assets/social-image.png",
 			"aspectRatio": "aspect-[3/2]",
 			"alt": "Captura de la Malla Interactiva",
@@ -29,7 +29,7 @@
 		},
 		{
 			"title": "Manual de Supervivencia",
-			"description": "Enfocado para estudiantes de la carrera de Ingeniería Civil en Informática, con consejos y recursos para sobrevivir a la carrera.",
+			"description": "Orientado a estudiantes de Ingeniería Civil en Informática, con consejos y recursos para sobrevivir a la carrera.",
 			"image": "https://zer0-creativity.github.io/utfsm-survival-guide/images/company_logo.png",
 			"aspectRatio": "aspect-[3/2]",
 			"alt": "Captura del Manual de Supervivencia",

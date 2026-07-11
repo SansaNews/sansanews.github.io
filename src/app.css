@@ -239,7 +239,7 @@
 		color: var(--color-primary);
 		text-decoration: underline;
 	}
-	.prose-page question {
+	.prose-page .question {
 		display: flex;
 		flex-direction: column;
 		gap: 0.25rem;

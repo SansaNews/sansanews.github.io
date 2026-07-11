@@ -60,7 +60,7 @@ import Reference from "$lib/components/Reference.svelte";
   </section>
   <section>
     <h2 id="preguntas-frecuentes">Preguntas Frecuentes</h2>
-    <question>
+    <div class="question">
       <p>
         <strong
           >¿Por qué no muestran toda la información de la publicación?</strong
@@ -72,8 +72,8 @@ import Reference from "$lib/components/Reference.svelte";
         sansana. Por esta razón solo mostramos la primera imagen/video y la
         descripción de las publicaciones.
       </p>
-    </question>
-    <question>
+    </div>
+    <div class="question">
       <p>
         <strong>¿Por qué solo muestran las publicaciones del último mes?</strong
         >
@@ -83,8 +83,8 @@ import Reference from "$lib/components/Reference.svelte";
         un archivo de publicaciones. Si quieres ver posts más antiguos, puedes
         acceder a ellos en las cuentas oficiales de las iniciativas.
       </p>
-    </question>
-    <question>
+    </div>
+    <div class="question">
       <p>
         <strong>¿Cómo puedo añadir/eliminar mi página de SansaNews?</strong>
       </p>
@@ -93,8 +93,8 @@ import Reference from "$lib/components/Reference.svelte";
           href="https://www.instagram.com/sansanews/">@sansanews</a
         >.
       </p>
-    </question>
-    <question>
+    </div>
+    <div class="question">
       <p>
         <strong>¿Qué pasa si elimino un post de mi cuenta de Instagram?</strong>
       </p>
@@ -104,8 +104,8 @@ import Reference from "$lib/components/Reference.svelte";
         Instagram <a href="https://www.instagram.com/sansanews/">@sansanews</a> para
         solucionarlo.
       </p>
-    </question>
-    <question>
+    </div>
+    <div class="question">
       <p><strong>¿Cómo obtienen los posts de Instagram?</strong></p>
       <p>
         Mediante la <a
@@ -113,8 +113,8 @@ import Reference from "$lib/components/Reference.svelte";
           >API oficial</a
         > de Instagram, que solo permite acceder a cuentas marcadas como profesionales.
       </p>
-    </question>
-    <question>
+    </div>
+    <div class="question">
       <p>
         <strong>¿Las imágenes de los posts son descargadas y guardadas?</strong>
       </p>
@@ -127,8 +127,8 @@ import Reference from "$lib/components/Reference.svelte";
         página, solo viven en el servidor de la página y no en el repositorio,
         haciendo que no quede historial de ellos.
       </p>
-    </question>
-    <question>
+    </div>
+    <div class="question">
       <p>
         <strong>¿Por qué actualizan cada hora y no en tiempo real?</strong>
       </p>
@@ -139,8 +139,8 @@ import Reference from "$lib/components/Reference.svelte";
         de Instagram posee un límite de 200 peticiones por hora. Esperamos una hora
         para no superar este límite.
       </p>
-    </question>
-    <question>
+    </div>
+    <div class="question">
       <p>
         <strong>¿Por qué no se actualiza exactamente cada hora?</strong>
       </p>
@@ -151,7 +151,7 @@ import Reference from "$lib/components/Reference.svelte";
         puntualidad, solo que en algún momento se hará. Las variaciones pueden
         llegar a ser de una hora.
       </p>
-    </question>
+    </div>
   </section>
   <section>
     <h2 id="historia">Historia</h2>

@@ -7,7 +7,7 @@ if (import.meta.main) {
 	try {
 		await main();
 	} catch (error) {
-		log(LogLevel.FATAL, `Execution failed: ${error}`);
+		log(LogLevel.FATAL, "Execution failed", error);
 		process.exit(1);
 	}
 }
@@ -27,13 +27,13 @@ async function main() {
 				await handleGetCommand(args);
 				break;
 			default:
-				log(LogLevel.ERROR, `Unknown command: ${command}`);
+				console.log(
+					`Usage: bun run backend/test.ts <check <user> | get <user> [--sanitize] [--since <days>] [--max <n>]>`,
+				);
+				process.exit(2);
 		}
 	} catch (error) {
-		log(
-			LogLevel.FATAL,
-			`Execution failed: ${error instanceof Error ? error.message : error}`,
-		);
+		log(LogLevel.FATAL, "Execution failed", error);
 		process.exit(1);
 	}
 }
@@ -121,8 +121,10 @@ async function checkIfCreatorAccount(
 
 		if (!response.ok) {
 			const errorText = await response.text();
-			log(LogLevel.ERROR, `HTTP ${response.status} for ${username}`);
-			log(LogLevel.DEBUG, `Response body length: ${errorText.length}`);
+			log(
+				LogLevel.ERROR,
+				`HTTP ${response.status} for ${username}: ${errorText.slice(0, 200)}`,
+			);
 			return false;
 		}
 

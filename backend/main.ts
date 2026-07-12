@@ -62,12 +62,13 @@ if (import.meta.main) {
 	try {
 		await main();
 	} catch (error) {
-		log(LogLevel.FATAL, `Execution failed: ${error}`);
+		log(LogLevel.FATAL, "Execution failed", error);
 		process.exit(1);
 	}
 }
 
 async function main() {
+	const start = performance.now();
 	log(LogLevel.INFO, "Starting data extraction");
 	const USERS_PATH = "src/lib/assets/users.json";
 	const MEDIA_PATH = "src/lib/assets/media.json";
@@ -86,8 +87,18 @@ async function main() {
 	log(LogLevel.DEBUG, `Loaded ${users.length} users from ${USERS_PATH}`);
 
 	const promises = users.map(async (user) => {
+		log(LogLevel.DEBUG, `Fetching user: ${user.username} (${user.category})`);
 		const userData = await getUserData(user.username, config);
-		return sanitizeData(user.username, userData, user.category);
+		const sanitized = await sanitizeData(
+			user.username,
+			userData,
+			user.category,
+		);
+		log(
+			LogLevel.DEBUG,
+			`Processed user: ${user.username} (${sanitized.length} posts)`,
+		);
+		return sanitized;
 	});
 	const results = await Promise.all(promises);
 	const media = results.flat();
@@ -104,7 +115,12 @@ async function main() {
 	};
 
 	await write(MEDIA_PATH, JSON.stringify(outputData, null, 2));
+	const durationMs = Math.round(performance.now() - start);
 	log(LogLevel.INFO, `Posts saved on ${MEDIA_PATH}`);
+	log(
+		LogLevel.INFO,
+		`Run summary: ${users.length} users, ${media.length} posts, ${durationMs}ms`,
+	);
 }
 
 export async function getUserData(
@@ -218,7 +234,7 @@ export async function optimizeImage(
 		!hostname.endsWith("fbcdn.net")
 	) {
 		log(
-			LogLevel.ERROR,
+			LogLevel.WARN,
 			`Blocked fetch from disallowed host: ${url} (hostname=${hostname})`,
 		);
 		return dimensions;

@@ -26,6 +26,9 @@ async function main() {
 			case "get":
 				await handleGetCommand(args);
 				break;
+			case "rate-limit":
+				await handleRateLimitCommand();
+				break;
 			default:
 				console.log(
 					`Usage: bun run backend/test.ts <check <user> | get <user> [--sanitize] [--since <days>] [--max <n>]>`,
@@ -108,6 +111,47 @@ async function handleGetCommand(args: string[]): Promise<void> {
 	} else {
 		console.dir(data, { depth: null });
 	}
+}
+
+async function handleRateLimitCommand(): Promise<void> {
+	const config = new APIConfig();
+	const fields = `business_discovery.username(usantamaria){name}`;
+
+	let response: Response;
+	try {
+		response = await fetchBusinessDiscovery("usantamaria", fields, config);
+	} catch (error) {
+		log(LogLevel.ERROR, `Could not connect to Instagram API: ${error}`);
+		process.exit(1);
+	}
+
+	if (!response.ok) {
+		const errorText = await response.text();
+		log(LogLevel.ERROR, `HTTP ${response.status}: ${errorText}`);
+		process.exit(1);
+	}
+
+	await response.arrayBuffer();
+
+	const appUsage = response.headers.get("x-app-usage");
+	if (!appUsage) {
+		console.log("API limit used: 0% (no rate-limit header in response)");
+		return;
+	}
+
+	const usage = JSON.parse(appUsage) as {
+		call_count?: number;
+		total_cputime?: number;
+		total_time?: number;
+	};
+
+	const used = Math.max(
+		usage.call_count ?? 0,
+		usage.total_cputime ?? 0,
+		usage.total_time ?? 0,
+	);
+
+	console.log(`API limit used: ${used}%`);
 }
 
 async function checkIfCreatorAccount(

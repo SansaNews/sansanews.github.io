@@ -24,6 +24,10 @@ check username:
 get username *flags:
 	bun run backend/test.ts get {{username}} {{flags}}
 
+# Check current API rate limit usage
+rate-limit:
+	bun run backend/test.ts rate-limit
+
 # Initialize project enviroment
 init:
 	bun install

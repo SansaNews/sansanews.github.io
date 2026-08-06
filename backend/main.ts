@@ -11,9 +11,14 @@ interface IGMediaItem {
 	caption?: string;
 	media_type: string;
 	permalink: string;
-	media_url: string;
+	/** Omitted by Instagram when the media has copyrighted material (common on Reels). */
+	media_url?: string;
 	thumbnail_url?: string;
 	children?: unknown;
+	video_url?: string;
+	username?: string;
+	category?: string;
+	dimensions?: { width: number; height: number };
 }
 
 interface IGBusinessDiscovery {
@@ -192,15 +197,22 @@ export async function sanitizeData(
 			media.id = `${username}-${media.permalink.split("/")[4]}`;
 			media.username = username;
 			media.category = category;
-			media.dimensions = await optimizeImage(
-				media.media_type === "VIDEO" ? media.thumbnail_url : media.media_url,
-				media.id,
-				"./static/posts",
-				376,
-			);
+
+			const imageUrl =
+				media.media_type === "VIDEO" ? media.thumbnail_url : media.media_url;
+			media.dimensions = imageUrl
+				? await optimizeImage(imageUrl, media.id, "./static/posts", 376)
+				: { width: 0, height: 0 };
 
 			if (media.media_type === "VIDEO") {
-				media.video_url = media.media_url;
+				if (media.media_url) {
+					media.video_url = media.media_url;
+				} else {
+					log(
+						LogLevel.WARN,
+						`Video without media_url (likely copyright-restricted): ${media.id}`,
+					);
+				}
 			}
 
 			delete media.media_url;

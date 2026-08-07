@@ -17,6 +17,16 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://sansanews.github.io/guias</loc>
+  <lastmod>2026-07-28T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sansanews.github.io/guias/eduroam</loc>
+  <lastmod>2026-07-28T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://sansanews.github.io/nosotros</loc>
   <lastmod>2026-03-25T00:01:44+00:00</lastmod>
   <priority>0.80</priority>

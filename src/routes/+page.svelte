@@ -17,6 +17,11 @@ import { useClientTime } from "$lib/time.svelte";
 let category = $state("");
 const time = useClientTime();
 
+function setCategory(value: string) {
+	category = value;
+	window.scrollTo({ top: 0, behavior: "instant" });
+}
+
 const allMedia: Media[] = jsonToMedia(data.media);
 let filteredMedia = $derived.by(() => {
 	if (category) {
@@ -55,7 +60,7 @@ const lastUpdateLabel = $derived(
   <div class="h-28 lg:hidden"></div>
   <AvatarScroll />
   <CategoryHeader
-    setCategory={(value: string) => (category = value)}
+    {setCategory}
     isTimeMounted={time.isMounted}
     lastUpdate={lastUpdateLabel}
   />

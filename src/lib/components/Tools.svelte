@@ -27,7 +27,7 @@ const toolList: Tool[] = toolsJSON.tools;
 
       <div class="flex flex-1 flex-col gap-3 p-4">
         <!-- Title and Description -->
-        <div class="flex flex-1 flex-col gap-1">
+        <div class="font-heading flex flex-1 flex-col gap-1">
           <h2>{tool.title}</h2>
           <p class="text-muted-foreground text-sm">{tool.description}</p>
         </div>

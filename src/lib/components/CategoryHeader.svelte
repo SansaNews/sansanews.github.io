@@ -25,7 +25,7 @@ function updateFade(e: Event) {
   <ToggleGroup.Root
     type="single"
     spacing={2}
-    onValueChange={(value) => setCategory(value)}
+    onValueChange={(value) => setCategory(value ?? "")}
   >
     <ToggleGroup.Item
       value=""

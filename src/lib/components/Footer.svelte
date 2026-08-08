@@ -18,6 +18,9 @@ import { resolve } from "$app/paths";
         >
       </li>
       <li>
+        <a class="text-accent underline" href={resolve("/guias")}>Guías</a>
+      </li>
+      <li>
         <a class="text-accent underline" href={resolve("/nosotros")}
           >Sobre Nosotros</a
         >

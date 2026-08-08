@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Info, Newspaper, PencilRuler } from "@lucide/svelte";
+import { BookOpen, Info, Newspaper, PencilRuler } from "@lucide/svelte";
 import { resolve } from "$app/paths";
 import { page } from "$app/state";
 import LogoBanner from "$lib/components/LogoBanner.svelte";
@@ -15,8 +15,15 @@ const sections = [
 		href: resolve("/herramientas"),
 		icon: PencilRuler,
 	},
+	{ label: "Guías", href: resolve("/guias"), icon: BookOpen },
 	{ label: "Sobre Nosotros", href: resolve("/nosotros"), icon: Info },
 ];
+
+function isActive(href: string): boolean {
+	const path = page.url.pathname;
+	if (href === resolve("/")) return path === href;
+	return path === href || path.startsWith(`${href}/`);
+}
 </script>
 
 <!-- Mobile Navigation -->
@@ -26,14 +33,14 @@ const sections = [
     hidden() && "translate-y-full",
   )}
 >
-  <ul class="flex justify-around">
+  <ul class="flex items-stretch">
     {#each sections as section (section.href)}
-      <li class="flex-1">
+      <li class="flex flex-1">
         <a
           href={section.href}
           class={cn(
-            "flex w-full flex-col items-center py-2 text-sm transition-colors",
-            section.href === page.url.pathname
+            "flex h-full w-full flex-col items-center justify-center px-1 py-2 text-center text-xs leading-tight transition-colors sm:text-sm",
+            isActive(section.href)
               ? "text-primary"
               : "text-muted-foreground hover:text-primary",
           )}
@@ -62,7 +69,7 @@ const sections = [
           href={item.href}
           class={cn(
             "hover:text-primary focus:text-primary px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors",
-            item.href === page.url.pathname && "text-primary",
+            isActive(item.href) && "text-primary",
           )}
         >
           {item.label}

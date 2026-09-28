@@ -205,6 +205,11 @@ export async function sanitizeData(
 
 			if (media.media_type === "VIDEO" && media.media_url) {
 				media.video_url = media.media_url;
+			} else if (media.media_type === "VIDEO") {
+				log(
+					LogLevel.WARN,
+					`Video without media_url (likely copyright-restricted): ${media.id}`,
+				);
 			}
 
 			delete media.media_url;
@@ -224,7 +229,10 @@ export async function optimizeImage(
 	base_width: number,
 ): Promise<{ width: number; height: number }> {
 	let dimensions = { width: 0, height: 0 };
-	if (!url) return dimensions;
+	if (!url) {
+		log(LogLevel.WARN, `Missing image URL: ${file_name}`);
+		return dimensions;
+	}
 
 	let hostname = "";
 	try {

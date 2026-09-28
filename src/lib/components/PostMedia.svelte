@@ -33,41 +33,7 @@ function handleScroll() {
 	hovered = false;
 	open = false;
 }
-
-function playInline(e: MouseEvent) {
-	e.preventDefault();
-	videoLoaded = true;
-}
 </script>
-
-{#snippet videoPreview()}
-	<img
-		class="block h-full w-full object-contain"
-		{...makeSrcset("/posts", media.id, 376)}
-		sizes="(min-width: 1024px) 33vw, 100vw"
-		alt="Previsualización video de {media.username}"
-		referrerpolicy="no-referrer"
-		loading={first ? "eager" : "lazy"}
-		fetchpriority={first ? "high" : "auto"}
-		decoding={first ? "sync" : "async"}
-		width={media.dimensions.width}
-		height={media.dimensions.height}
-	/>
-	<div class="absolute inset-0 flex items-center justify-center bg-black/20">
-		<svg
-			class="h-16 w-16 text-white opacity-80"
-			viewBox="0 0 24 24"
-			fill="currentColor"
-			aria-hidden="true"
-		>
-			<path
-				fill-rule="evenodd"
-				clip-rule="evenodd"
-				d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
-			/>
-		</svg>
-	</div>
-{/snippet}
 
 <svelte:window onscroll={handleScroll} />
 
@@ -78,7 +44,7 @@ function playInline(e: MouseEvent) {
 		rel="noopener noreferrer"
 		class="flex h-full w-full"
 	>
-		{#if media.type !== "VIDEO"}
+		{#if media.type !== "VIDEO" || !media.videoURL}
 			<img
 				class="block h-full w-full object-contain"
 				{...makeSrcset("/posts", media.id, 376)}
@@ -91,7 +57,7 @@ function playInline(e: MouseEvent) {
 				width={media.dimensions.width}
 				height={media.dimensions.height}
 			/>
-		{:else if media.videoURL && videoLoaded}
+		{:else if videoLoaded}
 			<video
 				class="block h-full w-full object-contain"
 				src={media.videoURL}
@@ -102,18 +68,42 @@ function playInline(e: MouseEvent) {
 				width={media.dimensions.width}
 				height={media.dimensions.height}
 			></video>
-		{:else if media.videoURL}
+		{:else}
 			<button
 				class="relative flex h-full w-full cursor-pointer border-none bg-transparent p-0 leading-none"
-				onclick={playInline}
+				onclick={(e) => {
+					e.preventDefault();
+					videoLoaded = true;
+				}}
 				aria-label="Reproducir video de {media.username}"
 			>
-				{@render videoPreview()}
+				<img
+					class="block h-full w-full object-contain"
+					{...makeSrcset("/posts", media.id, 376)}
+					sizes="(min-width: 1024px) 33vw, 100vw"
+					alt="Previsualización video de {media.username}"
+					referrerpolicy="no-referrer"
+					loading={first ? "eager" : "lazy"}
+					fetchpriority={first ? "high" : "auto"}
+					decoding={first ? "sync" : "async"}
+					width={media.dimensions.width}
+					height={media.dimensions.height}
+				/>
+				<div class="absolute inset-0 flex items-center justify-center bg-black/20">
+					<svg
+						class="h-16 w-16 text-white opacity-80"
+						viewBox="0 0 24 24"
+						fill="currentColor"
+						aria-hidden="true"
+					>
+						<path
+							fill-rule="evenodd"
+							clip-rule="evenodd"
+							d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+						/>
+					</svg>
+				</div>
 			</button>
-		{:else}
-			<div class="relative flex h-full w-full leading-none">
-				{@render videoPreview()}
-			</div>
 		{/if}
 	</a>
 

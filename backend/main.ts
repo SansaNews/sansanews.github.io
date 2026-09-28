@@ -11,7 +11,6 @@ interface IGMediaItem {
 	caption?: string;
 	media_type: string;
 	permalink: string;
-	/** Omitted by Instagram when the media has copyrighted material (common on Reels). */
 	media_url?: string;
 	thumbnail_url?: string;
 	children?: unknown;
@@ -197,22 +196,15 @@ export async function sanitizeData(
 			media.id = `${username}-${media.permalink.split("/")[4]}`;
 			media.username = username;
 			media.category = category;
+			media.dimensions = await optimizeImage(
+				media.media_type === "VIDEO" ? media.thumbnail_url : media.media_url,
+				media.id,
+				"./static/posts",
+				376,
+			);
 
-			const imageUrl =
-				media.media_type === "VIDEO" ? media.thumbnail_url : media.media_url;
-			media.dimensions = imageUrl
-				? await optimizeImage(imageUrl, media.id, "./static/posts", 376)
-				: { width: 0, height: 0 };
-
-			if (media.media_type === "VIDEO") {
-				if (media.media_url) {
-					media.video_url = media.media_url;
-				} else {
-					log(
-						LogLevel.WARN,
-						`Video without media_url (likely copyright-restricted): ${media.id}`,
-					);
-				}
+			if (media.media_type === "VIDEO" && media.media_url) {
+				media.video_url = media.media_url;
 			}
 
 			delete media.media_url;
@@ -226,12 +218,13 @@ export async function sanitizeData(
 }
 
 export async function optimizeImage(
-	url: string,
+	url: string | undefined,
 	file_name: string,
 	folder_path: string,
 	base_width: number,
 ): Promise<{ width: number; height: number }> {
 	let dimensions = { width: 0, height: 0 };
+	if (!url) return dimensions;
 
 	let hostname = "";
 	try {

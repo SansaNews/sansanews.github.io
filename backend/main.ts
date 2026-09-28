@@ -11,9 +11,13 @@ interface IGMediaItem {
 	caption?: string;
 	media_type: string;
 	permalink: string;
-	media_url: string;
+	media_url?: string;
 	thumbnail_url?: string;
 	children?: unknown;
+	video_url?: string;
+	username?: string;
+	category?: string;
+	dimensions?: { width: number; height: number };
 }
 
 interface IGBusinessDiscovery {
@@ -199,8 +203,13 @@ export async function sanitizeData(
 				376,
 			);
 
-			if (media.media_type === "VIDEO") {
+			if (media.media_type === "VIDEO" && media.media_url) {
 				media.video_url = media.media_url;
+			} else if (media.media_type === "VIDEO") {
+				log(
+					LogLevel.WARN,
+					`Video without media_url (likely copyright-restricted): ${media.id}`,
+				);
 			}
 
 			delete media.media_url;
@@ -214,12 +223,16 @@ export async function sanitizeData(
 }
 
 export async function optimizeImage(
-	url: string,
+	url: string | undefined,
 	file_name: string,
 	folder_path: string,
 	base_width: number,
 ): Promise<{ width: number; height: number }> {
 	let dimensions = { width: 0, height: 0 };
+	if (!url) {
+		log(LogLevel.WARN, `Missing image URL: ${file_name}`);
+		return dimensions;
+	}
 
 	let hostname = "";
 	try {

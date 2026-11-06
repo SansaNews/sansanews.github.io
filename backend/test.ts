@@ -1,7 +1,11 @@
 import assert from "node:assert";
-import { fetchBusinessDiscovery } from "./instagram-fetch.ts";
 import { LogLevel, log } from "./logging.ts";
-import { APIConfig, getUserData, sanitizeData } from "./main.ts";
+import {
+	APIConfig,
+	fetchBusinessDiscovery,
+	getUserData,
+	sanitizeData,
+} from "./main.ts";
 
 if (import.meta.main) {
 	try {
@@ -119,7 +123,7 @@ async function handleRateLimitCommand(): Promise<void> {
 
 	let response: Response;
 	try {
-		response = await fetchBusinessDiscovery("usantamaria", fields, config);
+		response = await fetchBusinessDiscovery(fields, config);
 	} catch (error) {
 		log(LogLevel.ERROR, `Could not connect to Instagram API: ${error}`);
 		process.exit(1);
@@ -161,7 +165,7 @@ async function checkIfCreatorAccount(
 	const fields = `business_discovery.username(${username}){name}`;
 
 	try {
-		const response = await fetchBusinessDiscovery(username, fields, config);
+		const response = await fetchBusinessDiscovery(fields, config);
 
 		if (!response.ok) {
 			const errorText = await response.text();

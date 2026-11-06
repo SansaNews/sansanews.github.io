@@ -31,23 +31,6 @@
 	src: url("/fonts/CharisSIL-BoldItalic.woff2") format("woff2");
 }
 
-@font-face {
-	font-family: "Source Serif 4";
-	font-style: normal;
-	font-weight: 200 900;
-	font-display: swap;
-	src: url("/fonts/SourceSerif4-VariableFont_opsz,wght.woff2")
-		format("woff2-variations");
-}
-@font-face {
-	font-family: "Source Serif 4";
-	font-style: italic;
-	font-weight: 200 900;
-	font-display: swap;
-	src: url("/fonts/SourceSerif4-Italic-VariableFont_opsz,wght.woff2")
-		format("woff2-variations");
-}
-
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -143,7 +126,6 @@
 
 @theme inline {
 	--font-heading: "Charis SIL", serif;
-	--font-body: "Source Serif 4", serif;
 
 	--text-sm: 0.875rem;
 	--text-base: 1rem;
@@ -224,12 +206,12 @@
 	}
 	.prose-page h1 {
 		font-family: var(--font-heading);
-		font-size: 2rem;
+		font-size: var(--text-2xl);
 		font-weight: bold;
 	}
 	.prose-page h2 {
 		font-family: var(--font-heading);
-		font-size: 1.5rem;
+		font-size: var(--text-xl);
 		font-weight: bold;
 	}
 	.prose-page p {

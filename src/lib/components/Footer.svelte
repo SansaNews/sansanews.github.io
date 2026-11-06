@@ -10,15 +10,15 @@ import { resolve } from "$app/paths";
     <h4 class="font-heading pb-2 text-sm lg:text-base">Mapa del Sitio</h4>
     <ul class="space-y-1 text-xs font-medium">
       <li>
-        <a class="text-accent underline" href={resolve("/")}>Noticias</a>
+        <a class="text-primary underline" href={resolve("/")}>Noticias</a>
       </li>
       <li>
-        <a class="text-accent underline" href={resolve("/herramientas")}
+        <a class="text-primary underline" href={resolve("/herramientas")}
           >Herramientas</a
         >
       </li>
       <li>
-        <a class="text-accent underline" href={resolve("/nosotros")}
+        <a class="text-primary underline" href={resolve("/nosotros")}
           >Sobre Nosotros</a
         >
       </li>
@@ -41,7 +41,7 @@ import { resolve } from "$app/paths";
       <li>
         <a
           href="https://www.instagram.com/sansanews/"
-          class="flex items-center gap-1"
+          class="text-primary flex items-center gap-1 underline"
         >
           <Instagram class="inline h-3.5 w-3.5 lg:h-4 lg:w-4" /> @sansanews
         </a>
@@ -49,7 +49,7 @@ import { resolve } from "$app/paths";
       <li>
         <a
           href="https://github.com/SansaNews/sansanews.github.io"
-          class="flex items-center gap-1 truncate"
+          class="text-primary flex items-center gap-1 truncate underline"
         >
           <Github class="inline h-3.5 w-3.5 lg:h-4 lg:w-4" /> SansaNews
         </a>

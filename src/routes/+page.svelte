@@ -73,7 +73,7 @@ const lastUpdateLabel = $derived(
             </h2>
           {:else}
             <div class="flex h-8 w-30 items-center justify-center">
-              <Skeleton class="h-5 w-full bg-gray-200" />
+              <Skeleton class="h-5 w-full bg-border/50" />
             </div>
           {/if}
           <div class="bg-primary/40 h-0.5 w-full"></div>
@@ -91,7 +91,7 @@ const lastUpdateLabel = $derived(
         </p>
       {:else}
         <div class="flex justify-center">
-          <Skeleton class="h-3 w-52 bg-gray-200" />
+          <Skeleton class="h-3 w-52 bg-border/50" />
         </div>
       {/if}
     {:else}

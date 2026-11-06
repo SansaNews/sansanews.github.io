@@ -57,7 +57,7 @@ const allUsers = categories.flatMap((category) => category.users);
       class="flex shrink-0 cursor-pointer flex-col items-center gap-1 p-2"
     >
       <div
-        class="flex size-14 items-center justify-center rounded-full bg-white"
+        class="flex size-14 items-center justify-center rounded-full bg-card"
       >
         <LayoutGrid class="text-muted-foreground h-6 w-6" />
       </div>

@@ -28,7 +28,7 @@ const toolList: Tool[] = toolsJSON.tools;
       <div class="flex flex-1 flex-col gap-3 p-4">
         <!-- Title and Description -->
         <div class="flex flex-1 flex-col gap-1">
-          <h2>{tool.title}</h2>
+          <h2 class="font-heading text-xl font-bold">{tool.title}</h2>
           <p class="text-muted-foreground text-sm">{tool.description}</p>
         </div>
 
@@ -51,12 +51,3 @@ const toolList: Tool[] = toolsJSON.tools;
     </article>
   {/each}
 </div>
-
-<style>
-  h2 {
-    font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 700;
-  }
-</style>
-

@@ -30,7 +30,7 @@ function updateFade(e: Event) {
     <ToggleGroup.Item
       value=""
       class="data-[state=on]:bg-primary/80 data-[state=on]:text-background text-muted-foreground hover:text-primary 
-  hover:bg-primary/10 cursor-pointer rounded-md bg-white px-4 text-sm font-medium
+  hover:bg-primary/10 cursor-pointer rounded-md bg-card px-4 text-sm font-medium
   shadow-xs transition-none"
     >
       Todos
@@ -40,7 +40,7 @@ function updateFade(e: Event) {
       <ToggleGroup.Item
         value={category.toLowerCase()}
         class="data-[state=on]:bg-primary/80 data-[state=on]:text-background text-muted-foreground hover:text-primary 
-      hover:bg-primary/10 cursor-pointer rounded-md bg-white px-4 text-sm font-medium
+      hover:bg-primary/10 cursor-pointer rounded-md bg-card px-4 text-sm font-medium
       shadow-xs transition-none"
       >
         {category}
@@ -63,13 +63,13 @@ function updateFade(e: Event) {
   <div class="relative">
     <div
       class="pointer-events-none absolute top-0 bottom-2 left-0 w-10 bg-linear-to-r
-    from-gray-100 transition-opacity duration-300 {fade.left
+    from-background transition-opacity duration-300 {fade.left
         ? ''
         : 'opacity-0'}"
     ></div>
     <div
       class="pointer-events-none absolute top-0 right-0 bottom-2 w-10 bg-linear-to-l
-    from-gray-100 transition-opacity duration-300 {fade.right
+    from-background transition-opacity duration-300 {fade.right
         ? ''
         : 'opacity-0'}"
     ></div>
@@ -96,6 +96,6 @@ function updateFade(e: Event) {
       Última Actualización: {lastUpdate}
     </p>
   {:else}
-    <Skeleton class="h-3 w-52 bg-gray-200" />
+    <Skeleton class="h-3 w-52 bg-border/50" />
   {/if}
 </div>

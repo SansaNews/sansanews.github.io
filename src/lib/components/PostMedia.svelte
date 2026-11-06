@@ -58,6 +58,7 @@ $effect(() => {
 		></video>
 	{:else if media.videoURL}
 		<button
+			type="button"
 			class="relative flex h-full w-full cursor-pointer border-none bg-transparent p-0 leading-none"
 			onclick={() => {
 				videoLoaded = true;

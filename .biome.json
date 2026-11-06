@@ -7,7 +7,8 @@
 		"defaultBranch": "main"
 	},
 	"files": {
-		"ignoreUnknown": false
+		"ignoreUnknown": false,
+		"includes": ["**", "!**/src/lib/assets/media.json"]
 	},
 	"formatter": {
 		"enabled": true,
@@ -43,7 +44,15 @@
 					},
 					"correctness": {
 						"noUnusedVariables": "off",
-						"noUnusedImports": "off"
+						"noUnusedImports": "off",
+						"noUnusedFunctionParameters": "off"
+					},
+					"suspicious": {
+						"noGlobalAssign": "off"
+					},
+					"a11y": {
+						"useAltText": "off",
+						"useValidAnchor": "off"
 					}
 				}
 			}
@@ -53,5 +62,8 @@
 		"parser": {
 			"tailwindDirectives": true
 		}
+	},
+	"html": {
+		"experimentalFullSupportEnabled": true
 	}
 }

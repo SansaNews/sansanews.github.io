@@ -92,7 +92,7 @@ async function main() {
 	const promises = users.map(async (user) => {
 		log(LogLevel.DEBUG, `Fetching user: ${user.username} (${user.category})`);
 		const userData = await getUserData(user.username, config);
-		const sanitized = await sanitizeData(
+		const sanitized = await processUserMedia(
 			user.username,
 			userData,
 			user.category,
@@ -153,40 +153,33 @@ export async function getUserData(
     }
   }`;
 
+	let response: Response;
+	let data: IGMediaResponse = {};
+	let errorText = "";
 	try {
-		const response = await fetchBusinessDiscovery(fields, config);
-
-		if (!response.ok) {
-			const errorText = await response.text();
-			log(
-				LogLevel.ERROR,
-				`HTTP ${response.status} for ${username}: ${errorText}`,
-			);
-
-			if (response.status === 403) {
-				throw new Error(
-					"HTTP 403 Forbidden: Reached API rate limit or insufficient permissions.",
-				);
-			}
-
-			return {};
-		}
-
-		return await response.json();
+		response = await fetchBusinessDiscovery(fields, config);
+		if (response.ok) data = await response.json();
+		else errorText = await response.text();
 	} catch (error) {
-		if (error instanceof Error && error.message.includes("HTTP 403")) {
-			throw error;
-		}
-
 		log(
 			LogLevel.ERROR,
 			`Could not connect to Instagram API for ${username}: ${error}`,
 		);
 		return {};
 	}
+
+	if (response.ok) return data;
+
+	log(LogLevel.ERROR, `HTTP ${response.status} for ${username}: ${errorText}`);
+	if (response.status === 403) {
+		throw new Error(
+			"HTTP 403 Forbidden: Reached API rate limit or insufficient permissions.",
+		);
+	}
+	return {};
 }
 
-export async function sanitizeData(
+export async function processUserMedia(
 	username: string,
 	data: IGMediaResponse,
 	category: string = "",
@@ -237,13 +230,13 @@ export async function sanitizeData(
 
 export async function optimizeImage(
 	url: string | undefined,
-	file_name: string,
-	folder_path: string,
-	base_width: number,
+	fileName: string,
+	folderPath: string,
+	baseWidth: number,
 ): Promise<{ width: number; height: number }> {
 	let dimensions = { width: 0, height: 0 };
 	if (!url) {
-		log(LogLevel.WARN, `Missing image URL: ${file_name}`);
+		log(LogLevel.WARN, `Missing image URL: ${fileName}`);
 		return dimensions;
 	}
 
@@ -275,15 +268,13 @@ export async function optimizeImage(
 		const blob = await response.blob();
 		const img = blob.image().webp({ quality: 80 });
 		for (let i = 1; i <= 3; i++) {
-			img
-				.resize(base_width * i)
-				.write(`${folder_path}/${file_name}-${i}x.webp`);
+			img.resize(baseWidth * i).write(`${folderPath}/${fileName}-${i}x.webp`);
 		}
 
 		dimensions = await img
 			.metadata()
 			.then((meta) => ({ width: meta.width, height: meta.height }));
-		log(LogLevel.DEBUG, `Image optimized: ${file_name}`);
+		log(LogLevel.DEBUG, `Image optimized: ${fileName}`);
 	} catch (error) {
 		log(LogLevel.ERROR, `Couldn't fetch image from ${url}: ${error}`);
 	}

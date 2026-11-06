@@ -20,7 +20,5 @@ $effect.root(() => {
 });
 
 export function hideOnScroll() {
-	return {
-		hidden: () => instance.hidden,
-	};
+	return instance;
 }

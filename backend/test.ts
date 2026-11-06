@@ -4,7 +4,7 @@ import {
 	APIConfig,
 	fetchBusinessDiscovery,
 	getUserData,
-	sanitizeData,
+	processUserMedia,
 } from "./main.ts";
 
 if (import.meta.main) {
@@ -110,7 +110,7 @@ async function handleGetCommand(args: string[]): Promise<void> {
 	);
 
 	if (sanitize) {
-		const sanitizedData = await sanitizeData(username, data);
+		const sanitizedData = await processUserMedia(username, data);
 		console.dir(sanitizedData, { depth: null });
 	} else {
 		console.dir(data, { depth: null });

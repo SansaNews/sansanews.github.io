@@ -6,7 +6,7 @@ import LogoBanner from "$lib/components/LogoBanner.svelte";
 import { hideOnScroll } from "$lib/scroll.svelte";
 import { cn } from "$lib/utils";
 
-const { hidden } = hideOnScroll();
+const scroll = hideOnScroll();
 
 const sections = [
 	{ label: "Noticias", href: resolve("/"), icon: Newspaper },
@@ -23,7 +23,7 @@ const sections = [
 <nav
   class={cn(
     "bg-background fixed right-0 bottom-0 left-0 z-50 border-t-2 transition-transform duration-300 lg:hidden",
-    hidden() && "translate-y-full",
+    scroll.hidden && "translate-y-full",
   )}
 >
   <ul class="flex justify-around">

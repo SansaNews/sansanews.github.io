@@ -1,10 +1,12 @@
+export type MediaType = "IMAGE" | "VIDEO" | "CAROUSEL_ALBUM";
+
 export interface Media {
 	id: string;
 	caption: string;
 	category: string;
 	datePublished: Date;
 	permalink: string;
-	type: string;
+	type: MediaType;
 	username: string;
 	videoURL?: string;
 	dimensions: {
@@ -29,14 +31,22 @@ export function jsonToMedia(json: RawMedia[]): Media[] {
 	return json.map((media) => ({
 		id: media.id,
 		caption: media.caption || "Sin descripción",
-		category: media.category.toLowerCase(),
+		category: media.category,
 		datePublished: new Date(media.timestamp),
 		permalink: media.permalink,
-		type: media.media_type,
+		type: media.media_type as MediaType,
 		username: media.username,
 		dimensions: media.dimensions,
 		videoURL: media.video_url || undefined,
 	}));
+}
+
+function isSameDay(a: Date, b: Date): boolean {
+	return (
+		a.getDate() === b.getDate() &&
+		a.getMonth() === b.getMonth() &&
+		a.getFullYear() === b.getFullYear()
+	);
 }
 
 export function getTimeCategory(date: Date): string {
@@ -44,21 +54,13 @@ export function getTimeCategory(date: Date): string {
 	const diffTime = now.getTime() - date.getTime();
 	const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-	if (
-		date.getDate() === now.getDate() &&
-		date.getMonth() === now.getMonth() &&
-		date.getFullYear() === now.getFullYear()
-	) {
+	if (isSameDay(date, now)) {
 		return "Hoy";
 	}
 
 	const yesterday = new Date(now);
 	yesterday.setDate(now.getDate() - 1);
-	if (
-		date.getDate() === yesterday.getDate() &&
-		date.getMonth() === yesterday.getMonth() &&
-		date.getFullYear() === yesterday.getFullYear()
-	) {
+	if (isSameDay(date, yesterday)) {
 		return "Ayer";
 	}
 
@@ -84,11 +86,7 @@ export function formatDatetime(then: Date, now: Date = new Date()): string {
 	const yesterday = new Date(now);
 	yesterday.setDate(now.getDate() - 1);
 
-	if (
-		then.getDate() === yesterday.getDate() &&
-		then.getMonth() === yesterday.getMonth() &&
-		then.getFullYear() === yesterday.getFullYear()
-	) {
+	if (isSameDay(then, yesterday)) {
 		return "Ayer";
 	}
 

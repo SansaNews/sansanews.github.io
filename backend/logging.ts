@@ -8,6 +8,14 @@ export enum LogLevel {
 
 const debugMode = process.env.DEBUG === "true";
 
+const consoleMethods: Record<LogLevel, (entry: object) => void> = {
+	[LogLevel.FATAL]: console.error,
+	[LogLevel.ERROR]: console.error,
+	[LogLevel.WARN]: console.warn,
+	[LogLevel.INFO]: console.info,
+	[LogLevel.DEBUG]: console.debug,
+};
+
 export function log(level: LogLevel, message: string, error?: unknown) {
 	const entry = {
 		level,
@@ -19,13 +27,6 @@ export function log(level: LogLevel, message: string, error?: unknown) {
 		}),
 	};
 
-	if (level === LogLevel.FATAL || level === LogLevel.ERROR) {
-		console.error(entry);
-	} else if (level === LogLevel.WARN) {
-		console.warn(entry);
-	} else if (level === LogLevel.INFO) {
-		console.info(entry);
-	} else if (level === LogLevel.DEBUG && debugMode) {
-		console.debug(entry);
-	}
+	if (level === LogLevel.DEBUG && !debugMode) return;
+	consoleMethods[level](entry);
 }

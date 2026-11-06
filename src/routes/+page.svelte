@@ -56,7 +56,6 @@ const lastUpdateLabel = $derived(
   <AvatarScroll />
   <CategoryHeader
     setCategory={(value: string) => (category = value)}
-    isTimeMounted={time.isMounted}
     lastUpdate={lastUpdateLabel}
   />
 

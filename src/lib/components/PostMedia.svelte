@@ -45,7 +45,7 @@ $effect(() => {
 />
 
 <div class="relative border-b-2 lg:w-1/3 lg:shrink-0 lg:border-r-2 lg:border-b-0">
-	{#if media.type === "VIDEO" && media.videoURL && videoLoaded}
+	{#if media.videoURL && videoLoaded}
 		<video
 			class="block h-full w-full object-contain"
 			src={media.videoURL}
@@ -56,7 +56,7 @@ $effect(() => {
 			width={media.dimensions.width}
 			height={media.dimensions.height}
 		></video>
-	{:else if media.type === "VIDEO" && media.videoURL}
+	{:else if media.videoURL}
 		<button
 			class="relative flex h-full w-full cursor-pointer border-none bg-transparent p-0 leading-none"
 			onclick={() => {

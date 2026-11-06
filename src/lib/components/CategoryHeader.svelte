@@ -4,16 +4,22 @@ import LogoBanner from "$lib/components/LogoBanner.svelte";
 import { Skeleton } from "$lib/components/ui/skeleton/index.js";
 import * as ToggleGroup from "$lib/components/ui/toggle-group";
 import { hideOnScroll } from "$lib/scroll.svelte";
+import { useClientTime } from "$lib/time.svelte";
 import { cn } from "$lib/utils";
 
-const { hidden } = hideOnScroll();
+const scroll = hideOnScroll();
 
 const categories = Object.keys(categoriesJSON);
 
 const itemClass =
 	"data-[state=on]:bg-primary/80 data-[state=on]:text-background text-muted-foreground hover:text-primary hover:bg-primary/10 cursor-pointer rounded-md bg-card px-4 text-sm font-medium shadow-xs transition-none";
 
-let { setCategory, lastUpdate, isTimeMounted } = $props();
+let {
+	setCategory,
+	lastUpdate,
+}: { setCategory: (value: string) => void; lastUpdate: string } = $props();
+
+const time = useClientTime();
 
 let fade = $state({ left: false, right: true });
 
@@ -39,7 +45,7 @@ function updateFade(e: Event) {
 
     {#each categories as category (category)}
       <ToggleGroup.Item
-        value={category.toLowerCase()}
+        value={category}
         class={itemClass}
       >
         {category}
@@ -52,7 +58,7 @@ function updateFade(e: Event) {
 <div
   class={cn(
     "bg-background fixed top-0 right-0 left-0 z-40 border-b-2 transition-transform duration-300 lg:hidden",
-    hidden() && "-translate-y-full",
+    scroll.hidden && "-translate-y-full",
   )}
 >
   <div class="flex justify-center pt-4 pb-5">
@@ -90,7 +96,7 @@ function updateFade(e: Event) {
   <div class="hidden lg:flex">
     {@render CategorySelector()}
   </div>
-  {#if isTimeMounted}
+  {#if time.isMounted}
     <p class="text-muted-foreground text-center text-xs lg:text-right">
       Última Actualización: {lastUpdate}
     </p>

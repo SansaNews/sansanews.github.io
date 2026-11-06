@@ -13,12 +13,12 @@ _SansaNews_ es una iniciativa estudiantil que busca centralizar las noticias de 
 Para inicializar el proyecto ejecuta los siguientes comandos:
 
 ```sh
-git clone https://github.com/MoonTurtlee/SansaNews.git
-cd SansaNews
+git clone https://github.com/SansaNews/sansanews.github.io.git
+cd sansanews.github.io
 just init
 ```
 
-Para poder usar el script con la API de instagram necesitas crear un archivo `.env` en el root del proyecto y colocar tu token de acceso en el.
+Para poder usar los scripts con la API de Instagram necesitas crear un archivo `.env` en el root del proyecto y colocar tu token de acceso en él. Todos los comandos de `just` requieren que este archivo exista.
 
 ```env
 ACCESS_TOKEN=tu_token_de_acceso
@@ -31,10 +31,12 @@ Puedes obtener un token de acceso siguiendo la [guía de la API de Instagram](ht
 Puedes ver todos los comandos del proyecto con `just --list`.
 
 ```sh
-just dev            # Inicia el entorno de desarrollo
+just dev            # Inicia el entorno de desarrollo (requiere haber ejecutado `just update`)
 just check username # Chequea si el usuario es accesible mediante la API
 just get username   # Obtiene los últimos posts del usuario (flags: --sanitize, --since <dias>, --max <cantidad>)
+just rate-limit     # Muestra el uso actual del límite de peticiones de la API
 just update         # Obtiene los últimos posts de los usuarios que se encuentran en `src/lib/assets/users.json`
+just lint           # Ejecuta svelte-check y biome check
 just build          # Construye el proyecto para ser publicado
 ```
 
@@ -44,12 +46,14 @@ Usamos [just](https://github.com/casey/just) para crear comandos personalizados 
 
 - `justfile`, configuración de comandos del proyecto.
 
-Para el script del backend ocupamos python junto con la [API Oficial de Instagram](https://developers.facebook.com/docs/instagram-platform) para obtener legalmente los posts.
+Para el script del backend ocupamos [TypeScript](https://www.typescriptlang.org/) sobre Bun junto con la [API Oficial de Instagram](https://developers.facebook.com/docs/instagram-platform) para obtener legalmente los posts.
 
-El script `backend/main.ts` obtiene los usuarios a consultar de `users.json` y guarda los posts en `media.json`.
+El script `backend/main.ts` obtiene los usuarios a consultar de `users.json`, guarda los posts en `media.json` y descarga las imágenes en `static/pfp/` y `static/posts/`. Estos tres archivos/carpetas no se suben al repositorio, por lo que debes ejecutar `just update` antes de `just dev` o `just build`.
 
 - `backend/main.ts`, script encargado de actualizar las publicaciones.
-- `backend/test.ts`, script para hacer testing de publicaciones.
+- `backend/instagram-fetch.ts`, función que hace la petición a la API de Instagram.
+- `backend/logging.ts`, utilidad para mostrar logs.
+- `backend/test.ts`, script para hacer testing de publicaciones (comandos `check`, `get` y `rate-limit`).
 - `src/lib/assets/users.json`, lista de usuarios que subir.
 - `src/lib/assets/media.json`, lista de posts obtenidos mediante `main.ts`.
 
@@ -60,8 +64,7 @@ El frontend está hecho con [Svelte 5 y SvelteKit 2](https://svelte.dev/).
 
 Para automatizar la construcción y publicación de la página ocupamos [GitHub Actions](https://docs.github.com/en/actions) para minimizar costos a prácticamente 0, al solo ser una página estática y servirse en [GitHub Pages](https://docs.github.com/en/pages).
 
-- `.github/workflow/backend.yml`, configuración de GitHub Actions para actualizar automáticamente `media.json`.
-- `.github/workflow/deploy.yml`, configuración de GitHub Actions para construir y publicar automáticamente la página al subir un commit a la rama `pages`.
+- `.github/workflows/deploy.yml`, configuración de GitHub Actions para obtener los posts, construir y publicar automáticamente la página cada hora, al subir un commit a la rama `pages` o de forma manual.
 
 ## Preguntas Frecuentes
 

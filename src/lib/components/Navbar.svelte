@@ -38,9 +38,7 @@ const sections = [
               : "text-muted-foreground hover:text-primary",
           )}
         >
-          {#if section.icon}
-            <section.icon class="mb-1 h-4 w-4" />
-          {/if}
+          <section.icon class="mb-1 h-4 w-4" />
           {section.label}
         </a>
       </li>

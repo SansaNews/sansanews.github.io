@@ -1,5 +1,5 @@
 <script lang="ts">
-import { GalleryHorizontalEnd } from "@lucide/svelte";
+import { GalleryHorizontalEnd, Play } from "@lucide/svelte";
 import * as Popover from "$lib/components/ui/popover/index.js";
 import { type Media } from "$lib/media";
 import { makeSrcset } from "$lib/utils";
@@ -20,22 +20,29 @@ $effect(() => {
 	}, 150);
 	return () => clearTimeout(timer);
 });
-
-function handleOpen() {
-	hovered = true;
-}
-
-function handleClose() {
-	hovered = false;
-}
-
-function handleScroll() {
-	hovered = false;
-	open = false;
-}
 </script>
 
-<svelte:window onscroll={handleScroll} />
+{#snippet postImage(alt: string)}
+	<img
+		class="block h-full w-full object-contain"
+		{...makeSrcset("/posts", media.id, 376)}
+		sizes="(min-width: 1024px) 33vw, 100vw"
+		{alt}
+		referrerpolicy="no-referrer"
+		loading={first ? "eager" : "lazy"}
+		fetchpriority={first ? "high" : "auto"}
+		decoding={first ? "sync" : "async"}
+		width={media.dimensions.width}
+		height={media.dimensions.height}
+	/>
+{/snippet}
+
+<svelte:window
+	onscroll={() => {
+		hovered = false;
+		open = false;
+	}}
+/>
 
 <div class="relative border-b-2 lg:w-1/3 lg:shrink-0 lg:border-r-2 lg:border-b-0">
 	{#if media.type === "VIDEO" && media.videoURL && videoLoaded}
@@ -57,31 +64,9 @@ function handleScroll() {
 			}}
 			aria-label="Reproducir video de {media.username}"
 		>
-			<img
-				class="block h-full w-full object-contain"
-				{...makeSrcset("/posts", media.id, 376)}
-				sizes="(min-width: 1024px) 33vw, 100vw"
-				alt="Previsualización video de {media.username}"
-				referrerpolicy="no-referrer"
-				loading={first ? "eager" : "lazy"}
-				fetchpriority={first ? "high" : "auto"}
-				decoding={first ? "sync" : "async"}
-				width={media.dimensions.width}
-				height={media.dimensions.height}
-			/>
+			{@render postImage(`Previsualización video de ${media.username}`)}
 			<div class="absolute inset-0 flex items-center justify-center bg-black/20">
-				<svg
-					class="h-16 w-16 text-white opacity-80"
-					viewBox="0 0 24 24"
-					fill="currentColor"
-					aria-hidden="true"
-				>
-					<path
-						fill-rule="evenodd"
-						clip-rule="evenodd"
-						d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
-					/>
-				</svg>
+				<Play class="h-16 w-16 fill-current text-white opacity-80" aria-hidden="true" />
 			</div>
 		</button>
 	{:else}
@@ -91,26 +76,15 @@ function handleScroll() {
 			rel="noopener noreferrer"
 			class="flex h-full w-full"
 		>
-			<img
-				class="block h-full w-full object-contain"
-				{...makeSrcset("/posts", media.id, 376)}
-				sizes="(min-width: 1024px) 33vw, 100vw"
-				alt="Post de {media.username}"
-				referrerpolicy="no-referrer"
-				loading={first ? "eager" : "lazy"}
-				fetchpriority={first ? "high" : "auto"}
-				decoding={first ? "sync" : "async"}
-				width={media.dimensions.width}
-				height={media.dimensions.height}
-			/>
+			{@render postImage(`Post de ${media.username}`)}
 		</a>
 	{/if}
 
 	{#if media.type === "CAROUSEL_ALBUM"}
 		<Popover.Root bind:open>
 			<Popover.Trigger
-				onmouseenter={handleOpen}
-				onmouseleave={handleClose}
+				onmouseenter={() => (hovered = true)}
+				onmouseleave={() => (hovered = false)}
 				onclick={(e) => {
 					e.preventDefault();
 					open = true;
@@ -121,8 +95,8 @@ function handleScroll() {
 			</Popover.Trigger>
 
 			<Popover.Content
-				onmouseenter={handleOpen}
-				onmouseleave={handleClose}
+				onmouseenter={() => (hovered = true)}
+				onmouseleave={() => (hovered = false)}
 				side="top"
 				sideOffset={12}
 				class="mx-4 w-48 border-0 bg-black/50 p-1 text-center text-xs text-white"

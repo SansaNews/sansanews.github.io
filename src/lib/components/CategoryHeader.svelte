@@ -10,6 +10,9 @@ const { hidden } = hideOnScroll();
 
 const categories = Object.keys(categoriesJSON);
 
+const itemClass =
+	"data-[state=on]:bg-primary/80 data-[state=on]:text-background text-muted-foreground hover:text-primary hover:bg-primary/10 cursor-pointer rounded-md bg-card px-4 text-sm font-medium shadow-xs transition-none";
+
 let { setCategory, lastUpdate, isTimeMounted } = $props();
 
 let fade = $state({ left: false, right: true });
@@ -29,9 +32,7 @@ function updateFade(e: Event) {
   >
     <ToggleGroup.Item
       value=""
-      class="data-[state=on]:bg-primary/80 data-[state=on]:text-background text-muted-foreground hover:text-primary 
-  hover:bg-primary/10 cursor-pointer rounded-md bg-card px-4 text-sm font-medium
-  shadow-xs transition-none"
+      class={itemClass}
     >
       Todos
     </ToggleGroup.Item>
@@ -39,9 +40,7 @@ function updateFade(e: Event) {
     {#each categories as category (category)}
       <ToggleGroup.Item
         value={category.toLowerCase()}
-        class="data-[state=on]:bg-primary/80 data-[state=on]:text-background text-muted-foreground hover:text-primary 
-      hover:bg-primary/10 cursor-pointer rounded-md bg-card px-4 text-sm font-medium
-      shadow-xs transition-none"
+        class={itemClass}
       >
         {category}
       </ToggleGroup.Item>

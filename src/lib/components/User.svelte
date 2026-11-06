@@ -1,5 +1,4 @@
 <script lang="ts">
-import { Avatar } from "$lib/components/ui/avatar";
 import { Skeleton } from "$lib/components/ui/skeleton/index.js";
 import { formatDatetime } from "$lib/media";
 import { useClientTime } from "$lib/time.svelte";
@@ -32,7 +31,7 @@ const time = useClientTime();
       </div>
     {/if}
   </div>
-  <Avatar class="h-12 w-12 sm:h-15 sm:w-15">
+  <div class="relative flex h-12 w-12 shrink-0 overflow-hidden rounded-full sm:h-15 sm:w-15">
     <img
       {...makeSrcset('/pfp', username, 48)}
       sizes="(min-width: 640px) 60px, 48px"
@@ -40,5 +39,5 @@ const time = useClientTime();
       referrerpolicy="no-referrer"
       loading="lazy"
     />
-  </Avatar>
+  </div>
 </a>

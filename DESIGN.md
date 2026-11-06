@@ -31,7 +31,7 @@ Colors are OKLCH tokens with shadcn names. Always use a token. Do not use `bg-wh
 ## Typography
 
 - Headings use `font-heading` (Charis SIL, 400 and 700, with italics).
-- Body text uses the default Tailwind sans font. `font-body` (Source Serif 4, variable) is defined in `src/app.css`, but no element uses it.
+- Body text uses the default Tailwind sans font.
 - The scale is a perfect fourth (x1.414): `xl` 1.414rem, `2xl` 1.999rem, `3xl` 2.827rem, `4xl` 3.997rem, `5xl` 5.652rem.
 - Use `font-heading text-xl` for section titles. Add `font-bold` for card titles.
 - `.prose-page` sets `h1` to `text-2xl` and `h2` to `text-xl`. Its paragraphs are justified.

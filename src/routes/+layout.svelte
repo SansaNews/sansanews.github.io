@@ -15,13 +15,6 @@ let { children } = $props();
     type="font/woff2"
     crossorigin="anonymous"
   />
-  <link
-    rel="preload"
-    href={asset("/fonts/SourceSerif4-VariableFont_opsz,wght.woff2")}
-    as="font"
-    type="font/woff2"
-    crossorigin="anonymous"
-  />
 </svelte:head>
 
 <div class="grid grid-cols-12">

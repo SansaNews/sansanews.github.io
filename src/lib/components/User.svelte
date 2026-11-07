@@ -21,7 +21,7 @@ const time = useClientTime();
     </span>
     {#if time.isMounted}
       <span
-        class="text-muted-foreground text-[10px] font-semibold tracking-wider"
+        class="text-[10px] font-semibold tracking-wider text-muted-foreground"
       >
         {formatDatetime(datePublished)}
       </span>

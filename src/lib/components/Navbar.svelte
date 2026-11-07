@@ -22,7 +22,7 @@ const sections = [
 <!-- Mobile Navigation -->
 <nav
   class={cn(
-    "bg-background fixed right-0 bottom-0 left-0 z-50 border-t-2 transition-transform duration-300 lg:hidden",
+    "fixed right-0 bottom-0 left-0 z-50 border-t-2 bg-background transition-transform duration-300 lg:hidden",
     scroll.hidden && "translate-y-full",
   )}
 >
@@ -53,13 +53,13 @@ const sections = [
   </div>
 
   <div class="hidden items-center justify-center lg:flex">
-    <div class="bg-primary/40 h-0.5 w-16"></div>
+    <div class="h-0.5 w-16 bg-primary/40"></div>
     <nav class="flex items-center">
       {#each sections as item, i (item.href)}
         <a
           href={item.href}
           class={cn(
-            "hover:text-primary focus:text-primary px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors",
+            "px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors hover:text-primary focus:text-primary",
             item.href === page.url.pathname && "text-primary",
           )}
         >
@@ -71,6 +71,6 @@ const sections = [
         {/if}
       {/each}
     </nav>
-    <div class="bg-primary/40 h-0.5 w-16"></div>
+    <div class="h-0.5 w-16 bg-primary/40"></div>
   </div>
 </div>

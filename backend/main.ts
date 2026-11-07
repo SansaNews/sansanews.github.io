@@ -248,9 +248,11 @@ export async function optimizeImage(
 		return dimensions;
 	}
 
+	const allowedHosts = ["cdninstagram.com", "fbcdn.net"];
 	if (
-		!hostname.endsWith("cdninstagram.com") &&
-		!hostname.endsWith("fbcdn.net")
+		!allowedHosts.some(
+			(host) => hostname === host || hostname.endsWith(`.${host}`),
+		)
 	) {
 		log(
 			LogLevel.WARN,

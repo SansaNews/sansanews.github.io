@@ -8,6 +8,9 @@ on:
     - cron: "42 * * * *"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   build_site:
     runs-on: ubuntu-latest

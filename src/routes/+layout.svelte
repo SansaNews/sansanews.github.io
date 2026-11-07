@@ -1,8 +1,8 @@
 <script lang="ts">
 import "../app.css";
+import Footer from "#lib/components/Footer.svelte";
+import Navbar from "#lib/components/Navbar.svelte";
 import { asset } from "$app/paths";
-import Footer from "$lib/components/Footer.svelte";
-import Navbar from "$lib/components/Navbar.svelte";
 
 let { children } = $props();
 </script>
@@ -10,7 +10,7 @@ let { children } = $props();
 <svelte:head>
   <link
     rel="preload"
-    href={asset("/fonts/CharisSIL-Regular.woff2")}
+    href={asset("fonts/CharisSIL-Regular.woff2")}
     as="font"
     type="font/woff2"
     crossorigin="anonymous"

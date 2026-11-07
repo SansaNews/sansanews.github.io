@@ -1,9 +1,4 @@
-/// <reference types="@sveltejs/kit" />
-/// <reference no-default-lib="true"/>
-/// <reference lib="esnext" />
-/// <reference lib="webworker" />
-
-const sw = globalThis as unknown as ServiceWorkerGlobalScope;
+import { self as sw } from "$app/service-worker";
 
 sw.addEventListener("install", () => {
 	sw.skipWaiting();

@@ -1,8 +1,8 @@
 <script lang="ts">
 import { GalleryHorizontalEnd, Play } from "@lucide/svelte";
-import * as Popover from "$lib/components/ui/popover/index.js";
-import { type Media } from "$lib/media";
-import { makeSrcset } from "$lib/utils";
+import * as Popover from "#lib/components/ui/popover/index.js";
+import { type Media } from "#lib/media.js";
+import { makeSrcset } from "#lib/utils.js";
 
 let { media, first }: { media: Media; first: boolean } = $props();
 let videoLoaded = $state(false);
@@ -25,7 +25,7 @@ $effect(() => {
 {#snippet postImage(alt: string)}
 	<img
 		class="block h-full w-full object-contain"
-		{...makeSrcset("/posts", media.id, 376)}
+		{...makeSrcset("posts", media.id, 376)}
 		sizes="(min-width: 1024px) 33vw, 100vw"
 		{alt}
 		referrerpolicy="no-referrer"

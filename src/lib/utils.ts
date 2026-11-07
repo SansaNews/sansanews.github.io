@@ -1,19 +1,21 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { asset } from "$app/paths";
+import type { AssetPath } from "$app/types";
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
 
 export function makeSrcset(basePath: string, id: string, baseWidth: number) {
-	const src = asset(`${basePath}/${id}-1x.webp`);
+	const file = (scale: number) =>
+		asset(`${basePath}/${id}-${scale}x.webp` as AssetPath);
 	const srcset = `
-		${asset(`${basePath}/${id}-1x.webp`)} ${baseWidth}w,
-		${asset(`${basePath}/${id}-2x.webp`)} ${baseWidth * 2}w,
-		${asset(`${basePath}/${id}-3x.webp`)} ${baseWidth * 3}w
+		${file(1)} ${baseWidth}w,
+		${file(2)} ${baseWidth * 2}w,
+		${file(3)} ${baseWidth * 3}w
 	`;
-	return { src, srcset };
+	return { src: file(1), srcset };
 }
 
 export type WithoutChild<T> = T extends { child?: unknown }

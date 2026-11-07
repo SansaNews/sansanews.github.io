@@ -1,10 +1,10 @@
 <script lang="ts">
 import { Info, Newspaper, PencilRuler } from "@lucide/svelte";
+import LogoBanner from "#lib/components/LogoBanner.svelte";
+import { hideOnScroll } from "#lib/scroll.svelte.js";
+import { cn } from "#lib/utils.js";
 import { resolve } from "$app/paths";
 import { page } from "$app/state";
-import LogoBanner from "$lib/components/LogoBanner.svelte";
-import { hideOnScroll } from "$lib/scroll.svelte";
-import { cn } from "$lib/utils";
 
 const scroll = hideOnScroll();
 

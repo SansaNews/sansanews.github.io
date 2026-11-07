@@ -25,12 +25,9 @@ The `justfile` sets `dotenv-required`. Every recipe fails if `.env` does not exi
 
 The project has no test suite. `backend/test.ts` is a manual CLI for the Instagram API, not a test runner.
 
-Lefthook runs on pre-commit:
+The project has no git hooks. `.github/workflows/ci.yml` runs on each push to `main` and on each pull request. It runs `biome ci` and `bun run check` (svelte-check). The workflow writes a fake `media.json`, because the real file is gitignored. The workflow does not need `ACCESS_TOKEN`.
 
-1. `biome check --write` on staged files. The hook stages the fixed files again.
-2. `bun run check` (svelte-check).
-
-Biome uses tabs and double quotes.
+Biome uses its default formatter settings (tabs and double quotes). The configuration is in `.biome.json`. The rule `nursery/useTailwindSortedClasses` sorts Tailwind classes. Its fix is unsafe. To sort the classes, run `bun x biome check --write --unsafe`.
 
 ## Architecture
 

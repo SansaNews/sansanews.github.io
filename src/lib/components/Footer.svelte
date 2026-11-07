@@ -4,10 +4,10 @@ import { resolve } from "$app/paths";
 </script>
 
 <footer
-  class="text-muted-foreground col-span-12 grid grid-cols-3 gap-2 border-t-3 p-4 lg:col-span-8 lg:col-start-3 lg:gap-8 lg:p-6"
+  class="col-span-12 grid grid-cols-3 gap-2 border-t-3 p-4 text-muted-foreground lg:col-span-8 lg:col-start-3 lg:gap-8 lg:p-6"
 >
   <div class="flex flex-col items-start overflow-hidden">
-    <h4 class="font-heading pb-2 text-sm lg:text-base">Mapa del Sitio</h4>
+    <h4 class="pb-2 font-heading text-sm lg:text-base">Mapa del Sitio</h4>
     <ul class="space-y-1 text-xs font-medium">
       <li>
         <a class="text-primary underline" href={resolve("/")}>Noticias</a>
@@ -26,7 +26,7 @@ import { resolve } from "$app/paths";
   </div>
 
   <div class="flex w-full flex-col items-center px-1">
-    <h4 class="font-heading pb-2 text-sm lg:text-base">Misión</h4>
+    <h4 class="pb-2 font-heading text-sm lg:text-base">Misión</h4>
     <p
       class="w-full max-w-sm text-justify text-[11px] leading-snug font-medium hyphens-auto lg:text-center lg:text-xs lg:leading-normal"
     >
@@ -36,12 +36,12 @@ import { resolve } from "$app/paths";
   </div>
 
   <div class="flex flex-col items-end overflow-hidden">
-    <h4 class="font-heading pb-2 text-sm lg:text-base">Contacto</h4>
+    <h4 class="pb-2 font-heading text-sm lg:text-base">Contacto</h4>
     <ul class="space-y-1 text-xs font-medium">
       <li>
         <a
           href="https://www.instagram.com/sansanews/"
-          class="text-primary flex items-center gap-1 underline"
+          class="flex items-center gap-1 text-primary underline"
         >
           <Instagram class="inline h-3.5 w-3.5 lg:h-4 lg:w-4" /> @sansanews
         </a>
@@ -49,7 +49,7 @@ import { resolve } from "$app/paths";
       <li>
         <a
           href="https://github.com/SansaNews/sansanews.github.io"
-          class="text-primary flex items-center gap-1 truncate underline"
+          class="flex items-center gap-1 truncate text-primary underline"
         >
           <Github class="inline h-3.5 w-3.5 lg:h-4 lg:w-4" /> SansaNews
         </a>

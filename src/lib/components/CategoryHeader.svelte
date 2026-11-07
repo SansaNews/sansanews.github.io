@@ -57,7 +57,7 @@ function updateFade(e: Event) {
 <!-- Mobile Header -->
 <div
   class={cn(
-    "bg-background fixed top-0 right-0 left-0 z-40 border-b-2 transition-transform duration-300 lg:hidden",
+    "fixed top-0 right-0 left-0 z-40 border-b-2 bg-background transition-transform duration-300 lg:hidden",
     scroll.hidden && "-translate-y-full",
   )}
 >
@@ -97,7 +97,7 @@ function updateFade(e: Event) {
     {@render CategorySelector()}
   </div>
   {#if time.isMounted}
-    <p class="text-muted-foreground text-center text-xs lg:text-right">
+    <p class="text-center text-xs text-muted-foreground lg:text-right">
       Última Actualización: {lastUpdate}
     </p>
   {:else}

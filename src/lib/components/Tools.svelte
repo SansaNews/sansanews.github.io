@@ -8,7 +8,7 @@ const toolList = toolsJSON.tools;
 <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
   {#each toolList as tool (tool.title)}
     <article
-      class="card-shadow bg-card flex flex-col overflow-hidden rounded-lg border-2"
+      class="card-shadow flex flex-col overflow-hidden rounded-lg border-2 bg-card"
     >
       <!-- Tool Image -->
       <a
@@ -28,18 +28,18 @@ const toolList = toolsJSON.tools;
         <!-- Title and Description -->
         <div class="flex flex-1 flex-col gap-1">
           <h2 class="font-heading text-xl font-bold">{tool.title}</h2>
-          <p class="text-muted-foreground text-sm">{tool.description}</p>
+          <p class="text-sm text-muted-foreground">{tool.description}</p>
         </div>
 
         <!-- Author and Link -->
         <div class="flex items-center justify-between border-t-2 pt-3">
-          <span class="text-muted-foreground text-xs italic">{tool.author}</span
+          <span class="text-xs text-muted-foreground italic">{tool.author}</span
           >
           <a
             href={tool.url}
             target="_blank"
             rel="noopener noreferrer"
-            class="bg-primary text-primary-foreground flex items-center rounded-md px-4 py-2 text-xs font-bold"
+            class="flex items-center rounded-md bg-primary px-4 py-2 text-xs font-bold text-primary-foreground"
             aria-label={tool.title}
           >
             <p class="whitespace-nowrap">Visitar</p>

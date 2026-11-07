@@ -34,7 +34,7 @@ const allUsers = categories.flatMap((category) => category.users);
       class="size-14 rounded-full"
       loading="lazy"
     />
-    <span class="text-muted-foreground w-full truncate text-center text-[10px]"
+    <span class="w-full truncate text-center text-[10px] text-muted-foreground"
       >{username}</span
     >
   </a>
@@ -59,31 +59,31 @@ const allUsers = categories.flatMap((category) => category.users);
       <div
         class="flex size-14 items-center justify-center rounded-full bg-card"
       >
-        <LayoutGrid class="text-muted-foreground h-6 w-6" />
+        <LayoutGrid class="h-6 w-6 text-muted-foreground" />
       </div>
-      <span class="text-muted-foreground text-[10px]">Todas</span>
+      <span class="text-[10px] text-muted-foreground">Todas</span>
     </Drawer.Trigger>
     <Drawer.Portal>
       <!-- Background Darkens -->
       <Drawer.Overlay class="fixed inset-0 z-50 bg-black/40" />
       <!-- Drawer Style -->
       <Drawer.Content
-        class="bg-background fixed inset-x-0 bottom-0 z-50 flex flex-col rounded-t-2xl border-t-4"
+        class="fixed inset-x-0 bottom-0 z-50 flex flex-col rounded-t-2xl border-t-4 bg-background"
         style="max-height: 80svh;"
       >
         <!-- Drawer Top Line -->
-        <div class="bg-border mx-auto my-3 h-2 w-12 rounded-full"></div>
+        <div class="mx-auto my-3 h-2 w-12 rounded-full bg-border"></div>
         <!-- Drawer Content -->
         <div class="flex flex-col gap-6 overflow-y-auto p-5">
           {#each categories as cat (cat.name)}
             <div class="flex flex-col gap-3">
               <!-- Category Title -->
               <div class="flex items-center gap-3">
-                <div class="bg-border h-px flex-1"></div>
-                <span class="text-primary text-xs font-bold uppercase"
+                <div class="h-px flex-1 bg-border"></div>
+                <span class="text-xs font-bold text-primary uppercase"
                   >{cat.name}</span
                 >
-                <div class="bg-border h-px flex-1"></div>
+                <div class="h-px flex-1 bg-border"></div>
               </div>
               <!-- Users Grid -->
               <div class="grid grid-cols-3 gap-3 [&>a]:w-full">

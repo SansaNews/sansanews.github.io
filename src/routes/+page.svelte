@@ -65,7 +65,7 @@ const lastUpdateLabel = $derived(
         <div
           class="mt-8 flex w-full items-center justify-center gap-4 first:mt-0"
         >
-          <div class="bg-primary/40 h-0.5 w-full"></div>
+          <div class="h-0.5 w-full bg-primary/40"></div>
           {#if time.isMounted}
             <h2 class="font-heading text-xl whitespace-nowrap">
               {group.title}
@@ -75,7 +75,7 @@ const lastUpdateLabel = $derived(
               <Skeleton class="h-5 w-full bg-border/50" />
             </div>
           {/if}
-          <div class="bg-primary/40 h-0.5 w-full"></div>
+          <div class="h-0.5 w-full bg-primary/40"></div>
         </div>
 
         {#each group.items as media, index (media.permalink + media.username)}
@@ -85,7 +85,7 @@ const lastUpdateLabel = $derived(
 
       <!-- Last Update Mobile -->
       {#if time.isMounted}
-        <p class="text-muted-foreground text-center text-xs lg:hidden">
+        <p class="text-center text-xs text-muted-foreground lg:hidden">
           Última Actualización: {lastUpdateLabel}
         </p>
       {:else}

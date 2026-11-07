@@ -5,10 +5,15 @@
 		"clientKind": "git",
 		"useIgnoreFile": true
 	},
-	"css": {
-		"parser": {
-			"tailwindDirectives": true
+	"linter": {
+		"rules": {
+			"nursery": {
+				"useTailwindSortedClasses": "error"
+			}
 		}
+	},
+	"tailwind": {
+		"stylesheet": "./src/app.css"
 	},
 	"html": {
 		"experimentalFullSupportEnabled": true

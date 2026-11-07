@@ -6,7 +6,7 @@ let { class: className, width = 464, height = 96 } = $props();
 
 <a href={resolve("/")}>
   <img
-    src={asset("/brand/sansanews_banner_black.svg")}
+    src={asset("brand/sansanews_banner_black.svg")}
     class={className}
     {width}
     {height}

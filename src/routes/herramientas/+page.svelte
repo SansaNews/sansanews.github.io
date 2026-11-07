@@ -1,7 +1,7 @@
 <script lang="ts">
-import LogoBanner from "$lib/components/LogoBanner.svelte";
+import LogoBanner from "#lib/components/LogoBanner.svelte";
 
-import Tools from "$lib/components/Tools.svelte";
+import Tools from "#lib/components/Tools.svelte";
 </script>
 
 <main class="prose-page px-10 lg:px-16">

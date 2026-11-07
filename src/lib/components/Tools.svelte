@@ -1,6 +1,6 @@
 <script lang="ts">
 import { ExternalLink } from "@lucide/svelte";
-import toolsJSON from "$lib/assets/tools.json";
+import toolsJSON from "#lib/assets/tools.json";
 
 const toolList = toolsJSON.tools;
 </script>

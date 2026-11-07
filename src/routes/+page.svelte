@@ -1,18 +1,18 @@
 <script lang="ts">
 import { ImageOff } from "@lucide/svelte";
-import data from "$lib/assets/media.json";
-import AvatarScroll from "$lib/components/AvatarScroll.svelte";
-import CategoryHeader from "$lib/components/CategoryHeader.svelte";
-import Post from "$lib/components/Post.svelte";
-import * as Empty from "$lib/components/ui/empty";
-import { Skeleton } from "$lib/components/ui/skeleton/index.js";
+import data from "#lib/assets/media.json";
+import AvatarScroll from "#lib/components/AvatarScroll.svelte";
+import CategoryHeader from "#lib/components/CategoryHeader.svelte";
+import Post from "#lib/components/Post.svelte";
+import * as Empty from "#lib/components/ui/empty/index.js";
+import { Skeleton } from "#lib/components/ui/skeleton/index.js";
 import {
 	formatDatetime,
 	getTimeCategory,
 	jsonToMedia,
 	type Media,
-} from "$lib/media";
-import { useClientTime } from "$lib/time.svelte";
+} from "#lib/media.js";
+import { useClientTime } from "#lib/time.svelte.js";
 
 let category = $state("");
 const time = useClientTime();

@@ -1,11 +1,11 @@
 <script lang="ts">
-import categoriesJSON from "$lib/assets/users.json";
-import LogoBanner from "$lib/components/LogoBanner.svelte";
-import { Skeleton } from "$lib/components/ui/skeleton/index.js";
-import * as ToggleGroup from "$lib/components/ui/toggle-group";
-import { hideOnScroll } from "$lib/scroll.svelte";
-import { useClientTime } from "$lib/time.svelte";
-import { cn } from "$lib/utils";
+import categoriesJSON from "#lib/assets/users.json";
+import LogoBanner from "#lib/components/LogoBanner.svelte";
+import { Skeleton } from "#lib/components/ui/skeleton/index.js";
+import * as ToggleGroup from "#lib/components/ui/toggle-group/index.js";
+import { hideOnScroll } from "#lib/scroll.svelte.js";
+import { useClientTime } from "#lib/time.svelte.js";
+import { cn } from "#lib/utils.js";
 
 const scroll = hideOnScroll();
 

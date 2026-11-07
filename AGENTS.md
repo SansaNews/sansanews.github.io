@@ -48,7 +48,11 @@ Time on the client: the site is prerendered, so relative dates ("Hoy", "Hace 3 h
 
 `src/lib/components/ui/` contains shadcn-svelte components (see `components.json`). Do not edit them by hand without a reason.
 
-`src/service-worker.ts` only gives an offline fallback page for navigation requests. It does not cache assets.
+`src/service-worker/index.ts` only gives an offline fallback page for navigation requests. It does not cache assets.
+
+SvelteKit 3 reads its configuration from the `sveltekit(...)` plugin in `vite.config.ts`. The project has no `svelte.config.js`.
+
+Imports from `src/lib` use the `#lib/*` subpath import from `package.json`. Always write the file extension, for example `#lib/utils.js` for `utils.ts`.
 
 ## Deploy
 

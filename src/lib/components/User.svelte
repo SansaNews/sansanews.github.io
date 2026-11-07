@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Skeleton } from "$lib/components/ui/skeleton/index.js";
-import { formatDatetime } from "$lib/media";
-import { useClientTime } from "$lib/time.svelte";
-import { makeSrcset } from "$lib/utils";
+import { Skeleton } from "#lib/components/ui/skeleton/index.js";
+import { formatDatetime } from "#lib/media.js";
+import { useClientTime } from "#lib/time.svelte.js";
+import { makeSrcset } from "#lib/utils.js";
 
 let { username, datePublished } = $props();
 
@@ -33,7 +33,7 @@ const time = useClientTime();
   </div>
   <div class="relative flex h-12 w-12 shrink-0 overflow-hidden rounded-full sm:h-15 sm:w-15">
     <img
-      {...makeSrcset('/pfp', username, 48)}
+      {...makeSrcset('pfp', username, 48)}
       sizes="(min-width: 640px) 60px, 48px"
       alt="Foto de perfil de {username}"
       referrerpolicy="no-referrer"

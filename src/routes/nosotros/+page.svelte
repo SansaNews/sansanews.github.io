@@ -1,7 +1,7 @@
 <script lang="ts">
+import LogoBanner from "#lib/components/LogoBanner.svelte";
+import Reference from "#lib/components/Reference.svelte";
 import { asset } from "$app/paths";
-import LogoBanner from "$lib/components/LogoBanner.svelte";
-import Reference from "$lib/components/Reference.svelte";
 </script>
 
 <main class="prose-page px-10 lg:px-16">
@@ -42,7 +42,7 @@ import Reference from "$lib/components/Reference.svelte";
       </section>
       <div class="flex w-md max-w-xs flex-col items-center pt-4 pb-1">
         <img
-          src={asset("/brand/sansanews_logo.svg")}
+          src={asset("brand/sansanews_logo.svg")}
           alt="SansaNews Logo"
           class="mx-auto mb-2 w-48 rounded-lg"
         />
@@ -182,7 +182,7 @@ import Reference from "$lib/components/Reference.svelte";
         </p>
       </section>
       <img
-        src={asset("/brand/sansanews_presentation.webp")}
+        src={asset("brand/sansanews_presentation.webp")}
         alt="Presentación original de SansaNews en Introducción a la Ingeniería"
         class="mx-auto my-4 w-full max-w-xs rounded-lg"
       />

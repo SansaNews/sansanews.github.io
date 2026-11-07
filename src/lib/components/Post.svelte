@@ -1,7 +1,7 @@
 <script lang="ts">
-import PostMedia from "$lib/components/PostMedia.svelte";
-import User from "$lib/components/User.svelte";
-import { type Media } from "$lib/media";
+import PostMedia from "#lib/components/PostMedia.svelte";
+import User from "#lib/components/User.svelte";
+import { type Media } from "#lib/media.js";
 
 let { media, first }: { media: Media; first: boolean } = $props();
 </script>

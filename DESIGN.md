@@ -7,21 +7,21 @@ This file describes the design rules that the SansaNews frontend uses. The token
 - The look is editorial, like a printed newspaper: serif headings, thin rules, and `/` separators in the navigation.
 - The base color is a warm off-white. The accent color is teal (`#03989E`, the `theme-color`).
 - The UI text is in Spanish with Title Case labels ("Última Actualización", "Sobre Nosotros").
-- Names of projects and works are in italics (*SansaNews*).
+- Names of projects and works are in italics (_SansaNews_).
 
 ## Color
 
 Colors are OKLCH tokens with shadcn names. Always use a token. Do not use `bg-white` or `gray-*` classes.
 
-| Token | Use |
-|---|---|
-| `background` | Page background, fixed bars, scroll fades |
-| `foreground` | Body text |
-| `card` | Post cards, tool cards, filter pills, white circles |
-| `primary` | Active navigation item, selected filter, buttons, all links |
-| `border` | All borders and the card shadow (teal, not gray) |
-| `muted-foreground` | Metadata, dates, inactive navigation items |
-| `border/50` | Skeleton fill (`bg-muted` is too close to the background) |
+| Token              | Use                                                         |
+| ------------------ | ----------------------------------------------------------- |
+| `background`       | Page background, fixed bars, scroll fades                   |
+| `foreground`       | Body text                                                   |
+| `card`             | Post cards, tool cards, filter pills, white circles         |
+| `primary`          | Active navigation item, selected filter, buttons, all links |
+| `border`           | All borders and the card shadow (teal, not gray)            |
+| `muted-foreground` | Metadata, dates, inactive navigation items                  |
+| `border/50`        | Skeleton fill (`bg-muted` is too close to the background)   |
 
 - Decorative rules use `bg-primary/40` at `h-0.5`.
 - Hover states use `text-primary`. Filter pills also use `bg-primary/10`.

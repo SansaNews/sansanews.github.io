@@ -17,12 +17,18 @@ let { children } = $props();
   />
 </svelte:head>
 
+<a
+  href="#contenido"
+  class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-primary"
+  >Saltar al contenido</a
+>
+
 <div class="grid grid-cols-12">
   <header class="col-span-12 pb-4 lg:col-span-8 lg:col-start-3">
     <Navbar />
   </header>
 
-  <div class="col-span-12 lg:col-span-8 lg:col-start-3">
+  <div id="contenido" tabindex="-1" class="col-span-12 outline-none lg:col-span-8 lg:col-start-3">
     {@render children()}
   </div>
 

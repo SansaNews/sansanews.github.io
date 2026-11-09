@@ -13,7 +13,10 @@ let { media, first }: { media: Media; first: boolean } = $props();
 		<PostMedia {media} {first} />
 
 		<div class="flex w-full flex-col justify-between p-4">
+			<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 			<p
+				// biome-ignore lint/a11y/noNoninteractiveTabindex: Safari does not focus scroll areas
+				tabindex="0"
 				class="overflow-y-auto wrap-break-word whitespace-pre-line lg:grow lg:basis-0"
 			>
 				{media.caption}

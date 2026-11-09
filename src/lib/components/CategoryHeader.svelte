@@ -58,8 +58,8 @@ function updateFade(e: Event) {
 <!-- Mobile Header -->
 <div
   class={cn(
-    "fixed top-0 right-0 left-0 z-40 border-b-2 bg-background transition-transform duration-300 lg:hidden",
-    scroll.hidden && "-translate-y-full",
+    "fixed top-0 right-0 left-0 z-40 border-b-2 bg-background transition-transform duration-300 motion-reduce:transition-none lg:hidden",
+    scroll.hidden && "-translate-y-full has-focus-visible:translate-y-0",
   )}
 >
   <div class="flex justify-center pt-4 pb-5">
@@ -102,6 +102,6 @@ function updateFade(e: Event) {
       Última Actualización: {lastUpdate}
     </p>
   {:else}
-    <Skeleton class="h-3 w-52 bg-border/50" />
+    <Skeleton class="h-3 w-52 bg-border/50 motion-reduce:animate-none" />
   {/if}
 </div>

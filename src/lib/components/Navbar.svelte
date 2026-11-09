@@ -22,8 +22,8 @@ const sections = [
 <!-- Mobile Navigation -->
 <nav
   class={cn(
-    "fixed right-0 bottom-0 left-0 z-50 border-t-2 bg-background transition-transform duration-300 lg:hidden",
-    scroll.hidden && "translate-y-full",
+    "fixed right-0 bottom-0 left-0 z-50 border-t-2 bg-background transition-transform duration-300 motion-reduce:transition-none lg:hidden",
+    scroll.hidden && "translate-y-full has-focus-visible:translate-y-0",
   )}
 >
   <ul class="flex justify-around">

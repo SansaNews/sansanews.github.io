@@ -32,6 +32,10 @@ rate-limit:
 init:
 	bun install
 
+# Run unit tests
+test:
+	bun test
+
 # Run svelte-check and biome check
 lint:
 	bun run check

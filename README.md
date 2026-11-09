@@ -88,6 +88,7 @@ just get username   # Obtiene las últimas publicaciones del usuario (flags: --s
 just rate-limit     # Muestra el uso actual del límite de peticiones de la API
 just update         # Obtiene las últimas publicaciones de los usuarios de `src/lib/assets/users.json` (flag: --dry-run, crea datos falsos sin llamar a la API)
 just lint           # Ejecuta svelte-check y biome check
+just test           # Ejecuta las pruebas con bun test
 just build          # Construye el proyecto y abre una vista previa
 ```
 

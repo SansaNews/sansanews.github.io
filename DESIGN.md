@@ -1,73 +1,73 @@
 # DESIGN.md
 
-This file describes the design rules that the SansaNews frontend uses. The tokens are in `src/app.css`.
+Este archivo describe las reglas de diseño del _frontend_ de SansaNews. Los _tokens_ están en `src/app.css`.
 
-## Identity
+## Identidad
 
-- The look is editorial, like a printed newspaper: serif headings, thin rules, and `/` separators in the navigation.
-- The base color is a warm off-white. The accent color is teal (`#03989E`, the `theme-color`).
-- The UI text is in Spanish with Title Case labels ("Última Actualización", "Sobre Nosotros").
-- Names of projects and works are in italics (_SansaNews_).
+- El estilo es editorial, como un diario impreso: títulos _serif_, líneas delgadas y separadores `/` en la navegación.
+- El color base es un blanco cálido. El color de acento es verde azulado (`#03989E`, el `theme-color`).
+- El texto de la interfaz está en español, con etiquetas en mayúscula inicial en cada palabra ("Última Actualización", "Sobre Nosotros").
+- Los nombres de proyectos y obras van en cursiva (_SansaNews_).
 
 ## Color
 
-Colors are OKLCH tokens with shadcn names. Always use a token. Do not use `bg-white` or `gray-*` classes.
+Los colores son _tokens_ OKLCH con nombres de shadcn. Usa siempre un _token_. No uses clases `bg-white` ni `gray-*`.
 
-| Token              | Use                                                         |
-| ------------------ | ----------------------------------------------------------- |
-| `background`       | Page background, fixed bars, scroll fades                   |
-| `foreground`       | Body text                                                   |
-| `card`             | Post cards, tool cards, filter pills, white circles         |
-| `primary`          | Active navigation item, selected filter, buttons, all links |
-| `border`           | All borders and the card shadow (teal, not gray)            |
-| `muted-foreground` | Metadata, dates, inactive navigation items                  |
-| `border/50`        | Skeleton fill (`bg-muted` is too close to the background)   |
+| _Token_            | Uso                                                                   |
+| ------------------ | --------------------------------------------------------------------- |
+| `background`       | Fondo de la página, barras fijas, degradados de desplazamiento        |
+| `foreground`       | Texto del cuerpo                                                      |
+| `card`             | Tarjetas de publicaciones y herramientas, filtros, círculos blancos   |
+| `primary`          | Elemento activo de navegación, filtro seleccionado, botones, enlaces  |
+| `border`           | Todos los bordes y la sombra de las tarjetas (verde azulado, no gris) |
+| `muted-foreground` | Metadatos, fechas, elementos inactivos de navegación                  |
+| `border/50`        | Relleno de los _skeletons_ (`bg-muted` se parece demasiado al fondo)  |
 
-- Decorative rules use `bg-primary/40` at `h-0.5`.
-- Hover states use `text-primary`. Filter pills also use `bg-primary/10`.
-- Overlays on media use `bg-black/20`, `bg-black/50`, and `bg-black/40` (drawer backdrop).
-- The `.dark` tokens exist, but nothing sets the `dark` class. Dark mode is not active.
+- Las líneas decorativas usan `bg-primary/40` con `h-0.5`.
+- Los estados _hover_ usan `text-primary`. Los filtros también usan `bg-primary/10`.
+- Las capas sobre imágenes y videos usan `bg-black/20`, `bg-black/50` y `bg-black/40` (fondo del _drawer_).
+- Los _tokens_ `.dark` existen, pero nada activa la clase `dark`. El modo oscuro no está activo.
 
-## Typography
+## Tipografía
 
-- Headings use `font-heading` (Charis SIL, 400 and 700, with italics).
-- Body text uses the default Tailwind sans font.
-- The scale is a perfect fourth (x1.414): `xl` 1.414rem, `2xl` 1.999rem, `3xl` 2.827rem, `4xl` 3.997rem, `5xl` 5.652rem.
-- Use `font-heading text-xl` for section titles. Add `font-bold` for card titles.
-- `.prose-page` sets `h1` to `text-2xl` and `h2` to `text-xl`. Its paragraphs are justified.
-- Links are `text-primary underline` on prose pages and in the footer.
-- Metadata uses `text-xs`. Avatar names and post dates use `text-[10px]`.
+- Los títulos usan `font-heading` (Charis SIL, pesos 400 y 700, con cursivas).
+- El texto del cuerpo usa la fuente _sans_ por defecto de Tailwind.
+- La escala es una cuarta justa (x1.414): `xl` 1.414rem, `2xl` 1.999rem, `3xl` 2.827rem, `4xl` 3.997rem, `5xl` 5.652rem.
+- Usa `font-heading text-xl` para los títulos de sección. Agrega `font-bold` para los títulos de tarjeta.
+- `.prose-page` define `h1` como `text-2xl` y `h2` como `text-xl`. Sus párrafos están justificados.
+- Los enlaces son `text-primary underline` en las páginas de texto y en el pie de página.
+- Los metadatos usan `text-xs`. Los nombres de los avatares y las fechas de las publicaciones usan `text-[10px]`.
 
-## Layout
+## Diseño de página
 
-- The page uses a 12-column grid. On `lg`, content uses 8 columns from column 3.
-- `lg` is the only layout breakpoint. A few sizes also change at `sm`.
-- Posts use one column. On `lg`, the image takes 1/3 of the card width.
-- Tools use one column, and two columns on `lg`.
-- Common spacing: `p-4` in cards, `mb-8` between posts, `gap-6` in grids, `gap-8` between prose sections.
+- La página usa una cuadrícula de 12 columnas. En `lg`, el contenido ocupa 8 columnas desde la columna 3.
+- `lg` es el único punto de quiebre del diseño. Algunos tamaños también cambian en `sm`.
+- Las publicaciones usan una columna. En `lg`, la imagen ocupa 1/3 del ancho de la tarjeta.
+- Las herramientas usan una columna, y dos columnas en `lg`.
+- Espaciado habitual: `p-4` en tarjetas, `mb-8` entre publicaciones, `gap-6` en cuadrículas y `gap-8` entre secciones de texto.
 
-## Components
+## Componentes
 
-- **Card.** `bg-card rounded-lg border-2` plus `.card-shadow`. The shadow is a hard `4px 4px 0` offset in the border color. On hover, it grows to `6px 6px` in 200 ms.
-- **Inner divider.** `border-t-2` separates the card footer. `border-b-2` and `border-r-2` separate the media from the text.
-- **Section divider.** A rule, a centered `font-heading text-xl` title, and a second rule. The drawer uses a small, bold, uppercase `text-primary` title.
-- **Filter pill.** `ToggleGroup` item with `bg-card rounded-md shadow-xs text-sm font-medium`. The selected state is `bg-primary/80`.
-- **Primary button.** `bg-primary text-primary-foreground rounded-md px-4 py-2 text-xs font-bold` with a trailing `ExternalLink` icon.
-- **Avatar.** Round, 48 px on mobile and 60 px from `sm`.
-- **Icons.** Lucide (`@lucide/svelte`), 16 px. Icons in metadata are 12 to 14 px.
+- **Tarjeta.** `bg-card rounded-lg border-2` más `.card-shadow`. La sombra es un desplazamiento sólido de `4px 4px 0` en el color del borde. Con _hover_, crece a `6px 6px` en 200 ms.
+- **Divisor interno.** `border-t-2` separa el pie de la tarjeta. `border-b-2` y `border-r-2` separan la imagen del texto.
+- **Divisor de sección.** Una línea, un título centrado `font-heading text-xl` y una segunda línea. El _drawer_ usa un título pequeño, en negrita, en mayúsculas y `text-primary`.
+- **Filtro.** Elemento de `ToggleGroup` con `bg-card rounded-md shadow-xs text-sm font-medium`. El estado seleccionado es `bg-primary/80`.
+- **Botón principal.** `bg-primary text-primary-foreground rounded-md px-4 py-2 text-xs font-bold` con un ícono `ExternalLink` al final.
+- **Avatar.** Redondo, de 48 px en móvil y de 60 px desde `sm`.
+- **Íconos.** Lucide (`@lucide/svelte`), de 16 px. Los íconos de los metadatos miden de 12 a 14 px.
 
-## Navigation and responsive behavior
+## Navegación y comportamiento adaptable
 
-- Desktop: a large logo (`h-24`), then text links separated by `/`, with a short teal rule on each side.
-- Mobile: a fixed bottom tab bar (icon and label) and a fixed top header (logo and filter pills).
-- Both mobile bars hide on scroll down and show on scroll up (`hideOnScroll`).
-- Horizontal scroll areas hide the scrollbar and show gradient fades (`from-background`).
-- On mobile, a bottom drawer (`vaul-svelte`, `rounded-t-2xl`, grab handle) lists all accounts by category.
+- Escritorio: un logo grande (`h-24`) y luego enlaces de texto separados por `/`, con una línea corta verde azulada a cada lado.
+- Móvil: una barra de pestañas fija abajo (ícono y etiqueta) y un encabezado fijo arriba (logo y filtros).
+- Las dos barras móviles se ocultan al desplazar hacia abajo y aparecen al desplazar hacia arriba (`hideOnScroll`).
+- Las áreas de desplazamiento horizontal ocultan la barra de desplazamiento y muestran degradados en los bordes (`from-background`).
+- En móvil, un _drawer_ inferior (`vaul-svelte`, `rounded-t-2xl`, con asa) lista todas las cuentas por categoría.
 
-## States and media
+## Estados e imágenes
 
-- Skeletons replace any text that depends on the time until the component mounts.
-- The empty state uses shadcn `Empty` with a dashed border and the `ImageOff` icon.
-- Images are WebP with 1x, 2x, and 3x `srcset`, and `object-contain`. Only the first post loads eagerly.
-- A video shows a thumbnail with a white play icon (80 % opacity). The video loads after a click.
-- A carousel shows a small round badge in the top-right corner, with the tooltip "Más contenido en Instagram".
+- Los _skeletons_ reemplazan todo texto que depende de la hora hasta que el componente se monta.
+- El estado vacío usa el componente `Empty` de shadcn, con borde punteado y el ícono `ImageOff`.
+- Las imágenes son WebP con `srcset` de 1x, 2x y 3x, y `object-contain`. Solo la primera publicación carga de forma inmediata.
+- Un video muestra una miniatura con un ícono blanco de reproducción (opacidad de 80 %). El video carga después de un clic.
+- Un carrusel muestra una pequeña insignia redonda en la esquina superior derecha, con el _tooltip_ "Más contenido en Instagram".

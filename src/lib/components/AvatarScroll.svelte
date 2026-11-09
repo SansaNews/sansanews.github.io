@@ -4,6 +4,7 @@ import { Drawer } from "vaul-svelte";
 import usersJSON from "#lib/assets/users.json";
 import mediaJSON from "#lib/mediaData.js";
 import { makeSrcset } from "#lib/utils.js";
+import { asset } from "$app/paths";
 
 const validUsers = new Set(mediaJSON.media.map((m) => m.username));
 
@@ -33,6 +34,13 @@ const allUsers = categories.flatMap((category) => category.users);
       alt={username}
       class="size-14 rounded-full"
       loading="lazy"
+      onerror={(e) => {
+        // A failed profile picture shows the placeholder. The guard stops a loop.
+        const img = e.currentTarget as HTMLImageElement;
+        if (!img.srcset) return;
+        img.srcset = "";
+        img.src = asset("placeholder.svg");
+      }}
     />
     <span class="w-full truncate text-center text-[10px] text-muted-foreground"
       >{username}</span

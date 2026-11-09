@@ -1,4 +1,5 @@
 import assert from "node:assert";
+import { mkdir, rm } from "node:fs/promises";
 import { file, write } from "bun";
 import { LogLevel, log } from "./logging.ts";
 
@@ -93,13 +94,25 @@ async function main() {
 	}
 	log(LogLevel.DEBUG, `Loaded ${users.length} users from ${USERS_PATH}`);
 
+	// Fetch everything first: a failed run must not delete the old images.
+	const fetched = config
+		? await Promise.all(users.map((u) => getUserData(u.username, config)))
+		: [];
+	if (config) {
+		if (!fetched.some((d) => d.business_discovery)) {
+			throw new Error("No user returned data: keeping the old files");
+		}
+		for (const dir of ["static/pfp", "static/posts"]) {
+			await rm(dir, { recursive: true, force: true });
+			await mkdir(dir, { recursive: true });
+		}
+	}
+
 	const promises = users.map(async (user, index) => {
 		if (!config) return fakePosts(user, index);
-		log(LogLevel.DEBUG, `Fetching user: ${user.username} (${user.category})`);
-		const userData = await getUserData(user.username, config);
 		const sanitized = await processUserMedia(
 			user.username,
-			userData,
+			fetched[index],
 			user.category,
 		);
 		log(
@@ -209,12 +222,10 @@ export async function getUserData(
   }`;
 
 	let response: Response;
-	let data: IGMediaResponse = {};
-	let errorText = "";
+	let body = "";
 	try {
 		response = await fetchBusinessDiscovery(fields, config);
-		if (response.ok) data = await response.json();
-		else errorText = await response.text();
+		body = await response.text();
 	} catch (error) {
 		log(
 			LogLevel.ERROR,
@@ -223,9 +234,19 @@ export async function getUserData(
 		return {};
 	}
 
-	if (response.ok) return data;
+	if (response.ok) {
+		try {
+			return JSON.parse(body);
+		} catch (error) {
+			log(
+				LogLevel.ERROR,
+				`Invalid JSON from Instagram API for ${username}: ${error}`,
+			);
+			return {};
+		}
+	}
 
-	log(LogLevel.ERROR, `HTTP ${response.status} for ${username}: ${errorText}`);
+	log(LogLevel.ERROR, `HTTP ${response.status} for ${username}: ${body}`);
 	if (response.status === 403) {
 		throw new Error(
 			"HTTP 403 Forbidden: Reached API rate limit or insufficient permissions.",
@@ -263,24 +284,32 @@ export async function processUserMedia(
 				"./static/posts",
 				376,
 			);
-
-			if (media.media_type === "VIDEO" && media.media_url) {
-				media.video_url = media.media_url;
-			} else if (media.media_type === "VIDEO") {
-				log(
-					LogLevel.WARN,
-					`Video without media_url (likely copyright-restricted): ${media.id}`,
-				);
+			if (!media.dimensions.width) {
+				log(LogLevel.WARN, `Dropping post without image: ${media.id}`);
+				return null;
 			}
 
-			delete media.media_url;
-			delete media.thumbnail_url;
-			delete media.children;
-			return media;
+			return cleanMedia(media);
 		},
 	);
 
-	return await Promise.all(promises);
+	return (await Promise.all(promises)).filter((m) => m !== null);
+}
+
+export function cleanMedia(media: IGMediaItem): IGMediaItem {
+	if (media.media_type === "VIDEO" && media.media_url) {
+		media.video_url = media.media_url;
+	} else if (media.media_type === "VIDEO") {
+		log(
+			LogLevel.WARN,
+			`Video without media_url (likely copyright-restricted): ${media.id}`,
+		);
+	}
+
+	delete media.media_url;
+	delete media.thumbnail_url;
+	delete media.children;
+	return media;
 }
 
 export function isAllowedHost(url: string): boolean {
@@ -320,9 +349,11 @@ export async function optimizeImage(
 
 		const blob = await response.blob();
 		const img = blob.image().webp({ quality: 80 });
-		for (let i = 1; i <= 3; i++) {
-			img.resize(baseWidth * i).write(`${folderPath}/${fileName}-${i}x.webp`);
-		}
+		await Promise.all(
+			[1, 2, 3].map((i) =>
+				img.resize(baseWidth * i).write(`${folderPath}/${fileName}-${i}x.webp`),
+			),
+		);
 
 		dimensions = await img
 			.metadata()

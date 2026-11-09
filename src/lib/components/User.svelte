@@ -3,6 +3,7 @@ import { Skeleton } from "#lib/components/ui/skeleton/index.js";
 import { formatDatetime } from "#lib/media.js";
 import { useClientTime } from "#lib/time.svelte.js";
 import { makeSrcset } from "#lib/utils.js";
+import { asset } from "$app/paths";
 
 let { username, datePublished } = $props();
 
@@ -38,6 +39,13 @@ const time = useClientTime();
       alt="Foto de perfil de {username}"
       referrerpolicy="no-referrer"
       loading="lazy"
+      onerror={(e) => {
+        // A failed profile picture shows the placeholder. The guard stops a loop.
+        const img = e.currentTarget as HTMLImageElement;
+        if (!img.srcset) return;
+        img.srcset = "";
+        img.src = asset("placeholder.svg");
+      }}
     />
   </div>
 </a>

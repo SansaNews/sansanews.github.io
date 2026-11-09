@@ -5,7 +5,7 @@ Este archivo describe las reglas de diseño del _frontend_ de SansaNews. Los _to
 ## Identidad
 
 - El estilo es editorial, como un diario impreso: títulos _serif_, líneas delgadas y separadores `/` en la navegación.
-- El color base es un blanco cálido. El color de acento es verde azulado (`#03989E`, el `theme-color`).
+- El color base es un blanco cálido. El color de marca es verde azulado (`#03989E`, el `theme-color`). El _token_ `primary` es una versión más oscura (`#006b72`) para cumplir el contraste AA de WCAG.
 - El texto de la interfaz está en español, con etiquetas en mayúscula inicial en cada palabra ("Última Actualización", "Sobre Nosotros").
 - Los nombres de proyectos y obras van en cursiva (_SansaNews_).
 
@@ -51,7 +51,7 @@ Los colores son _tokens_ OKLCH con nombres de shadcn. Usa siempre un _token_. No
 - **Tarjeta.** `bg-card rounded-lg border-2` más `.card-shadow`. La sombra es un desplazamiento sólido de `4px 4px 0` en el color del borde. Con _hover_, crece a `6px 6px` en 200 ms.
 - **Divisor interno.** `border-t-2` separa el pie de la tarjeta. `border-b-2` y `border-r-2` separan la imagen del texto.
 - **Divisor de sección.** Una línea, un título centrado `font-heading text-xl` y una segunda línea. El _drawer_ usa un título pequeño, en negrita, en mayúsculas y `text-primary`.
-- **Filtro.** Elemento de `ToggleGroup` con `bg-card rounded-md shadow-xs text-sm font-medium`. El estado seleccionado es `bg-primary/80`.
+- **Filtro.** Elemento de `ToggleGroup` con `bg-card rounded-md shadow-xs text-sm font-medium`. El estado seleccionado es `bg-primary` con `text-primary-foreground`.
 - **Botón principal.** `bg-primary text-primary-foreground rounded-md px-4 py-2 text-xs font-bold` con un ícono `ExternalLink` al final.
 - **Avatar.** Redondo, de 48 px en móvil y de 60 px desde `sm`.
 - **Íconos.** Lucide (`@lucide/svelte`), de 16 px. Los íconos de los metadatos miden de 12 a 14 px.

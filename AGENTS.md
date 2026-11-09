@@ -33,7 +33,7 @@ just build     # vite build, then vite preview
 Run `just --list` to see all recipes.
 
 - Every recipe fails if `.env` does not exist.
-- `bun test` runs the `*.test.ts` files next to the code. Each test names the commit of the bug it guards. Add a test when you fix a bug in pure logic. `backend/test.ts` is not a test file. It is a manual CLI for the Instagram API.
+- `bun test` runs the `*.test.ts` files next to the code. Add a test when you fix a bug in pure logic. `backend/test.ts` is not a test file. It is a manual CLI for the Instagram API.
 - To sort Tailwind classes, run `bun x biome check --write --unsafe`. The fix is unsafe, so `just lint` does not apply it.
 - CI runs `biome ci`, `bun run check`, and `bun test`.
 

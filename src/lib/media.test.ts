@@ -5,7 +5,7 @@ import { formatDatetime, getTimeCategory, jsonToMedia } from "./media.ts";
 // Local time, so the tests pass in any time zone.
 const at = (day: number, hour: number) => new Date(2026, 10, day, hour);
 
-test("formatDatetime: a post from yesterday shows 'Ayer', not hours (5fd0b49)", () => {
+test("formatDatetime: a post from yesterday shows 'Ayer', not hours", () => {
 	expect(formatDatetime(at(8, 23), at(9, 1))).toBe("Ayer");
 });
 
@@ -20,7 +20,7 @@ test("formatDatetime: thresholds and future dates", () => {
 	expect(formatDatetime(at(1, 12), now)).toBe("01/11/2026");
 });
 
-test("getTimeCategory: uses the current date, not the build date (ce8360c)", () => {
+test("getTimeCategory: uses the current date, not the build date", () => {
 	expect(getTimeCategory(new Date())).toBe("Hoy");
 	const now = at(9, 1);
 	expect(getTimeCategory(at(9, 0), now)).toBe("Hoy");
@@ -29,7 +29,7 @@ test("getTimeCategory: uses the current date, not the build date (ce8360c)", () 
 	expect(getTimeCategory(at(1, 0), now)).toBe("Último Mes");
 });
 
-test("jsonToMedia: empty video_url gives no videoURL (cbd45cf)", () => {
+test("jsonToMedia: empty video_url gives no videoURL", () => {
 	const raw = {
 		id: "a",
 		category: "USM",

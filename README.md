@@ -86,7 +86,7 @@ just dev            # Inicia el entorno de desarrollo (requiere haber ejecutado 
 just check username # Chequea si el usuario es accesible mediante la API
 just get username   # Obtiene las últimas publicaciones del usuario (flags: --sanitize, --since <dias>, --max <cantidad>)
 just rate-limit     # Muestra el uso actual del límite de peticiones de la API
-just update         # Obtiene las últimas publicaciones de los usuarios de `src/lib/assets/users.json`
+just update         # Obtiene las últimas publicaciones de los usuarios de `src/lib/assets/users.json` (flag: --dry-run, crea datos falsos sin llamar a la API)
 just lint           # Ejecuta svelte-check y biome check
 just build          # Construye el proyecto y abre una vista previa
 ```

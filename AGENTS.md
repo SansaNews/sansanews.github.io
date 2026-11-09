@@ -25,6 +25,7 @@ SansaNews is a static SvelteKit site. It shows recent Instagram posts from USM a
 just init      # bun install
 just dev       # vite dev server
 just lint      # svelte-check + biome check
+just test      # bun test
 just update    # fetch posts into media.json (needs ACCESS_TOKEN)
 just build     # vite build, then vite preview
 ```
@@ -32,9 +33,9 @@ just build     # vite build, then vite preview
 Run `just --list` to see all recipes.
 
 - Every recipe fails if `.env` does not exist.
-- The project has no test suite. `backend/test.ts` is a manual CLI for the Instagram API.
+- `bun test` runs the `*.test.ts` files next to the code. Each test names the commit of the bug it guards. Add a test when you fix a bug in pure logic. `backend/test.ts` is not a test file. It is a manual CLI for the Instagram API.
 - To sort Tailwind classes, run `bun x biome check --write --unsafe`. The fix is unsafe, so `just lint` does not apply it.
-- CI runs `biome ci` and `bun run check`.
+- CI runs `biome ci`, `bun run check`, and `bun test`.
 
 ## Data flow
 

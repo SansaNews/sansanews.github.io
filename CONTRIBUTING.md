@@ -61,7 +61,7 @@ El proyecto adopta estas prácticas.
 - Ordena las clases de Tailwind con `bun x biome check --write --unsafe`.
 - Usa los _tokens_ de color de [`DESIGN.md`](DESIGN.md) en lugar de clases como `bg-white` o `gray-*`.
 - Evita editar a mano los componentes de `src/lib/components/ui/` sin una razón, ya que son componentes de shadcn-svelte.
-- Ejecuta `just lint` antes de abrir un _pull request_, porque el CI ejecuta las mismas comprobaciones.
+- Ejecuta `just lint` y `just test` antes de abrir un _pull request_, porque el CI ejecuta las mismas comprobaciones.
 
 ## Idioma
 

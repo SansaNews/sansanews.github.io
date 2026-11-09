@@ -6,5 +6,5 @@
 
 ## Lista de comprobación
 
-- [ ] Ejecuté `just lint`.
+- [ ] Ejecuté `just lint` y `just test`.
 - [ ] El código, los mensajes de commit y el nombre de la rama están en inglés.

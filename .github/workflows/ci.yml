@@ -33,3 +33,6 @@ jobs:
 
       - name: Svelte check
         run: bun run check
+
+      - name: Tests
+        run: bun test

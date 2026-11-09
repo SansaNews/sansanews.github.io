@@ -51,7 +51,12 @@ const lastUpdateLabel = $derived(
 );
 </script>
 
+<svelte:head>
+  <title>Noticias · SansaNews</title>
+</svelte:head>
+
 <main class="p-4 pt-2 lg:pt-4">
+  <h1 class="sr-only">Noticias</h1>
   <div class="h-28 lg:hidden"></div>
   <AvatarScroll />
   <CategoryHeader

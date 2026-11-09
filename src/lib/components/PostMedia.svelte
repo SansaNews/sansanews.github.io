@@ -78,6 +78,7 @@ $effect(() => {
 			class="flex h-full w-full"
 		>
 			{@render postImage(`Post de ${media.username}`)}
+			<span class="sr-only">(abre en una pestaña nueva)</span>
 		</a>
 	{/if}
 
@@ -90,6 +91,7 @@ $effect(() => {
 					e.preventDefault();
 					open = true;
 				}}
+				aria-label="Más contenido en Instagram"
 				class="absolute top-2 right-2 z-10 flex h-6 w-6 cursor-pointer items-center justify-center rounded-full bg-black/50"
 			>
 				<GalleryHorizontalEnd class="h-4 w-4 text-white opacity-75" />

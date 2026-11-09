@@ -7,7 +7,7 @@ import { resolve } from "$app/paths";
   class="col-span-12 grid grid-cols-3 gap-2 border-t-3 p-4 text-muted-foreground lg:col-span-8 lg:col-start-3 lg:gap-8 lg:p-6"
 >
   <div class="flex flex-col items-start overflow-hidden">
-    <h4 class="pb-2 font-heading text-sm lg:text-base">Mapa del Sitio</h4>
+    <h2 class="pb-2 font-heading text-sm lg:text-base">Mapa del Sitio</h2>
     <ul class="space-y-1 text-xs font-medium">
       <li>
         <a class="text-primary underline" href={resolve("/")}>Noticias</a>
@@ -26,7 +26,7 @@ import { resolve } from "$app/paths";
   </div>
 
   <div class="flex w-full flex-col items-center px-1">
-    <h4 class="pb-2 font-heading text-sm lg:text-base">Misión</h4>
+    <h2 class="pb-2 font-heading text-sm lg:text-base">Misión</h2>
     <p
       class="w-full max-w-sm text-justify text-[11px] leading-snug font-medium hyphens-auto lg:text-center lg:text-xs lg:leading-normal"
     >
@@ -36,7 +36,7 @@ import { resolve } from "$app/paths";
   </div>
 
   <div class="flex flex-col items-end overflow-hidden">
-    <h4 class="pb-2 font-heading text-sm lg:text-base">Contacto</h4>
+    <h2 class="pb-2 font-heading text-sm lg:text-base">Contacto</h2>
     <ul class="space-y-1 text-xs font-medium">
       <li>
         <a

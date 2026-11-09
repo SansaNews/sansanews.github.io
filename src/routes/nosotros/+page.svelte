@@ -4,6 +4,10 @@ import Reference from "#lib/components/Reference.svelte";
 import { asset } from "$app/paths";
 </script>
 
+<svelte:head>
+  <title>Sobre Nosotros · SansaNews</title>
+</svelte:head>
+
 <main class="prose-page px-10 lg:px-16">
   <div class="mx-auto flex max-w-lg justify-center lg:hidden">
     <LogoBanner class="w-auto" width={1823} height={377} />
@@ -61,11 +65,7 @@ import { asset } from "$app/paths";
   <section>
     <h2 id="preguntas-frecuentes">Preguntas Frecuentes</h2>
     <div class="question">
-      <p>
-        <strong
-          >¿Por qué no muestran toda la información de la publicación?</strong
-        >
-      </p>
+      <h3 class="text-justify font-bold">¿Por qué no muestran toda la información de la publicación?</h3>
       <p>
         No somos un reemplazo de las cuentas oficiales de las iniciativas, solo
         queremos que sea más fácil informarse sobre las noticias de la comunidad
@@ -74,10 +74,7 @@ import { asset } from "$app/paths";
       </p>
     </div>
     <div class="question">
-      <p>
-        <strong>¿Por qué solo muestran las publicaciones del último mes?</strong
-        >
-      </p>
+      <h3 class="text-justify font-bold">¿Por qué solo muestran las publicaciones del último mes?</h3>
       <p>
         La idea es difundir las noticias más recientes de la universidad, no ser
         un archivo de publicaciones. Si quieres ver posts más antiguos, puedes
@@ -85,9 +82,7 @@ import { asset } from "$app/paths";
       </p>
     </div>
     <div class="question">
-      <p>
-        <strong>¿Cómo puedo añadir/eliminar mi página de SansaNews?</strong>
-      </p>
+      <h3 class="text-justify font-bold">¿Cómo puedo añadir/eliminar mi página de SansaNews?</h3>
       <p>
         Contáctanos mediante nuestro Instagram <a
           href="https://www.instagram.com/sansanews/">@sansanews</a
@@ -95,9 +90,7 @@ import { asset } from "$app/paths";
       </p>
     </div>
     <div class="question">
-      <p>
-        <strong>¿Qué pasa si elimino un post de mi cuenta de Instagram?</strong>
-      </p>
+      <h3 class="text-justify font-bold">¿Qué pasa si elimino un post de mi cuenta de Instagram?</h3>
       <p>
         El post será eliminado automáticamente de SansaNews con la siguiente
         recarga de la página. Si es muy urgente, contáctanos mediante nuestro
@@ -106,7 +99,7 @@ import { asset } from "$app/paths";
       </p>
     </div>
     <div class="question">
-      <p><strong>¿Cómo obtienen los posts de Instagram?</strong></p>
+      <h3 class="text-justify font-bold">¿Cómo obtienen los posts de Instagram?</h3>
       <p>
         Mediante la <a
           href="https://developers.facebook.com/products/instagram/apis/"
@@ -115,9 +108,7 @@ import { asset } from "$app/paths";
       </p>
     </div>
     <div class="question">
-      <p>
-        <strong>¿Las imágenes de los posts son descargadas y guardadas?</strong>
-      </p>
+      <h3 class="text-justify font-bold">¿Las imágenes de los posts son descargadas y guardadas?</h3>
       <p>
         Si, son descargados y optimizados para que SansaNews pueda cargar más
         rápido, especialmente en conexiones lentas como las de la universidad.
@@ -129,9 +120,7 @@ import { asset } from "$app/paths";
       </p>
     </div>
     <div class="question">
-      <p>
-        <strong>¿Por qué actualizan cada hora y no en tiempo real?</strong>
-      </p>
+      <h3 class="text-justify font-bold">¿Por qué actualizan cada hora y no en tiempo real?</h3>
       <p>
         La <a href="https://developers.facebook.com/products/instagram/apis/"
           >API</a
@@ -141,9 +130,7 @@ import { asset } from "$app/paths";
       </p>
     </div>
     <div class="question">
-      <p>
-        <strong>¿Por qué no se actualiza exactamente cada hora?</strong>
-      </p>
+      <h3 class="text-justify font-bold">¿Por qué no se actualiza exactamente cada hora?</h3>
       <p>
         La actualización depende de la disponibilidad de
         <a href="https://docs.github.com/en/actions">Github Actions</a>, que es

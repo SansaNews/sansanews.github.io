@@ -33,6 +33,7 @@ function updateFade(e: Event) {
 {#snippet CategorySelector()}
   <ToggleGroup.Root
     type="single"
+    aria-label="Filtrar por categoría"
     spacing={2}
     onValueChange={(value) => setCategory(value)}
   >

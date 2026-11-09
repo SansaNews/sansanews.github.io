@@ -10,6 +10,6 @@ let { class: className, width = 464, height = 96 } = $props();
     class={className}
     {width}
     {height}
-    alt="SansaNews Logo"
+    alt="SansaNews, inicio"
   />
 </a>

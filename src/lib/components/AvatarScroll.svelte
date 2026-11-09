@@ -26,12 +26,13 @@ const allUsers = categories.flatMap((category) => category.users);
   <a
     {href}
     target="_blank"
+    rel="noopener noreferrer"
     class="flex w-16 shrink-0 flex-col items-center gap-1"
   >
     <img
       {...makeSrcset('pfp', username, 48)}
       sizes="(min-width: 640px) 60px, 48px"
-      alt={username}
+      alt=""
       class="size-14 rounded-full"
       loading="lazy"
       onerror={(e) => {
@@ -44,6 +45,7 @@ const allUsers = categories.flatMap((category) => category.users);
     <span class="w-full truncate text-center text-[10px] text-muted-foreground"
       >{username}</span
     >
+    <span class="sr-only">(abre en una pestaña nueva)</span>
   </a>
 {/snippet}
 
@@ -61,6 +63,7 @@ const allUsers = categories.flatMap((category) => category.users);
   <!-- Drawer -->
   <Drawer.Root>
     <Drawer.Trigger
+      aria-label="Ver todas las cuentas"
       class="flex shrink-0 cursor-pointer flex-col items-center gap-1 p-2"
     >
       <div
@@ -80,6 +83,7 @@ const allUsers = categories.flatMap((category) => category.users);
       >
         <!-- Drawer Top Line -->
         <div class="mx-auto my-3 h-2 w-12 rounded-full bg-border"></div>
+        <Drawer.Title class="sr-only">Todas las cuentas</Drawer.Title>
         <!-- Drawer Content -->
         <div class="flex flex-col gap-6 overflow-y-auto p-5">
           {#each categories as cat (cat.name)}
@@ -87,8 +91,8 @@ const allUsers = categories.flatMap((category) => category.users);
               <!-- Category Title -->
               <div class="flex items-center gap-3">
                 <div class="h-px flex-1 bg-border"></div>
-                <span class="text-xs font-bold text-primary uppercase"
-                  >{cat.name}</span
+                <h3 class="text-xs font-bold text-primary uppercase"
+                  >{cat.name}</h3
                 >
                 <div class="h-px flex-1 bg-border"></div>
               </div>

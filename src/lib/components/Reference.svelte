@@ -15,6 +15,7 @@ let { name, github, instagram }: Props = $props();
     <a href={github} class="mr-2 inline" target="_blank" rel="noopener noreferrer">
       <Github class="inline h-3 w-3 text-muted-foreground" />
       <span class="inline text-xs text-muted-foreground">{name}</span>
+      <span class="sr-only">(abre en una pestaña nueva)</span>
     </a>
   {/if}
 
@@ -22,6 +23,7 @@ let { name, github, instagram }: Props = $props();
     <a href={instagram} class="inline" target="_blank" rel="noopener noreferrer">
       <Instagram class="inline h-3 w-3 text-muted-foreground" />
       <span class="inline text-xs text-muted-foreground">{name}</span>
+      <span class="sr-only">(abre en una pestaña nueva)</span>
     </a>
   {/if}
 </div>

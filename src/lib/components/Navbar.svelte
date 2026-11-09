@@ -31,6 +31,7 @@ const sections = [
       <li class="flex-1">
         <a
           href={section.href}
+          aria-current={section.href === page.url.pathname ? "page" : undefined}
           class={cn(
             "flex w-full flex-col items-center py-2 text-sm transition-colors",
             section.href === page.url.pathname
@@ -58,6 +59,7 @@ const sections = [
       {#each sections as item, i (item.href)}
         <a
           href={item.href}
+          aria-current={item.href === page.url.pathname ? "page" : undefined}
           class={cn(
             "px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors hover:text-primary focus:text-primary",
             item.href === page.url.pathname && "text-primary",
@@ -67,7 +69,7 @@ const sections = [
         </a>
 
         {#if i < sections.length - 1}
-          <span class="mx-1 select-none">/</span>
+          <span aria-hidden="true" class="mx-1 select-none">/</span>
         {/if}
       {/each}
     </nav>

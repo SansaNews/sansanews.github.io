@@ -4,6 +4,10 @@ import LogoBanner from "#lib/components/LogoBanner.svelte";
 import Tools from "#lib/components/Tools.svelte";
 </script>
 
+<svelte:head>
+  <title>Herramientas · SansaNews</title>
+</svelte:head>
+
 <main class="prose-page px-10 lg:px-16">
   <div class="mx-auto flex max-w-lg justify-center lg:hidden">
     <LogoBanner class="w-auto" width={1823} height={377} />

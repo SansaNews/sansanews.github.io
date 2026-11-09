@@ -36,7 +36,7 @@ const time = useClientTime();
     <img
       {...makeSrcset('pfp', username, 48)}
       sizes="(min-width: 640px) 60px, 48px"
-      alt="Foto de perfil de {username}"
+      alt=""
       referrerpolicy="no-referrer"
       loading="lazy"
       onerror={(e) => {
@@ -47,4 +47,5 @@ const time = useClientTime();
       }}
     />
   </div>
+  <span class="sr-only">(abre en una pestaña nueva)</span>
 </a>

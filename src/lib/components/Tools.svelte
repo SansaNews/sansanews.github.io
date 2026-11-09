@@ -11,11 +11,13 @@ const toolList = toolsJSON.tools;
       class="card-shadow flex flex-col overflow-hidden rounded-lg border-2 bg-card"
     >
       <!-- Tool Image -->
+      <!-- biome-ignore lint/a11y/useAnchorContent: hidden duplicate of the "Visitar" link -->
       <a
         href={tool.url}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={tool.title}
+        aria-hidden="true"
+        tabindex="-1"
       >
         <img
           src={tool.image}
@@ -40,7 +42,7 @@ const toolList = toolsJSON.tools;
             target="_blank"
             rel="noopener noreferrer"
             class="flex items-center rounded-md bg-primary px-4 py-2 text-xs font-bold text-primary-foreground"
-            aria-label={tool.title}
+            aria-label="Visitar {tool.title} (abre en una pestaña nueva)"
           >
             <p class="whitespace-nowrap">Visitar</p>
             <ExternalLink class="ml-1 h-3.5 w-3.5" />

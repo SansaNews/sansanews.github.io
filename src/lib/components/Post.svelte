@@ -6,7 +6,7 @@ import { type Media } from "#lib/media.js";
 let { media, first }: { media: Media; first: boolean } = $props();
 </script>
 
-<div class="mb-8 py-6 text-card-foreground">
+<article class="mb-8 py-6 text-card-foreground">
 	<div
 		class="card-shadow relative flex flex-col overflow-hidden rounded-lg border-2 border-t bg-card lg:flex-row"
 	>
@@ -24,4 +24,4 @@ let { media, first }: { media: Media; first: boolean } = $props();
 			</div>
 		</div>
 	</div>
-</div>
+</article>

@@ -13,7 +13,6 @@ build:
 
 # Update media.json (--dry-run: fake data, no API calls, keeps static/ files)
 update *flags:
-	{{ if flags =~ "--dry-run" { "true" } else { "rm -rf static/pfp/* static/posts/* 2>/dev/null || true" } }}
 	bun run backend/main.ts {{flags}}
 
 # Check if user is available

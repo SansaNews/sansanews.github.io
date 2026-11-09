@@ -283,6 +283,18 @@ export async function processUserMedia(
 	return await Promise.all(promises);
 }
 
+export function isAllowedHost(url: string): boolean {
+	let hostname: string;
+	try {
+		hostname = new URL(url).hostname.toLowerCase();
+	} catch {
+		return false;
+	}
+	return ["cdninstagram.com", "fbcdn.net"].some(
+		(host) => hostname === host || hostname.endsWith(`.${host}`),
+	);
+}
+
 export async function optimizeImage(
 	url: string | undefined,
 	fileName: string,
@@ -295,24 +307,8 @@ export async function optimizeImage(
 		return dimensions;
 	}
 
-	let hostname = "";
-	try {
-		hostname = new URL(url).hostname.toLowerCase();
-	} catch {
-		log(LogLevel.ERROR, `Blocked fetch from invalid URL: ${url}`);
-		return dimensions;
-	}
-
-	const allowedHosts = ["cdninstagram.com", "fbcdn.net"];
-	if (
-		!allowedHosts.some(
-			(host) => hostname === host || hostname.endsWith(`.${host}`),
-		)
-	) {
-		log(
-			LogLevel.WARN,
-			`Blocked fetch from disallowed host: ${url} (hostname=${hostname})`,
-		);
+	if (!isAllowedHost(url)) {
+		log(LogLevel.WARN, `Blocked fetch from invalid or disallowed URL: ${url}`);
 		return dimensions;
 	}
 

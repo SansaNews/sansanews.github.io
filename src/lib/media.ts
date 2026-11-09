@@ -49,8 +49,7 @@ function isSameDay(a: Date, b: Date): boolean {
 	);
 }
 
-export function getTimeCategory(date: Date): string {
-	const now = new Date();
+export function getTimeCategory(date: Date, now: Date = new Date()): string {
 	const diffTime = now.getTime() - date.getTime();
 	const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 

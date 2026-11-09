@@ -1,5 +1,6 @@
 # App
 src/lib/assets/media.json
+src/lib/assets/media.dry.json
 static/pfp/
 static/posts/
 

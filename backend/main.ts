@@ -74,9 +74,13 @@ async function main() {
 	const start = performance.now();
 	log(LogLevel.INFO, "Starting data extraction");
 	const USERS_PATH = "src/lib/assets/users.json";
-	const MEDIA_PATH = "src/lib/assets/media.json";
+	const dryRun = process.argv.includes("--dry-run");
+	const MEDIA_PATH = dryRun
+		? "src/lib/assets/media.dry.json"
+		: "src/lib/assets/media.json";
 
-	const config = new APIConfig();
+	if (dryRun) log(LogLevel.INFO, "Dry run: no API calls, no image downloads");
+	const config = dryRun ? undefined : new APIConfig();
 
 	const usersFile = file(USERS_PATH);
 	const usersData = await usersFile.json();
@@ -89,7 +93,8 @@ async function main() {
 	}
 	log(LogLevel.DEBUG, `Loaded ${users.length} users from ${USERS_PATH}`);
 
-	const promises = users.map(async (user) => {
+	const promises = users.map(async (user, index) => {
+		if (!config) return fakePosts(user, index);
 		log(LogLevel.DEBUG, `Fetching user: ${user.username} (${user.category})`);
 		const userData = await getUserData(user.username, config);
 		const sanitized = await processUserMedia(
@@ -124,6 +129,56 @@ async function main() {
 		LogLevel.INFO,
 		`Run summary: ${users.length} users, ${media.length} posts, ${durationMs}ms`,
 	);
+}
+
+function fakePosts({ username, category }: User, userIndex: number) {
+	const FAKE_SHAPES = [
+		{
+			dimensions: { width: 376, height: 376 },
+			caption: "",
+			media_type: "IMAGE",
+		},
+		{
+			dimensions: { width: 376, height: 470 },
+			caption: "Post corto.",
+			media_type: "CAROUSEL_ALBUM",
+		},
+		{
+			dimensions: { width: 376, height: 669 },
+			caption:
+				"Historia vertical 9:16 con un texto de largo medio para probar el salto de línea en la tarjeta.",
+			media_type: "VIDEO",
+			video_url: "/placeholder.mp4",
+		},
+		{
+			dimensions: { width: 376, height: 211 },
+			caption: "Formato horizontal 16:9. ".repeat(12),
+			media_type: "IMAGE",
+		},
+		{
+			dimensions: { width: 376, height: 197 },
+			caption: "Banner 1.91:1\n\nCon saltos de línea.\n\n#hashtag ".repeat(8),
+			media_type: "CAROUSEL_ALBUM",
+		},
+		{
+			dimensions: { width: 376, height: 376 },
+			caption: "Palabra_muy_larga_sin_espacios_".repeat(10),
+			media_type: "VIDEO",
+			video_url: "/placeholder.mp4",
+		},
+	];
+
+	return [0, 1].map((i) => {
+		const n = userIndex * 2 + i;
+		return {
+			id: `${username}-fake${i}`,
+			timestamp: new Date(Date.now() - n * 7 * 3_600_000).toISOString(),
+			permalink: `https://www.instagram.com/p/fake${i}/`,
+			username,
+			category,
+			...FAKE_SHAPES[n % FAKE_SHAPES.length],
+		};
+	});
 }
 
 export async function fetchBusinessDiscovery(

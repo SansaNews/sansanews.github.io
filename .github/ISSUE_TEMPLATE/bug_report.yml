@@ -1,0 +1,31 @@
+name: Reportar un error
+description: Informa un error en el sitio o en los scripts.
+labels: ["bug"]
+body:
+  - type: textarea
+    id: expected
+    attributes:
+      label: Qué esperabas que pasara
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Qué pasó en realidad
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducir el error
+      placeholder: |
+        1. Ve a ...
+        2. Haz clic en ...
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Navegador y dispositivo
+      description: Escribe este dato si el error es visual.
+      placeholder: Firefox 130 en Android 15

@@ -2,7 +2,6 @@
 import { expect, test } from "bun:test";
 import { formatDatetime, getTimeCategory, jsonToMedia } from "./media.ts";
 
-// Local time, so the tests pass in any time zone.
 const at = (day: number, hour: number) => new Date(2026, 10, day, hour);
 
 test("formatDatetime: a post from yesterday shows 'Ayer', not hours", () => {

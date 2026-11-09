@@ -40,7 +40,6 @@ const time = useClientTime();
       referrerpolicy="no-referrer"
       loading="lazy"
       onerror={(e) => {
-        // A failed profile picture shows the placeholder. The guard stops a loop.
         const img = e.currentTarget as HTMLImageElement;
         if (!img.srcset) return;
         img.srcset = "";

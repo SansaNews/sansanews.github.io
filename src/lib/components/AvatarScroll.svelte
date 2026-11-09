@@ -35,7 +35,6 @@ const allUsers = categories.flatMap((category) => category.users);
       class="size-14 rounded-full"
       loading="lazy"
       onerror={(e) => {
-        // A failed profile picture shows the placeholder. The guard stops a loop.
         const img = e.currentTarget as HTMLImageElement;
         if (!img.srcset) return;
         img.srcset = "";

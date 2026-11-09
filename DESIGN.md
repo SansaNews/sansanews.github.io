@@ -12,15 +12,15 @@ El texto de la interfaz está en español, con mayúscula inicial en cada palabr
 
 Los colores son _tokens_ OKLCH con los nombres de shadcn. Usa siempre un _token_ y no uses clases como `bg-white` o `gray-*`, ya que el sitio depende de los _tokens_ para mantener el contraste.
 
-| _Token_            | Uso                                                                  |
-| ------------------ | -------------------------------------------------------------------- |
-| `background`       | Fondo de la página, barras fijas y degradados de desplazamiento      |
-| `foreground`       | Texto del cuerpo                                                     |
-| `card`             | Tarjetas de publicaciones y herramientas, filtros y círculos blancos |
+| _Token_            | Uso                                                                   |
+| ------------------ | --------------------------------------------------------------------- |
+| `background`       | Fondo de la página, barras fijas y degradados de desplazamiento       |
+| `foreground`       | Texto del cuerpo                                                      |
+| `card`             | Tarjetas de publicaciones y herramientas, filtros y círculos blancos  |
 | `primary`          | Elemento activo de navegación, filtro seleccionado, botones y enlaces |
-| `border`           | Todos los bordes y la sombra de las tarjetas, en verde azulado       |
-| `muted-foreground` | Metadatos, fechas y elementos inactivos de navegación                |
-| `border/50`        | Relleno de los _skeletons_                                           |
+| `border`           | Todos los bordes y la sombra de las tarjetas, en verde azulado        |
+| `muted-foreground` | Metadatos, fechas y elementos inactivos de navegación                 |
+| `border/50`        | Relleno de los _skeletons_                                            |
 
 El _token_ `primary` (`#006b72`) es más oscuro que el color de marca, puesto que el texto en `primary` y el texto blanco sobre `primary` deben cumplir el contraste AA de WCAG. Por la misma razón, `muted-foreground` tiene la luminosidad necesaria para alcanzar un contraste de 4,5:1 sobre `background`. Los _skeletons_ usan `border/50`, ya que `bg-muted` se parece demasiado al fondo.
 

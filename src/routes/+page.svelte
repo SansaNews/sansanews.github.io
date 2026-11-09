@@ -1,6 +1,5 @@
 <script lang="ts">
 import { ImageOff } from "@lucide/svelte";
-import data from "#lib/assets/media.json";
 import AvatarScroll from "#lib/components/AvatarScroll.svelte";
 import CategoryHeader from "#lib/components/CategoryHeader.svelte";
 import Post from "#lib/components/Post.svelte";
@@ -12,6 +11,7 @@ import {
 	jsonToMedia,
 	type Media,
 } from "#lib/media.js";
+import data from "#lib/mediaData.js";
 import { useClientTime } from "#lib/time.svelte.js";
 
 let category = $state("");

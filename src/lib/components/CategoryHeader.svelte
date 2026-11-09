@@ -12,7 +12,7 @@ const scroll = hideOnScroll();
 const categories = Object.keys(categoriesJSON);
 
 const itemClass =
-	"data-[state=on]:bg-primary/80 data-[state=on]:text-background text-muted-foreground hover:text-primary hover:bg-primary/10 cursor-pointer rounded-md bg-card px-4 text-sm font-medium shadow-xs transition-none";
+	"data-[state=on]:bg-primary data-[state=on]:text-primary-foreground text-muted-foreground hover:text-primary hover:bg-primary/10 cursor-pointer rounded-md bg-card px-4 text-sm font-medium shadow-xs transition-none focus-visible:ring-ring";
 
 let {
 	setCategory,

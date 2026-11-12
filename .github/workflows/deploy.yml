@@ -12,7 +12,20 @@ permissions:
   contents: read
 
 jobs:
+  # Scheduled runs always use the default branch, but Pages only publishes deployments from `pages`.
+  dispatch_on_pages:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Run this workflow on pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --repo "$GITHUB_REPOSITORY" --ref pages
+
   build_site:
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
